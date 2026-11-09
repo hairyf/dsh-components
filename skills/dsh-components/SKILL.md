@@ -32,12 +32,21 @@ node scripts/list_components.mjs        # every component, its group and props t
 node scripts/get_component.mjs Select   # the primary read, before you use anything
 ```
 
-Groups: `primitives` (buttons, inputs, overlays, menus), `layout` (Surface, Bar,
-Stack, ListRow, Tree, DescriptionList, Checklist, Meter), `settings`
-(SettingsRow, SettingsGroup, Stepper, OptionGroup, Select, SplitButton),
-`feedback` (ConfirmPanel, FormDialog, SearchDialog, ActionCard, DropOverlay),
-`media` (Image, ImageTile, Lightbox, FileCard), `content` (MarkdownText,
-CodeBlock, DiffBlock, JsonTree, JsonBlock, Terminal, Document).
+Groups:
+
+- `primitives`: Button, IconButton, Input, Textarea, Checkbox, Switch, Tag, Pill,
+  Chip, StateDot, Spinner, Text, MaskedText, Avatar, Tooltip, HoverCard, Modal,
+  Toast, Menu, MenuSurface, MenuGroup, SegmentedControl, SegmentedTabs,
+  DisclosureRow, AnimatedRows, TextShimmer, ShortcutKeys, InlineEditor, PathLabel,
+  FileTypeIcon, Field, Form, DatePicker, TimePicker
+- `layout`: Surface, Bar, Stack, ListRow, Tree, DescriptionList, Checklist, Meter,
+  Table, Toolbar, Carousel, FileChangeCard
+- `settings`: SettingsRow, SettingsGroup, Stepper, OptionGroup, Select, SplitButton
+- `feedback`: ConfirmPanel, FormDialog, SearchDialog, ActionCard, DropOverlay
+- `media`: Image, ImageTile, Lightbox, FileCard
+- `content`: MarkdownText, CodeBlock, DiffBlock, SplitDiff, JsonTree, JsonBlock,
+  Terminal, Document
+- `viewer`: ZoomControls, ZoomViewport, PreviewFrame
 
 ## Compose, do not reach for a screen
 

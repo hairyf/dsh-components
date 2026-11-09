@@ -146,12 +146,13 @@ not belong here. See [the map](docs/reference/generic-component-map.md).
 
 | Group | Components |
 | --- | --- |
-| `primitives` | Button, IconButton, Input, Textarea, Checkbox, Switch, Tag, Pill, Chip, StateDot, Spinner, Text, MaskedText, Tooltip, HoverCard, Modal, Toast, Menu, MenuSurface, MenuGroup, SegmentedControl, SegmentedTabs, DisclosureRow, AnimatedRows, TextShimmer, ShortcutKeys, InlineEditor, PathLabel, FileTypeIcon |
-| `layout` | Surface, Bar, Stack, ListRow, Tree, DescriptionList, Checklist, Meter |
+| `primitives` | Button, IconButton, Input, Textarea, Checkbox, Switch, Tag, Pill, Chip, StateDot, Spinner, Text, MaskedText, Avatar, Tooltip, HoverCard, Modal, Toast, Menu, MenuSurface, MenuGroup, SegmentedControl, SegmentedTabs, DisclosureRow, AnimatedRows, TextShimmer, ShortcutKeys, InlineEditor, PathLabel, FileTypeIcon, Field, Form, DatePicker, TimePicker |
+| `layout` | Surface, Bar, Stack, ListRow, Tree, DescriptionList, Checklist, Meter, Table, Toolbar, Carousel, FileChangeCard |
 | `settings` | SettingsRow, SettingsGroup, Stepper, OptionGroup, Select, SplitButton |
 | `feedback` | ConfirmPanel, FormDialog, SearchDialog, ActionCard, DropOverlay |
 | `media` | Image, ImageTile, Lightbox, FileCard |
-| `content` | MarkdownText, CodeBlock, DiffBlock, JsonTree, JsonBlock, Terminal, Document |
+| `content` | MarkdownText, CodeBlock, DiffBlock, SplitDiff, JsonTree, JsonBlock, Terminal, Document |
+| `viewer` | ZoomControls, ZoomViewport, PreviewFrame |
 
 Every one copies an official DSH stylesheet verbatim and keeps the official class
 names; the name is generic, the pixels are the product's.

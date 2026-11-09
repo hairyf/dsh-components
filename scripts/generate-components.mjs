@@ -31,6 +31,7 @@ const PREFERRED_ORDER = [
   'feedback',
   'media',
   'content',
+  'viewer',
 ]
 
 /**

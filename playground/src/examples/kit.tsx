@@ -29,6 +29,7 @@ export type ExampleGroup
     | 'feedback'
     | 'media'
     | 'content'
+    | 'viewer'
 
 /** One titled card of a component's gallery page. */
 export interface ExampleState {

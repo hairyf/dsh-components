@@ -1,63 +1,76 @@
 import type { ComponentExample, ExampleGroup } from './kit'
-import actionCard from './action-card'
-import animatedRows from './animated-rows'
-import bar from './bar'
-import button from './button'
-import checkbox from './checkbox'
-import checklist from './checklist'
-import chip from './chip'
-import codeBlock from './code-block'
-import confirmPanel from './confirm-panel'
-import descriptionList from './description-list'
-import diffBlock from './diff-block'
-import disclosureRow from './disclosure-row'
-import document from './document'
-import dropOverlay from './drop-overlay'
-import fileCard from './file-card'
-import fileTypeIcon from './file-type-icon'
-import formDialog from './form-dialog'
-import hoverCard from './hover-card'
-import iconButton from './icon-button'
-import image from './image'
-import imageTile from './image-tile'
-import inlineEditor from './inline-editor'
-import input from './input'
-import jsonBlock from './json-block'
-import jsonTree from './json-tree'
-import lightbox from './lightbox'
-import listRow from './list-row'
-import markdownText from './markdown-text'
-import maskedText from './masked-text'
-import menu from './menu'
-import menuGroup from './menu-group'
-import menuSurface from './menu-surface'
-import meter from './meter'
-import modal from './modal'
-import optionGroup from './option-group'
-import pathLabel from './path-label'
-import pill from './pill'
-import searchDialog from './search-dialog'
-import segmentedControl from './segmented-control'
-import segmentedTabs from './segmented-tabs'
-import select from './select'
-import settingsGroup from './settings-group'
-import settingsRow from './settings-row'
-import shortcutKeys from './shortcut-keys'
-import spinner from './spinner'
-import splitButton from './split-button'
-import stack from './stack'
-import stateDot from './state-dot'
-import stepper from './stepper'
-import surface from './surface'
-import switchExample from './switch'
-import tag from './tag'
-import terminal from './terminal'
-import text from './text'
-import textShimmer from './text-shimmer'
-import textarea from './textarea'
-import toast from './toast'
-import tooltip from './tooltip'
-import tree from './tree'
+import exampleActionCard from './action-card'
+import exampleAnimatedRows from './animated-rows'
+import exampleAvatar from './avatar'
+import exampleBar from './bar'
+import exampleButton from './button'
+import exampleCarousel from './carousel'
+import exampleCheckbox from './checkbox'
+import exampleChecklist from './checklist'
+import exampleChip from './chip'
+import exampleCodeBlock from './code-block'
+import exampleConfirmPanel from './confirm-panel'
+import exampleDatePicker from './date-picker'
+import exampleDescriptionList from './description-list'
+import exampleDiffBlock from './diff-block'
+import exampleDisclosureRow from './disclosure-row'
+import exampleDocument from './document'
+import exampleDropOverlay from './drop-overlay'
+import exampleField from './field'
+import exampleFileCard from './file-card'
+import exampleFileChangeCard from './file-change-card'
+import exampleFileTypeIcon from './file-type-icon'
+import exampleForm from './form'
+import exampleFormDialog from './form-dialog'
+import exampleHoverCard from './hover-card'
+import exampleIconButton from './icon-button'
+import exampleImage from './image'
+import exampleImageTile from './image-tile'
+import exampleInlineEditor from './inline-editor'
+import exampleInput from './input'
+import exampleJsonBlock from './json-block'
+import exampleJsonTree from './json-tree'
+import exampleLightbox from './lightbox'
+import exampleListRow from './list-row'
+import exampleMarkdownText from './markdown-text'
+import exampleMaskedText from './masked-text'
+import exampleMenu from './menu'
+import exampleMenuGroup from './menu-group'
+import exampleMenuSurface from './menu-surface'
+import exampleMeter from './meter'
+import exampleModal from './modal'
+import exampleOptionGroup from './option-group'
+import examplePathLabel from './path-label'
+import examplePill from './pill'
+import examplePreviewFrame from './preview-frame'
+import exampleSearchDialog from './search-dialog'
+import exampleSegmentedControl from './segmented-control'
+import exampleSegmentedTabs from './segmented-tabs'
+import exampleSelect from './select'
+import exampleSettingsGroup from './settings-group'
+import exampleSettingsRow from './settings-row'
+import exampleShortcutKeys from './shortcut-keys'
+import exampleSpinner from './spinner'
+import exampleSplitButton from './split-button'
+import exampleSplitDiff from './split-diff'
+import exampleStack from './stack'
+import exampleStateDot from './state-dot'
+import exampleStepper from './stepper'
+import exampleSurface from './surface'
+import exampleSwitch from './switch'
+import exampleTable from './table'
+import exampleTag from './tag'
+import exampleTerminal from './terminal'
+import exampleText from './text'
+import exampleTextShimmer from './text-shimmer'
+import exampleTextarea from './textarea'
+import exampleTimePicker from './time-picker'
+import exampleToast from './toast'
+import exampleToolbar from './toolbar'
+import exampleTooltip from './tooltip'
+import exampleTree from './tree'
+import exampleZoomControls from './zoom-controls'
+import exampleZoomViewport from './zoom-viewport'
 
 export type { ComponentExample, ExampleGroup, ExampleState } from './kit'
 
@@ -69,67 +82,81 @@ export const EXAMPLE_GROUPS: readonly { id: ExampleGroup, label: string }[] = [
   { id: 'feedback', label: 'feedback' },
   { id: 'media', label: 'media' },
   { id: 'content', label: 'content' },
+  { id: 'viewer', label: 'viewer' },
 ]
 
 /** Every component the gallery exhibits, one entry per source file. */
 export const EXAMPLES: readonly ComponentExample[] = [
-  actionCard,
-  confirmPanel,
-  dropOverlay,
-  formDialog,
-  searchDialog,
-  fileCard,
-  image,
-  imageTile,
-  lightbox,
-  codeBlock,
-  diffBlock,
-  document,
-  jsonBlock,
-  jsonTree,
-  markdownText,
-  terminal,
-  bar,
-  checklist,
-  descriptionList,
-  listRow,
-  meter,
-  stack,
-  surface,
-  tree,
-  optionGroup,
-  select,
-  settingsGroup,
-  settingsRow,
-  splitButton,
-  stepper,
-  animatedRows,
-  button,
-  checkbox,
-  chip,
-  disclosureRow,
-  fileTypeIcon,
-  hoverCard,
-  iconButton,
-  inlineEditor,
-  input,
-  maskedText,
-  menu,
-  menuGroup,
-  menuSurface,
-  modal,
-  pathLabel,
-  pill,
-  segmentedControl,
-  segmentedTabs,
-  shortcutKeys,
-  spinner,
-  stateDot,
-  switchExample,
-  tag,
-  text,
-  textShimmer,
-  textarea,
-  toast,
-  tooltip,
+  exampleActionCard,
+  exampleAnimatedRows,
+  exampleAvatar,
+  exampleBar,
+  exampleButton,
+  exampleCarousel,
+  exampleCheckbox,
+  exampleChecklist,
+  exampleChip,
+  exampleCodeBlock,
+  exampleConfirmPanel,
+  exampleDatePicker,
+  exampleDescriptionList,
+  exampleDiffBlock,
+  exampleDisclosureRow,
+  exampleDocument,
+  exampleDropOverlay,
+  exampleField,
+  exampleFileCard,
+  exampleFileChangeCard,
+  exampleFileTypeIcon,
+  exampleFormDialog,
+  exampleForm,
+  exampleHoverCard,
+  exampleIconButton,
+  exampleImageTile,
+  exampleImage,
+  exampleInlineEditor,
+  exampleInput,
+  exampleJsonBlock,
+  exampleJsonTree,
+  exampleLightbox,
+  exampleListRow,
+  exampleMarkdownText,
+  exampleMaskedText,
+  exampleMenuGroup,
+  exampleMenuSurface,
+  exampleMenu,
+  exampleMeter,
+  exampleModal,
+  exampleOptionGroup,
+  examplePathLabel,
+  examplePill,
+  examplePreviewFrame,
+  exampleSearchDialog,
+  exampleSegmentedControl,
+  exampleSegmentedTabs,
+  exampleSelect,
+  exampleSettingsGroup,
+  exampleSettingsRow,
+  exampleShortcutKeys,
+  exampleSpinner,
+  exampleSplitButton,
+  exampleSplitDiff,
+  exampleStack,
+  exampleStateDot,
+  exampleStepper,
+  exampleSurface,
+  exampleSwitch,
+  exampleTable,
+  exampleTag,
+  exampleTerminal,
+  exampleTextShimmer,
+  exampleText,
+  exampleTextarea,
+  exampleTimePicker,
+  exampleToast,
+  exampleToolbar,
+  exampleTooltip,
+  exampleTree,
+  exampleZoomControls,
+  exampleZoomViewport,
 ]

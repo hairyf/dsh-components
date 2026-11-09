@@ -26,6 +26,8 @@ const examplesRoot = join(here, '..', 'src', 'examples')
  */
 const GROUPS = readdirSync(componentsRoot, { withFileTypes: true })
   .filter(entry => entry.isDirectory())
+  // `internal` holds helpers behind a public component, not a component.
+  .filter(entry => entry.name !== 'internal')
   .map(entry => entry.name)
   .sort()
 
@@ -43,6 +45,15 @@ function exportedComponents(source) {
     ...new Set(names),
   ]
 }
+
+/**
+ * Exports that are sub-parts of another component rather than entry points.
+ * They are rendered by their owner (a code block's toolbar, a diff's columns),
+ * so the gallery exercises them without naming them directly.
+ */
+const SUB_PARTS = new Set([
+  'CodeToolbar',
+])
 
 /**
  * Exports that are React contexts rather than components.
@@ -78,7 +89,7 @@ for (const group of GROUPS) {
     const stem = file.replace(/\.tsx$/, '')
     const source = readFileSync(join(dir, file), 'utf8')
     const contexts = exportedContexts(source)
-    const names = exportedComponents(source).filter(name => !contexts.includes(name))
+    const names = exportedComponents(source).filter(name => !contexts.includes(name) && !SUB_PARTS.has(name))
     const hasExample = exampleStems.has(stem)
     if (!hasExample)
       missing.push(`${group}/${file}`)

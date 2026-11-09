@@ -102,6 +102,24 @@ The vocabulary. Nothing here knows what it is used for.
 | `Terminal` | terminal output frame | primitives/TerminalBlock |
 | `Document` | a detail document with a title and body | primitives/DetailDocument |
 
+## Added later, from the 200-sheet sweep
+
+| Component | What it is | Official sheet |
+| --- | --- | --- |
+| `Field` | label + control + help + reset | primitives/fields |
+| `Form` | fields plus a save footer | primitives/SettingsForm |
+| `DatePicker` | month calendar | schedule/DatePicker + PickerPopover |
+| `TimePicker` | hour/minute columns | schedule/ClockPicker + PickerPopover |
+| `Avatar` | image or initial | settings-account/AccountAvatar |
+| `Table` | columns, rows, selection, load more | trajectory/TrajectoryTable |
+| `Toolbar` | sticky row of actions | trajectory/TrajectoryToolbar |
+| `Carousel` | horizontal rail with arrows | attachment/AttachmentRail |
+| `SplitDiff` | side-by-side diff | deliverables/FileDiff |
+| `FileChangeCard` | changed files with totals | deliverables/ChangedFiles |
+| `ZoomControls` | zoom steps and presets | primitives/ZoomControls |
+| `ZoomViewport` | scaled scroll surface | sidebar-documentpreview/ZoomViewport |
+| `PreviewFrame` | document header plus content | sidebar-documentpreview/TextPreview |
+
 ## Deleted
 
 `connection-indicator`, `user-message-bubble`, `quote-preview`,

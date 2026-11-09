@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T17:02:29.378Z",
+  "generatedAt": "2026-11-09T17:51:40.721Z",
   "components": [
     {
       "name": "CodeBlock",
@@ -42,6 +42,13 @@
       "file": "src/components/content/markdown-text.tsx",
       "props": "MarkdownTextProps",
       "sheet": "primitives/MarkdownText.module.css"
+    },
+    {
+      "name": "SplitDiff",
+      "group": "content",
+      "file": "src/components/content/split-diff.tsx",
+      "props": "SplitDiffProps",
+      "sheet": "deliverables/FileDiff.module.css"
     },
     {
       "name": "Terminal",
@@ -93,6 +100,13 @@
       "sheet": null
     },
     {
+      "name": "Carousel",
+      "group": "layout",
+      "file": "src/components/layout/carousel.tsx",
+      "props": "CarouselProps",
+      "sheet": "attachment/AttachmentRail.module.css"
+    },
+    {
       "name": "Checklist",
       "group": "layout",
       "file": "src/components/layout/checklist.tsx",
@@ -105,6 +119,13 @@
       "file": "src/components/layout/description-list.tsx",
       "props": "DescriptionListProps",
       "sheet": "tool/ToolDetails.module.css"
+    },
+    {
+      "name": "FileChangeCard",
+      "group": "layout",
+      "file": "src/components/layout/file-change-card.tsx",
+      "props": "FileChangeCardProps",
+      "sheet": "deliverables/ChangedFiles.module.css"
     },
     {
       "name": "ListRow",
@@ -133,6 +154,20 @@
       "file": "src/components/layout/surface.tsx",
       "props": "SurfaceProps",
       "sheet": null
+    },
+    {
+      "name": "Table",
+      "group": "layout",
+      "file": "src/components/layout/table.tsx",
+      "props": "TableProps",
+      "sheet": "trajectory/TrajectoryTable.module.css"
+    },
+    {
+      "name": "Toolbar",
+      "group": "layout",
+      "file": "src/components/layout/toolbar.tsx",
+      "props": "ToolbarProps",
+      "sheet": "trajectory/TrajectoryToolbar.module.css"
     },
     {
       "name": "Tree",
@@ -177,6 +212,13 @@
       "sheet": "primitives/AnimatedRows.module.css"
     },
     {
+      "name": "Avatar",
+      "group": "primitives",
+      "file": "src/components/primitives/avatar.tsx",
+      "props": "AvatarProps",
+      "sheet": "settings-account/AccountAvatar.module.css"
+    },
+    {
       "name": "Button",
       "group": "primitives",
       "file": "src/components/primitives/button.tsx",
@@ -198,6 +240,13 @@
       "sheet": null
     },
     {
+      "name": "DatePicker",
+      "group": "primitives",
+      "file": "src/components/primitives/date-picker.tsx",
+      "props": "DatePickerProps",
+      "sheet": "schedule/DatePicker.module.css"
+    },
+    {
       "name": "DisclosureRow",
       "group": "primitives",
       "file": "src/components/primitives/disclosure-row.tsx",
@@ -205,11 +254,25 @@
       "sheet": "primitives/DisclosureRow.module.css"
     },
     {
+      "name": "Field",
+      "group": "primitives",
+      "file": "src/components/primitives/field.tsx",
+      "props": "FieldProps",
+      "sheet": "primitives/fields.module.css"
+    },
+    {
       "name": "FileTypeIcon",
       "group": "primitives",
       "file": "src/components/primitives/file-type-icon.tsx",
       "props": "FileTypeIconProps",
       "sheet": "primitives/FileTypeIcon.module.css"
+    },
+    {
+      "name": "Form",
+      "group": "primitives",
+      "file": "src/components/primitives/form.tsx",
+      "props": "FormProps",
+      "sheet": "primitives/SettingsForm.module.css"
     },
     {
       "name": "HoverCard",
@@ -359,6 +422,13 @@
       "sheet": null
     },
     {
+      "name": "TimePicker",
+      "group": "primitives",
+      "file": "src/components/primitives/time-picker.tsx",
+      "props": "TimePickerProps",
+      "sheet": "schedule/ClockPicker.module.css"
+    },
+    {
       "name": "Toast",
       "group": "primitives",
       "file": "src/components/primitives/toast.tsx",
@@ -413,6 +483,27 @@
       "file": "src/components/settings/stepper.tsx",
       "props": "StepperProps",
       "sheet": "theme/FontSizeRow.module.css"
+    },
+    {
+      "name": "PreviewFrame",
+      "group": "viewer",
+      "file": "src/components/viewer/preview-frame.tsx",
+      "props": "PreviewFrameProps",
+      "sheet": "sidebar-documentpreview/TextPreview.module.css"
+    },
+    {
+      "name": "ZoomControls",
+      "group": "viewer",
+      "file": "src/components/viewer/zoom-controls.tsx",
+      "props": "ZoomControlsProps",
+      "sheet": "primitives/ZoomControls.module.css"
+    },
+    {
+      "name": "ZoomViewport",
+      "group": "viewer",
+      "file": "src/components/viewer/zoom-viewport.tsx",
+      "props": "ZoomViewportProps",
+      "sheet": "sidebar-documentpreview/ZoomViewport.module.css"
     }
   ],
   "packages": [

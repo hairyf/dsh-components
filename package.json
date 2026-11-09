@@ -40,9 +40,10 @@
     "test": "pnpm run build && vitest",
     "typecheck": "tsc",
     "ci": "pnpm run lint && pnpm run typecheck && pnpm run knip && pnpm run audit:fidelity && pnpm run test --run",
-    "gen": "node scripts/generate-skill-index.mjs",
+    "gen": "node scripts/generate-components.mjs && node scripts/generate-component-map.mjs && node scripts/generate-skill-index.mjs",
     "gen:reference": "node scripts/extract-dsh-source.mjs && node scripts/extract-slots.mjs && node scripts/extract-locales.mjs && node scripts/generate-theme.mjs && node scripts/generate-components.mjs",
-    "audit:fidelity": "node scripts/audit-fidelity.mjs"
+    "audit:fidelity": "node scripts/audit-fidelity.mjs",
+    "gen:check": "node scripts/generate-component-map.mjs --check && node scripts/generate-skill-index.mjs --check"
   },
   "scripts-info": {
     "build": "Build the library for publishing",

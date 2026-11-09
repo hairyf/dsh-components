@@ -1,0 +1,1672 @@
+{
+  "generatedBy": "scripts/generate-component-map.mjs",
+  "purpose": "Which official stylesheet each component reproduces. An upgrade agent reads this to resync one component at a time.",
+  "counts": {
+    "components": 72,
+    "officialSheets": 202,
+    "reproduced": 71,
+    "unreproduced": 131
+  },
+  "components": [
+    {
+      "name": "CodeToolbar",
+      "group": "content",
+      "file": "src/components/content/code-block.tsx",
+      "scope": "code-card",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 3832,
+          "package": "primitives",
+          "sheet": "CodeBlock.module.css",
+          "declared": "CodeBlock.module.css",
+          "identical": true
+        },
+        {
+          "binding": "CARD_CSS",
+          "bytes": 1722,
+          "package": "primitives",
+          "sheet": "CodeCard.module.css",
+          "declared": "CodeCard.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "DiffBlock",
+      "group": "content",
+      "file": "src/components/content/diff-block.tsx",
+      "scope": "diff-block",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1408,
+          "package": "primitives",
+          "sheet": "DiffBlock.module.css",
+          "declared": "DiffBlock.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Document",
+      "group": "content",
+      "file": "src/components/content/document.tsx",
+      "scope": "document",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1558,
+          "package": "primitives",
+          "sheet": "DetailDocument.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "JsonBlock",
+      "group": "content",
+      "file": "src/components/content/json-block.tsx",
+      "scope": "json-block",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 698,
+          "package": "primitives",
+          "sheet": "JsonBlock.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "JsonTree",
+      "group": "content",
+      "file": "src/components/content/json-tree.tsx",
+      "scope": "json-tree",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 7020,
+          "package": "primitives",
+          "sheet": "JsonTree.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "MarkdownText",
+      "group": "content",
+      "file": "src/components/content/markdown-text.tsx",
+      "scope": "markdown-text",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 11518,
+          "package": "primitives",
+          "sheet": "MarkdownText.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "SplitDiff",
+      "group": "content",
+      "file": "src/components/content/split-diff.tsx",
+      "scope": "split-diff",
+      "declared": [
+        {
+          "package": "dsh-client-ui-deliverables",
+          "sheet": "FileDiff.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 3426,
+          "package": "deliverables",
+          "sheet": "FileDiff.module.css",
+          "declared": "FileDiff.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Terminal",
+      "group": "content",
+      "file": "src/components/content/terminal.tsx",
+      "scope": "command-text",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 7188,
+          "package": "primitives",
+          "sheet": "TerminalBlock.module.css",
+          "declared": null,
+          "identical": true
+        },
+        {
+          "binding": "COMMAND_TEXT_CSS",
+          "bytes": 306,
+          "package": "primitives",
+          "sheet": "CommandText.module.css",
+          "declared": "CommandText.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "ActionCard",
+      "group": "feedback",
+      "file": "src/components/feedback/action-card.tsx",
+      "scope": "action-card",
+      "declared": [
+        {
+          "package": "dsh-client-ui-action-cards",
+          "sheet": "Card.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1050,
+          "package": "action-cards",
+          "sheet": "Card.module.css",
+          "declared": "Card.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "ConfirmPanel",
+      "group": "feedback",
+      "file": "src/components/feedback/confirm-panel.tsx",
+      "scope": "confirm-panel",
+      "declared": [
+        {
+          "package": "dsh-client-ui-approval",
+          "sheet": "ApprovalPanel.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2082,
+          "package": "approval",
+          "sheet": "ApprovalPanel.module.css",
+          "declared": "ApprovalPanel.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "DropOverlay",
+      "group": "feedback",
+      "file": "src/components/feedback/drop-overlay.tsx",
+      "scope": "drop-overlay",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 983,
+          "package": "attachment",
+          "sheet": "DropOverlay.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "FormDialog",
+      "group": "feedback",
+      "file": "src/components/feedback/form-dialog.tsx",
+      "scope": "form-dialog",
+      "declared": [
+        {
+          "package": "dsh-client-ui-message-feedback",
+          "sheet": "FeedbackDialog.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2352,
+          "package": "message-feedback",
+          "sheet": "FeedbackDialog.module.css",
+          "declared": "FeedbackDialog.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "SearchDialog",
+      "group": "feedback",
+      "file": "src/components/feedback/search-dialog.tsx",
+      "scope": "search-dialog",
+      "declared": [
+        {
+          "package": "dsh-client-ui-shortcuts",
+          "sheet": "Reference.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 9137,
+          "package": "shortcuts",
+          "sheet": "Reference.module.css",
+          "declared": "Reference.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Bar",
+      "group": "layout",
+      "file": "src/components/layout/bar.tsx",
+      "scope": "expansion-bar",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CHEVRON_MOTION",
+          "bytes": 103,
+          "package": "chat",
+          "sheet": "TurnProcessNodeView.module.css",
+          "declared": null,
+          "identical": true
+        },
+        {
+          "binding": "CSS",
+          "bytes": 1772,
+          "package": "conversation",
+          "sheet": "TodoPanel.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Carousel",
+      "group": "layout",
+      "file": "src/components/layout/carousel.tsx",
+      "scope": "carousel",
+      "declared": [
+        {
+          "package": "dsh-client-ui-attachment",
+          "sheet": "AttachmentRail.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2158,
+          "package": "attachment",
+          "sheet": "AttachmentRail.module.css",
+          "declared": "AttachmentRail.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Checklist",
+      "group": "layout",
+      "file": "src/components/layout/checklist.tsx",
+      "scope": "checklist",
+      "declared": [
+        {
+          "package": "dsh-client-ui-conversation",
+          "sheet": "TodoPanel.module.css"
+        },
+        {
+          "package": "dsh-client-ui-sidebar-files",
+          "sheet": "FileTree.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 619,
+          "package": "conversation",
+          "sheet": "TodoPanel.module.css",
+          "declared": "TodoPanel.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "DescriptionList",
+      "group": "layout",
+      "file": "src/components/layout/description-list.tsx",
+      "scope": "description-list",
+      "declared": [
+        {
+          "package": "dsh-client-ui-tool",
+          "sheet": "ToolDetails.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1140,
+          "package": "tool",
+          "sheet": "ToolDetails.module.css",
+          "declared": "ToolDetails.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "FileChangeCard",
+      "group": "layout",
+      "file": "src/components/layout/file-change-card.tsx",
+      "scope": "file-change-card",
+      "declared": [
+        {
+          "package": "dsh-client-ui-deliverables",
+          "sheet": "ChangedFiles.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 4937,
+          "package": "deliverables",
+          "sheet": "ChangedFiles.module.css",
+          "declared": "ChangedFiles.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "ListRow",
+      "group": "layout",
+      "file": "src/components/layout/list-row.tsx",
+      "scope": "list-row",
+      "declared": [
+        {
+          "package": "dsh-client-ui-tool",
+          "sheet": "ToolRow.module.css"
+        },
+        {
+          "package": "dsh-client-ui-primitives",
+          "sheet": "DisclosureRow.module.css"
+        },
+        {
+          "package": "dsh-client-ui-tool",
+          "sheet": "ToolDetails.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2176,
+          "package": "primitives",
+          "sheet": "DisclosureRow.module.css",
+          "declared": "DisclosureRow.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Meter",
+      "group": "layout",
+      "file": "src/components/layout/meter.tsx",
+      "scope": "meter",
+      "declared": [
+        {
+          "package": "dsh-client-ui-conversation",
+          "sheet": "ContextMeter.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2294,
+          "package": "conversation",
+          "sheet": "ContextMeter.module.css",
+          "declared": "ContextMeter.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Stack",
+      "group": "layout",
+      "file": "src/components/layout/stack.tsx",
+      "scope": "stack",
+      "declared": [
+        {
+          "package": "dsh-client-ui-conversation",
+          "sheet": "TodoPanel.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 65,
+          "package": "conversation",
+          "sheet": "TodoPanel.module.css",
+          "declared": "TodoPanel.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Surface",
+      "group": "layout",
+      "file": "src/components/layout/surface.tsx",
+      "scope": "surface",
+      "declared": [
+        {
+          "package": "dsh-client-ui-conversation",
+          "sheet": "TodoPanel.module.css"
+        },
+        {
+          "package": "dsh-client-ui-conversation",
+          "sheet": "ContextMeter.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 684,
+          "package": "conversation",
+          "sheet": "ContextMeter.module.css",
+          "declared": "ContextMeter.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "group": "layout",
+      "file": "src/components/layout/table.tsx",
+      "scope": "table",
+      "declared": [
+        {
+          "package": "dsh-client-ui-trajectory",
+          "sheet": "TrajectoryTable.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 40484,
+          "package": "trajectory",
+          "sheet": "TrajectoryTable.module.css",
+          "declared": "TrajectoryTable.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Toolbar",
+      "group": "layout",
+      "file": "src/components/layout/toolbar.tsx",
+      "scope": "toolbar",
+      "declared": [
+        {
+          "package": "dsh-client-ui-trajectory",
+          "sheet": "TrajectoryToolbar.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 4634,
+          "package": "trajectory",
+          "sheet": "TrajectoryToolbar.module.css",
+          "declared": "TrajectoryToolbar.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Tree",
+      "group": "layout",
+      "file": "src/components/layout/tree.tsx",
+      "scope": "tree",
+      "declared": [
+        {
+          "package": "dsh-client-ui-sidebar-files",
+          "sheet": "FileTree.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1117,
+          "package": "sidebar-files",
+          "sheet": "FileTree.module.css",
+          "declared": "FileTree.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "FileCard",
+      "group": "media",
+      "file": "src/components/media/file-card.tsx",
+      "scope": "file-card",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 3195,
+          "package": "attachment",
+          "sheet": "FileCard.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "ImageTile",
+      "group": "media",
+      "file": "src/components/media/image-tile.tsx",
+      "scope": "image-tile",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2115,
+          "package": "attachment",
+          "sheet": "MessageImage.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Image",
+      "group": "media",
+      "file": "src/components/media/image.tsx",
+      "scope": "image",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 549,
+          "package": "primitives",
+          "sheet": "ImagePreview.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Lightbox",
+      "group": "media",
+      "file": "src/components/media/lightbox.tsx",
+      "scope": "lightbox",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1374,
+          "package": "primitives",
+          "sheet": "ImageLightbox.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "AnimatedRows",
+      "group": "primitives",
+      "file": "src/components/primitives/animated-rows.tsx",
+      "scope": "animated-rows",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 193,
+          "package": "primitives",
+          "sheet": "AnimatedRows.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Avatar",
+      "group": "primitives",
+      "file": "src/components/primitives/avatar.tsx",
+      "scope": "avatar",
+      "declared": [
+        {
+          "package": "dsh-client-ui-settings-account",
+          "sheet": "AccountAvatar.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 274,
+          "package": "settings-account",
+          "sheet": "AccountAvatar.module.css",
+          "declared": "AccountAvatar.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Button",
+      "group": "primitives",
+      "file": "src/components/primitives/button.tsx",
+      "scope": "button",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1896,
+          "package": "primitives",
+          "sheet": "Button.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Checkbox",
+      "group": "primitives",
+      "file": "src/components/primitives/checkbox.tsx",
+      "scope": "checkbox",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 649,
+          "package": "primitives",
+          "sheet": "Checkbox.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Chip",
+      "group": "primitives",
+      "file": "src/components/primitives/chip.tsx",
+      "scope": "chip",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CHIP_CSS",
+          "bytes": 508,
+          "package": "conversation",
+          "sheet": "ReferenceChip.module.css",
+          "declared": null,
+          "identical": true
+        },
+        {
+          "binding": "INLINE_CSS",
+          "bytes": 468,
+          "package": "conversation",
+          "sheet": "composer-editor.module.css",
+          "declared": null,
+          "identical": true
+        },
+        {
+          "binding": "REMOVE_CSS",
+          "bytes": 404,
+          "package": "primitives",
+          "sheet": "QuotePreview.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "DatePicker",
+      "group": "primitives",
+      "file": "src/components/primitives/date-picker.tsx",
+      "scope": "date-picker",
+      "declared": [
+        {
+          "package": "dsh-client-ui-schedule",
+          "sheet": "DatePicker.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2082,
+          "package": "schedule",
+          "sheet": "DatePicker.module.css",
+          "declared": "DatePicker.module.css",
+          "identical": true
+        },
+        {
+          "binding": "POPOVER_CSS",
+          "bytes": 743,
+          "package": "schedule",
+          "sheet": "PickerPopover.module.css",
+          "declared": "PickerPopover.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "DisclosureRow",
+      "group": "primitives",
+      "file": "src/components/primitives/disclosure-row.tsx",
+      "scope": "disclosure-row",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2589,
+          "package": "primitives",
+          "sheet": "DisclosureRow.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Field",
+      "group": "primitives",
+      "file": "src/components/primitives/field.tsx",
+      "scope": "field",
+      "declared": [
+        {
+          "package": "dsh-client-ui-primitives",
+          "sheet": "fields.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2634,
+          "package": "primitives",
+          "sheet": "fields.module.css",
+          "declared": "fields.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "FileTypeIcon",
+      "group": "primitives",
+      "file": "src/components/primitives/file-type-icon.tsx",
+      "scope": "file-type-icon",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1143,
+          "package": "primitives",
+          "sheet": "FileTypeIcon.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Form",
+      "group": "primitives",
+      "file": "src/components/primitives/form.tsx",
+      "scope": "form",
+      "declared": [
+        {
+          "package": "dsh-client-ui-primitives",
+          "sheet": "SettingsForm.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1004,
+          "package": "primitives",
+          "sheet": "SettingsForm.module.css",
+          "declared": "SettingsForm.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "HoverCardGroup",
+      "group": "primitives",
+      "file": "src/components/primitives/hover-card.tsx",
+      "scope": "hover-card",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2168,
+          "package": "primitives",
+          "sheet": "HoverCard.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "IconButton",
+      "group": "primitives",
+      "file": "src/components/primitives/icon-button.tsx",
+      "scope": "icon-button",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 826,
+          "package": "message-feedback",
+          "sheet": "MessageFeedbackActions.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "InlineEditor",
+      "group": "primitives",
+      "file": "src/components/primitives/inline-editor.tsx",
+      "scope": "inline-editor",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 687,
+          "package": "primitives",
+          "sheet": "InlineEditor.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "group": "primitives",
+      "file": "src/components/primitives/input.tsx",
+      "scope": "input",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 799,
+          "package": "primitives",
+          "sheet": "Input.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "MaskedText",
+      "group": "primitives",
+      "file": "src/components/primitives/masked-text.tsx",
+      "scope": "masked-text",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1474,
+          "package": "secret-mask",
+          "sheet": "SecretText.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "MenuGroup",
+      "group": "primitives",
+      "file": "src/components/primitives/menu-group.tsx",
+      "scope": "menu-group",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 668,
+          "package": "primitives",
+          "sheet": "MenuGroup.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "MENU_TRANSITION_MS",
+      "group": "primitives",
+      "file": "src/components/primitives/menu-surface.tsx",
+      "scope": "menu-surface",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2218,
+          "package": "primitives",
+          "sheet": "MenuSurface.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "MenuItemButton",
+      "group": "primitives",
+      "file": "src/components/primitives/menu.tsx",
+      "scope": "menu",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 8119,
+          "package": "primitives",
+          "sheet": "Menu.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Modal",
+      "group": "primitives",
+      "file": "src/components/primitives/modal.tsx",
+      "scope": "modal",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2993,
+          "package": "primitives",
+          "sheet": "Modal.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "PathLabel",
+      "group": "primitives",
+      "file": "src/components/primitives/path-label.tsx",
+      "scope": "path-label",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 632,
+          "package": "primitives",
+          "sheet": "PathLabel.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Pill",
+      "group": "primitives",
+      "file": "src/components/primitives/pill.tsx",
+      "scope": "pill",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 703,
+          "package": "primitives",
+          "sheet": "Pill.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "SegmentedControl",
+      "group": "primitives",
+      "file": "src/components/primitives/segmented-control.tsx",
+      "scope": "segmented-control",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2341,
+          "package": "primitives",
+          "sheet": "SegmentedControl.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "SegmentedTabs",
+      "group": "primitives",
+      "file": "src/components/primitives/segmented-tabs.tsx",
+      "scope": "segmented-tabs",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1684,
+          "package": "primitives",
+          "sheet": "SegmentedTabs.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "ShortcutKeys",
+      "group": "primitives",
+      "file": "src/components/primitives/shortcut-keys.tsx",
+      "scope": "shortcut-keys",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 887,
+          "package": "primitives",
+          "sheet": "ShortcutKeys.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Spinner",
+      "group": "primitives",
+      "file": "src/components/primitives/spinner.tsx",
+      "scope": "spinner",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 609,
+          "package": "sidebar-documentpreview",
+          "sheet": "LoadingIndicator.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "StateDot",
+      "group": "primitives",
+      "file": "src/components/primitives/state-dot.tsx",
+      "scope": "state-dot",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2531,
+          "package": "primitives",
+          "sheet": "StateDot.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Switch",
+      "group": "primitives",
+      "file": "src/components/primitives/switch.tsx",
+      "scope": "switch",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1228,
+          "package": "primitives",
+          "sheet": "Switch.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Tag",
+      "group": "primitives",
+      "file": "src/components/primitives/tag.tsx",
+      "scope": "tag",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1934,
+          "package": "primitives",
+          "sheet": "Tag.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "TextShimmer",
+      "group": "primitives",
+      "file": "src/components/primitives/text-shimmer.tsx",
+      "scope": "text-shimmer",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1819,
+          "package": "primitives",
+          "sheet": "TextShimmer.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Text",
+      "group": "primitives",
+      "file": "src/components/primitives/text.tsx",
+      "scope": "text",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 230,
+          "package": "conversation",
+          "sheet": "UserText.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Textarea",
+      "group": "primitives",
+      "file": "src/components/primitives/textarea.tsx",
+      "scope": "textarea",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 751,
+          "package": "message-feedback",
+          "sheet": "FeedbackDialog.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "TimePicker",
+      "group": "primitives",
+      "file": "src/components/primitives/time-picker.tsx",
+      "scope": "time-picker",
+      "declared": [
+        {
+          "package": "dsh-client-ui-schedule",
+          "sheet": "ClockPicker.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1247,
+          "package": "schedule",
+          "sheet": "ClockPicker.module.css",
+          "declared": "ClockPicker.module.css",
+          "identical": true
+        },
+        {
+          "binding": "POPOVER_CSS",
+          "bytes": 743,
+          "package": "schedule",
+          "sheet": "PickerPopover.module.css",
+          "declared": "PickerPopover.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Toast",
+      "group": "primitives",
+      "file": "src/components/primitives/toast.tsx",
+      "scope": "toast",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 2936,
+          "package": "primitives",
+          "sheet": "Toast.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Tooltip",
+      "group": "primitives",
+      "file": "src/components/primitives/tooltip.tsx",
+      "scope": "tooltip",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1905,
+          "package": "primitives",
+          "sheet": "Tooltip.module.css",
+          "declared": null,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "OptionGroup",
+      "group": "settings",
+      "file": "src/components/settings/option-group.tsx",
+      "scope": "option-group",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 965,
+          "package": "theme",
+          "sheet": "AppearanceRow.module.css",
+          "declared": "AppearanceRow.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Select",
+      "group": "settings",
+      "file": "src/components/settings/select.tsx",
+      "scope": "select",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1636,
+          "package": "permission-presets",
+          "sheet": "PermissionSelect.module.css",
+          "declared": "PermissionSelect.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "SettingsGroup",
+      "group": "settings",
+      "file": "src/components/settings/settings-group.tsx",
+      "scope": "settings-group",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1363,
+          "package": "theme",
+          "sheet": "FontSizeRow.module.css",
+          "declared": "FontSizeRow.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "SettingsRow",
+      "group": "settings",
+      "file": "src/components/settings/settings-row.tsx",
+      "scope": "settings-row",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 920,
+          "package": "theme",
+          "sheet": "FontSizeRow.module.css",
+          "declared": "FontSizeRow.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "SplitButton",
+      "group": "settings",
+      "file": "src/components/settings/split-button.tsx",
+      "scope": "split-button",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1578,
+          "package": "open-in-app",
+          "sheet": "OpenTargetButton.module.css",
+          "declared": "OpenTargetButton.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "Stepper",
+      "group": "settings",
+      "file": "src/components/settings/stepper.tsx",
+      "scope": "stepper",
+      "declared": [],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1392,
+          "package": "theme",
+          "sheet": "FontSizeRow.module.css",
+          "declared": "FontSizeRow.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "PreviewFrame",
+      "group": "viewer",
+      "file": "src/components/viewer/preview-frame.tsx",
+      "scope": "preview-frame",
+      "declared": [
+        {
+          "package": "dsh-client-ui-sidebar-documentpreview",
+          "sheet": "TextPreview.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 5618,
+          "package": "sidebar-documentpreview",
+          "sheet": "TextPreview.module.css",
+          "declared": "TextPreview.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "ZoomControls",
+      "group": "viewer",
+      "file": "src/components/viewer/zoom-controls.tsx",
+      "scope": "zoom-controls",
+      "declared": [
+        {
+          "package": "dsh-client-ui-primitives",
+          "sheet": "ZoomControls.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 1722,
+          "package": "primitives",
+          "sheet": "ZoomControls.module.css",
+          "declared": "ZoomControls.module.css",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "name": "ZoomViewport",
+      "group": "viewer",
+      "file": "src/components/viewer/zoom-viewport.tsx",
+      "scope": "zoom-viewport",
+      "declared": [
+        {
+          "package": "dsh-client-ui-sidebar-documentpreview",
+          "sheet": "ZoomViewport.module.css"
+        }
+      ],
+      "sheets": [
+        {
+          "binding": "CSS",
+          "bytes": 674,
+          "package": "sidebar-documentpreview",
+          "sheet": "ZoomViewport.module.css",
+          "declared": "ZoomViewport.module.css",
+          "identical": true
+        }
+      ]
+    }
+  ],
+  "packages": {
+    "primitives": [
+      "AnimatedRows.module.css",
+      "Button.module.css",
+      "Checkbox.module.css",
+      "CodeBlock.module.css",
+      "CodeCard.module.css",
+      "CommandText.module.css",
+      "DetailDocument.module.css",
+      "DiffBlock.module.css",
+      "DisclosureRow.module.css",
+      "FileTypeIcon.module.css",
+      "HoverCard.module.css",
+      "ImageLightbox.module.css",
+      "ImagePreview.module.css",
+      "InlineEditor.module.css",
+      "Input.module.css",
+      "JsonBlock.module.css",
+      "JsonTree.module.css",
+      "MarkdownText.module.css",
+      "Menu.module.css",
+      "MenuGroup.module.css",
+      "MenuSurface.module.css",
+      "Modal.module.css",
+      "PathLabel.module.css",
+      "Pill.module.css",
+      "QuotePreview.module.css",
+      "SegmentedControl.module.css",
+      "SegmentedTabs.module.css",
+      "SettingsForm.module.css",
+      "ShortcutKeys.module.css",
+      "StateDot.module.css",
+      "Switch.module.css",
+      "Tag.module.css",
+      "TerminalBlock.module.css",
+      "TextShimmer.module.css",
+      "Toast.module.css",
+      "Tooltip.module.css",
+      "ZoomControls.module.css",
+      "fields.module.css"
+    ],
+    "deliverables": [
+      "ChangedFiles.module.css",
+      "FileDiff.module.css"
+    ],
+    "action-cards": [
+      "Card.module.css"
+    ],
+    "approval": [
+      "ApprovalPanel.module.css"
+    ],
+    "attachment": [
+      "AttachmentRail.module.css",
+      "DropOverlay.module.css",
+      "FileCard.module.css",
+      "MessageImage.module.css"
+    ],
+    "message-feedback": [
+      "FeedbackDialog.module.css",
+      "MessageFeedbackActions.module.css"
+    ],
+    "shortcuts": [
+      "Reference.module.css"
+    ],
+    "chat": [
+      "TurnProcessNodeView.module.css"
+    ],
+    "conversation": [
+      "ContextMeter.module.css",
+      "ReferenceChip.module.css",
+      "TodoPanel.module.css",
+      "UserText.module.css",
+      "composer-editor.module.css"
+    ],
+    "tool": [
+      "ToolDetails.module.css"
+    ],
+    "trajectory": [
+      "TrajectoryTable.module.css",
+      "TrajectoryToolbar.module.css"
+    ],
+    "sidebar-files": [
+      "FileTree.module.css"
+    ],
+    "settings-account": [
+      "AccountAvatar.module.css"
+    ],
+    "schedule": [
+      "ClockPicker.module.css",
+      "DatePicker.module.css",
+      "PickerPopover.module.css"
+    ],
+    "secret-mask": [
+      "SecretText.module.css"
+    ],
+    "sidebar-documentpreview": [
+      "LoadingIndicator.module.css",
+      "TextPreview.module.css",
+      "ZoomViewport.module.css"
+    ],
+    "theme": [
+      "AppearanceRow.module.css",
+      "FontSizeRow.module.css"
+    ],
+    "permission-presets": [
+      "PermissionSelect.module.css"
+    ],
+    "open-in-app": [
+      "OpenTargetButton.module.css"
+    ]
+  },
+  "unreproduced": [
+    "action-cards/ProposeRow.module.css",
+    "agent-preset/AgentPresetLabel.module.css",
+    "agent-preset/AgentPresetSeat.module.css",
+    "agent-preset/AgentPresetSection.module.css",
+    "agent-preset/CreatePluginMenuItem.module.css",
+    "agent-preset/PresetGuideDialog.module.css",
+    "attachment/ComposerAttachments.module.css",
+    "chat/AssistantMarkdown.module.css",
+    "chat/ChatGroupSeat.module.css",
+    "chat/ChatView.module.css",
+    "chat/ContextBody.module.css",
+    "chat/ContextInjectionRow.module.css",
+    "chat/GenericCommandCard.module.css",
+    "chat/MessageIconActions.module.css",
+    "chat/MessageItem.module.css",
+    "chat/PreferenceRow.module.css",
+    "chat/ReasoningRow.module.css",
+    "chat/StatsPills.module.css",
+    "chat/TurnNavigator.module.css",
+    "chat/TurnTailNodeView.module.css",
+    "chat/TurnTriggerNodeView.module.css",
+    "chat/TurnUsagePanel.module.css",
+    "chat/accessibility.module.css",
+    "chat/stat-dialog.module.css",
+    "commands/PopupSelectView.module.css",
+    "conversation/ConversationRoot.module.css",
+    "conversation/EnterBehaviorRow.module.css",
+    "conversation/HeroShell.module.css",
+    "conversation/InputBar.module.css",
+    "conversation/QueueDock.module.css",
+    "cordis/CordisDefineRow.module.css",
+    "cordis/CordisPanel.module.css",
+    "cordis/CordisRunRow.module.css",
+    "creation-recommendations/Card.module.css",
+    "deliverables/Deliverables.module.css",
+    "deliverables/PresentRow.module.css",
+    "deliverables/ReviewTab.module.css",
+    "directory-picker-browse/DirectoryBrowser.module.css",
+    "entry-customization/EntryMenu.module.css",
+    "goal/GoalBar.module.css",
+    "goal/GoalCommandInputView.module.css",
+    "input-trigger/MenuView.module.css",
+    "jobs/JobListAction.module.css",
+    "layout/AppFrame.module.css",
+    "model-selection/ModelSelect.module.css",
+    "permission-presets/PermissionRow.module.css",
+    "plan/PlanModeControl.module.css",
+    "plan/PlanPreview.module.css",
+    "plugin-manager/PluginManagerPage.module.css",
+    "plugin-market/DiscoverSection.module.css",
+    "plugin-recommendations/Card.module.css",
+    "primitives/ConnectionIndicator.module.css",
+    "primitives/ReadBlock.module.css",
+    "primitives/RiskConfirmation.module.css",
+    "primitives/RowDragPreview.module.css",
+    "primitives/SearchBlock.module.css",
+    "primitives/UserMessageBubble.module.css",
+    "primitives/WebBlock.module.css",
+    "primitives/user-text.module.css",
+    "schedule/ScheduleCatalogAction.module.css",
+    "schedule/ScheduleCreateCard.module.css",
+    "schedule/ScheduleTurnCard.module.css",
+    "schedule/SessionScheduleMark.module.css",
+    "schedule/TaskManagerPage.module.css",
+    "schedule/TaskMenu.module.css",
+    "settings-account/AccountMenu.module.css",
+    "settings-account/AccountNotice.module.css",
+    "settings-account/AccountSection.module.css",
+    "settings-account/DesktopOnboarding.module.css",
+    "settings-account/OnboardingSurface.module.css",
+    "settings-account/PlatformOverlay.module.css",
+    "settings-account/SignInDialog.module.css",
+    "settings-general/CurrentVersionRow.module.css",
+    "settings-general/DesktopUpdateIndicator.module.css",
+    "settings-general/DeveloperToolsRow.module.css",
+    "settings-general/GeneralSection.module.css",
+    "settings-general/HostReleasePrompt.module.css",
+    "settings-general/SettingsDocumentAction.module.css",
+    "settings-general/SettingsRoot.module.css",
+    "settings-general/chrome.module.css",
+    "settings-models/DeepSeekOnboardingDialog.module.css",
+    "settings-models/ModelsSection.module.css",
+    "settings-models/OnboardingModal.module.css",
+    "settings-models/WelcomeNotice.module.css",
+    "settings-plugin-inventory/PluginInventorySettingsTab.module.css",
+    "settings-plugins/PluginsSettingsSection.module.css",
+    "settings-session-log/UploadRow.module.css",
+    "settings-subagent/SubagentCard.module.css",
+    "settings-subagent/SubagentLimitsFields.module.css",
+    "settings-subagent/SubagentModelSelectionFields.module.css",
+    "settings-web-search/WebSearchCard.module.css",
+    "sidebar-browser/Browser.module.css",
+    "sidebar-documentpreview/CodeBody.module.css",
+    "sidebar-documentpreview/ExcelBody.module.css",
+    "sidebar-documentpreview/FontNotice.module.css",
+    "sidebar-documentpreview/HtmlBody.module.css",
+    "sidebar-documentpreview/ImageBody.module.css",
+    "sidebar-documentpreview/MarkdownBody.module.css",
+    "sidebar-documentpreview/OfficeBody.module.css",
+    "sidebar-documentpreview/PdfBody.module.css",
+    "sidebar-documentpreview/frontmatter-fields.module.css",
+    "sidebar-files/FilesBody.module.css",
+    "sidebar-right/ExpandButton.module.css",
+    "sidebar-right/GuideBody.module.css",
+    "sidebar-right/SidebarRight.module.css",
+    "sidebar-terminal/TerminalGuide.module.css",
+    "sidebar-terminal/TerminalTitle.module.css",
+    "sidebar-terminal/terminal.module.css",
+    "sidebar/HeaderLeadingControls.module.css",
+    "sidebar/SidebarRoot.module.css",
+    "skill/SkillRow.module.css",
+    "subagent/SidebarChat.module.css",
+    "subagent/SubagentHeaderLineage.module.css",
+    "subagent/SubagentReadOnlyComposer.module.css",
+    "theme/FontFamilyRow.module.css",
+    "theme/FontSettingsGroup.module.css",
+    "tool/AskQuestionCard.module.css",
+    "tool/ExitCodeBadge.module.css",
+    "tool/QuestionToolRow.module.css",
+    "tool/ToolCallTree.module.css",
+    "tool/ToolRow.module.css",
+    "tool/bash-sample.module.css",
+    "trajectory/TrajectoryTimeline.module.css",
+    "trajectory/views.module.css",
+    "user-questions/PlanReviewPanel.module.css",
+    "user-questions/QuestionComposer.module.css",
+    "user-questions/QuestionReplyView.module.css",
+    "workflow-run/WorkflowRunPanel.module.css",
+    "workspace/Rows.module.css",
+    "workspace/WorkspaceBrowser.module.css",
+    "workspace/WorkspacePicker.module.css"
+  ]
+}

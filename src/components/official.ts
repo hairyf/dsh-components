@@ -53,7 +53,7 @@ export { ReferenceChip, ReferenceIconMedium, ReferenceIconRegular, relativeTime,
 export { SettingsForm, SettingsFormModel, settingsNumberField, SettingsSecretField, settingsTextField, SettingsValueField } from '@deepseek-ai/dsh-client-ui-primitives'
 export { SHIELD_OUTLINE_PATH, TerminalBlock, useAnchoredMaxHeight, useClipboardCopy, useCodeHighlighter, useDetailDocumentLabels } from '@deepseek-ai/dsh-client-ui-primitives'
 export { useDismissOnOutsidePointer, useMarkdownDelegate, UserMessageBubble, useRowDragPreview, UserTextRun, WebBlock } from '@deepseek-ai/dsh-client-ui-primitives'
-export { writeClipboard, ZoomControls } from '@deepseek-ai/dsh-client-ui-primitives'
+export { writeClipboard } from '@deepseek-ai/dsh-client-ui-primitives'
 
 export type { BrandWordmarkProps, ClipboardCopyState, CodeHighlighter, CodeToolbarLabels, CommandTextProps, ConnectionIndicatorState } from '@deepseek-ai/dsh-client-ui-primitives'
 export type { DetailDocumentCopy, DetailDocumentLabels, DetailDocumentRead, DetailDocumentState, DocumentZoomLabels, DraggableImageProps } from '@deepseek-ai/dsh-client-ui-primitives'
@@ -133,6 +133,7 @@ export const forkedNames = [
   'Toast',
   'Tooltip',
   'TooltipSide',
+  'ZoomControls',
   'classifyFileType',
   'closeTopModal',
   'diffTotals',
