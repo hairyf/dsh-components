@@ -1,0 +1,154 @@
+/* @deepseek-ai/dsh-client-ui-plan / PlanPreview.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.cards {
+  flex-direction: column;
+  gap: 10px;
+  display: flex;
+}
+
+.card {
+  --plan-card-fill: var(--dsw-static-neutral-50);
+  --plan-card-hover: var(--dsw-static-neutral-100);
+  box-sizing: border-box;
+  border: .5px solid var(--dsw-alias-border-l1);
+  border-radius: var(--dsw-radius-lg);
+  background: var(--plan-card-fill);
+  width: 100%;
+  min-width: 0;
+  height: 60px;
+  color: var(--dsw-alias-label-primary);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 10px;
+  transition: background-color .12s;
+  display: flex;
+}
+
+body[data-ds-dark-theme] .card {
+  --plan-card-fill: var(--dsw-static-neutral-850);
+  --plan-card-hover: var(--dsw-static-neutral-800);
+}
+
+@media (hover:hover) {
+  .card:hover {
+    background: var(--plan-card-hover);
+  }
+}
+
+.card:focus-visible {
+  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color,var(--dsw-alias-state-business-primary));
+  outline-offset: 3px;
+}
+
+.cardIcon {
+  box-sizing: border-box;
+  border: .5px solid var(--dsw-alias-border-l1);
+  background: color-mix(in srgb, var(--dsw-static-neutral-00) 50%, transparent);
+  border-radius: 10px;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  display: grid;
+}
+
+body[data-ds-dark-theme] .cardIcon {
+  background: color-mix(in srgb, var(--dsw-static-neutral-00) 5%, transparent);
+}
+
+.cardDetails {
+  flex-direction: column;
+  flex: 1;
+  gap: 2px;
+  min-width: 0;
+  display: flex;
+}
+
+.cardTitle {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  overflow: hidden;
+}
+
+.cardDescription {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 10px;
+  line-height: 16px;
+  overflow: hidden;
+}
+
+.cardOpen {
+  box-sizing: border-box;
+  border: .5px solid var(--dsw-alias-border-l3);
+  border-radius: var(--dsw-radius-sm);
+  background: var(--dsw-alias-button-floating-fill);
+  flex: none;
+  align-items: center;
+  height: 28px;
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 18px;
+  display: inline-flex;
+}
+
+.reviewLink {
+  color: var(--dsw-alias-label-secondary);
+  font: inherit;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  display: inline-flex;
+}
+
+@media (hover:hover) {
+  .reviewLink:hover {
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.reviewLink:focus-visible {
+  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color,var(--dsw-alias-state-business-primary));
+  outline-offset: 3px;
+}
+
+.preview {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 20px 24px 40px;
+  position: relative;
+  overflow: auto;
+}
+
+.document {
+  color: var(--dsw-alias-label-primary);
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.message {
+  color: var(--dsw-alias-label-secondary);
+  padding: 24px;
+  font-size: 14px;
+}
+
+.titleIcon {
+  flex: none;
+}
+
+@media (width<=767px) {
+  .preview {
+    padding: 16px 18px 32px;
+  }
+}

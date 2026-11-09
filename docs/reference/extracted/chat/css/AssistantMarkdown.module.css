@@ -1,0 +1,48 @@
+/* @deepseek-ai/dsh-client-ui-chat / AssistantMarkdown.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.root {
+  font-size: var(--dsh-content-font-size,14px);
+  line-height: calc(24px + var(--dsh-content-font-delta,0px));
+  color: var(--dsw-alias-label-primary);
+  flex-direction: column;
+  display: flex;
+}
+
+.body {
+  flex-direction: column;
+  gap: 16px;
+  display: flex;
+}
+
+.body .md-table-wide {
+  --dsh-table-spare: max(0px, calc((100cqw - var(--dsh-chat-content-width)) / 2));
+  --dsh-table-lead: calc(var(--dsh-table-spare) + min(var(--dsh-chat-content-width), 100cqw) - 100%);
+  box-sizing: border-box;
+  width: calc(100% + var(--dsh-table-lead) + var(--dsh-table-spare));
+  max-width: none;
+  margin-left: calc(-1 * var(--dsh-table-lead));
+  padding-left: var(--dsh-table-lead);
+}
+
+.body .md-table-wide>table {
+  z-index: 1;
+  position: relative;
+}
+
+.body>[data-turn-process-inline][hidden] {
+  margin-bottom: -16px;
+}
+
+.stopped {
+  border-radius: var(--dsw-radius-sm);
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-tertiary);
+  align-self: flex-start;
+  padding: 0 6px;
+  font-size: 11px;
+  line-height: 18px;
+}
+
+.actions {
+  margin-top: 16px;
+  margin-left: -6px;
+}

@@ -1,0 +1,9 @@
+/* @deepseek-ai/dsh-client-ui-settings-account / AccountAvatar.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.image {
+  corner-shape: round;
+  object-fit: cover;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  display: block;
+}

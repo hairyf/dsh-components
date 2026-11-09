@@ -1,0 +1,182 @@
+/* @deepseek-ai/dsh-client-ui-attachment / FileCard.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.card {
+  border: .5px solid var(--dsw-alias-border-l2,#0000001f);
+  border-radius: var(--dsw-radius-lg);
+  background: var(--dsw-specific-input-major,transparent);
+  box-sizing: border-box;
+  text-align: left;
+  align-items: center;
+  gap: 10px;
+  width: 240px;
+  height: 64px;
+  padding: 0 12px;
+  display: inline-flex;
+  position: relative;
+}
+
+.failed {
+  border-color: var(--dsw-alias-state-error-primary,#d54941);
+}
+
+.icon {
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+}
+
+.spinner {
+  corner-shape: round;
+  border: 2px solid;
+  border-top-color: #0000;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: .8s linear infinite file-card-spin;
+}
+
+@keyframes file-card-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.body {
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  padding: 8px 0;
+  display: flex;
+}
+
+.retry {
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  padding: 0;
+}
+
+.name {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--dsw-alias-label-primary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  overflow: hidden;
+}
+
+.meta {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--dsw-alias-label-tertiary,#00000073);
+  font-size: 12px;
+  line-height: 15px;
+  overflow: hidden;
+}
+
+.metaFailed {
+  color: var(--dsw-alias-state-error-primary,#d54941);
+}
+
+.remove {
+  corner-shape: round;
+  background: var(--dsw-alias-button-contrast-fill,#000000b8);
+  width: 18px;
+  height: 18px;
+  color: var(--dsw-alias-label-primary-inverted,#fff);
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: opacity .2s ease-in-out;
+  display: inline-flex;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+.remove:focus-visible {
+  opacity: 1;
+}
+
+@media (hover:hover) {
+  .card:hover .remove {
+    opacity: 1;
+  }
+}
+
+@media (hover:none),(pointer:coarse) {
+  .remove {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .remove {
+    transition: none;
+  }
+}
+
+.card:focus-within .name {
+  padding-right: 18px;
+}
+
+@media (hover:hover) {
+  .card:hover .name {
+    padding-right: 18px;
+  }
+}
+
+.removeFailed {
+  background: var(--dsw-alias-state-error-primary,#d54941);
+  color: #fff;
+  opacity: 1;
+}
+
+.progressTrack {
+  background: var(--dsw-alias-fill-tertiary,#00000014);
+  border-radius: 1px;
+  height: 2px;
+  position: absolute;
+  bottom: 5px;
+  left: 12px;
+  right: 12px;
+  overflow: hidden;
+}
+
+.progressBar {
+  border-radius: inherit;
+  background: var(--dsw-alias-brand-primary,#4d6bfe);
+  width: 35%;
+  height: 100%;
+  animation: 1.2s ease-in-out infinite alternate file-card-progress;
+  display: block;
+}
+
+.progressBar[style] {
+  animation: none;
+}
+
+@keyframes file-card-progress {
+  0% {
+    transform: translate(-70%);
+  }
+  to {
+    transform: translate(220%);
+  }
+}
+
+@media (hover:none),(pointer:coarse) {
+  .remove {
+    opacity: 1;
+  }
+}

@@ -1,5 +1,28 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
-  "project": ["src/**/*.ts"],
-  "ignoreDependencies": ["@antfu/utils", "taze", "@antfu/skills"]
+  "project": [
+    "src/**/*.{ts,tsx}"
+  ],
+  "ignoreDependencies": [
+    "@antfu/utils",
+    "taze",
+    "@antfu/skills",
+    "@shikijs/langs",
+    "anser",
+    "clsx",
+    "shiki",
+    "simple-icons"
+  ],
+  "ignore": [
+    "docs/**",
+    "skills/**",
+    "playground/**",
+    "pnpm-workspace.yaml"
+  ],
+  "ignoreWorkspaces": [
+    "playground"
+  ],
+  "rules": {
+    "catalog": "off"
+  }
 }

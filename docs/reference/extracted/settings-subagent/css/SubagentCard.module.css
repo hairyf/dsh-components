@@ -1,0 +1,13 @@
+/* @deepseek-ai/dsh-client-ui-settings-subagent / SubagentCard.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.section {
+  min-width: 0;
+  padding: 16px 0;
+}
+
+.heading {
+  color: var(--dsw-alias-label-primary);
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}

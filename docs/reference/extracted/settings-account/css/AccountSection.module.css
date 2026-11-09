@@ -1,0 +1,229 @@
+/* @deepseek-ai/dsh-client-ui-settings-account / AccountSection.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.section {
+  color: var(--dsw-alias-label-primary);
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0;
+  font-size: 13px;
+  line-height: 22px;
+  display: flex;
+}
+
+.card,
+.balanceCard {
+  border: .5px solid var(--dsw-alias-settings-card-stroke);
+  border-radius: var(--dsw-radius-xl);
+  background: var(--dsw-alias-settings-card-fill);
+  padding: 12px 16px;
+}
+
+.card,
+.row {
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  display: flex;
+}
+
+.identity {
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 44px;
+  display: flex;
+}
+
+.avatar {
+  corner-shape: round;
+  width: 32px;
+  height: 32px;
+  color: var(--dsw-alias-label-tertiary);
+  background: var(--dsw-alias-bg-skeleton);
+  border-radius: 50%;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.identityCopy {
+  flex-direction: column;
+  min-width: 0;
+  display: flex;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status,
+.secondary,
+.unavailable {
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.balanceCard {
+  flex-direction: column;
+  gap: 8px;
+  display: flex;
+}
+
+.row {
+  box-sizing: border-box;
+  min-height: 40px;
+  padding: 6px 0;
+}
+
+.divider {
+  border-top: .5px solid var(--dsw-alias-border-l2);
+}
+
+.links,
+.actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.linkButton {
+  box-sizing: border-box;
+  border: .5px solid var(--dsw-alias-border-l3);
+  border-radius: var(--dsw-radius-md);
+  white-space: nowrap;
+  min-width: 58px;
+  height: 36px;
+  color: var(--dsw-alias-label-primary);
+  background: 0 0;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0 14px;
+  font-size: 14px;
+  line-height: 22px;
+  text-decoration: none;
+  display: inline-flex;
+}
+
+@media (hover:hover) {
+  .linkButton:hover {
+    background: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.linkButton:focus-visible {
+  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color,var(--dsw-alias-state-business-primary));
+  outline-offset: 2px;
+}
+
+.unavailableLink {
+  color: var(--dsw-alias-label-tertiary);
+  text-underline-offset: 3px;
+  text-decoration: underline;
+}
+
+@media (hover:hover) {
+  .unavailableLink:hover {
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.unavailableLink:focus-visible {
+  outline: 2px solid var(--dsw-focus-ring-color,var(--dsw-alias-state-business-primary));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.primary {
+  color: var(--dsw-alias-label-primary-foreground);
+  background: var(--dsw-alias-button-primary-fill);
+  border-color: #0000;
+  font-weight: 500;
+}
+
+@media (hover:hover) {
+  .primary:hover {
+    background: var(--dsw-alias-button-primary-hover);
+  }
+}
+
+.signedOut {
+  box-sizing: border-box;
+  min-height: calc(100% + 16px);
+  color: var(--dsw-alias-label-primary);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -16px;
+  padding-bottom: 8px;
+  display: flex;
+}
+
+.signedOutContent {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  min-height: 60px;
+  padding: 12px 0;
+  display: flex;
+}
+
+.signedOutCopy {
+  text-align: center;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  display: flex;
+}
+
+.signedOutTitle {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.signedOutDescription {
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.signInButton {
+  min-width: 72px;
+  font-weight: 500;
+}
+
+.amount {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  font-size: 18px;
+  font-weight: 510;
+  line-height: 28px;
+  display: flex;
+}
+
+.amount>span+span:before {
+  content: " + ";
+  white-space: pre;
+}
+
+.accountInfo {
+  color: var(--dsw-alias-label-primary);
+  flex: none;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  line-height: 22px;
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.bonusValue {
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}

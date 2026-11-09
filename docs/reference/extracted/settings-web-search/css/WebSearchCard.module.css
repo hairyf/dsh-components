@@ -1,0 +1,33 @@
+/* @deepseek-ai/dsh-client-ui-settings-web-search / WebSearchCard.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.feature {
+  gap: 6px;
+  display: grid;
+}
+
+.toggleRow {
+  color: var(--dsw-alias-label-primary);
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  display: flex;
+}
+
+.hint {
+  color: var(--dsw-alias-label-tertiary);
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.link {
+  color: var(--dsw-alias-link);
+  text-decoration: none;
+}
+
+@media (hover:hover) {
+  .link:hover {
+    text-decoration: underline;
+  }
+}

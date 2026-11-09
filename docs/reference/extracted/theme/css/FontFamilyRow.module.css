@@ -1,0 +1,17 @@
+/* @deepseek-ai/dsh-client-ui-theme / FontFamilyRow.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.field {
+  flex: 0 240px;
+  min-width: 0;
+}
+
+@media (width<=767px) {
+  .field {
+    flex-basis: auto;
+  }
+}
+
+@media (pointer:coarse) {
+  .field input {
+    font-size: 16px;
+  }
+}

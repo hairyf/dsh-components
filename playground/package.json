@@ -1,0 +1,26 @@
+{
+  "name": "playground",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Component gallery for dsh-components: every recovered component rendered with its official stylesheet",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "coverage": "node scripts/coverage.mjs"
+  },
+  "dependencies": {
+    "clsx": "catalog:",
+    "react": "catalog:runtime",
+    "react-dom": "catalog:runtime"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:types",
+    "@types/react": "catalog:types",
+    "@types/react-dom": "catalog:types",
+    "@vitejs/plugin-react": "catalog:",
+    "typescript": "catalog:cli",
+    "vite": "catalog:cli"
+  }
+}

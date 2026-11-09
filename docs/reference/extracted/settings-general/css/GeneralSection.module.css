@@ -1,0 +1,10 @@
+/* @deepseek-ai/dsh-client-ui-settings-general / GeneralSection.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.section {
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+}
+
+.section>[data-slot="settings.general.item"]>:last-child {
+  border-bottom: none;
+}

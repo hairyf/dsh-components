@@ -1,0 +1,2968 @@
+{
+  "generatedAt": "2026-11-09T17:02:29.378Z",
+  "components": [
+    {
+      "name": "CodeBlock",
+      "group": "content",
+      "file": "src/components/content/code-block.tsx",
+      "props": "CodeBlockProps",
+      "sheet": null
+    },
+    {
+      "name": "DiffBlock",
+      "group": "content",
+      "file": "src/components/content/diff-block.tsx",
+      "props": "DiffBlockProps",
+      "sheet": "primitives/DiffBlock.module.css"
+    },
+    {
+      "name": "Document",
+      "group": "content",
+      "file": "src/components/content/document.tsx",
+      "props": "DocumentProps",
+      "sheet": null
+    },
+    {
+      "name": "JsonBlock",
+      "group": "content",
+      "file": "src/components/content/json-block.tsx",
+      "props": "JsonBlockProps",
+      "sheet": null
+    },
+    {
+      "name": "JsonTree",
+      "group": "content",
+      "file": "src/components/content/json-tree.tsx",
+      "props": "JsonTreeProps",
+      "sheet": null
+    },
+    {
+      "name": "MarkdownText",
+      "group": "content",
+      "file": "src/components/content/markdown-text.tsx",
+      "props": "MarkdownTextProps",
+      "sheet": "primitives/MarkdownText.module.css"
+    },
+    {
+      "name": "Terminal",
+      "group": "content",
+      "file": "src/components/content/terminal.tsx",
+      "props": "TerminalProps",
+      "sheet": "@deepseek-ai/dsh-client-ui-primitives lib/Terminal.module.css; official CSS, verbatim."
+    },
+    {
+      "name": "ActionCard",
+      "group": "feedback",
+      "file": "src/components/feedback/action-card.tsx",
+      "props": "ActionCardProps",
+      "sheet": "action-cards/Card.module.css"
+    },
+    {
+      "name": "ConfirmPanel",
+      "group": "feedback",
+      "file": "src/components/feedback/confirm-panel.tsx",
+      "props": "ConfirmPanelProps",
+      "sheet": null
+    },
+    {
+      "name": "DropOverlay",
+      "group": "feedback",
+      "file": "src/components/feedback/drop-overlay.tsx",
+      "props": "DropOverlayProps",
+      "sheet": null
+    },
+    {
+      "name": "FormDialog",
+      "group": "feedback",
+      "file": "src/components/feedback/form-dialog.tsx",
+      "props": "FormDialogProps",
+      "sheet": null
+    },
+    {
+      "name": "SearchDialog",
+      "group": "feedback",
+      "file": "src/components/feedback/search-dialog.tsx",
+      "props": "SearchDialogProps",
+      "sheet": null
+    },
+    {
+      "name": "Bar",
+      "group": "layout",
+      "file": "src/components/layout/bar.tsx",
+      "props": "ExpansionBarProps",
+      "sheet": null
+    },
+    {
+      "name": "Checklist",
+      "group": "layout",
+      "file": "src/components/layout/checklist.tsx",
+      "props": "ChecklistProps",
+      "sheet": null
+    },
+    {
+      "name": "DescriptionList",
+      "group": "layout",
+      "file": "src/components/layout/description-list.tsx",
+      "props": "DescriptionListProps",
+      "sheet": "tool/ToolDetails.module.css"
+    },
+    {
+      "name": "ListRow",
+      "group": "layout",
+      "file": "src/components/layout/list-row.tsx",
+      "props": "ListRowProps",
+      "sheet": null
+    },
+    {
+      "name": "Meter",
+      "group": "layout",
+      "file": "src/components/layout/meter.tsx",
+      "props": "MeterProps",
+      "sheet": "conversation/ContextMeter.module.css"
+    },
+    {
+      "name": "Stack",
+      "group": "layout",
+      "file": "src/components/layout/stack.tsx",
+      "props": "StackProps",
+      "sheet": "conversation/TodoPanel.module.css"
+    },
+    {
+      "name": "Surface",
+      "group": "layout",
+      "file": "src/components/layout/surface.tsx",
+      "props": "SurfaceProps",
+      "sheet": null
+    },
+    {
+      "name": "Tree",
+      "group": "layout",
+      "file": "src/components/layout/tree.tsx",
+      "props": "TreeProps",
+      "sheet": "sidebar-files/FileTree.module.css"
+    },
+    {
+      "name": "FileCard",
+      "group": "media",
+      "file": "src/components/media/file-card.tsx",
+      "props": "FileCardProps",
+      "sheet": null
+    },
+    {
+      "name": "ImageTile",
+      "group": "media",
+      "file": "src/components/media/image-tile.tsx",
+      "props": "ImageTileProps",
+      "sheet": null
+    },
+    {
+      "name": "Image",
+      "group": "media",
+      "file": "src/components/media/image.tsx",
+      "props": "ImageProps",
+      "sheet": null
+    },
+    {
+      "name": "Lightbox",
+      "group": "media",
+      "file": "src/components/media/lightbox.tsx",
+      "props": "LightboxProps",
+      "sheet": null
+    },
+    {
+      "name": "AnimatedRows",
+      "group": "primitives",
+      "file": "src/components/primitives/animated-rows.tsx",
+      "props": "AnimatedRowsProps",
+      "sheet": "primitives/AnimatedRows.module.css"
+    },
+    {
+      "name": "Button",
+      "group": "primitives",
+      "file": "src/components/primitives/button.tsx",
+      "props": "ButtonProps",
+      "sheet": "primitives/Button.module.css"
+    },
+    {
+      "name": "Checkbox",
+      "group": "primitives",
+      "file": "src/components/primitives/checkbox.tsx",
+      "props": "CheckboxProps",
+      "sheet": "primitives/Checkbox.module.css"
+    },
+    {
+      "name": "Chip",
+      "group": "primitives",
+      "file": "src/components/primitives/chip.tsx",
+      "props": "ChipProps",
+      "sheet": null
+    },
+    {
+      "name": "DisclosureRow",
+      "group": "primitives",
+      "file": "src/components/primitives/disclosure-row.tsx",
+      "props": "DisclosureRowProps",
+      "sheet": "primitives/DisclosureRow.module.css"
+    },
+    {
+      "name": "FileTypeIcon",
+      "group": "primitives",
+      "file": "src/components/primitives/file-type-icon.tsx",
+      "props": "FileTypeIconProps",
+      "sheet": "primitives/FileTypeIcon.module.css"
+    },
+    {
+      "name": "HoverCard",
+      "group": "primitives",
+      "file": "src/components/primitives/hover-card.tsx",
+      "props": "HoverCardProps",
+      "sheet": "primitives/HoverCard.module.css"
+    },
+    {
+      "name": "IconButton",
+      "group": "primitives",
+      "file": "src/components/primitives/icon-button.tsx",
+      "props": "IconButtonProps",
+      "sheet": null
+    },
+    {
+      "name": "InlineEditor",
+      "group": "primitives",
+      "file": "src/components/primitives/inline-editor.tsx",
+      "props": "InlineEditorProps",
+      "sheet": "primitives/InlineEditor.module.css"
+    },
+    {
+      "name": "Input",
+      "group": "primitives",
+      "file": "src/components/primitives/input.tsx",
+      "props": "InputProps",
+      "sheet": "primitives/Input.module.css"
+    },
+    {
+      "name": "MaskedText",
+      "group": "primitives",
+      "file": "src/components/primitives/masked-text.tsx",
+      "props": "MaskedTextProps",
+      "sheet": null
+    },
+    {
+      "name": "MenuGroup",
+      "group": "primitives",
+      "file": "src/components/primitives/menu-group.tsx",
+      "props": "MenuGroupProps",
+      "sheet": "primitives/MenuGroup.module.css"
+    },
+    {
+      "name": "MenuSurface",
+      "group": "primitives",
+      "file": "src/components/primitives/menu-surface.tsx",
+      "props": "MenuSurfaceProps",
+      "sheet": "primitives/MenuSurface.module.css"
+    },
+    {
+      "name": "Menu",
+      "group": "primitives",
+      "file": "src/components/primitives/menu.tsx",
+      "props": "MenuProps",
+      "sheet": "primitives/Menu.module.css"
+    },
+    {
+      "name": "Modal",
+      "group": "primitives",
+      "file": "src/components/primitives/modal.tsx",
+      "props": "ModalProps",
+      "sheet": "primitives/Modal.module.css"
+    },
+    {
+      "name": "PathLabel",
+      "group": "primitives",
+      "file": "src/components/primitives/path-label.tsx",
+      "props": "PathLabelProps",
+      "sheet": "primitives/PathLabel.module.css"
+    },
+    {
+      "name": "Pill",
+      "group": "primitives",
+      "file": "src/components/primitives/pill.tsx",
+      "props": "PillProps",
+      "sheet": "primitives/Pill.module.css"
+    },
+    {
+      "name": "SegmentedControl",
+      "group": "primitives",
+      "file": "src/components/primitives/segmented-control.tsx",
+      "props": "SegmentedControlProps",
+      "sheet": "primitives/SegmentedControl.module.css"
+    },
+    {
+      "name": "SegmentedTabs",
+      "group": "primitives",
+      "file": "src/components/primitives/segmented-tabs.tsx",
+      "props": "SegmentedTabsProps",
+      "sheet": "primitives/SegmentedTabs.module.css"
+    },
+    {
+      "name": "ShortcutKeys",
+      "group": "primitives",
+      "file": "src/components/primitives/shortcut-keys.tsx",
+      "props": "ShortcutKeysProps",
+      "sheet": "primitives/ShortcutKeys.module.css"
+    },
+    {
+      "name": "Spinner",
+      "group": "primitives",
+      "file": "src/components/primitives/spinner.tsx",
+      "props": "SpinnerProps",
+      "sheet": null
+    },
+    {
+      "name": "StateDot",
+      "group": "primitives",
+      "file": "src/components/primitives/state-dot.tsx",
+      "props": "StateDotProps",
+      "sheet": "primitives/StateDot.module.css"
+    },
+    {
+      "name": "Switch",
+      "group": "primitives",
+      "file": "src/components/primitives/switch.tsx",
+      "props": "SwitchProps",
+      "sheet": "primitives/Switch.module.css"
+    },
+    {
+      "name": "Tag",
+      "group": "primitives",
+      "file": "src/components/primitives/tag.tsx",
+      "props": "TagProps",
+      "sheet": "primitives/Tag.module.css"
+    },
+    {
+      "name": "TextShimmer",
+      "group": "primitives",
+      "file": "src/components/primitives/text-shimmer.tsx",
+      "props": "TextShimmerProps",
+      "sheet": "primitives/TextShimmer.module.css"
+    },
+    {
+      "name": "Text",
+      "group": "primitives",
+      "file": "src/components/primitives/text.tsx",
+      "props": "TextProps",
+      "sheet": null
+    },
+    {
+      "name": "Textarea",
+      "group": "primitives",
+      "file": "src/components/primitives/textarea.tsx",
+      "props": "TextareaProps",
+      "sheet": null
+    },
+    {
+      "name": "Toast",
+      "group": "primitives",
+      "file": "src/components/primitives/toast.tsx",
+      "props": "ToastProps",
+      "sheet": "primitives/Toast.module.css"
+    },
+    {
+      "name": "Tooltip",
+      "group": "primitives",
+      "file": "src/components/primitives/tooltip.tsx",
+      "props": "TooltipProps",
+      "sheet": "primitives/Tooltip.module.css"
+    },
+    {
+      "name": "OptionGroup",
+      "group": "settings",
+      "file": "src/components/settings/option-group.tsx",
+      "props": "OptionGroupProps",
+      "sheet": "theme/AppearanceRow.module.css"
+    },
+    {
+      "name": "Select",
+      "group": "settings",
+      "file": "src/components/settings/select.tsx",
+      "props": "SelectProps",
+      "sheet": "permission-presets/PermissionSelect.module.css"
+    },
+    {
+      "name": "SettingsGroup",
+      "group": "settings",
+      "file": "src/components/settings/settings-group.tsx",
+      "props": "SettingsGroupProps",
+      "sheet": "theme/FontSettingsGroup.module.css"
+    },
+    {
+      "name": "SettingsRow",
+      "group": "settings",
+      "file": "src/components/settings/settings-row.tsx",
+      "props": "SettingsRowProps",
+      "sheet": "theme/FontSizeRow.module.css"
+    },
+    {
+      "name": "SplitButton",
+      "group": "settings",
+      "file": "src/components/settings/split-button.tsx",
+      "props": "SplitButtonProps",
+      "sheet": "open-in-app/OpenTargetButton.module.css"
+    },
+    {
+      "name": "Stepper",
+      "group": "settings",
+      "file": "src/components/settings/stepper.tsx",
+      "props": "StepperProps",
+      "sheet": "theme/FontSizeRow.module.css"
+    }
+  ],
+  "packages": [
+    {
+      "name": "action-cards",
+      "css": [
+        "docs/reference/extracted/action-cards/css/Card.module.css",
+        "docs/reference/extracted/action-cards/css/ProposeRow.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/action-cards/src/Card.js",
+        "docs/reference/extracted/action-cards/src/ProposeRow.js",
+        "docs/reference/extracted/action-cards/src/client.index.js",
+        "docs/reference/extracted/action-cards/src/index.js",
+        "docs/reference/extracted/action-cards/src/locales.js",
+        "docs/reference/extracted/action-cards/src/mount.js",
+        "docs/reference/extracted/action-cards/src/registry.js"
+      ]
+    },
+    {
+      "name": "agent-preset",
+      "css": [
+        "docs/reference/extracted/agent-preset/css/AgentPresetLabel.module.css",
+        "docs/reference/extracted/agent-preset/css/AgentPresetSeat.module.css",
+        "docs/reference/extracted/agent-preset/css/AgentPresetSection.module.css",
+        "docs/reference/extracted/agent-preset/css/CreatePluginMenuItem.module.css",
+        "docs/reference/extracted/agent-preset/css/PresetGuideDialog.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/agent-preset/src/AgentPresetLabel.js",
+        "docs/reference/extracted/agent-preset/src/AgentPresetSeat.js",
+        "docs/reference/extracted/agent-preset/src/AgentPresetSection.js",
+        "docs/reference/extracted/agent-preset/src/CreatePluginMenuItem.js",
+        "docs/reference/extracted/agent-preset/src/PresetGuideDialog.js",
+        "docs/reference/extracted/agent-preset/src/analytics.js",
+        "docs/reference/extracted/agent-preset/src/client.index.js",
+        "docs/reference/extracted/agent-preset/src/guide-locales.js",
+        "docs/reference/extracted/agent-preset/src/index.js",
+        "docs/reference/extracted/agent-preset/src/locales.js",
+        "docs/reference/extracted/agent-preset/src/seat-store.js",
+        "docs/reference/extracted/agent-preset/src/section-store.js",
+        "docs/reference/extracted/agent-preset/src/settings-store.js"
+      ]
+    },
+    {
+      "name": "approval",
+      "css": [
+        "docs/reference/extracted/approval/css/ApprovalPanel.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/approval/src/ApprovalCard.js",
+        "docs/reference/extracted/approval/src/ApprovalPanel.js",
+        "docs/reference/extracted/approval/src/client.index.js",
+        "docs/reference/extracted/approval/src/index.js",
+        "docs/reference/extracted/approval/src/locales.js",
+        "docs/reference/extracted/approval/src/slots.js"
+      ]
+    },
+    {
+      "name": "attachment",
+      "css": [
+        "docs/reference/extracted/attachment/css/AttachmentRail.module.css",
+        "docs/reference/extracted/attachment/css/ComposerAttachments.module.css",
+        "docs/reference/extracted/attachment/css/DropOverlay.module.css",
+        "docs/reference/extracted/attachment/css/FileCard.module.css",
+        "docs/reference/extracted/attachment/css/MessageImage.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/attachment/src/AttachmentRail.js",
+        "docs/reference/extracted/attachment/src/ComposerAttachments.js",
+        "docs/reference/extracted/attachment/src/DropOverlay.js",
+        "docs/reference/extracted/attachment/src/FileCard.js",
+        "docs/reference/extracted/attachment/src/MessageImage.js",
+        "docs/reference/extracted/attachment/src/MessageImages.js",
+        "docs/reference/extracted/attachment/src/client.index.js",
+        "docs/reference/extracted/attachment/src/drop-events.js",
+        "docs/reference/extracted/attachment/src/index.js",
+        "docs/reference/extracted/attachment/src/labels.js"
+      ]
+    },
+    {
+      "name": "brand-official",
+      "css": [],
+      "src": [
+        "docs/reference/extracted/brand-official/src/Brand.js",
+        "docs/reference/extracted/brand-official/src/client.index.js",
+        "docs/reference/extracted/brand-official/src/index.js"
+      ]
+    },
+    {
+      "name": "chat",
+      "css": [
+        "docs/reference/extracted/chat/css/AssistantMarkdown.module.css",
+        "docs/reference/extracted/chat/css/ChatGroupSeat.module.css",
+        "docs/reference/extracted/chat/css/ChatView.module.css",
+        "docs/reference/extracted/chat/css/ContextBody.module.css",
+        "docs/reference/extracted/chat/css/ContextInjectionRow.module.css",
+        "docs/reference/extracted/chat/css/GenericCommandCard.module.css",
+        "docs/reference/extracted/chat/css/MessageIconActions.module.css",
+        "docs/reference/extracted/chat/css/MessageItem.module.css",
+        "docs/reference/extracted/chat/css/PreferenceRow.module.css",
+        "docs/reference/extracted/chat/css/ReasoningRow.module.css",
+        "docs/reference/extracted/chat/css/StatsPills.module.css",
+        "docs/reference/extracted/chat/css/TurnNavigator.module.css",
+        "docs/reference/extracted/chat/css/TurnProcessNodeView.module.css",
+        "docs/reference/extracted/chat/css/TurnTailNodeView.module.css",
+        "docs/reference/extracted/chat/css/TurnTriggerNodeView.module.css",
+        "docs/reference/extracted/chat/css/TurnUsagePanel.module.css",
+        "docs/reference/extracted/chat/css/accessibility.module.css",
+        "docs/reference/extracted/chat/css/stat-dialog.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/chat/src/ApprovalCommand.js",
+        "docs/reference/extracted/chat/src/AssistantMarkdown.js",
+        "docs/reference/extracted/chat/src/AssistantNodeView.js",
+        "docs/reference/extracted/chat/src/ChatFlow.js",
+        "docs/reference/extracted/chat/src/ChatGroupSeat.js",
+        "docs/reference/extracted/chat/src/ChatNodeSeat.js",
+        "docs/reference/extracted/chat/src/ChatView.js",
+        "docs/reference/extracted/chat/src/CommandNodeView.js",
+        "docs/reference/extracted/chat/src/CompactionCommandCard.js",
+        "docs/reference/extracted/chat/src/CompactionItem.js",
+        "docs/reference/extracted/chat/src/ContextBody.js",
+        "docs/reference/extracted/chat/src/ContextInjectionRow.js",
+        "docs/reference/extracted/chat/src/GenericCommandCard.js",
+        "docs/reference/extracted/chat/src/LinkOpeningRow.js",
+        "docs/reference/extracted/chat/src/MessageIconActions.js",
+        "docs/reference/extracted/chat/src/MessageItem.js",
+        "docs/reference/extracted/chat/src/PerformanceUsageRow.js",
+        "docs/reference/extracted/chat/src/PreferenceRow.js",
+        "docs/reference/extracted/chat/src/QuotaNoticeHost.js",
+        "docs/reference/extracted/chat/src/ReasoningContent.js",
+        "docs/reference/extracted/chat/src/ReasoningRow.js",
+        "docs/reference/extracted/chat/src/RunningStatus.js",
+        "docs/reference/extracted/chat/src/RunningWhaleTail.js",
+        "docs/reference/extracted/chat/src/StatsPills.js",
+        "docs/reference/extracted/chat/src/SystemPromptRow.js",
+        "docs/reference/extracted/chat/src/TranscriptViewRow.js",
+        "docs/reference/extracted/chat/src/TurnNavigator.js",
+        "docs/reference/extracted/chat/src/TurnProcessNodeView.js",
+        "docs/reference/extracted/chat/src/TurnTailNodeView.js",
+        "docs/reference/extracted/chat/src/TurnTriggerNodeView.js",
+        "docs/reference/extracted/chat/src/TurnUsagePanel.js",
+        "docs/reference/extracted/chat/src/UserContent.js",
+        "docs/reference/extracted/chat/src/apply.js",
+        "docs/reference/extracted/chat/src/assistant-content.js",
+        "docs/reference/extracted/chat/src/assistant.js",
+        "docs/reference/extracted/chat/src/chat-nodes.js",
+        "docs/reference/extracted/chat/src/chat-settings.index-bundle.js",
+        "docs/reference/extracted/chat/src/chat-settings.js",
+        "docs/reference/extracted/chat/src/chat-snapshot-builder.js",
+        "docs/reference/extracted/chat/src/chat-visibility.js",
+        "docs/reference/extracted/chat/src/client.contract.turn-process.js",
+        "docs/reference/extracted/chat/src/client.conversation-nodes.turn-process.js",
+        "docs/reference/extracted/chat/src/command.js",
+        "docs/reference/extracted/chat/src/common.js",
+        "docs/reference/extracted/chat/src/compaction.js",
+        "docs/reference/extracted/chat/src/event-projection.js",
+        "docs/reference/extracted/chat/src/fallback.js",
+        "docs/reference/extracted/chat/src/file-path.js",
+        "docs/reference/extracted/chat/src/flow-motion.js",
+        "docs/reference/extracted/chat/src/group-tree-segments.js",
+        "docs/reference/extracted/chat/src/group-tree.js",
+        "docs/reference/extracted/chat/src/inbox.js",
+        "docs/reference/extracted/chat/src/index.js",
+        "docs/reference/extracted/chat/src/locale.js",
+        "docs/reference/extracted/chat/src/markdown-labels.js",
+        "docs/reference/extracted/chat/src/message-chrome.js",
+        "docs/reference/extracted/chat/src/message.js",
+        "docs/reference/extracted/chat/src/performance-usage.js",
+        "docs/reference/extracted/chat/src/presentation-policy.js",
+        "docs/reference/extracted/chat/src/process-activity.js",
+        "docs/reference/extracted/chat/src/process-groups.js",
+        "docs/reference/extracted/chat/src/reasoning-text.js",
+        "docs/reference/extracted/chat/src/register-node-renderers.js",
+        "docs/reference/extracted/chat/src/register.js",
+        "docs/reference/extracted/chat/src/render-entry.js",
+        "docs/reference/extracted/chat/src/request-prompt.js",
+        "docs/reference/extracted/chat/src/retry.js",
+        "docs/reference/extracted/chat/src/searchable-hidden.js",
+        "docs/reference/extracted/chat/src/snapshot.js",
+        "docs/reference/extracted/chat/src/stat-dialog.js",
+        "docs/reference/extracted/chat/src/step-process.js",
+        "docs/reference/extracted/chat/src/stores.js",
+        "docs/reference/extracted/chat/src/text-interaction.js",
+        "docs/reference/extracted/chat/src/text-selection.js",
+        "docs/reference/extracted/chat/src/token-format.js",
+        "docs/reference/extracted/chat/src/tool.js",
+        "docs/reference/extracted/chat/src/transcript-view.js",
+        "docs/reference/extracted/chat/src/turn-assistant.js",
+        "docs/reference/extracted/chat/src/turn-error.js",
+        "docs/reference/extracted/chat/src/turn-max-tokens.js",
+        "docs/reference/extracted/chat/src/turn-metrics.js",
+        "docs/reference/extracted/chat/src/turn-navigation.js",
+        "docs/reference/extracted/chat/src/turn-process-presentation.js",
+        "docs/reference/extracted/chat/src/turn-rail-items.js",
+        "docs/reference/extracted/chat/src/turn-tail.js",
+        "docs/reference/extracted/chat/src/turn-trigger.js",
+        "docs/reference/extracted/chat/src/use-calendar-day.js",
+        "docs/reference/extracted/chat/src/use-chat-navigation.js",
+        "docs/reference/extracted/chat/src/use-chat-reading.js",
+        "docs/reference/extracted/chat/src/use-chat-scroll.js",
+        "docs/reference/extracted/chat/src/use-chat-viewport.js",
+        "docs/reference/extracted/chat/src/use-disclosure.js",
+        "docs/reference/extracted/chat/src/use-process-scroll.js",
+        "docs/reference/extracted/chat/src/use-scroll-follow.js",
+        "docs/reference/extracted/chat/src/use-turn-data.js"
+      ]
+    },
+    {
+      "name": "commands",
+      "css": [
+        "docs/reference/extracted/commands/css/PopupSelectView.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/commands/src/PopupSelectView.js",
+        "docs/reference/extracted/commands/src/client.index.js",
+        "docs/reference/extracted/commands/src/directory.js",
+        "docs/reference/extracted/commands/src/index.js",
+        "docs/reference/extracted/commands/src/locales.js",
+        "docs/reference/extracted/commands/src/option-groups.js",
+        "docs/reference/extracted/commands/src/popup.js",
+        "docs/reference/extracted/commands/src/presentation.js",
+        "docs/reference/extracted/commands/src/resolution.js",
+        "docs/reference/extracted/commands/src/service.js"
+      ]
+    },
+    {
+      "name": "context-menu",
+      "css": [],
+      "src": [
+        "docs/reference/extracted/context-menu/src/View.js",
+        "docs/reference/extracted/context-menu/src/client.index.js",
+        "docs/reference/extracted/context-menu/src/index.js",
+        "docs/reference/extracted/context-menu/src/locales.js",
+        "docs/reference/extracted/context-menu/src/registry.js",
+        "docs/reference/extracted/context-menu/src/store.js",
+        "docs/reference/extracted/context-menu/src/target-key.js",
+        "docs/reference/extracted/context-menu/src/trigger.js"
+      ]
+    },
+    {
+      "name": "conversation",
+      "css": [
+        "docs/reference/extracted/conversation/css/ContextMeter.module.css",
+        "docs/reference/extracted/conversation/css/ConversationRoot.module.css",
+        "docs/reference/extracted/conversation/css/EnterBehaviorRow.module.css",
+        "docs/reference/extracted/conversation/css/HeroShell.module.css",
+        "docs/reference/extracted/conversation/css/InputBar.module.css",
+        "docs/reference/extracted/conversation/css/QueueDock.module.css",
+        "docs/reference/extracted/conversation/css/ReferenceChip.module.css",
+        "docs/reference/extracted/conversation/css/TodoPanel.module.css",
+        "docs/reference/extracted/conversation/css/UserText.module.css",
+        "docs/reference/extracted/conversation/css/composer-editor.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/conversation/src/CommandChip.js",
+        "docs/reference/extracted/conversation/src/ComposerContentEditable.js",
+        "docs/reference/extracted/conversation/src/ContextMeter.js",
+        "docs/reference/extracted/conversation/src/ConversationContent.js",
+        "docs/reference/extracted/conversation/src/ConversationHeader.js",
+        "docs/reference/extracted/conversation/src/ConversationMainPanel.js",
+        "docs/reference/extracted/conversation/src/ConversationPanel.js",
+        "docs/reference/extracted/conversation/src/ConversationRoot.js",
+        "docs/reference/extracted/conversation/src/ConversationSession.js",
+        "docs/reference/extracted/conversation/src/ConversationWidthControls.js",
+        "docs/reference/extracted/conversation/src/DecoratorPortals.js",
+        "docs/reference/extracted/conversation/src/DefaultConversationViews.js",
+        "docs/reference/extracted/conversation/src/DraftEditor.js",
+        "docs/reference/extracted/conversation/src/EmptyHero.js",
+        "docs/reference/extracted/conversation/src/EnterBehaviorRow.js",
+        "docs/reference/extracted/conversation/src/InputBar.js",
+        "docs/reference/extracted/conversation/src/QueueDock.js",
+        "docs/reference/extracted/conversation/src/QuoteNode.js",
+        "docs/reference/extracted/conversation/src/ReferenceChip.js",
+        "docs/reference/extracted/conversation/src/TodoPanel.js",
+        "docs/reference/extracted/conversation/src/UserText.js",
+        "docs/reference/extracted/conversation/src/apply.js",
+        "docs/reference/extracted/conversation/src/assembler.js",
+        "docs/reference/extracted/conversation/src/assembly.js",
+        "docs/reference/extracted/conversation/src/blocks.js",
+        "docs/reference/extracted/conversation/src/chip-node.js",
+        "docs/reference/extracted/conversation/src/command-chip-node.js",
+        "docs/reference/extracted/conversation/src/command-chip-selection.js",
+        "docs/reference/extracted/conversation/src/context-occupancy.js",
+        "docs/reference/extracted/conversation/src/control-row-layout.js",
+        "docs/reference/extracted/conversation/src/conversation.js",
+        "docs/reference/extracted/conversation/src/decorations.js",
+        "docs/reference/extracted/conversation/src/definition-registry.js",
+        "docs/reference/extracted/conversation/src/draft.js",
+        "docs/reference/extracted/conversation/src/event-registry.js",
+        "docs/reference/extracted/conversation/src/facade.js",
+        "docs/reference/extracted/conversation/src/group-registry.js",
+        "docs/reference/extracted/conversation/src/group-store.js",
+        "docs/reference/extracted/conversation/src/historical-images.js",
+        "docs/reference/extracted/conversation/src/hub.js",
+        "docs/reference/extracted/conversation/src/image-labels.js",
+        "docs/reference/extracted/conversation/src/index.js",
+        "docs/reference/extracted/conversation/src/interaction-registry.js",
+        "docs/reference/extracted/conversation/src/keymap.js",
+        "docs/reference/extracted/conversation/src/locales.js",
+        "docs/reference/extracted/conversation/src/location-index.js",
+        "docs/reference/extracted/conversation/src/machine.js",
+        "docs/reference/extracted/conversation/src/prompt.js",
+        "docs/reference/extracted/conversation/src/reference-activation.js",
+        "docs/reference/extracted/conversation/src/request-inspection.js",
+        "docs/reference/extracted/conversation/src/runtime.js",
+        "docs/reference/extracted/conversation/src/service.js",
+        "docs/reference/extracted/conversation/src/session-reference-rule.js",
+        "docs/reference/extracted/conversation/src/snapshot.js",
+        "docs/reference/extracted/conversation/src/span-map.js",
+        "docs/reference/extracted/conversation/src/stop-sequence.js",
+        "docs/reference/extracted/conversation/src/stop-shortcut.js",
+        "docs/reference/extracted/conversation/src/stores.js",
+        "docs/reference/extracted/conversation/src/submission-analytics.js",
+        "docs/reference/extracted/conversation/src/submission-policy.js",
+        "docs/reference/extracted/conversation/src/submission-settings.index-bundle.js",
+        "docs/reference/extracted/conversation/src/submission-settings.js",
+        "docs/reference/extracted/conversation/src/system-prompt.js",
+        "docs/reference/extracted/conversation/src/text-ref.js",
+        "docs/reference/extracted/conversation/src/user-text-document.js",
+        "docs/reference/extracted/conversation/src/user-text-registry.js",
+        "docs/reference/extracted/conversation/src/view-binding.js",
+        "docs/reference/extracted/conversation/src/view-pins.js",
+        "docs/reference/extracted/conversation/src/view-registry.js",
+        "docs/reference/extracted/conversation/src/whitespace-rules.js"
+      ]
+    },
+    {
+      "name": "cordis",
+      "css": [
+        "docs/reference/extracted/cordis/css/CordisDefineRow.module.css",
+        "docs/reference/extracted/cordis/css/CordisPanel.module.css",
+        "docs/reference/extracted/cordis/css/CordisRunRow.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/cordis/src/CordisActionRow.js",
+        "docs/reference/extracted/cordis/src/CordisDefineRow.js",
+        "docs/reference/extracted/cordis/src/CordisPanel.js",
+        "docs/reference/extracted/cordis/src/CordisPreparingRow.js",
+        "docs/reference/extracted/cordis/src/CordisRunRow.js",
+        "docs/reference/extracted/cordis/src/card-model.js",
+        "docs/reference/extracted/cordis/src/client.index.js",
+        "docs/reference/extracted/cordis/src/index.js",
+        "docs/reference/extracted/cordis/src/inventory.js",
+        "docs/reference/extracted/cordis/src/locales.js",
+        "docs/reference/extracted/cordis/src/run-card-index.js",
+        "docs/reference/extracted/cordis/src/status.js"
+      ]
+    },
+    {
+      "name": "creation-recommendations",
+      "css": [
+        "docs/reference/extracted/creation-recommendations/css/Card.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/creation-recommendations/src/Card.js",
+        "docs/reference/extracted/creation-recommendations/src/index.js",
+        "docs/reference/extracted/creation-recommendations/src/info-store.js",
+        "docs/reference/extracted/creation-recommendations/src/locales.js",
+        "docs/reference/extracted/creation-recommendations/src/mount.js"
+      ]
+    },
+    {
+      "name": "deliverables",
+      "css": [
+        "docs/reference/extracted/deliverables/css/ChangedFiles.module.css",
+        "docs/reference/extracted/deliverables/css/Deliverables.module.css",
+        "docs/reference/extracted/deliverables/css/FileDiff.module.css",
+        "docs/reference/extracted/deliverables/css/PresentRow.module.css",
+        "docs/reference/extracted/deliverables/css/ReviewTab.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/deliverables/src/ChangedFiles.js",
+        "docs/reference/extracted/deliverables/src/Deliverables.js",
+        "docs/reference/extracted/deliverables/src/FileDiff.js",
+        "docs/reference/extracted/deliverables/src/PresentRow.js",
+        "docs/reference/extracted/deliverables/src/PresentedFileCard.js",
+        "docs/reference/extracted/deliverables/src/ReviewTab.js",
+        "docs/reference/extracted/deliverables/src/changes-diff.js",
+        "docs/reference/extracted/deliverables/src/changes-summary.js",
+        "docs/reference/extracted/deliverables/src/changes.index-bundle.js",
+        "docs/reference/extracted/deliverables/src/changes.js",
+        "docs/reference/extracted/deliverables/src/client.index.js",
+        "docs/reference/extracted/deliverables/src/client.present-open.js",
+        "docs/reference/extracted/deliverables/src/host-read-store.js",
+        "docs/reference/extracted/deliverables/src/index.js",
+        "docs/reference/extracted/deliverables/src/locales.js",
+        "docs/reference/extracted/deliverables/src/present-open.js",
+        "docs/reference/extracted/deliverables/src/presented.index-bundle.js",
+        "docs/reference/extracted/deliverables/src/presented.js",
+        "docs/reference/extracted/deliverables/src/review-definition.js",
+        "docs/reference/extracted/deliverables/src/review-store.js",
+        "docs/reference/extracted/deliverables/src/turn-deliverables.js"
+      ]
+    },
+    {
+      "name": "directory-picker-browse",
+      "css": [
+        "docs/reference/extracted/directory-picker-browse/css/DirectoryBrowser.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/directory-picker-browse/src/DirectoryBrowser.js",
+        "docs/reference/extracted/directory-picker-browse/src/client.index.js",
+        "docs/reference/extracted/directory-picker-browse/src/flow.js",
+        "docs/reference/extracted/directory-picker-browse/src/index.js"
+      ]
+    },
+    {
+      "name": "directory-picker-native",
+      "css": [],
+      "src": [
+        "docs/reference/extracted/directory-picker-native/src/client.index.js",
+        "docs/reference/extracted/directory-picker-native/src/flow.js",
+        "docs/reference/extracted/directory-picker-native/src/index.js"
+      ]
+    },
+    {
+      "name": "entry-customization",
+      "css": [
+        "docs/reference/extracted/entry-customization/css/EntryMenu.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/entry-customization/src/EntryMenuContent.js",
+        "docs/reference/extracted/entry-customization/src/client.index.js",
+        "docs/reference/extracted/entry-customization/src/index.js",
+        "docs/reference/extracted/entry-customization/src/locales.js"
+      ]
+    },
+    {
+      "name": "file-actions",
+      "css": [],
+      "src": [
+        "docs/reference/extracted/file-actions/src/client.index.js",
+        "docs/reference/extracted/file-actions/src/context-menus.js",
+        "docs/reference/extracted/file-actions/src/files.js",
+        "docs/reference/extracted/file-actions/src/index.js",
+        "docs/reference/extracted/file-actions/src/locales.js"
+      ]
+    },
+    {
+      "name": "file-drag",
+      "css": [],
+      "src": [
+        "docs/reference/extracted/file-drag/src/client.index.js",
+        "docs/reference/extracted/file-drag/src/feedback.js",
+        "docs/reference/extracted/file-drag/src/index.js",
+        "docs/reference/extracted/file-drag/src/locales.js",
+        "docs/reference/extracted/file-drag/src/transfers.js"
+      ]
+    },
+    {
+      "name": "goal",
+      "css": [
+        "docs/reference/extracted/goal/css/GoalBar.module.css",
+        "docs/reference/extracted/goal/css/GoalCommandInputView.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/goal/src/GoalBar.js",
+        "docs/reference/extracted/goal/src/GoalCommandInputView.js",
+        "docs/reference/extracted/goal/src/GoalCommandReference.js",
+        "docs/reference/extracted/goal/src/activation-source.js",
+        "docs/reference/extracted/goal/src/client.index.js",
+        "docs/reference/extracted/goal/src/goal-command-input.js",
+        "docs/reference/extracted/goal/src/index.js",
+        "docs/reference/extracted/goal/src/locales.js",
+        "docs/reference/extracted/goal/src/user-text-rules.js"
+      ]
+    },
+    {
+      "name": "input-trigger",
+      "css": [
+        "docs/reference/extracted/input-trigger/css/MenuView.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/input-trigger/src/MenuView.js",
+        "docs/reference/extracted/input-trigger/src/client.index.js",
+        "docs/reference/extracted/input-trigger/src/controller.js",
+        "docs/reference/extracted/input-trigger/src/detect.js",
+        "docs/reference/extracted/input-trigger/src/index.js",
+        "docs/reference/extracted/input-trigger/src/locales.js",
+        "docs/reference/extracted/input-trigger/src/menu.js",
+        "docs/reference/extracted/input-trigger/src/service.js"
+      ]
+    },
+    {
+      "name": "jobs",
+      "css": [
+        "docs/reference/extracted/jobs/css/JobListAction.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/jobs/src/JobListAction.js",
+        "docs/reference/extracted/jobs/src/client.index.js",
+        "docs/reference/extracted/jobs/src/index.js",
+        "docs/reference/extracted/jobs/src/locales.js"
+      ]
+    },
+    {
+      "name": "layout",
+      "css": [
+        "docs/reference/extracted/layout/css/AppFrame.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/layout/src/AppFrame.js",
+        "docs/reference/extracted/layout/src/DocumentTitle.js",
+        "docs/reference/extracted/layout/src/_module-top.js",
+        "docs/reference/extracted/layout/src/client.index.js",
+        "docs/reference/extracted/layout/src/index.js",
+        "docs/reference/extracted/layout/src/service.js",
+        "docs/reference/extracted/layout/src/shortcut-locales.js",
+        "docs/reference/extracted/layout/src/stores.js",
+        "docs/reference/extracted/layout/src/theme-presenter.js"
+      ]
+    },
+    {
+      "name": "message-feedback",
+      "css": [
+        "docs/reference/extracted/message-feedback/css/FeedbackDialog.module.css",
+        "docs/reference/extracted/message-feedback/css/MessageFeedbackActions.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/message-feedback/src/FeedbackDialog.js",
+        "docs/reference/extracted/message-feedback/src/MessageFeedbackActions.js",
+        "docs/reference/extracted/message-feedback/src/client.index.js",
+        "docs/reference/extracted/message-feedback/src/controller.js",
+        "docs/reference/extracted/message-feedback/src/dialog.js",
+        "docs/reference/extracted/message-feedback/src/index.js",
+        "docs/reference/extracted/message-feedback/src/locales.js",
+        "docs/reference/extracted/message-feedback/src/surface.js"
+      ]
+    },
+    {
+      "name": "model-selection",
+      "css": [
+        "docs/reference/extracted/model-selection/css/ModelSelect.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/model-selection/src/ModelSelect.js",
+        "docs/reference/extracted/model-selection/src/catalog.js",
+        "docs/reference/extracted/model-selection/src/client.index.js",
+        "docs/reference/extracted/model-selection/src/directory.js",
+        "docs/reference/extracted/model-selection/src/index.js",
+        "docs/reference/extracted/model-selection/src/locales.js",
+        "docs/reference/extracted/model-selection/src/provider-order.js",
+        "docs/reference/extracted/model-selection/src/service.js"
+      ]
+    },
+    {
+      "name": "open-in-app",
+      "css": [
+        "docs/reference/extracted/open-in-app/css/OpenTargetButton.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/open-in-app/src/FileRouteAction.js",
+        "docs/reference/extracted/open-in-app/src/OpenInAppAction.js",
+        "docs/reference/extracted/open-in-app/src/OpenPathAction.js",
+        "docs/reference/extracted/open-in-app/src/OpenPathEmptyAction.js",
+        "docs/reference/extracted/open-in-app/src/OpenTargetButton.js",
+        "docs/reference/extracted/open-in-app/src/applications.js",
+        "docs/reference/extracted/open-in-app/src/client.index.js",
+        "docs/reference/extracted/open-in-app/src/context-menus.js",
+        "docs/reference/extracted/open-in-app/src/controller.js",
+        "docs/reference/extracted/open-in-app/src/file-applications.js",
+        "docs/reference/extracted/open-in-app/src/index.js",
+        "docs/reference/extracted/open-in-app/src/locales.js",
+        "docs/reference/extracted/open-in-app/src/open-path.js",
+        "docs/reference/extracted/open-in-app/src/open-toast.js",
+        "docs/reference/extracted/open-in-app/src/session-reveal.js"
+      ]
+    },
+    {
+      "name": "permission-presets",
+      "css": [
+        "docs/reference/extracted/permission-presets/css/PermissionRow.module.css",
+        "docs/reference/extracted/permission-presets/css/PermissionSelect.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/permission-presets/src/PermissionRow.js",
+        "docs/reference/extracted/permission-presets/src/PermissionSelect.js",
+        "docs/reference/extracted/permission-presets/src/catalog.js",
+        "docs/reference/extracted/permission-presets/src/client.index.js",
+        "docs/reference/extracted/permission-presets/src/index.js",
+        "docs/reference/extracted/permission-presets/src/locales.js",
+        "docs/reference/extracted/permission-presets/src/presentation.js",
+        "docs/reference/extracted/permission-presets/src/settings-store.js"
+      ]
+    },
+    {
+      "name": "plan",
+      "css": [
+        "docs/reference/extracted/plan/css/PlanModeControl.module.css",
+        "docs/reference/extracted/plan/css/PlanPreview.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/plan/src/PlanCard.js",
+        "docs/reference/extracted/plan/src/PlanModeControl.js",
+        "docs/reference/extracted/plan/src/PlanPreview.js",
+        "docs/reference/extracted/plan/src/client.index.js",
+        "docs/reference/extracted/plan/src/failure-line.js",
+        "docs/reference/extracted/plan/src/index.js",
+        "docs/reference/extracted/plan/src/locales.js",
+        "docs/reference/extracted/plan/src/plan-definition.js",
+        "docs/reference/extracted/plan/src/plan-resource.js",
+        "docs/reference/extracted/plan/src/plan.js",
+        "docs/reference/extracted/plan/src/review-preview.js",
+        "docs/reference/extracted/plan/src/review-store.js"
+      ]
+    },
+    {
+      "name": "plugin-manager",
+      "css": [
+        "docs/reference/extracted/plugin-manager/css/PluginManagerPage.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/plugin-manager/src/BundleDetailSection.js",
+        "docs/reference/extracted/plugin-manager/src/PluginManagerPage.js",
+        "docs/reference/extracted/plugin-manager/src/PluginRefreshToast.js",
+        "docs/reference/extracted/plugin-manager/src/PluginsPanelIcon.js",
+        "docs/reference/extracted/plugin-manager/src/client.index.js",
+        "docs/reference/extracted/plugin-manager/src/config-ledger.js",
+        "docs/reference/extracted/plugin-manager/src/detail-store.js",
+        "docs/reference/extracted/plugin-manager/src/header-scroll.js",
+        "docs/reference/extracted/plugin-manager/src/index.js",
+        "docs/reference/extracted/plugin-manager/src/manager-store.js",
+        "docs/reference/extracted/plugin-manager/src/navigation-store.js",
+        "docs/reference/extracted/plugin-manager/src/presentation.js",
+        "docs/reference/extracted/plugin-manager/src/sanitize-install-input.js",
+        "docs/reference/extracted/plugin-manager/src/tab-ledger.js",
+        "docs/reference/extracted/plugin-manager/src/versions.js"
+      ]
+    },
+    {
+      "name": "plugin-market",
+      "css": [
+        "docs/reference/extracted/plugin-market/css/DiscoverSection.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/plugin-market/src/DiscoverSection.js",
+        "docs/reference/extracted/plugin-market/src/PluginDetailSection.js",
+        "docs/reference/extracted/plugin-market/src/client.index.js",
+        "docs/reference/extracted/plugin-market/src/index.js",
+        "docs/reference/extracted/plugin-market/src/locales.js",
+        "docs/reference/extracted/plugin-market/src/presentation.js"
+      ]
+    },
+    {
+      "name": "plugin-recommendations",
+      "css": [
+        "docs/reference/extracted/plugin-recommendations/css/Card.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/plugin-recommendations/src/Card.js",
+        "docs/reference/extracted/plugin-recommendations/src/client.index.js",
+        "docs/reference/extracted/plugin-recommendations/src/index.js",
+        "docs/reference/extracted/plugin-recommendations/src/locales.js",
+        "docs/reference/extracted/plugin-recommendations/src/mount.js"
+      ]
+    },
+    {
+      "name": "primitives",
+      "css": [
+        "docs/reference/extracted/primitives/css/AnimatedRows.module.css",
+        "docs/reference/extracted/primitives/css/Button.module.css",
+        "docs/reference/extracted/primitives/css/Checkbox.module.css",
+        "docs/reference/extracted/primitives/css/CodeBlock.module.css",
+        "docs/reference/extracted/primitives/css/CodeCard.module.css",
+        "docs/reference/extracted/primitives/css/CommandText.module.css",
+        "docs/reference/extracted/primitives/css/ConnectionIndicator.module.css",
+        "docs/reference/extracted/primitives/css/DetailDocument.module.css",
+        "docs/reference/extracted/primitives/css/DiffBlock.module.css",
+        "docs/reference/extracted/primitives/css/DisclosureRow.module.css",
+        "docs/reference/extracted/primitives/css/FileTypeIcon.module.css",
+        "docs/reference/extracted/primitives/css/HoverCard.module.css",
+        "docs/reference/extracted/primitives/css/ImageLightbox.module.css",
+        "docs/reference/extracted/primitives/css/ImagePreview.module.css",
+        "docs/reference/extracted/primitives/css/InlineEditor.module.css",
+        "docs/reference/extracted/primitives/css/Input.module.css",
+        "docs/reference/extracted/primitives/css/JsonBlock.module.css",
+        "docs/reference/extracted/primitives/css/JsonTree.module.css",
+        "docs/reference/extracted/primitives/css/MarkdownText.module.css",
+        "docs/reference/extracted/primitives/css/Menu.module.css",
+        "docs/reference/extracted/primitives/css/MenuGroup.module.css",
+        "docs/reference/extracted/primitives/css/MenuSurface.module.css",
+        "docs/reference/extracted/primitives/css/Modal.module.css",
+        "docs/reference/extracted/primitives/css/PathLabel.module.css",
+        "docs/reference/extracted/primitives/css/Pill.module.css",
+        "docs/reference/extracted/primitives/css/QuotePreview.module.css",
+        "docs/reference/extracted/primitives/css/ReadBlock.module.css",
+        "docs/reference/extracted/primitives/css/RiskConfirmation.module.css",
+        "docs/reference/extracted/primitives/css/RowDragPreview.module.css",
+        "docs/reference/extracted/primitives/css/SearchBlock.module.css",
+        "docs/reference/extracted/primitives/css/SegmentedControl.module.css",
+        "docs/reference/extracted/primitives/css/SegmentedTabs.module.css",
+        "docs/reference/extracted/primitives/css/SettingsForm.module.css",
+        "docs/reference/extracted/primitives/css/ShortcutKeys.module.css",
+        "docs/reference/extracted/primitives/css/StateDot.module.css",
+        "docs/reference/extracted/primitives/css/Switch.module.css",
+        "docs/reference/extracted/primitives/css/Tag.module.css",
+        "docs/reference/extracted/primitives/css/TerminalBlock.module.css",
+        "docs/reference/extracted/primitives/css/TextShimmer.module.css",
+        "docs/reference/extracted/primitives/css/Toast.module.css",
+        "docs/reference/extracted/primitives/css/Tooltip.module.css",
+        "docs/reference/extracted/primitives/css/UserMessageBubble.module.css",
+        "docs/reference/extracted/primitives/css/WebBlock.module.css",
+        "docs/reference/extracted/primitives/css/ZoomControls.module.css",
+        "docs/reference/extracted/primitives/css/fields.module.css",
+        "docs/reference/extracted/primitives/css/user-text.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/primitives/src/AnimatedRows.js",
+        "docs/reference/extracted/primitives/src/BrandWordmark.js",
+        "docs/reference/extracted/primitives/src/Button.js",
+        "docs/reference/extracted/primitives/src/Checkbox.js",
+        "docs/reference/extracted/primitives/src/CodeBlock.js",
+        "docs/reference/extracted/primitives/src/CodeFileIcon.js",
+        "docs/reference/extracted/primitives/src/CodeToolbar.js",
+        "docs/reference/extracted/primitives/src/CommandText.js",
+        "docs/reference/extracted/primitives/src/ConnectionIndicator.js",
+        "docs/reference/extracted/primitives/src/DetailDocument.js",
+        "docs/reference/extracted/primitives/src/DiffBlock.js",
+        "docs/reference/extracted/primitives/src/DisclosureRow.js",
+        "docs/reference/extracted/primitives/src/DraggableImage.js",
+        "docs/reference/extracted/primitives/src/FileTypeIcon.js",
+        "docs/reference/extracted/primitives/src/FishLogo.js",
+        "docs/reference/extracted/primitives/src/FoldToggle.js",
+        "docs/reference/extracted/primitives/src/HoverCard.js",
+        "docs/reference/extracted/primitives/src/HoverCardGroup.js",
+        "docs/reference/extracted/primitives/src/ImageLightbox.js",
+        "docs/reference/extracted/primitives/src/ImagePreview.js",
+        "docs/reference/extracted/primitives/src/InlineEditor.js",
+        "docs/reference/extracted/primitives/src/Input.js",
+        "docs/reference/extracted/primitives/src/JsonBlock.js",
+        "docs/reference/extracted/primitives/src/JsonTree.js",
+        "docs/reference/extracted/primitives/src/LinkIcon.js",
+        "docs/reference/extracted/primitives/src/MarkdownDelegate.js",
+        "docs/reference/extracted/primitives/src/MarkdownText.js",
+        "docs/reference/extracted/primitives/src/Menu.js",
+        "docs/reference/extracted/primitives/src/MenuGroup.js",
+        "docs/reference/extracted/primitives/src/MenuSurface.js",
+        "docs/reference/extracted/primitives/src/Modal.js",
+        "docs/reference/extracted/primitives/src/PathLabel.js",
+        "docs/reference/extracted/primitives/src/PermissionIcon.js",
+        "docs/reference/extracted/primitives/src/Pill.js",
+        "docs/reference/extracted/primitives/src/QuotePreview.js",
+        "docs/reference/extracted/primitives/src/ReadBlock.js",
+        "docs/reference/extracted/primitives/src/ReferenceIcon.js",
+        "docs/reference/extracted/primitives/src/RiskConfirmation.js",
+        "docs/reference/extracted/primitives/src/SearchBlock.js",
+        "docs/reference/extracted/primitives/src/SegmentedControl.js",
+        "docs/reference/extracted/primitives/src/SegmentedTabs.js",
+        "docs/reference/extracted/primitives/src/SettingsForm.js",
+        "docs/reference/extracted/primitives/src/ShortcutKeys.js",
+        "docs/reference/extracted/primitives/src/SiteGlyph.js",
+        "docs/reference/extracted/primitives/src/StateDot.js",
+        "docs/reference/extracted/primitives/src/Switch.js",
+        "docs/reference/extracted/primitives/src/Tag.js",
+        "docs/reference/extracted/primitives/src/TerminalBlock.js",
+        "docs/reference/extracted/primitives/src/TextShimmer.js",
+        "docs/reference/extracted/primitives/src/Toast.js",
+        "docs/reference/extracted/primitives/src/Tooltip.js",
+        "docs/reference/extracted/primitives/src/UserMessageBubble.js",
+        "docs/reference/extracted/primitives/src/WebBlock.js",
+        "docs/reference/extracted/primitives/src/ZoomControls.js",
+        "docs/reference/extracted/primitives/src/ansi.js",
+        "docs/reference/extracted/primitives/src/artwork.js",
+        "docs/reference/extracted/primitives/src/cjkFriendlyStrong.js",
+        "docs/reference/extracted/primitives/src/clipboard.js",
+        "docs/reference/extracted/primitives/src/code-file-icon-artwork.js",
+        "docs/reference/extracted/primitives/src/code-highlighting.js",
+        "docs/reference/extracted/primitives/src/darwin-desktop.js",
+        "docs/reference/extracted/primitives/src/document-zoom.js",
+        "docs/reference/extracted/primitives/src/fields.js",
+        "docs/reference/extracted/primitives/src/file-link.js",
+        "docs/reference/extracted/primitives/src/file-size.js",
+        "docs/reference/extracted/primitives/src/focus.js",
+        "docs/reference/extracted/primitives/src/form-model.js",
+        "docs/reference/extracted/primitives/src/guide-artwork.js",
+        "docs/reference/extracted/primitives/src/head-tail-cap.js",
+        "docs/reference/extracted/primitives/src/highlight.js",
+        "docs/reference/extracted/primitives/src/image-drag.js",
+        "docs/reference/extracted/primitives/src/incremental.js",
+        "docs/reference/extracted/primitives/src/index.js",
+        "docs/reference/extracted/primitives/src/input-modality.js",
+        "docs/reference/extracted/primitives/src/katex.js",
+        "docs/reference/extracted/primitives/src/keyboard-composition.js",
+        "docs/reference/extracted/primitives/src/local-image-syntax.js",
+        "docs/reference/extracted/primitives/src/mathCompatibility.js",
+        "docs/reference/extracted/primitives/src/overlay-top-margin.js",
+        "docs/reference/extracted/primitives/src/parse.js",
+        "docs/reference/extracted/primitives/src/plain-text.js",
+        "docs/reference/extracted/primitives/src/plugin-artwork.js",
+        "docs/reference/extracted/primitives/src/quote-text.js",
+        "docs/reference/extracted/primitives/src/rank-by-name.js",
+        "docs/reference/extracted/primitives/src/relative-time.js",
+        "docs/reference/extracted/primitives/src/render.js",
+        "docs/reference/extracted/primitives/src/shared-artwork.js",
+        "docs/reference/extracted/primitives/src/tooltip-placement.js",
+        "docs/reference/extracted/primitives/src/use-clipboard-copy.js",
+        "docs/reference/extracted/primitives/src/useAnchoredMaxHeight.js",
+        "docs/reference/extracted/primitives/src/useAnchoredPosition.js",
+        "docs/reference/extracted/primitives/src/useDismissOnOutsidePointer.js",
+        "docs/reference/extracted/primitives/src/useModalLayer.js",
+        "docs/reference/extracted/primitives/src/useRowDragPreview.js",
+        "docs/reference/extracted/primitives/src/useViewportHighlighting.js",
+        "docs/reference/extracted/primitives/src/user-text.js",
+        "docs/reference/extracted/primitives/src/windows-path-destinations.js"
+      ]
+    },
+    {
+      "name": "reference",
+      "css": [],
+      "src": [
+        "docs/reference/extracted/reference/src/FileReference.js",
+        "docs/reference/extracted/reference/src/client.index.js",
+        "docs/reference/extracted/reference/src/index.js",
+        "docs/reference/extracted/reference/src/locales.js",
+        "docs/reference/extracted/reference/src/user-text-rules.js"
+      ]
+    },
+    {
+      "name": "renderer",
+      "css": [],
+      "src": [
+        "docs/reference/extracted/renderer/src/app.js",
+        "docs/reference/extracted/renderer/src/bind.js",
+        "docs/reference/extracted/renderer/src/bindings.js",
+        "docs/reference/extracted/renderer/src/client.index.js",
+        "docs/reference/extracted/renderer/src/errors.js",
+        "docs/reference/extracted/renderer/src/index.js",
+        "docs/reference/extracted/renderer/src/registry.js",
+        "docs/reference/extracted/renderer/src/scoped-slots.js"
+      ]
+    },
+    {
+      "name": "schedule",
+      "css": [
+        "docs/reference/extracted/schedule/css/ClockPicker.module.css",
+        "docs/reference/extracted/schedule/css/DatePicker.module.css",
+        "docs/reference/extracted/schedule/css/PickerPopover.module.css",
+        "docs/reference/extracted/schedule/css/ScheduleCatalogAction.module.css",
+        "docs/reference/extracted/schedule/css/ScheduleCreateCard.module.css",
+        "docs/reference/extracted/schedule/css/ScheduleTurnCard.module.css",
+        "docs/reference/extracted/schedule/css/SessionScheduleMark.module.css",
+        "docs/reference/extracted/schedule/css/TaskManagerPage.module.css",
+        "docs/reference/extracted/schedule/css/TaskMenu.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/schedule/src/CalendarIcon.js",
+        "docs/reference/extracted/schedule/src/CatalogFeedback.js",
+        "docs/reference/extracted/schedule/src/ClockPicker.js",
+        "docs/reference/extracted/schedule/src/DatePicker.js",
+        "docs/reference/extracted/schedule/src/DeleteToast.js",
+        "docs/reference/extracted/schedule/src/DeliveryHistory.js",
+        "docs/reference/extracted/schedule/src/NewSessionLimit.js",
+        "docs/reference/extracted/schedule/src/PickerPopover.js",
+        "docs/reference/extracted/schedule/src/RuleSelectRow.js",
+        "docs/reference/extracted/schedule/src/ScheduleCatalogAction.js",
+        "docs/reference/extracted/schedule/src/ScheduleCreateCard.js",
+        "docs/reference/extracted/schedule/src/ScheduleEmptyIllustration.js",
+        "docs/reference/extracted/schedule/src/ScheduleTaskTab.js",
+        "docs/reference/extracted/schedule/src/ScheduleTaskTabTitle.js",
+        "docs/reference/extracted/schedule/src/ScheduleTurnCard.js",
+        "docs/reference/extracted/schedule/src/SessionScheduleMark.js",
+        "docs/reference/extracted/schedule/src/TaskDetail.js",
+        "docs/reference/extracted/schedule/src/TaskEditorFields.js",
+        "docs/reference/extracted/schedule/src/TaskManagerIcon.js",
+        "docs/reference/extracted/schedule/src/TaskManagerPage.js",
+        "docs/reference/extracted/schedule/src/TaskMenu.js",
+        "docs/reference/extracted/schedule/src/TaskRuleControls.js",
+        "docs/reference/extracted/schedule/src/catalog-source.js",
+        "docs/reference/extracted/schedule/src/clear-ended.js",
+        "docs/reference/extracted/schedule/src/client.index.js",
+        "docs/reference/extracted/schedule/src/definition.js",
+        "docs/reference/extracted/schedule/src/editor-store.js",
+        "docs/reference/extracted/schedule/src/editor-timing.js",
+        "docs/reference/extracted/schedule/src/frequency-locales.js",
+        "docs/reference/extracted/schedule/src/index.js",
+        "docs/reference/extracted/schedule/src/locales.js",
+        "docs/reference/extracted/schedule/src/recent-time-zones.js",
+        "docs/reference/extracted/schedule/src/relative-clock.js",
+        "docs/reference/extracted/schedule/src/schedule-create-card.js",
+        "docs/reference/extracted/schedule/src/schedule-format.js",
+        "docs/reference/extracted/schedule/src/schedule-turn.js",
+        "docs/reference/extracted/schedule/src/session-link.js",
+        "docs/reference/extracted/schedule/src/session-schedule-state.js",
+        "docs/reference/extracted/schedule/src/task-cron.js",
+        "docs/reference/extracted/schedule/src/task-manager-locales.js",
+        "docs/reference/extracted/schedule/src/task-record.js",
+        "docs/reference/extracted/schedule/src/task-tab-bindings.js",
+        "docs/reference/extracted/schedule/src/task-tab-target.js"
+      ]
+    },
+    {
+      "name": "secret-mask",
+      "css": [
+        "docs/reference/extracted/secret-mask/css/SecretText.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/secret-mask/src/SecretText.js",
+        "docs/reference/extracted/secret-mask/src/_module-top.js",
+        "docs/reference/extracted/secret-mask/src/client.index.js",
+        "docs/reference/extracted/secret-mask/src/credential-scanner.js",
+        "docs/reference/extracted/secret-mask/src/format-tables.js",
+        "docs/reference/extracted/secret-mask/src/index.js",
+        "docs/reference/extracted/secret-mask/src/locales.js",
+        "docs/reference/extracted/secret-mask/src/secret-rule.js"
+      ]
+    },
+    {
+      "name": "session",
+      "css": [],
+      "src": [
+        "docs/reference/extracted/session/src/client.index.js",
+        "docs/reference/extracted/session/src/index.js",
+        "docs/reference/extracted/session/src/session-provider.js"
+      ]
+    },
+    {
+      "name": "settings",
+      "css": [],
+      "src": [
+        "docs/reference/extracted/settings/src/client.index.js",
+        "docs/reference/extracted/settings/src/config-form.js",
+        "docs/reference/extracted/settings/src/developer-tools-settings.index-bundle.js",
+        "docs/reference/extracted/settings/src/developer-tools-settings.js",
+        "docs/reference/extracted/settings/src/developer-tools.js",
+        "docs/reference/extracted/settings/src/index.js",
+        "docs/reference/extracted/settings/src/schema.js",
+        "docs/reference/extracted/settings/src/settings-mirror.js"
+      ]
+    },
+    {
+      "name": "settings-account",
+      "css": [
+        "docs/reference/extracted/settings-account/css/AccountAvatar.module.css",
+        "docs/reference/extracted/settings-account/css/AccountMenu.module.css",
+        "docs/reference/extracted/settings-account/css/AccountNotice.module.css",
+        "docs/reference/extracted/settings-account/css/AccountSection.module.css",
+        "docs/reference/extracted/settings-account/css/DesktopOnboarding.module.css",
+        "docs/reference/extracted/settings-account/css/OnboardingSurface.module.css",
+        "docs/reference/extracted/settings-account/css/PlatformOverlay.module.css",
+        "docs/reference/extracted/settings-account/css/SignInDialog.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/settings-account/src/AccountAvatar.js",
+        "docs/reference/extracted/settings-account/src/AccountMenu.js",
+        "docs/reference/extracted/settings-account/src/AccountNotice.js",
+        "docs/reference/extracted/settings-account/src/AccountOnboarding.js",
+        "docs/reference/extracted/settings-account/src/AccountPlatformHost.js",
+        "docs/reference/extracted/settings-account/src/AccountQuotaNotice.js",
+        "docs/reference/extracted/settings-account/src/AccountSection.js",
+        "docs/reference/extracted/settings-account/src/DesktopOnboarding.js",
+        "docs/reference/extracted/settings-account/src/DesktopOnboardingEntry.js",
+        "docs/reference/extracted/settings-account/src/LogoutIcon.js",
+        "docs/reference/extracted/settings-account/src/OnboardingConfirmation.js",
+        "docs/reference/extracted/settings-account/src/OnboardingCreditStep.js",
+        "docs/reference/extracted/settings-account/src/OnboardingIllustration.js",
+        "docs/reference/extracted/settings-account/src/OnboardingProcessStep.js",
+        "docs/reference/extracted/settings-account/src/OnboardingPurposeStep.js",
+        "docs/reference/extracted/settings-account/src/OnboardingSurface.js",
+        "docs/reference/extracted/settings-account/src/OnboardingWelcomeStep.js",
+        "docs/reference/extracted/settings-account/src/PlatformOverlay.js",
+        "docs/reference/extracted/settings-account/src/SignInDialog.js",
+        "docs/reference/extracted/settings-account/src/SignOutDialog.js",
+        "docs/reference/extracted/settings-account/src/account-avatar.js",
+        "docs/reference/extracted/settings-account/src/account-refresh.js",
+        "docs/reference/extracted/settings-account/src/authorize-url.js",
+        "docs/reference/extracted/settings-account/src/bonus-notices.js",
+        "docs/reference/extracted/settings-account/src/browser-login.js",
+        "docs/reference/extracted/settings-account/src/client-metadata.js",
+        "docs/reference/extracted/settings-account/src/client.index.js",
+        "docs/reference/extracted/settings-account/src/contact-config.index-bundle.js",
+        "docs/reference/extracted/settings-account/src/contact-config.js",
+        "docs/reference/extracted/settings-account/src/contact-url.js",
+        "docs/reference/extracted/settings-account/src/formatBalance.js",
+        "docs/reference/extracted/settings-account/src/index.js",
+        "docs/reference/extracted/settings-account/src/locales.js",
+        "docs/reference/extracted/settings-account/src/notice-transition.js",
+        "docs/reference/extracted/settings-account/src/onboarding-balance.js",
+        "docs/reference/extracted/settings-account/src/onboarding-credentials.js",
+        "docs/reference/extracted/settings-account/src/onboarding-settings.index-bundle.js",
+        "docs/reference/extracted/settings-account/src/onboarding-settings.js",
+        "docs/reference/extracted/settings-account/src/onboarding-state.js",
+        "docs/reference/extracted/settings-account/src/onboarding.js",
+        "docs/reference/extracted/settings-account/src/overlay-inert.js",
+        "docs/reference/extracted/settings-account/src/platform-pages.js"
+      ]
+    },
+    {
+      "name": "settings-agent-loop",
+      "css": [],
+      "src": [
+        "docs/reference/extracted/settings-agent-loop/src/AgentLoopCard.js",
+        "docs/reference/extracted/settings-agent-loop/src/agent-loop-card-controller.js",
+        "docs/reference/extracted/settings-agent-loop/src/client.index.js",
+        "docs/reference/extracted/settings-agent-loop/src/index.js",
+        "docs/reference/extracted/settings-agent-loop/src/locales.js"
+      ]
+    },
+    {
+      "name": "settings-general",
+      "css": [
+        "docs/reference/extracted/settings-general/css/CurrentVersionRow.module.css",
+        "docs/reference/extracted/settings-general/css/DesktopUpdateIndicator.module.css",
+        "docs/reference/extracted/settings-general/css/DeveloperToolsRow.module.css",
+        "docs/reference/extracted/settings-general/css/GeneralSection.module.css",
+        "docs/reference/extracted/settings-general/css/HostReleasePrompt.module.css",
+        "docs/reference/extracted/settings-general/css/SettingsDocumentAction.module.css",
+        "docs/reference/extracted/settings-general/css/SettingsRoot.module.css",
+        "docs/reference/extracted/settings-general/css/chrome.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/settings-general/src/CurrentVersionRow.js",
+        "docs/reference/extracted/settings-general/src/DesktopUpdateIndicator.js",
+        "docs/reference/extracted/settings-general/src/DeveloperToolsRow.js",
+        "docs/reference/extracted/settings-general/src/GeneralSection.js",
+        "docs/reference/extracted/settings-general/src/HostReleasePrompt.js",
+        "docs/reference/extracted/settings-general/src/SettingsDocumentAction.js",
+        "docs/reference/extracted/settings-general/src/SettingsRoot.js",
+        "docs/reference/extracted/settings-general/src/chrome.js",
+        "docs/reference/extracted/settings-general/src/client.index.js",
+        "docs/reference/extracted/settings-general/src/desktop-update-source.js",
+        "docs/reference/extracted/settings-general/src/index.js",
+        "docs/reference/extracted/settings-general/src/locales.js",
+        "docs/reference/extracted/settings-general/src/settings-document-store.js",
+        "docs/reference/extracted/settings-general/src/shell-store.js"
+      ]
+    },
+    {
+      "name": "settings-models",
+      "css": [
+        "docs/reference/extracted/settings-models/css/DeepSeekOnboardingDialog.module.css",
+        "docs/reference/extracted/settings-models/css/ModelsSection.module.css",
+        "docs/reference/extracted/settings-models/css/OnboardingModal.module.css",
+        "docs/reference/extracted/settings-models/css/WelcomeNotice.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/settings-models/src/ApiKeyInput.js",
+        "docs/reference/extracted/settings-models/src/CustomProviderCard.js",
+        "docs/reference/extracted/settings-models/src/DeepSeekModelsEditor.js",
+        "docs/reference/extracted/settings-models/src/DeepSeekOnboardingDialog.js",
+        "docs/reference/extracted/settings-models/src/EditorFooter.js",
+        "docs/reference/extracted/settings-models/src/ModelInputTypes.js",
+        "docs/reference/extracted/settings-models/src/ModelListEditor.js",
+        "docs/reference/extracted/settings-models/src/ModelReasoningEfforts.js",
+        "docs/reference/extracted/settings-models/src/ModelRow.js",
+        "docs/reference/extracted/settings-models/src/ModelsSection.js",
+        "docs/reference/extracted/settings-models/src/OnboardingModal.js",
+        "docs/reference/extracted/settings-models/src/ProviderEditor.js",
+        "docs/reference/extracted/settings-models/src/WelcomeNotice.js",
+        "docs/reference/extracted/settings-models/src/apiKey.js",
+        "docs/reference/extracted/settings-models/src/client.index.js",
+        "docs/reference/extracted/settings-models/src/index.js",
+        "docs/reference/extracted/settings-models/src/locales.js",
+        "docs/reference/extracted/settings-models/src/onboarding-config.index-bundle.js",
+        "docs/reference/extracted/settings-models/src/onboarding-config.js",
+        "docs/reference/extracted/settings-models/src/onboarding-copy.js",
+        "docs/reference/extracted/settings-models/src/operations.js",
+        "docs/reference/extracted/settings-models/src/protocol-label.js",
+        "docs/reference/extracted/settings-models/src/schema-operations.js",
+        "docs/reference/extracted/settings-models/src/store.js",
+        "docs/reference/extracted/settings-models/src/useModelRows.js",
+        "docs/reference/extracted/settings-models/src/welcome-store.js"
+      ]
+    },
+    {
+      "name": "settings-plugin-inventory",
+      "css": [
+        "docs/reference/extracted/settings-plugin-inventory/css/PluginInventorySettingsTab.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/settings-plugin-inventory/src/PluginInventorySettingsTab.js",
+        "docs/reference/extracted/settings-plugin-inventory/src/client.index.js",
+        "docs/reference/extracted/settings-plugin-inventory/src/index.js",
+        "docs/reference/extracted/settings-plugin-inventory/src/locales.js"
+      ]
+    },
+    {
+      "name": "settings-plugins",
+      "css": [
+        "docs/reference/extracted/settings-plugins/css/PluginsSettingsSection.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/settings-plugins/src/PluginsSettingsSection.js",
+        "docs/reference/extracted/settings-plugins/src/client.index.js",
+        "docs/reference/extracted/settings-plugins/src/index.js",
+        "docs/reference/extracted/settings-plugins/src/locales.js"
+      ]
+    },
+    {
+      "name": "settings-session-log",
+      "css": [
+        "docs/reference/extracted/settings-session-log/css/UploadRow.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/settings-session-log/src/UploadRow.js",
+        "docs/reference/extracted/settings-session-log/src/client.index.js",
+        "docs/reference/extracted/settings-session-log/src/index.js",
+        "docs/reference/extracted/settings-session-log/src/locales.js",
+        "docs/reference/extracted/settings-session-log/src/upload-preference.js"
+      ]
+    },
+    {
+      "name": "settings-shell",
+      "css": [],
+      "src": [
+        "docs/reference/extracted/settings-shell/src/ShellCard.js",
+        "docs/reference/extracted/settings-shell/src/client.index.js",
+        "docs/reference/extracted/settings-shell/src/index.js",
+        "docs/reference/extracted/settings-shell/src/locales.js",
+        "docs/reference/extracted/settings-shell/src/shell-card-controller.js"
+      ]
+    },
+    {
+      "name": "settings-subagent",
+      "css": [
+        "docs/reference/extracted/settings-subagent/css/SubagentCard.module.css",
+        "docs/reference/extracted/settings-subagent/css/SubagentLimitsFields.module.css",
+        "docs/reference/extracted/settings-subagent/css/SubagentModelSelectionFields.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/settings-subagent/src/SubagentCard.js",
+        "docs/reference/extracted/settings-subagent/src/SubagentLimitsFields.js",
+        "docs/reference/extracted/settings-subagent/src/SubagentModelSelectionFields.js",
+        "docs/reference/extracted/settings-subagent/src/client.index.js",
+        "docs/reference/extracted/settings-subagent/src/index.js",
+        "docs/reference/extracted/settings-subagent/src/locales.js",
+        "docs/reference/extracted/settings-subagent/src/subagent-card-controller.js",
+        "docs/reference/extracted/settings-subagent/src/subagent-limits-card-controller.js",
+        "docs/reference/extracted/settings-subagent/src/subagent-model-selection-card-controller.js"
+      ]
+    },
+    {
+      "name": "settings-web-search",
+      "css": [
+        "docs/reference/extracted/settings-web-search/css/WebSearchCard.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/settings-web-search/src/WebSearchCard.js",
+        "docs/reference/extracted/settings-web-search/src/client.index.js",
+        "docs/reference/extracted/settings-web-search/src/index.js",
+        "docs/reference/extracted/settings-web-search/src/locales.js",
+        "docs/reference/extracted/settings-web-search/src/web-search-card-controller.js"
+      ]
+    },
+    {
+      "name": "shortcuts",
+      "css": [
+        "docs/reference/extracted/shortcuts/css/Reference.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/shortcuts/src/Editor.js",
+        "docs/reference/extracted/shortcuts/src/Icons.js",
+        "docs/reference/extracted/shortcuts/src/Reference.js",
+        "docs/reference/extracted/shortcuts/src/client.index.js",
+        "docs/reference/extracted/shortcuts/src/feedback.js",
+        "docs/reference/extracted/shortcuts/src/fixed.js",
+        "docs/reference/extracted/shortcuts/src/index.js",
+        "docs/reference/extracted/shortcuts/src/locales.js",
+        "docs/reference/extracted/shortcuts/src/store.js"
+      ]
+    },
+    {
+      "name": "sidebar",
+      "css": [
+        "docs/reference/extracted/sidebar/css/HeaderLeadingControls.module.css",
+        "docs/reference/extracted/sidebar/css/SidebarRoot.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/sidebar/src/HeaderLeadingControls.js",
+        "docs/reference/extracted/sidebar/src/SidebarRoot.js",
+        "docs/reference/extracted/sidebar/src/_module-top.js",
+        "docs/reference/extracted/sidebar/src/client.index.js",
+        "docs/reference/extracted/sidebar/src/index.js",
+        "docs/reference/extracted/sidebar/src/locales.js"
+      ]
+    },
+    {
+      "name": "sidebar-browser",
+      "css": [
+        "docs/reference/extracted/sidebar-browser/css/Browser.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/sidebar-browser/src/BrowserBody.js",
+        "docs/reference/extracted/sidebar-browser/src/BrowserController.js",
+        "docs/reference/extracted/sidebar-browser/src/BrowserFrame.js",
+        "docs/reference/extracted/sidebar-browser/src/BrowserPersistence.js",
+        "docs/reference/extracted/sidebar-browser/src/BrowserTitle.js",
+        "docs/reference/extracted/sidebar-browser/src/ElectronWebViewImpl.js",
+        "docs/reference/extracted/sidebar-browser/src/ElectronWebviewPresentation.js",
+        "docs/reference/extracted/sidebar-browser/src/IframeImpl.js",
+        "docs/reference/extracted/sidebar-browser/src/IframePresentation.js",
+        "docs/reference/extracted/sidebar-browser/src/client.electron.pages.js",
+        "docs/reference/extracted/sidebar-browser/src/client.index.js",
+        "docs/reference/extracted/sidebar-browser/src/client.pages.js",
+        "docs/reference/extracted/sidebar-browser/src/definition.js",
+        "docs/reference/extracted/sidebar-browser/src/index.js",
+        "docs/reference/extracted/sidebar-browser/src/locales.js",
+        "docs/reference/extracted/sidebar-browser/src/store.js",
+        "docs/reference/extracted/sidebar-browser/src/workspace.js"
+      ]
+    },
+    {
+      "name": "sidebar-documentpreview",
+      "css": [
+        "docs/reference/extracted/sidebar-documentpreview/css/CodeBody.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/ExcelBody.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/FontNotice.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/HtmlBody.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/ImageBody.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/LoadingIndicator.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/MarkdownBody.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/OfficeBody.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/PdfBody.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/TextPreview.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/ZoomViewport.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/frontmatter-fields.module.css",
+        "docs/reference/extracted/sidebar-documentpreview/css/index.css"
+      ],
+      "src": [
+        "docs/reference/extracted/sidebar-documentpreview/src/CodeBody.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/FontNotice.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/HtmlBody.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/ImageBody.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/LazyExcelBody.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/LazyPdfBody.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/LoadingIndicator.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/MarkdownBody.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/OfficeBody.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/OfficeFontAction.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/PreviewFrame.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/TextBody.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/TextPreview.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/TextTitle.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/ZoomViewport.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/assets.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/basic-document.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/bootstrap.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/bytes.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/cache.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.code.index.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.code.locales.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.excel.index.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.excel.locales.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.face.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.html.index.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.html.locales.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.image.index.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.image.locales.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.index.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.locales.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.markdown.index.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.markdown.locales.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.office.face.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.office.index.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.office.locales.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.office.store.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.pdf.index.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.pdf.locales.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.pdf.store.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.store.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.text.index.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.zoom.locales.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/client.zoom.store.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/config.index-bundle.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/config.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/contract.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/definition.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/document.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/error.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/errors.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/excel.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/failure-line.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/format.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/frontmatter-fields.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/frontmatter.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/index.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/lines.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/model.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/pack.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/pan.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/parse.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/path-images.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/pdf.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/read-relative.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/registry.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/resource-group.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/rpc.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/runtime.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/suffix.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/tab-lifetime.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/text.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/types.js",
+        "docs/reference/extracted/sidebar-documentpreview/src/unviewable.js"
+      ]
+    },
+    {
+      "name": "sidebar-files",
+      "css": [
+        "docs/reference/extracted/sidebar-files/css/FileTree.module.css",
+        "docs/reference/extracted/sidebar-files/css/FilesBody.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/sidebar-files/src/FileNavigator.js",
+        "docs/reference/extracted/sidebar-files/src/FileTree.js",
+        "docs/reference/extracted/sidebar-files/src/FilesBody.js",
+        "docs/reference/extracted/sidebar-files/src/FilesTitle.js",
+        "docs/reference/extracted/sidebar-files/src/NavigatorToggle.js",
+        "docs/reference/extracted/sidebar-files/src/client.index.js",
+        "docs/reference/extracted/sidebar-files/src/definition.js",
+        "docs/reference/extracted/sidebar-files/src/directory-node.js",
+        "docs/reference/extracted/sidebar-files/src/face.js",
+        "docs/reference/extracted/sidebar-files/src/index.js",
+        "docs/reference/extracted/sidebar-files/src/locales.js",
+        "docs/reference/extracted/sidebar-files/src/navigator-layout.js",
+        "docs/reference/extracted/sidebar-files/src/workspace-tree.js"
+      ]
+    },
+    {
+      "name": "sidebar-right",
+      "css": [
+        "docs/reference/extracted/sidebar-right/css/ExpandButton.module.css",
+        "docs/reference/extracted/sidebar-right/css/GuideBody.module.css",
+        "docs/reference/extracted/sidebar-right/css/SidebarRight.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/sidebar-right/src/ExpandButton.js",
+        "docs/reference/extracted/sidebar-right/src/GuideBody.js",
+        "docs/reference/extracted/sidebar-right/src/GuideMoreIcon.js",
+        "docs/reference/extracted/sidebar-right/src/GuideTitle.js",
+        "docs/reference/extracted/sidebar-right/src/RightbarRoot.js",
+        "docs/reference/extracted/sidebar-right/src/SidebarRight.js",
+        "docs/reference/extracted/sidebar-right/src/TabMenuContent.js",
+        "docs/reference/extracted/sidebar-right/src/client.index.js",
+        "docs/reference/extracted/sidebar-right/src/close-focus.js",
+        "docs/reference/extracted/sidebar-right/src/definition.js",
+        "docs/reference/extracted/sidebar-right/src/flash.js",
+        "docs/reference/extracted/sidebar-right/src/focus.js",
+        "docs/reference/extracted/sidebar-right/src/index.js",
+        "docs/reference/extracted/sidebar-right/src/labels.js",
+        "docs/reference/extracted/sidebar-right/src/locales.js",
+        "docs/reference/extracted/sidebar-right/src/persistence.js",
+        "docs/reference/extracted/sidebar-right/src/seed.js",
+        "docs/reference/extracted/sidebar-right/src/service.js",
+        "docs/reference/extracted/sidebar-right/src/session-view.js",
+        "docs/reference/extracted/sidebar-right/src/session-views.js",
+        "docs/reference/extracted/sidebar-right/src/shortcuts.js",
+        "docs/reference/extracted/sidebar-right/src/stores.js",
+        "docs/reference/extracted/sidebar-right/src/tab-domain.js",
+        "docs/reference/extracted/sidebar-right/src/tab-info.js",
+        "docs/reference/extracted/sidebar-right/src/tab-inventory.js",
+        "docs/reference/extracted/sidebar-right/src/tab-registry.js"
+      ]
+    },
+    {
+      "name": "sidebar-terminal",
+      "css": [
+        "docs/reference/extracted/sidebar-terminal/css/TerminalGuide.module.css",
+        "docs/reference/extracted/sidebar-terminal/css/TerminalTitle.module.css",
+        "docs/reference/extracted/sidebar-terminal/css/terminal.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/sidebar-terminal/src/LazyTerminalBody.js",
+        "docs/reference/extracted/sidebar-terminal/src/TerminalGuide.js",
+        "docs/reference/extracted/sidebar-terminal/src/TerminalIcon.js",
+        "docs/reference/extracted/sidebar-terminal/src/TerminalTitle.js",
+        "docs/reference/extracted/sidebar-terminal/src/client.index.js",
+        "docs/reference/extracted/sidebar-terminal/src/index.js",
+        "docs/reference/extracted/sidebar-terminal/src/locales.js",
+        "docs/reference/extracted/sidebar-terminal/src/terminal-cursor.js",
+        "docs/reference/extracted/sidebar-terminal/src/terminal-theme.js",
+        "docs/reference/extracted/sidebar-terminal/src/terminal.js"
+      ]
+    },
+    {
+      "name": "skill",
+      "css": [
+        "docs/reference/extracted/skill/css/SkillRow.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/skill/src/SkillReference.js",
+        "docs/reference/extracted/skill/src/SkillRow.js",
+        "docs/reference/extracted/skill/src/client.index.js",
+        "docs/reference/extracted/skill/src/index.js",
+        "docs/reference/extracted/skill/src/locales.js",
+        "docs/reference/extracted/skill/src/user-text-rules.js"
+      ]
+    },
+    {
+      "name": "subagent",
+      "css": [
+        "docs/reference/extracted/subagent/css/SidebarChat.module.css",
+        "docs/reference/extracted/subagent/css/SubagentHeaderLineage.module.css",
+        "docs/reference/extracted/subagent/css/SubagentReadOnlyComposer.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/subagent/src/SubagentHeaderLineage.js",
+        "docs/reference/extracted/subagent/src/SubagentReadOnlyComposer.js",
+        "docs/reference/extracted/subagent/src/client.index.js",
+        "docs/reference/extracted/subagent/src/client.sidebar-chat.index.js",
+        "docs/reference/extracted/subagent/src/index.js",
+        "docs/reference/extracted/subagent/src/locales.js"
+      ]
+    },
+    {
+      "name": "theme",
+      "css": [
+        "docs/reference/extracted/theme/css/AppearanceRow.module.css",
+        "docs/reference/extracted/theme/css/FontFamilyRow.module.css",
+        "docs/reference/extracted/theme/css/FontSettingsGroup.module.css",
+        "docs/reference/extracted/theme/css/FontSizeRow.module.css",
+        "docs/reference/extracted/theme/css/base.css",
+        "docs/reference/extracted/theme/css/brand-font.css",
+        "docs/reference/extracted/theme/css/corner-shape.css",
+        "docs/reference/extracted/theme/css/design-platform.css",
+        "docs/reference/extracted/theme/css/focus.css",
+        "docs/reference/extracted/theme/css/gradient-shadow-text.css",
+        "docs/reference/extracted/theme/css/onboarding.css",
+        "docs/reference/extracted/theme/css/scrollbar.css",
+        "docs/reference/extracted/theme/css/shiki.css"
+      ],
+      "src": [
+        "docs/reference/extracted/theme/src/AppearanceRow.js",
+        "docs/reference/extracted/theme/src/FontFamilyRow.js",
+        "docs/reference/extracted/theme/src/FontSettingsGroup.js",
+        "docs/reference/extracted/theme/src/FontSizeRow.js",
+        "docs/reference/extracted/theme/src/boot-theme.js",
+        "docs/reference/extracted/theme/src/client.index.js",
+        "docs/reference/extracted/theme/src/icon-sprite.js",
+        "docs/reference/extracted/theme/src/index.js",
+        "docs/reference/extracted/theme/src/locales.js",
+        "docs/reference/extracted/theme/src/settings-store.js",
+        "docs/reference/extracted/theme/src/styles.js",
+        "docs/reference/extracted/theme/src/theme-settings.index-bundle.js",
+        "docs/reference/extracted/theme/src/theme-settings.js"
+      ]
+    },
+    {
+      "name": "tool",
+      "css": [
+        "docs/reference/extracted/tool/css/AskQuestionCard.module.css",
+        "docs/reference/extracted/tool/css/ExitCodeBadge.module.css",
+        "docs/reference/extracted/tool/css/QuestionToolRow.module.css",
+        "docs/reference/extracted/tool/css/ToolCallTree.module.css",
+        "docs/reference/extracted/tool/css/ToolDetails.module.css",
+        "docs/reference/extracted/tool/css/ToolRow.module.css",
+        "docs/reference/extracted/tool/css/bash-sample.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/tool/src/AskQuestionCard.js",
+        "docs/reference/extracted/tool/src/ExitCodeBadge.js",
+        "docs/reference/extracted/tool/src/GenericToolCard.js",
+        "docs/reference/extracted/tool/src/QuestionToolRow.js",
+        "docs/reference/extracted/tool/src/ToolCallTree.js",
+        "docs/reference/extracted/tool/src/ToolDetails.js",
+        "docs/reference/extracted/tool/src/ToolRow.js",
+        "docs/reference/extracted/tool/src/apply.js",
+        "docs/reference/extracted/tool/src/ask-question-row.js",
+        "docs/reference/extracted/tool/src/auto-review-denial.js",
+        "docs/reference/extracted/tool/src/bash-sample.js",
+        "docs/reference/extracted/tool/src/control-details-model.js",
+        "docs/reference/extracted/tool/src/detail-model-shared.js",
+        "docs/reference/extracted/tool/src/details-card-model.js",
+        "docs/reference/extracted/tool/src/details-row.js",
+        "docs/reference/extracted/tool/src/diff-card-model.js",
+        "docs/reference/extracted/tool/src/file-menu.js",
+        "docs/reference/extracted/tool/src/file-mutation-row.js",
+        "docs/reference/extracted/tool/src/image-card-model.js",
+        "docs/reference/extracted/tool/src/index.js",
+        "docs/reference/extracted/tool/src/inspection-details-model.js",
+        "docs/reference/extracted/tool/src/locale.js",
+        "docs/reference/extracted/tool/src/plan-summary.js",
+        "docs/reference/extracted/tool/src/primitive-labels.js",
+        "docs/reference/extracted/tool/src/raw-tool-call.js",
+        "docs/reference/extracted/tool/src/read-card-model.js",
+        "docs/reference/extracted/tool/src/read-family-row.js",
+        "docs/reference/extracted/tool/src/read-image-row.js",
+        "docs/reference/extracted/tool/src/read-row.js",
+        "docs/reference/extracted/tool/src/recorded-path.js",
+        "docs/reference/extracted/tool/src/search-card-model.js",
+        "docs/reference/extracted/tool/src/search-row.js",
+        "docs/reference/extracted/tool/src/terminal-card-model.js",
+        "docs/reference/extracted/tool/src/todo-diff-model.js",
+        "docs/reference/extracted/tool/src/todo-history.js",
+        "docs/reference/extracted/tool/src/todo-row.js",
+        "docs/reference/extracted/tool/src/tool-call-model.js",
+        "docs/reference/extracted/tool/src/web-card-model.js",
+        "docs/reference/extracted/tool/src/web-row.js"
+      ]
+    },
+    {
+      "name": "trajectory",
+      "css": [
+        "docs/reference/extracted/trajectory/css/TrajectoryTable.module.css",
+        "docs/reference/extracted/trajectory/css/TrajectoryTimeline.module.css",
+        "docs/reference/extracted/trajectory/css/TrajectoryToolbar.module.css",
+        "docs/reference/extracted/trajectory/css/views.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/trajectory/src/TrajectoryTable.js",
+        "docs/reference/extracted/trajectory/src/TrajectoryTimeline.js",
+        "docs/reference/extracted/trajectory/src/TrajectoryToolbar.js",
+        "docs/reference/extracted/trajectory/src/TrajectoryView.js",
+        "docs/reference/extracted/trajectory/src/client.index.js",
+        "docs/reference/extracted/trajectory/src/code-program.js",
+        "docs/reference/extracted/trajectory/src/copy-codes.js",
+        "docs/reference/extracted/trajectory/src/duration-store.js",
+        "docs/reference/extracted/trajectory/src/index.js",
+        "docs/reference/extracted/trajectory/src/layout.js",
+        "docs/reference/extracted/trajectory/src/locales.js",
+        "docs/reference/extracted/trajectory/src/string-wrapping-store.js",
+        "docs/reference/extracted/trajectory/src/timeline.js",
+        "docs/reference/extracted/trajectory/src/trajectory-assistant-definition.js",
+        "docs/reference/extracted/trajectory/src/trajectory-compaction-definition.js",
+        "docs/reference/extracted/trajectory/src/trajectory-definition-common.js",
+        "docs/reference/extracted/trajectory/src/trajectory-event-projection.js",
+        "docs/reference/extracted/trajectory/src/trajectory-message-definitions.js",
+        "docs/reference/extracted/trajectory/src/trajectory-preview.js",
+        "docs/reference/extracted/trajectory/src/trajectory-record.js",
+        "docs/reference/extracted/trajectory/src/trajectory-request-header-definition.js",
+        "docs/reference/extracted/trajectory/src/trajectory-search-index.js",
+        "docs/reference/extracted/trajectory/src/trajectory-snapshot-builder.js",
+        "docs/reference/extracted/trajectory/src/trajectory-tool-definition.js",
+        "docs/reference/extracted/trajectory/src/trajectory-virtual-rows.js",
+        "docs/reference/extracted/trajectory/src/watch-tool-result.js"
+      ]
+    },
+    {
+      "name": "user-questions",
+      "css": [
+        "docs/reference/extracted/user-questions/css/PlanReviewPanel.module.css",
+        "docs/reference/extracted/user-questions/css/QuestionComposer.module.css",
+        "docs/reference/extracted/user-questions/css/QuestionReplyView.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/user-questions/src/PlanReviewPanel.js",
+        "docs/reference/extracted/user-questions/src/QuestionComposer.js",
+        "docs/reference/extracted/user-questions/src/QuestionReplyView.js",
+        "docs/reference/extracted/user-questions/src/client.index.js",
+        "docs/reference/extracted/user-questions/src/draft-store.js",
+        "docs/reference/extracted/user-questions/src/index.js",
+        "docs/reference/extracted/user-questions/src/locales.js",
+        "docs/reference/extracted/user-questions/src/question-reply.js",
+        "docs/reference/extracted/user-questions/src/slots.js"
+      ]
+    },
+    {
+      "name": "workflow-run",
+      "css": [
+        "docs/reference/extracted/workflow-run/css/WorkflowRunPanel.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/workflow-run/src/WorkflowRunPanel.js",
+        "docs/reference/extracted/workflow-run/src/client.index.js",
+        "docs/reference/extracted/workflow-run/src/index.js",
+        "docs/reference/extracted/workflow-run/src/locales.js",
+        "docs/reference/extracted/workflow-run/src/workflow-definition.js"
+      ]
+    },
+    {
+      "name": "workspace",
+      "css": [
+        "docs/reference/extracted/workspace/css/Rows.module.css",
+        "docs/reference/extracted/workspace/css/WorkspaceBrowser.module.css",
+        "docs/reference/extracted/workspace/css/WorkspacePicker.module.css"
+      ],
+      "src": [
+        "docs/reference/extracted/workspace/src/ArchiveSession.js",
+        "docs/reference/extracted/workspace/src/PinSession.js",
+        "docs/reference/extracted/workspace/src/RenameSession.js",
+        "docs/reference/extracted/workspace/src/RowActionToast.js",
+        "docs/reference/extracted/workspace/src/Rows.js",
+        "docs/reference/extracted/workspace/src/SessionMenu.js",
+        "docs/reference/extracted/workspace/src/Toast.js",
+        "docs/reference/extracted/workspace/src/WorkspaceBrowser.js",
+        "docs/reference/extracted/workspace/src/WorkspaceDialogs.js",
+        "docs/reference/extracted/workspace/src/WorkspacePicker.js",
+        "docs/reference/extracted/workspace/src/client.index.js",
+        "docs/reference/extracted/workspace/src/context-menus.js",
+        "docs/reference/extracted/workspace/src/derived.js",
+        "docs/reference/extracted/workspace/src/index.js",
+        "docs/reference/extracted/workspace/src/locales.js",
+        "docs/reference/extracted/workspace/src/navigation.js",
+        "docs/reference/extracted/workspace/src/path-suffix.js",
+        "docs/reference/extracted/workspace/src/pin-order.js",
+        "docs/reference/extracted/workspace/src/register.js",
+        "docs/reference/extracted/workspace/src/shortcuts.js",
+        "docs/reference/extracted/workspace/src/slots.js",
+        "docs/reference/extracted/workspace/src/stores.js"
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "key": "contextMenu.content",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "context-menu"
+      ]
+    },
+    {
+      "key": "contextMenu.icon",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "context-menu"
+      ]
+    },
+    {
+      "key": "conversation.approval.detail",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "approval"
+      ]
+    },
+    {
+      "key": "conversation.chat.assistant-actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "chat"
+      ]
+    },
+    {
+      "key": "conversation.chat.commandview",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "chat"
+      ]
+    },
+    {
+      "key": "conversation.chat.flow",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "chat"
+      ]
+    },
+    {
+      "key": "conversation.chat.message.images",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "chat"
+      ]
+    },
+    {
+      "key": "conversation.chat.node",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "chat"
+      ]
+    },
+    {
+      "key": "conversation.chat.reasoning.body",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "chat"
+      ]
+    },
+    {
+      "key": "conversation.chat.text-interaction",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "chat"
+      ]
+    },
+    {
+      "key": "conversation.chat.turnTail",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "chat"
+      ]
+    },
+    {
+      "key": "conversation.chat.user.before",
+      "kind": "content",
+      "contract": "chain",
+      "readers": [
+        "chat"
+      ]
+    },
+    {
+      "key": "conversation.chat.user.images",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "chat"
+      ]
+    },
+    {
+      "key": "conversation.composer",
+      "kind": "content",
+      "contract": "chain",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.composer.bar",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.composer.dock",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.header",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.header.leading",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.hero.agentPreset",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.hero.brand.mark",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.hero.options",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.hero.workspace",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.hero.workspace.directoryFlow",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "workspace"
+      ]
+    },
+    {
+      "key": "conversation.input.activity",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.input.attachments",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.input.dock",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.input.left",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.input.model",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.input.model.label",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "model-selection"
+      ]
+    },
+    {
+      "key": "conversation.input.overlay",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.input.permission",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.input.plan",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.input.right",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.plan-review.actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "user-questions"
+      ]
+    },
+    {
+      "key": "conversation.session",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation",
+        "subagent"
+      ]
+    },
+    {
+      "key": "conversation.session.header",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.session.header.actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.session.header.corner",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.session.header.lineage",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.session.header.utilities",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.session.header.views.actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.trajectory.images",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "trajectory"
+      ]
+    },
+    {
+      "key": "conversation.user.text.node",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "conversation.view",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "deliverables.file.actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "deliverables"
+      ]
+    },
+    {
+      "key": "deliverables.review.file.actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "deliverables"
+      ]
+    },
+    {
+      "key": "main",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "layout"
+      ]
+    },
+    {
+      "key": "main.conversation",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "conversation"
+      ]
+    },
+    {
+      "key": "plugins.add.actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "plugin-manager"
+      ]
+    },
+    {
+      "key": "plugins.bundle.activation",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "plugin-manager"
+      ]
+    },
+    {
+      "key": "plugins.bundle.config",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "plugin-manager"
+      ]
+    },
+    {
+      "key": "plugins.detail.actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "plugin-manager"
+      ]
+    },
+    {
+      "key": "plugins.detail.badge",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "plugin-manager"
+      ]
+    },
+    {
+      "key": "plugins.detail.section",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "plugin-manager"
+      ]
+    },
+    {
+      "key": "plugins.item",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "plugin-manager"
+      ]
+    },
+    {
+      "key": "plugins.row.config",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "plugin-manager"
+      ]
+    },
+    {
+      "key": "plugins.tab",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "plugin-manager"
+      ]
+    },
+    {
+      "key": "rightbar",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "layout"
+      ]
+    },
+    {
+      "key": "rightbar.session",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar-right"
+      ]
+    },
+    {
+      "key": "root",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "renderer"
+      ]
+    },
+    {
+      "key": "settings.action",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "settings-general"
+      ]
+    },
+    {
+      "key": "settings.close",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "settings-general"
+      ]
+    },
+    {
+      "key": "settings.general.item",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "settings-general"
+      ]
+    },
+    {
+      "key": "settings.header",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "settings-general"
+      ]
+    },
+    {
+      "key": "settings.launcher",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "settings-general"
+      ]
+    },
+    {
+      "key": "settings.models.footer",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "settings-models"
+      ]
+    },
+    {
+      "key": "settings.models.provider-card",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "settings-models"
+      ]
+    },
+    {
+      "key": "settings.models.sign-in",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "settings-models"
+      ]
+    },
+    {
+      "key": "settings.onboarding",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "settings-general"
+      ]
+    },
+    {
+      "key": "settings.plugins.tab",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "settings-plugins"
+      ]
+    },
+    {
+      "key": "settings.section",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "settings-general"
+      ]
+    },
+    {
+      "key": "settings.section.icon",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "settings-general"
+      ]
+    },
+    {
+      "key": "settings.trigger",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "settings-general"
+      ]
+    },
+    {
+      "key": "shell.bottom",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "layout"
+      ]
+    },
+    {
+      "key": "shell.leading",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "layout"
+      ]
+    },
+    {
+      "key": "shell.overlay",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "layout"
+      ]
+    },
+    {
+      "key": "shell.quota-notice",
+      "kind": "content",
+      "contract": "chain",
+      "readers": [
+        "chat"
+      ]
+    },
+    {
+      "key": "sidebar",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "layout"
+      ]
+    },
+    {
+      "key": "sidebar.brand.mark",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "sidebar"
+      ]
+    },
+    {
+      "key": "sidebar.brand.name",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar"
+      ]
+    },
+    {
+      "key": "sidebar.chat.conversation",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "subagent"
+      ]
+    },
+    {
+      "key": "sidebar.footer.action",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar"
+      ]
+    },
+    {
+      "key": "sidebar.panellist",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar"
+      ]
+    },
+    {
+      "key": "sidebar.panellist.actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar"
+      ]
+    },
+    {
+      "key": "sidebar.right.pane.tab",
+      "kind": "content",
+      "contract": "keyed",
+      "readers": [
+        "sidebar-right"
+      ]
+    },
+    {
+      "key": "sidebar.right.pane.tab.title",
+      "kind": "content",
+      "contract": "keyed",
+      "readers": [
+        "sidebar-right"
+      ]
+    },
+    {
+      "key": "sidebar.right.tab.document",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar-documentpreview"
+      ]
+    },
+    {
+      "key": "sidebar.right.tab.document.action",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar-documentpreview"
+      ]
+    },
+    {
+      "key": "sidebar.right.tab.document.actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar-documentpreview"
+      ]
+    },
+    {
+      "key": "sidebar.right.tab.document.office.pdf",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar-documentpreview"
+      ]
+    },
+    {
+      "key": "sidebar.right.tab.document.unpreviewable",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar-documentpreview"
+      ]
+    },
+    {
+      "key": "sidebar.right.tab.files.actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar-files"
+      ]
+    },
+    {
+      "key": "sidebar.right.tab.guide",
+      "kind": "content",
+      "contract": "chain",
+      "readers": [
+        "sidebar-right"
+      ]
+    },
+    {
+      "key": "sidebar.right.tab.guide.actions",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar-right"
+      ]
+    },
+    {
+      "key": "sidebar.right.tab.guide.entry",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar-right"
+      ]
+    },
+    {
+      "key": "sidebar.right.tab.menu.item",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar-right"
+      ]
+    },
+    {
+      "key": "sidebar.session.row.hover",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "workspace"
+      ]
+    },
+    {
+      "key": "sidebar.session.row.leading",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "workspace"
+      ]
+    },
+    {
+      "key": "sidebar.session.row.trailing",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "workspace"
+      ]
+    },
+    {
+      "key": "sidebar.settings",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar"
+      ]
+    },
+    {
+      "key": "sidebar.toggle.badge",
+      "kind": "icon",
+      "contract": "single",
+      "readers": [
+        "sidebar"
+      ]
+    },
+    {
+      "key": "sidebar.workspaces",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "sidebar"
+      ]
+    },
+    {
+      "key": "sidebar.workspaces.directoryFlow",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "workspace"
+      ]
+    },
+    {
+      "key": "sidebar.workspaces.session.menu.item",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "workspace"
+      ]
+    },
+    {
+      "key": "sidebar.workspaces.session.row.action",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "workspace"
+      ]
+    },
+    {
+      "key": "tool.call.images",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "tool"
+      ]
+    },
+    {
+      "key": "tool.call.toolview",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "tool"
+      ]
+    },
+    {
+      "key": "tool.view.cordis",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "cordis"
+      ]
+    },
+    {
+      "key": "workspace.toast",
+      "kind": "content",
+      "contract": "single",
+      "readers": [
+        "workspace"
+      ]
+    }
+  ],
+  "tokens": {
+    "total": 430,
+    "families": [
+      {
+        "name": "dsw-font",
+        "count": 182
+      },
+      {
+        "name": "dsw-alias",
+        "count": 114
+      },
+      {
+        "name": "dsw-static",
+        "count": 82
+      },
+      {
+        "name": "dsw-specific",
+        "count": 10
+      },
+      {
+        "name": "dsw-radius",
+        "count": 6
+      },
+      {
+        "name": "dsh-scrollbar",
+        "count": 5
+      },
+      {
+        "name": "dsw-elevation",
+        "count": 5
+      },
+      {
+        "name": "dsw-shadow",
+        "count": 4
+      },
+      {
+        "name": "ds-transition",
+        "count": 3
+      },
+      {
+        "name": "dsh-content",
+        "count": 3
+      },
+      {
+        "name": "dsw-gradient",
+        "count": 3
+      },
+      {
+        "name": "dsh-font",
+        "count": 2
+      },
+      {
+        "name": "dsw-focus",
+        "count": 2
+      },
+      {
+        "name": "dsw-linear",
+        "count": 2
+      },
+      {
+        "name": "dsw-menu",
+        "count": 2
+      },
+      {
+        "name": "ds-ease",
+        "count": 1
+      },
+      {
+        "name": "ds-font",
+        "count": 1
+      },
+      {
+        "name": "dsh-code",
+        "count": 1
+      },
+      {
+        "name": "dsw-corner",
+        "count": 1
+      },
+      {
+        "name": "dsw-mask",
+        "count": 1
+      }
+    ]
+  }
+}

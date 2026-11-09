@@ -1,0 +1,72 @@
+/* @deepseek-ai/dsh-client-ui-chat / ReasoningRow.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.root {
+  flex-direction: column;
+  display: flex;
+}
+
+.root:not([data-expanded]) {
+  contain: size layout;
+  height: calc(24px + var(--dsh-content-font-delta,0px));
+}
+
+.row {
+  overflow: hidden;
+}
+
+.root[data-expanded] [data-open] [data-disclosure-header] {
+  z-index: 1;
+  background: var(--dsw-alias-bg-base);
+  position: sticky;
+  top: 0;
+}
+
+.leading {
+  flex-shrink: 0;
+}
+
+.title {
+  font-weight: 400;
+}
+
+.separator {
+  background: var(--dsw-alias-label-caption);
+  border-radius: 1px;
+  flex: none;
+  width: 2px;
+  height: 2px;
+  margin: 0 8px;
+}
+
+.summary {
+  min-width: 0;
+  font-size: var(--dsh-content-font-size-secondary,13px);
+  line-height: calc(20px + var(--dsh-content-font-delta-secondary,0px));
+  white-space: nowrap;
+  flex: auto;
+  overflow: hidden;
+}
+
+.summaryText {
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+}
+
+.summary[data-streaming] {
+  mask-image: linear-gradient(90deg,#000 calc(100% - 48px),#0000);
+}
+
+.summary[data-streaming] .summaryText {
+  text-overflow: clip;
+  overflow: visible;
+}
+
+.root:not([data-preview]) .separator,
+.root:not([data-preview]) .summary {
+  display: none;
+}
+
+.thinkBody {
+  padding: 4px 0 4px calc(22px + var(--dsh-content-font-delta,0px));
+  min-width: 0;
+}

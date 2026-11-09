@@ -1,0 +1,11 @@
+/* @deepseek-ai/dsh-client-ui-theme / corner-shape.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+@supports (corner-shape:superellipse(1.5)) {
+  :root {
+    --dsw-corner-shape: superellipse(1.5);
+  }
+  *,
+  :before,
+  :after {
+    corner-shape: var(--dsw-corner-shape);
+  }
+}

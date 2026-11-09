@@ -1,0 +1,44 @@
+// Extracted from @deepseek-ai/dsh-client-ui-primitives (lib/index.js); region lib/types/keyboard-composition.js
+// Compiled bundle code copied verbatim from the region; imports are hoisted in the original bundle, so this file is not standalone.
+
+/** Composition lifetime for local keyboard handlers, including a late closing keydown. */
+/**
+* Observe composition until its closing key is released or consumed.
+* @param document - document whose input events belong to the caller.
+* @returns an event guard and a disposer for all listeners.
+*/
+function observeComposition(document) {
+	let composing = false;
+	let ended = false;
+	const start = () => {
+		composing = true;
+	};
+	const end = () => {
+		composing = false;
+		ended = true;
+	};
+	const release = () => {
+		ended = false;
+	};
+	const blur = () => {
+		composing = false;
+		ended = false;
+	};
+	document.addEventListener("compositionstart", start, true);
+	document.addEventListener("compositionend", end, true);
+	document.addEventListener("keyup", release, true);
+	document.defaultView?.addEventListener("blur", blur);
+	return {
+		guards: (event) => {
+			const guarded = composing || ended || event.isComposing || event.keyCode === 229;
+			ended = false;
+			return guarded;
+		},
+		dispose: () => {
+			document.removeEventListener("compositionstart", start, true);
+			document.removeEventListener("compositionend", end, true);
+			document.removeEventListener("keyup", release, true);
+			document.defaultView?.removeEventListener("blur", blur);
+		}
+	};
+}

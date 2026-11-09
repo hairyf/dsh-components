@@ -1,0 +1,435 @@
+// Extracted from @deepseek-ai/dsh-client-ui-conversation (lib/client.js); region lib/types/client/input/editor/runtime.js
+// Compiled bundle code copied verbatim from the region; imports are hoisted in the original bundle, so this file is not standalone.
+
+		/**
+		* Detect-projection and legacy reference placeholders stripped from every
+		* external text entering the document (paste, persisted-draft seed): a chip
+		* is the only legitimate source of U+FFFC in the detect projection, so a
+		* literal one in text would forge chip positions.
+		*/
+		const REFERENCE_PLACEHOLDER_RE = /[\uE100-\uE11D\uFFFC]/gu;
+		/**
+		* Append one paragraph per line of `text` to the editor root and move the caret
+		* to the end. Must run inside an editor update.
+		* @param text - sanitized plain text.
+		*/
+		function $appendParagraphs(text) {
+			const root = nl();
+			for (const line of text.split("\n")) {
+				const paragraph = es$1();
+				if (line !== "") paragraph.append(Go(line));
+				root.append(paragraph);
+			}
+			root.selectEnd();
+		}
+		/** Undo merge window for contiguous typing, in ms (the old machine's mergeWindowMs). */
+		const HISTORY_MERGE_DELAY_MS = 1e3;
+		/** Editor update that removes submitted content while retaining any newer draft suffix. */
+		const DRAFT_SUBMITTED_TAG = "dsh-draft-submitted";
+		/** One model-owned editor; registration and disposal remain with its model. */
+		var DraftEditorRuntime = class {
+			deps;
+			/** The editor bound by the Composer's contenteditable host. */
+			editor;
+			projected = {
+				detectText: "",
+				clipboardText: "",
+				occurrences: [],
+				quotes: [],
+				selection: null,
+				caret: null,
+				command: void 0
+			};
+			/** Stable occurrence ids per chip NodeKey (undo restores keys, so ids survive it too). */
+			occurrenceIds = /* @__PURE__ */ new Map();
+			occurrenceSeq = 0;
+			/** Live lexicon subscription disposer; undefined until the controller resolves. */
+			lexiconOff;
+			lexiconSource;
+			/** @param deps - model callbacks used by editor listeners and transforms. */
+			constructor(deps) {
+				this.deps = deps;
+				this.editor = ys({
+					namespace: "dsh-composer",
+					nodes: [
+						ReferenceChipNode,
+						CommandChipNode,
+						TextRefNode,
+						QuoteNode
+					],
+					onError: (error) => {
+						throw error;
+					}
+				});
+			}
+			/**
+			* Install editor behavior after the model holds this runtime.
+			* @returns unregister callback that also detaches the editor root.
+			*/
+			register() {
+				const preserveExternalSelection = () => {
+					const root = this.editor.getRootElement();
+					if (root !== null && !root.contains(root.ownerDocument.activeElement)) Al(bo);
+					return false;
+				};
+				const unregister = Eu(O$1(this.editor), this.editor.registerNodeTransform(QuoteNode, (node) => {
+					node.setLabels(this.deps.quoteLabels());
+				}), this.editor.registerCommand(REMOVE_QUOTE_COMMAND, (key) => this.removeQuote(key), 4), this.editor.registerCommand(un$2, (event) => this.deleteAdjacentQuote(event, true), -4), this.editor.registerCommand(dn$1, (event) => this.deleteAdjacentQuote(event, false), -4), this.editor.registerCommand(Mn$1, () => {
+					this.editor.update(preserveExternalSelection, { discrete: true });
+					return false;
+				}, 4), this.editor.registerCommand(Ie$2, preserveExternalSelection, 4), this.editor.registerNodeTransform(zi, preserveExternalSelection), registerReferenceActivation(this.editor, (source, reference) => this.deps.openReference(source, reference)), O(this.editor, z(), HISTORY_MERGE_DELAY_MS), this.editor.registerUpdateListener(() => {
+					this.deps.onUpdate();
+				}), registerCommandChipSeat(this.editor), registerCommandChipSelection(this.editor), registerTextRefDecoration(this.editor, () => this.deps.lexicon()), () => {
+					this.lexiconOff?.();
+					this.lexiconOff = void 0;
+					this.lexiconSource = void 0;
+				});
+				return () => {
+					unregister();
+					this.editor.setRootElement(null);
+				};
+			}
+			/** The latest committed editor projection. */
+			get projection() {
+				return this.projected;
+			}
+			/**
+			* Run one editor edit whose result is observable on return. At the top
+			* level this is a discrete update. Inside this editor's own update —
+			* command handlers land here synchronously (space/enter picks, paste) —
+			* $-functions are already legal, and wrapping them in update() would DEFER
+			* them past the synchronous bail answer (and a nested discrete throws);
+			* the body runs directly and the outer update commits it.
+			* @param fn - the $-edit body.
+			*/
+			applyEdit(fn, tag) {
+				if (this.editor._updating) {
+					if (tag !== void 0) Al(tag);
+					fn();
+					return;
+				}
+				this.editor.update(fn, {
+					discrete: true,
+					...tag === void 0 ? {} : { tag }
+				});
+			}
+			/**
+			* Reconnect decorations when the optional trigger provider changes.
+			* The rescan reads the current editor and does not replace its content.
+			*/
+			refreshLexiconSubscription() {
+				const lexicon = this.deps.resolveLexicon();
+				if (lexicon === this.lexiconSource) return;
+				this.lexiconOff?.();
+				this.lexiconSource = lexicon;
+				this.lexiconOff = lexicon?.subscribe(() => {
+					rescanTextRefs(this.editor);
+				});
+				rescanTextRefs(this.editor);
+			}
+			/**
+			* Re-project inside the existing editor update callback.
+			* @returns the projection preceding this read.
+			*/
+			refreshProjection() {
+				const prev = this.projected;
+				this.projected = this.editor.getEditorState().read(() => $projectComposer((key) => this.occurrenceIdOf(key)));
+				return prev;
+			}
+			occurrenceIdOf(key) {
+				const existing = this.occurrenceIds.get(key);
+				if (existing !== void 0) return existing;
+				this.occurrenceSeq += 1;
+				this.occurrenceIds.set(key, this.occurrenceSeq);
+				return this.occurrenceSeq;
+			}
+			/**
+			* Replace the whole draft (persisted-draft seed and programmatic writes).
+			* Placeholder-sanitized; newlines split paragraphs; the caret lands at the
+			* end. Merged into history so a seed is not an undoable step of its own.
+			* @param text - the full next draft.
+			*/
+			setDraft(text) {
+				const clean = text.replace(REFERENCE_PLACEHOLDER_RE, "");
+				if (clean === this.projection.clipboardText && this.projection.occurrences.length === 0 && this.projection.quotes.length === 0) return;
+				this.editor.update(() => {
+					nl().clear();
+					$appendParagraphs(clean);
+				}, {
+					discrete: true,
+					tag: xo
+				});
+			}
+			/**
+			* Add plain text after the current draft as new paragraphs, keeping its text
+			* and references; an empty draft takes the text as its whole content.
+			* Placeholder-sanitized; the caret lands at the end; merged into history
+			* like {@link setDraft}.
+			* @param text - plain text to add.
+			*/
+			appendDraft(text) {
+				const clean = text.replace(REFERENCE_PLACEHOLDER_RE, "");
+				if (clean === "") return;
+				if (this.projection.clipboardText === "" && this.projection.occurrences.length === 0) {
+					this.setDraft(clean);
+					return;
+				}
+				this.editor.update(() => {
+					$appendParagraphs(clean);
+				}, {
+					discrete: true,
+					tag: xo
+				});
+			}
+			/**
+			* Insert pasted plain text over the current editor selection
+			* (placeholder-sanitized). The paste event's own default is suppressed by
+			* the caller; PASTE_TAG makes the paste its own history boundary, so one
+			* undo never removes both the paste and typing inside the merge window.
+			* @param text - pasted plain text.
+			*/
+			paste(text) {
+				const clean = text.replace(REFERENCE_PLACEHOLDER_RE, "");
+				if (clean === "") return;
+				this.applyEdit(() => {
+					const selection = Kr();
+					if (ur(selection)) {
+						selection.insertText(clean);
+						return;
+					}
+					const root = nl();
+					if (root.getChildrenSize() === 0) root.append(es$1());
+					root.selectEnd().insertText(clean);
+				}, Co);
+			}
+			/**
+			* The live selection as a detect-coordinate span (menu-launcher synthetic
+			* hits replace it on pick); an absent selection answers a collapsed span at
+			* the document end.
+			* @returns the ordered [start, end) span in detect coordinates.
+			*/
+			caretSpan() {
+				if (this.projection.selection !== null) return this.projection.selection;
+				const at = this.projection.detectText.length;
+				return {
+					start: at,
+					end: at
+				};
+			}
+			/**
+			* Replace a mapped span without applying the model's phase or revision guards.
+			* @param span - detect-coordinate range.
+			* @param text - inserted text.
+			* @returns whether the range mapped and the edit applied.
+			*/
+			replaceText(span, text) {
+				let applied = false;
+				this.applyEdit(() => {
+					applied = $replaceDetectSpanWithText(span, text);
+				});
+				return applied;
+			}
+			/**
+			* Insert an asynchronous text result as one independent undo operation.
+			* @param span - owner-validated insertion range.
+			* @param text - text sanitized with the same rules as paste.
+			* @returns whether the range mapped and the edit applied.
+			*/
+			insertAsyncText(span, text) {
+				let applied = false;
+				const clean = text.replace(REFERENCE_PLACEHOLDER_RE, "");
+				this.applyEdit(() => {
+					applied = $replaceDetectSpanWithText(span, clean);
+				}, Co);
+				return applied;
+			}
+			/**
+			* Insert a reference chip with the existing trailing-space rule.
+			* @param span - detect-coordinate range.
+			* @param ref - reference fields.
+			* @param tail - the character following the range before editing.
+			* @returns whether the range mapped and the edit applied.
+			*/
+			insertReference(span, ref, tail) {
+				let applied = false;
+				this.applyEdit(() => {
+					applied = $replaceDetectSpanWithNodes(span, tail === " " ? [$createReferenceChipNode(ref)] : [$createReferenceChipNode(ref), Go(" ")]);
+				});
+				return applied;
+			}
+			/**
+			* Replace a span with a command chip followed by the claim token's
+			* argument separator, unless the separator already follows.
+			* @param span - detect-coordinate range.
+			* @param claim - the command claim the chip anchors.
+			* @param tail - the character following the range before editing.
+			* @param mergeHistory - merge into the previous history entry (a restored
+			* draft's chip is part of its seed, not an undoable step).
+			* @returns whether the range mapped and the edit applied.
+			*/
+			insertCommand(span, claim, tail, mergeHistory = false) {
+				const separator = claim.token.slice(claim.token.trimEnd().length);
+				let applied = false;
+				this.applyEdit(() => {
+					applied = $replaceDetectSpanWithNodes(span, separator === "" || tail === separator.charAt(0) ? [$createCommandChipNode(claim)] : [$createCommandChipNode(claim), Go(separator)]);
+				}, mergeHistory ? xo : void 0);
+				return applied;
+			}
+			/**
+			* Insert an ordered file-reference batch after the live selection without deleting it.
+			* @param references - validated references in source order.
+			* @returns whether the live insertion position accepted the batch.
+			*/
+			insertFileReferences(references) {
+				if (references.length === 0) return true;
+				let applied = false;
+				this.applyEdit(() => {
+					const projection = $projectComposer((key) => this.occurrenceIdOf(key));
+					const at = projection.selection?.end ?? projection.detectText.length;
+					const before = projection.detectText.slice(0, at);
+					const nodes = references.flatMap((ref) => [$createReferenceChipNode(ref), Go(" ")]);
+					if (before !== "" && !/\s$/u.test(before)) nodes.unshift(Go(" "));
+					applied = $replaceDetectSpanWithNodes({
+						start: at,
+						end: at
+					}, nodes);
+				}, Co);
+				return applied;
+			}
+			/**
+			* Insert one quote after the retained draft selection as an independent undo edit.
+			* @param text - nonblank selected transcript text.
+			* @param labels - current localized editor controls.
+			* @returns whether the insertion position accepted the node.
+			*/
+			insertQuote(text, labels) {
+				let applied = false;
+				this.applyEdit(() => {
+					const projection = $projectComposer((key) => this.occurrenceIdOf(key));
+					const at = projection.selection?.end ?? projection.detectText.length;
+					applied = $replaceDetectSpanWithNodes({
+						start: at,
+						end: at
+					}, [$createQuoteNode(text, labels), Go(" ")]);
+				}, Co);
+				return applied;
+			}
+			/** Remove one quote node and leave the editor caret at its former position. */
+			removeQuote(key) {
+				const node = Ys(key);
+				if (!$isQuoteNode(node)) return false;
+				const parent = node.getParent();
+				const offset = node.getIndexWithinParent();
+				const separator = node.getNextSibling();
+				Al(mo);
+				if (Xo(separator) && separator.getTextContent().startsWith(" ")) {
+					const remaining = separator.getTextContent().slice(1);
+					if (remaining === "") separator.remove();
+					else separator.setTextContent(remaining);
+				}
+				node.remove();
+				const caret = Math.min(offset, parent?.getChildrenSize() ?? 0);
+				parent?.select(caret, caret);
+				queueMicrotask(() => {
+					this.editor.getRootElement()?.focus({ preventScroll: true });
+				});
+				return true;
+			}
+			/** Delete the QuoteNode immediately beside one collapsed caret. */
+			deleteAdjacentQuote(event, backward) {
+				const selection = Kr();
+				if (!ur(selection) || !selection.isCollapsed()) return false;
+				let adjacent = kl(selection.anchor, backward);
+				if (!$isQuoteNode(adjacent) && backward && selection.anchor.type === "text") {
+					const anchor = selection.anchor.getNode();
+					if (Xo(anchor) && selection.anchor.offset === 1 && anchor.getTextContent().startsWith(" ")) adjacent = anchor.getPreviousSibling();
+				}
+				if (!$isQuoteNode(adjacent)) return false;
+				event.preventDefault();
+				return this.removeQuote(adjacent.getKey());
+			}
+			/**
+			* Clear committed content using the model's suffix decision inside the editor update.
+			* @param prefixLength - returns the clipboard-prefix length to remove, or null to clear the root.
+			*/
+			clearCommittedDraft(prefixLength) {
+				this.editor.update(() => {
+					const layout = $composerLayout();
+					const length = prefixLength(layout.clipboardText);
+					if (length !== null) {
+						$replaceDetectSpanWithText({
+							start: 0,
+							end: detectOffsetOfClipboardOffset(layout, length)
+						}, "");
+						return;
+					}
+					const root = nl();
+					root.clear();
+					root.selectEnd();
+				}, {
+					discrete: true,
+					tag: [xo, DRAFT_SUBMITTED_TAG]
+				});
+			}
+			/**
+			* Import semantic content or a model-selected failure snapshot with fresh reference nodes.
+			* @param draft - clipboard text.
+			* @param occurrences - reference occurrences in clipboard order.
+			* @param quotes - atomic quotes in clipboard order.
+			* @param labels - localized quote controls.
+			*/
+			restoreDraft(draft, occurrences, quotes = [], labels = { remove: "" }) {
+				this.editor.update(() => {
+					const root = nl();
+					root.clear();
+					let paragraph = es$1();
+					root.append(paragraph);
+					const appendText = (text) => {
+						const lines = text.replace(REFERENCE_PLACEHOLDER_RE, "").split("\n");
+						for (let i = 0; i < lines.length; i += 1) {
+							const line = lines[i];
+							if (line !== "") paragraph.append(Go(line));
+							if (i < lines.length - 1) {
+								paragraph = es$1();
+								root.append(paragraph);
+							}
+						}
+					};
+					let cursor = 0;
+					const spans = [...occurrences.map((reference) => ({
+						kind: "reference",
+						value: reference
+					})), ...quotes.map((quote) => ({
+						kind: "quote",
+						value: quote
+					}))].sort((a, b) => a.value.offset - b.value.offset);
+					for (const span of spans) {
+						const occurrence = span.value;
+						appendText(draft.slice(cursor, occurrence.offset));
+						if (span.kind === "quote") {
+							paragraph.append($createQuoteNode(span.value.text, labels));
+							cursor = occurrence.offset + occurrence.length;
+							continue;
+						}
+						const reference = span.value;
+						paragraph.append(new ReferenceChipNode({
+							source: reference.source,
+							ref: reference.ref,
+							label: reference.label,
+							...reference.appearance === void 0 ? {} : { appearance: reference.appearance },
+							clipboardText: reference.clipboardText
+						}, reference.invalid === true));
+						cursor = occurrence.offset + occurrence.length;
+					}
+					appendText(draft.slice(cursor));
+					root.selectEnd();
+				}, {
+					discrete: true,
+					tag: xo
+				});
+			}
+			/** Cut the editor's undo history after a committed clear or restoration. */
+			clearHistory() {
+				this.editor.dispatchCommand(Nn$1, void 0);
+			}
+		};

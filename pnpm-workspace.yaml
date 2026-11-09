@@ -4,6 +4,7 @@ catalogMode: prefer
 minimumReleaseAgeExcludePrune: true
 minimumReleaseAgeExclude:
   - tsdown@0.23.3
+  - '@vitejs/plugin-react@6.3.0'
 
 trustPolicy: no-downgrade
 
@@ -20,13 +21,20 @@ packages:
   - examples/*
 
 allowBuilds:
+  '@deepseek-ai/dsh-subprocess-local': true
+  '@google/genai': false
   esbuild: true
+  koffi: false
+  node-pty: false
+  protobufjs: false
   simple-git-hooks: true
 
 catalogs:
+  runtime:
+    react: ^19.2.8
+    react-dom: ^19.2.8
   agentic:
     '@antfu/skills': ^0.1.2
-    skills: ^1.7.4
   cli:
     '@antfu/eslint-config': ^10.0.0
     '@antfu/ni': ^30.6.0
@@ -51,3 +59,19 @@ catalogs:
     vitest: ^5.0.5
   types:
     '@types/node': ^26.6.5
+    '@types/react': ^19.2.18
+    '@types/react-dom': ^19.2.4
+  conflicts_happy-dom_20_14_6:
+    happy-dom: 20.14.6
+  conflicts_anser_h2_3_5:
+    anser: ^2.3.5
+catalog:
+  '@deepseek-ai/dsh-client-ui-primitives': ^0.2.2-rc.1
+  '@shikijs/langs': 4.4.3
+  '@vitejs/plugin-react': ^6.3.0
+  anser: 2.3.5
+  clsx: 2.1.1
+  css-render: ^0.15.14
+  happy-dom: 20.14.6
+  shiki: 4.4.3
+  simple-icons: 16.31.0

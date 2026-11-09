@@ -1,0 +1,15 @@
+/* @deepseek-ai/dsh-client-ui-tool / ExitCodeBadge.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.badge {
+  flex: none;
+  gap: 5px;
+  margin-left: 8px;
+}
+
+.dot {
+  corner-shape: round;
+  background: var(--dsw-alias-state-error-primary);
+  border-radius: 50%;
+  flex: none;
+  width: 4px;
+  height: 4px;
+}

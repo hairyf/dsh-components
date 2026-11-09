@@ -1,0 +1,54 @@
+/* @deepseek-ai/dsh-client-ui-action-cards / Card.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.card {
+  border: .5px solid var(--dsw-alias-border-l2);
+  border-radius: var(--dsw-radius-lg);
+  background: var(--dsw-alias-bg-layer-1);
+  font-family: var(--dsw-font-family);
+  color: var(--dsw-alias-label-primary);
+  margin: 16px 0;
+  overflow: hidden;
+}
+
+.body {
+  padding: 12px 20px 20px;
+}
+
+.title {
+  overflow-wrap: anywhere;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  display: block;
+}
+
+.text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--dsw-alias-label-secondary);
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.toggle {
+  height: auto;
+  min-height: 24px;
+  margin: 8px 0 0;
+  padding-inline: 0;
+  font-size: 12px;
+}
+
+.status {
+  color: var(--dsw-alias-label-secondary);
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.footer {
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  display: flex;
+}

@@ -1,0 +1,294 @@
+/* @deepseek-ai/dsh-client-ui-cordis / CordisDefineRow.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.card {
+  flex-direction: column;
+  display: flex;
+}
+
+.card .title,
+.card .chevron {
+  color: var(--dsw-alias-state-business-primary);
+}
+
+.title {
+  flex: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.row {
+  gap: 0;
+}
+
+.separator {
+  background: var(--dsw-alias-state-business-primary);
+  border-radius: 1px;
+  flex: none;
+  width: 2px;
+  height: 2px;
+  margin: 0 8px;
+}
+
+.name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 40%;
+  color: var(--dsw-alias-label-secondary);
+  flex: none;
+  font-size: 14px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.purpose {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  color: var(--dsw-alias-label-tertiary);
+  flex: auto;
+  margin-left: 8px;
+  font-size: 13px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.errorSummary {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  color: var(--dsw-alias-state-error-primary);
+  flex: auto;
+  font-size: 14px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.requestError {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 40%;
+  color: var(--dsw-alias-state-error-primary);
+  flex: none;
+  margin-left: 8px;
+  font-size: 12px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.readout {
+  flex: none;
+  align-items: center;
+  margin-left: 8px;
+  display: inline-flex;
+}
+
+.panelHint {
+  color: var(--dsw-alias-label-caption);
+  margin: 4px 0 2px 4px;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.statusLabel {
+  color: var(--dsw-alias-label-caption);
+  font-size: 12px;
+  line-height: 24px;
+}
+
+.approvalPrompt {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 40%;
+  color: var(--dsw-alias-label-secondary);
+  flex: none;
+  margin-left: 8px;
+  font-size: 12px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.notice {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 40%;
+  color: var(--dsw-alias-label-caption);
+  flex: none;
+  margin-left: 8px;
+  font-size: 12px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.switch {
+  height: 22px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.card[data-terminal] .title,
+.card[data-terminal] .name,
+.card[data-terminal] .purpose,
+.card[data-terminal] .statusLabel {
+  color: var(--dsw-alias-label-caption);
+}
+
+.card[data-terminal] .separator {
+  background: var(--dsw-alias-label-caption);
+}
+
+.bodyWrap {
+  flex-direction: column;
+  display: flex;
+}
+
+.sourceCard {
+  flex-direction: column;
+  margin: 4px 0 4px 4px;
+  display: flex;
+}
+
+.sourceTabs {
+  border-bottom: .5px solid var(--dsw-alias-border-l2);
+  height: 32px;
+  display: flex;
+}
+
+.sourceTab {
+  color: var(--dsw-alias-label-tertiary);
+  cursor: pointer;
+  font: var(--dsw-font-xs-13);
+  background: 0 0;
+  border: 0;
+  padding: 0 10px;
+  position: relative;
+}
+
+@media (hover:hover) {
+  .sourceTab:hover:not(:disabled) {
+    background: var(--dsw-alias-interactive-bg-hover);
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.sourceTab:disabled {
+  cursor: default;
+  opacity: .4;
+}
+
+.sourceTabActive {
+  color: var(--dsw-alias-state-business-primary);
+}
+
+.sourceTabActive:after {
+  background: var(--dsw-alias-state-business-primary);
+  content: "";
+  border-radius: 1px 1px 0 0;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+}
+
+.sourceTab:focus-visible {
+  outline: 1px solid var(--dsw-alias-state-business-primary);
+  outline-offset: -1px;
+}
+
+.sourcePanel {
+  max-height: 260px;
+  overflow: auto;
+}
+
+.sourceCode {
+  margin: 0;
+}
+
+.codeSection {
+  flex-direction: column;
+  max-height: 260px;
+  margin: 4px 0 4px 4px;
+  display: flex;
+  overflow: auto;
+}
+
+.sectionLabel {
+  color: var(--dsw-alias-label-caption);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  flex: none;
+  padding: 2px 0;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.output {
+  border: .5px solid var(--dsw-alias-border-l1);
+  background: var(--dsw-alias-markdown-code-block);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: var(--dsw-font-markdown-code-block-small);
+  color: var(--dsw-alias-label-secondary);
+  border-radius: 8px;
+  margin: 0;
+  padding: 8px 10px;
+}
+
+.output[data-error] {
+  color: var(--dsw-alias-state-error-primary);
+}
+
+.inspectButton {
+  border: .5px solid var(--dsw-alias-border-l4);
+  corner-shape: round;
+  background: var(--dsw-alias-bg-base);
+  color: var(--dsw-alias-label-secondary);
+  cursor: pointer;
+  opacity: 0;
+  border-radius: 999px;
+  align-self: flex-start;
+  align-items: center;
+  gap: 4px;
+  margin: 4px 0 2px 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  line-height: 16px;
+  transition: opacity .1s;
+  display: inline-flex;
+}
+
+.inspectButton:focus-visible {
+  opacity: 1;
+}
+
+@media (hover:hover) {
+  .card:hover .inspectButton {
+    opacity: 1;
+  }
+  .inspectButton:hover {
+    background: var(--dsw-alias-interactive-bg-hover-solid);
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.visuallyHidden {
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .inspectButton {
+    transition: none;
+  }
+}
+
+@media (hover:none) {
+  .inspectButton {
+    opacity: 1;
+  }
+}

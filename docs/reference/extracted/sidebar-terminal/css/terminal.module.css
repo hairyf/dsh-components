@@ -1,0 +1,112 @@
+/* @deepseek-ai/dsh-client-ui-sidebar-terminal / terminal.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.root {
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 0;
+  color: var(--dsw-alias-label-primary);
+  flex-direction: column;
+  flex: 1;
+  padding-top: 8px;
+  font-size: 13px;
+  display: flex;
+}
+
+.screen {
+  min-width: 0;
+  min-height: 0;
+  color: var(--dsw-alias-label-primary);
+  background: var(--dsw-alias-bg-base);
+  flex: 1;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.screen .xterm {
+  height: 100%;
+}
+
+.screen .xterm-viewport {
+  background: var(--dsw-alias-bg-base);
+}
+
+.status {
+  background: var(--dsw-alias-bg-l2);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  display: flex;
+}
+
+.error {
+  overflow-wrap: anywhere;
+  color: var(--dsw-alias-label-primary);
+  background: var(--dsw-alias-bg-l2);
+  margin: 0;
+  padding: 10px 12px;
+}
+
+.empty {
+  text-align: center;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  min-height: 0;
+  padding: 24px;
+  display: flex;
+  overflow: auto;
+}
+
+.emptyMessage {
+  overflow-wrap: anywhere;
+  max-width: 28ch;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.actionIcon {
+  display: flex;
+}
+
+.screen .xterm-cursor {
+  opacity: 1;
+}
+
+.screen .xterm .xterm-rows .xterm-cursor.xterm-cursor-block {
+  background-color: var(--terminal-cursor);
+  color: var(--terminal-cursor-accent);
+}
+
+.screen .xterm .xterm-rows .xterm-cursor.xterm-cursor-block:not(.xterm-cursor-blink) {
+  background-color: var(--terminal-cursor)!important;
+  color: var(--terminal-cursor-accent)!important;
+}
+
+.screen .xterm .xterm-rows .xterm-cursor.xterm-cursor-outline {
+  outline-color: var(--terminal-cursor);
+}
+
+.screen .xterm .xterm-rows .xterm-cursor.xterm-cursor-bar {
+  box-shadow: 1px 0 0 var(--terminal-cursor) inset;
+}
+
+.screen .xterm .xterm-rows .xterm-cursor.xterm-cursor-underline {
+  border-bottom-color: var(--terminal-cursor);
+}
+
+.screen .xterm .xterm-rows.xterm-focus .xterm-cursor.xterm-cursor-block.xterm-cursor-blink {
+  animation: 1s step-end infinite terminal-cursor-blink;
+}
+
+@keyframes terminal-cursor-blink {
+  0% {
+    background-color: var(--terminal-cursor);
+    color: var(--terminal-cursor-accent);
+  }
+  50% {
+    background-color: var(--terminal-cursor-cell-background);
+    color: var(--terminal-cursor-cell-foreground);
+  }
+}

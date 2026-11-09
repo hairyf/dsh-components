@@ -1,0 +1,84 @@
+// Extracted from @deepseek-ai/dsh-client-ui-sidebar-documentpreview (lib/client.js); region lib/types/client/text/lines.js
+// Compiled bundle code copied verbatim from the region; imports are hoisted in the original bundle, so this file is not standalone.
+
+		/** Source-line helpers shared by the plain renderer and the document scroller. */
+		/**
+		* Split a loaded page into its source lines.
+		* @param page - source page.
+		* @returns its lines, preserving one empty line but excluding a zero-line page.
+		*/
+		function linesOf(page) {
+			return page.lines === 0 ? [] : page.text.split("\n");
+		}
+		/**
+		* Order loaded pages by source position.
+		* @param pages - stored page table.
+		* @returns pages in source order.
+		*/
+		function loadedPages(pages) {
+			return Object.entries(pages).map(([offset, page]) => ({
+				offset: Number(offset),
+				...page
+			})).sort((left, right) => left.offset - right.offset);
+		}
+		/**
+		* Find the end of the loaded source prefix.
+		* @param pages - ordered pages.
+		* @returns the last loaded source line, or zero.
+		*/
+		function lastLineLoaded(pages) {
+			const last = pages.at(-1);
+			return last === void 0 ? 0 : last.offset + last.lines - 1;
+		}
+		/**
+		* Reveal a plain-text or highlighted source line.
+		* @param body - scrolling document body or code-content viewport.
+		* @param line - 1-based source line to reveal.
+		* @returns The revealed line element, or undefined when the current renderer does not expose that line.
+		*/
+		function scrollToLine(body, line) {
+			const innerCode = body.hasAttribute("data-code-block-content");
+			const plain = body.querySelector(`[data-textpreview-line="${line}"]`);
+			const code = innerCode ? body.querySelectorAll("pre .line").item(line - 1) : null;
+			const row = plain ?? code;
+			if (!(row instanceof HTMLElement)) return void 0;
+			body.scrollTop = Math.max(0, row.offsetTop);
+			return row;
+		}
+		/**
+		* Mark a revealed line with a fading band. The band is a child of the scrollport,
+		* not of the line, so a renderer that rebuilds its lines keeps the mark. It
+		* replaces an earlier mark and removes itself when its animation ends or when
+		* the scrollport is resized, because a resize can reflow the lines above it.
+		* @param body - the scrollport that {@link scrollToLine} scrolled.
+		* @param row - the line element it returned.
+		* @param line - 1-based source line, recorded on the band.
+		*/
+		function markLine(body, row, line) {
+			clearLineMark(body);
+			const mark = body.ownerDocument.createElement("div");
+			mark.className = clsx(TextPreview_module_css_default.lineMark);
+			mark.setAttribute("data-textpreview-mark", String(line));
+			mark.style.top = `${row.offsetTop}px`;
+			mark.style.height = `${row.offsetHeight}px`;
+			mark.style.width = `${body.scrollWidth}px`;
+			let measured = false;
+			const observer = new ResizeObserver(() => {
+				if (measured) dismiss();
+				measured = true;
+			});
+			function dismiss() {
+				observer.disconnect();
+				mark.remove();
+			}
+			mark.addEventListener("animationend", dismiss, { once: true });
+			body.append(mark);
+			observer.observe(body);
+		}
+		/**
+		* Remove the scrollport's line mark, for layout changes that move lines without resizing it.
+		* @param body - the scrollport that may hold a mark.
+		*/
+		function clearLineMark(body) {
+			body.querySelector(":scope > [data-textpreview-mark]")?.remove();
+		}

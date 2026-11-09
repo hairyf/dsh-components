@@ -1,0 +1,29 @@
+/* @deepseek-ai/dsh-client-ui-sidebar-documentpreview / MarkdownBody.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.document {
+  min-width: 0;
+  font-family: var(--dsw-font,inherit);
+  white-space: normal;
+  padding: 10px 12px;
+}
+
+.frontmatter {
+  border: .5px solid var(--dsw-alias-border-l2);
+  border-radius: var(--dsw-radius-md);
+  background: var(--dsw-alias-bg-layer-1);
+  font: var(--dsw-font-markdown-small);
+  color: var(--dsw-alias-label-primary);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 0 0 16px;
+  padding: 10px 12px;
+}
+
+.frontmatter:empty {
+  display: none;
+}
+
+.frontmatterSource {
+  font-family: var(--ds-font-family-code);
+  white-space: inherit;
+  margin: 0;
+}

@@ -1,0 +1,67 @@
+/* @deepseek-ai/dsh-client-ui-permission-presets / PermissionRow.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.row {
+  border-bottom: .5px solid var(--dsw-alias-border-l2);
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+  display: flex;
+}
+
+.rowText {
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+  min-width: 0;
+  padding-right: 48px;
+  display: flex;
+}
+
+@media (width<=767px) {
+  html:not([data-windows-titlebar]):not([data-platform=darwin]) .rowText {
+    padding-right: 16px;
+  }
+}
+
+.title {
+  color: var(--dsw-alias-label-primary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.desc {
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.selector {
+  border-radius: var(--dsw-radius-md);
+  background: var(--dsw-alias-bg-module-platform);
+  height: 36px;
+  font: inherit;
+  color: var(--dsw-alias-label-primary);
+  cursor: pointer;
+  border: none;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  font-size: 14px;
+  line-height: 22px;
+  display: inline-flex;
+}
+
+@media (hover:hover) {
+  .selector:hover:not(:disabled) {
+    background: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.selector:disabled {
+  cursor: default;
+}
+
+.chevron {
+  flex: none;
+}

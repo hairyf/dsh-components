@@ -1,0 +1,37 @@
+/* @deepseek-ai/dsh-client-ui-settings-models / WelcomeNotice.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.copy {
+  color: var(--dsw-alias-label-secondary);
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.copy p {
+  margin: 0;
+}
+
+.copy p+p {
+  margin-top: 12px;
+}
+
+.error {
+  color: var(--dsw-alias-state-error-primary);
+  margin: 16px 0 0;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.actions {
+  justify-content: flex-end;
+  margin-top: 24px;
+  display: flex;
+}
+
+.primary {
+  min-width: 120px;
+}
+
+@media (width<=560px) {
+  .primary {
+    width: 100%;
+  }
+}

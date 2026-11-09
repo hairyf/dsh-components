@@ -1,0 +1,13 @@
+/* @deepseek-ai/dsh-client-ui-conversation / UserText.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.root {
+  display: contents;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+}

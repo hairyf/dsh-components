@@ -1,0 +1,5 @@
+/* @deepseek-ai/dsh-client-ui-theme / FontSettingsGroup.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.group:last-child>:last-child,
+.group:last-child>:last-child>:last-child {
+  border-bottom: 0;
+}

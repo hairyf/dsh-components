@@ -1,0 +1,71 @@
+/* @deepseek-ai/dsh-client-ui-schedule / SessionScheduleMark.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.mark {
+  width: 16px;
+  height: 20px;
+  color: var(--dsw-alias-label-tertiary);
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+
+.tasks {
+  flex-direction: column;
+  gap: 8px;
+  display: flex;
+}
+
+.task {
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  display: flex;
+}
+
+.taskIcon {
+  color: #cfd3d6;
+  flex: none;
+  align-items: center;
+  height: 16px;
+  display: inline-flex;
+}
+
+.taskBody {
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  display: flex;
+}
+
+.taskName {
+  color: #fff;
+  overflow-wrap: break-word;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.taskTiming {
+  color: #cfd3d6;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.taskRelative {
+  color: #adb2b8;
+  overflow-wrap: anywhere;
+}
+
+.omitted {
+  color: #adb2b8;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.visuallyHidden {
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+}

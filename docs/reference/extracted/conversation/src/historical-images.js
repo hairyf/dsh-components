@@ -1,0 +1,149 @@
+// Extracted from @deepseek-ai/dsh-client-ui-conversation (lib/client.js); region lib/types/client/conversation/historical-images.js
+// Compiled bundle code copied verbatim from the region; imports are hoisted in the original bundle, so this file is not standalone.
+
+		/** Resolve durable Conversation images and release their browser URLs with Session scope. */
+		var HistoricalImageCache = class {
+			sessions;
+			entries = new WeakMapWithValues();
+			scopeDisposers = new WeakMapWithValues();
+			urls = /* @__PURE__ */ new Set();
+			disposed = false;
+			/**
+			* @param ctx - Owning ui-conversation fiber.
+			* @param sessions - Session Controller object layer.
+			*/
+			constructor(ctx, sessions) {
+				this.sessions = sessions;
+				ctx.effect(() => () => {
+					this.dispose();
+				}, "ui-conversation historical image cache");
+			}
+			/**
+			* Resolve and cache one stored image URL.
+			* @param sessionId - Session binding that owns the cached URL lifetime.
+			* @param attachment - Durable image reference.
+			* @returns browser URL valid until the Session binding is released.
+			*/
+			resolve(sessionId, attachment) {
+				if (this.disposed) return Promise.reject(/* @__PURE__ */ new Error("ui-conversation image cache is disposed"));
+				const binding = this.sessions.binding(sessionId);
+				if (binding === void 0) return Promise.reject(/* @__PURE__ */ new Error(`ui-conversation: unknown session "${sessionId}"`));
+				const entries = this.bindScope(binding);
+				const key = attachment.attachmentId;
+				const cached = entries.get(key);
+				if (cached !== void 0) return cached.pending;
+				const entry = {
+					binding,
+					pending: Promise.resolve("")
+				};
+				entries.set(key, entry);
+				entry.pending = this.loadCanonical(key, entry, attachment);
+				return entry.pending;
+			}
+			/**
+			* Return an already-displayable URL without starting a read.
+			* @param sessionId - Session binding that owns the cached URL lifetime.
+			* @param attachment - Durable image reference.
+			* @returns current preview or canonical URL when cached.
+			*/
+			peek(sessionId, attachment) {
+				const binding = this.sessions.binding(sessionId);
+				return binding === void 0 ? void 0 : this.entries.get(binding)?.get(attachment.attachmentId)?.current;
+			}
+			/**
+			* Adopt a submission preview while fetching the durable admitted bytes.
+			* The preview is available synchronously, then replaced and revoked when
+			* the canonical attachment read completes.
+			* @param sessionId - Session binding that owns the cached URL lifetime.
+			* @param attachment - Durable image reference the URL temporarily displays.
+			* @param url - browser URL to adopt.
+			* @returns whether the cache took ownership.
+			*/
+			seed(sessionId, attachment, url) {
+				if (this.disposed) return false;
+				const binding = this.sessions.binding(sessionId);
+				if (binding === void 0) return false;
+				const entries = this.bindScope(binding);
+				const key = attachment.attachmentId;
+				if (entries.has(key)) return false;
+				const entry = {
+					binding,
+					current: url,
+					pending: Promise.resolve(url)
+				};
+				this.urls.add(url);
+				entries.set(key, entry);
+				entry.pending = this.loadCanonical(key, entry, attachment).catch((error) => {
+					if (entries.get(key) === entry && entry.current === url) {
+						entries.delete(key);
+						this.releaseUrl(url);
+					}
+					throw error;
+				});
+				entry.pending.catch(() => {});
+				return true;
+			}
+			loadCanonical(key, entry, attachment) {
+				return entry.binding.session.readAttachment(attachment).then((result) => {
+					if (!result.ok) throw new Error(`${result.error.code}: ${result.error.message}`);
+					this.assertLive(key, entry);
+					let url;
+					if (typeof URL.createObjectURL !== "function") url = `data:${result.value.attachment.mediaType};base64,${bytesToBase64(result.value.data)}`;
+					else {
+						const bytes = Uint8Array.from(result.value.data);
+						url = URL.createObjectURL(new Blob([bytes.buffer], { type: result.value.attachment.mediaType }));
+					}
+					this.assertLive(key, entry);
+					this.urls.add(url);
+					const previous = entry.current;
+					entry.current = url;
+					if (previous !== void 0 && previous !== url) this.releaseUrl(previous);
+					return url;
+				}).catch((error) => {
+					const entries = this.entries.get(entry.binding);
+					if (entries?.get(key) === entry && entry.current === void 0) entries.delete(key);
+					throw error;
+				});
+			}
+			assertLive(key, entry) {
+				if (this.disposed) throw new Error("ui-conversation image cache was disposed before loading completed");
+				if (this.entries.get(entry.binding)?.get(key) !== entry) throw new Error("ui-conversation image scope was released before loading completed");
+			}
+			bindScope(binding) {
+				const existing = this.entries.get(binding);
+				if (existing !== void 0) return existing;
+				const entries = /* @__PURE__ */ new Map();
+				this.entries.set(binding, entries);
+				const dispose = binding.ctx.effect(() => () => {
+					this.scopeDisposers.delete(binding);
+					this.release(binding, entries);
+				}, "ui-conversation historical image scope");
+				const release = () => {
+					dispose();
+				};
+				this.scopeDisposers.set(binding, release);
+				return entries;
+			}
+			release(binding, entries) {
+				if (this.entries.get(binding) === entries) this.entries.delete(binding);
+				for (const entry of entries.values()) if (entry.current !== void 0) this.releaseUrl(entry.current);
+				entries.clear();
+			}
+			releaseUrl(url) {
+				if (!this.urls.delete(url)) return;
+				revokeUrl(url);
+			}
+			dispose() {
+				if (this.disposed) return;
+				this.disposed = true;
+				for (const dispose of [...this.scopeDisposers.values]) dispose();
+				this.scopeDisposers.clear();
+				for (const url of this.urls) revokeUrl(url);
+				this.urls.clear();
+				for (const entries of this.entries.values) entries.clear();
+				this.entries.clear();
+			}
+		};
+		function revokeUrl(url) {
+			if (url.startsWith("blob:")) URL.revokeObjectURL(url);
+		}

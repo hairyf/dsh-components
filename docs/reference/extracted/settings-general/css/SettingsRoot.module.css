@@ -1,0 +1,275 @@
+/* @deepseek-ai/dsh-client-ui-settings-general / SettingsRoot.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.triggerRow {
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin: 4px 0;
+  display: flex;
+  position: relative;
+}
+
+.triggerRow.railRow {
+  width: 36px;
+  margin: 8px 0 10px;
+}
+
+.trigger {
+  align-items: center;
+  gap: var(--dsh-sidebar-label-gap);
+  width: auto;
+  min-width: 0;
+  height: 42px;
+  padding: 0 calc(var(--dsh-sidebar-row-padding) - var(--dsh-sidebar-paint-inset));
+  box-sizing: border-box;
+  border-radius: var(--dsw-radius-md);
+  border: none;
+  border-inline: var(--dsh-sidebar-paint-inset) solid transparent;
+  cursor: pointer;
+  color: var(--dsw-alias-label-primary);
+  background: padding-box padding-box;
+  flex: 1;
+  margin: 0;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 22px;
+  display: flex;
+  overflow: hidden;
+}
+
+@media (hover:hover) {
+  .trigger:hover {
+    background-color: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.trigger.rail {
+  background-clip: border-box;
+  border-inline: 0;
+  flex: none;
+  justify-content: center;
+  gap: 0;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+}
+
+.triggerLabel {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.overlay {
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  inset: 0;
+}
+
+.mask {
+  inset: var(--dsh-frame-chrome-top,0px) 0 0;
+  background: var(--dsw-alias-bg-mask-1);
+  backdrop-filter: var(--dsw-mask-blur);
+  position: absolute;
+}
+
+.panel {
+  z-index: 1;
+  width: 800px;
+  height: min(800px, calc(100vh - 2 * max(24px, var(--dsh-frame-overlay-top,24px))));
+  border-radius: var(--dsw-radius-panel);
+  background: var(--dsw-alias-bg-layer-2);
+  max-width: calc(100vw - 48px);
+  box-shadow: var(--dsw-elevation-prominent);
+  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);
+  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);
+  grid-template: "title header""nav options"minmax(0,1fr)/188px minmax(0,1fr);
+  display: grid;
+  position: relative;
+  overflow: hidden;
+}
+
+.panel:focus {
+  outline: none;
+}
+
+.nav {
+  box-sizing: border-box;
+  flex-direction: column;
+  grid-area: nav;
+  min-width: 0;
+  min-height: 0;
+  padding: 10px 12px 0;
+  display: flex;
+}
+
+.navTitle {
+  color: var(--dsw-alias-label-primary);
+  grid-area: title;
+  padding: 22px 12px 8px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.navList {
+  flex-direction: column;
+  gap: 4px;
+  min-height: 0;
+  display: flex;
+  overflow-y: auto;
+}
+
+.navCell {
+  box-sizing: border-box;
+  border-radius: var(--dsw-radius-md);
+  cursor: pointer;
+  height: 40px;
+  color: var(--dsw-alias-label-primary);
+  text-align: left;
+  background: 0 0;
+  border: none;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px 9px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  display: flex;
+}
+
+@media (hover:hover) {
+  .navCell:hover {
+    background-color: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.navCell.active {
+  background: var(--dsw-specific-sidebar-nav-item-active);
+}
+
+.navIcon {
+  flex: none;
+  display: flex;
+}
+
+.navLabel {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.header {
+  box-sizing: border-box;
+  grid-area: header;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  height: 54px;
+  padding: 20px 14px 8px 10px;
+  display: flex;
+}
+
+.actions {
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  margin-left: auto;
+  display: flex;
+}
+
+.close {
+  border-radius: var(--dsw-radius-sm);
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  color: var(--dsw-alias-label-primary);
+  background: 0 0;
+  border: none;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  display: inline-flex;
+}
+
+@media (hover:hover) {
+  .close:hover {
+    background-color: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.options {
+  grid-area: options;
+  min-width: 0;
+  min-height: 0;
+  padding: 0 24px 24px;
+  overflow-y: auto;
+}
+
+@media (width<=767px) {
+  html:not([data-windows-titlebar]):not([data-platform=darwin]) .overlay {
+    background: var(--dsw-alias-bg-layer-2);
+    height: 100%;
+    position: absolute;
+  }
+  html:not([data-windows-titlebar]):not([data-platform=darwin]) .panel {
+    border-radius: 0;
+    grid-template: "title header""nav nav""options options"minmax(0,1fr)/minmax(0,1fr) auto;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+  }
+  html:not([data-windows-titlebar]):not([data-platform=darwin]) .navTitle {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 22px 0 0 16px;
+    overflow: hidden;
+  }
+  html:not([data-windows-titlebar]):not([data-platform=darwin]) .header {
+    height: auto;
+    padding: 20px 16px 0 10px;
+  }
+  html:not([data-windows-titlebar]):not([data-platform=darwin]) .nav {
+    padding: 0;
+  }
+  html:not([data-windows-titlebar]):not([data-platform=darwin]) .navList {
+    overscroll-behavior: none;
+    scrollbar-width: none;
+    flex-direction: row;
+    gap: 4px;
+    padding: 12px 16px 14px;
+    overflow: auto hidden;
+  }
+  html:not([data-windows-titlebar]):not([data-platform=darwin]) .navList::-webkit-scrollbar {
+    display: none;
+  }
+  html:not([data-windows-titlebar]):not([data-platform=darwin]) .navCell {
+    flex: 1 0 auto;
+    justify-content: center;
+    min-width: 108px;
+    padding: 0 14px;
+  }
+  html:not([data-windows-titlebar]):not([data-platform=darwin]) .navLabel {
+    flex: none;
+  }
+  html:not([data-windows-titlebar]):not([data-platform=darwin]) .options {
+    padding: 0 16px 24px;
+  }
+}
+
+.hiddenLabel {
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+}

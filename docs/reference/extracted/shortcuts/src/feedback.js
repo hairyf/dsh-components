@@ -1,0 +1,30 @@
+// Extracted from @deepseek-ai/dsh-client-ui-shortcuts (lib/client.js); region lib/types/client/feedback.js
+// Compiled bundle code copied verbatim from the region; imports are hoisted in the original bundle, so this file is not standalone.
+
+		/**
+		* Identify the unreadable preferences, their recovery path, and the bindings still in use.
+		* @param config - failed read and last accepted preferences.
+		* @param runtime - storage owner whose location and reload action to show.
+		* @param t - shortcut dictionary.
+		* @returns localized recovery guidance without replacing the stored document.
+		*/
+		function shortcutReadFailure(config, runtime, t) {
+			const location = t(runtime === "desktop" ? "desktop-document" : "web-document");
+			const reload = t(runtime === "desktop" ? "desktop-reload" : "web-reload");
+			return `${t(config.error ?? "read", {
+				location,
+				reload
+			})} ${t(config.usingDefaults ? "using-defaults" : "using-accepted")}`;
+		}
+		/**
+		* Describe an unsuccessful preference write without losing command names.
+		* @param result - rejected operation result.
+		* @param catalog - current command labels.
+		* @param t - shortcut dictionary.
+		* @param runtime - storage owner for unreadable-document recovery guidance.
+		* @returns localized diagnosis for a system toast and accessible field description.
+		*/
+		function shortcutFailure(result, catalog, t, runtime) {
+			if (result.status === "unreadable") return shortcutReadFailure(result.snapshot, runtime, t);
+			return result.issue ? t(result.issue) : result.status === "conflict" ? t("conflict", { commands: result.conflicts?.map((id) => catalog.find((row) => row.id === id)?.label ?? id).join(", ") ?? "" }) : t(result.status);
+		}

@@ -1,0 +1,11 @@
+/* @deepseek-ai/dsh-client-ui-chat / TurnTailNodeView.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.root {
+  flex-direction: column;
+  gap: 16px;
+  display: flex;
+}
+
+.actions {
+  margin-top: 4px;
+  margin-left: -6px;
+}

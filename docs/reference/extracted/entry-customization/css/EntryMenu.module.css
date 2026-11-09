@@ -1,0 +1,17 @@
+/* @deepseek-ai/dsh-client-ui-entry-customization / EntryMenu.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.entryName {
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.entryTitle {
+  overflow-wrap: anywhere;
+  white-space: normal;
+  min-width: 0;
+}
+
+.activeMark {
+  flex: none;
+  margin-left: auto;
+}

@@ -1,0 +1,27 @@
+/* @deepseek-ai/dsh-client-ui-goal / GoalCommandInputView.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.row {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  display: flex;
+}
+
+.stack {
+  min-width: 0;
+  max-width: min(calc(var(--dsh-chat-content-width,748px) * .702), 82%);
+  flex-direction: column;
+  align-items: flex-end;
+  display: flex;
+}
+
+.bubble {
+  overflow-wrap: anywhere;
+  border-radius: var(--dsw-radius-xl);
+  background: var(--dsw-specific-bubble);
+  max-width: 100%;
+  color: var(--dsw-alias-label-primary);
+  font-size: var(--dsh-content-font-size,14px);
+  line-height: calc(22px + var(--dsh-content-font-delta,0px));
+  white-space: pre-wrap;
+  padding: 10px 16px;
+}

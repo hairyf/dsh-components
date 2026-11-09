@@ -1,0 +1,311 @@
+/* @deepseek-ai/dsh-client-ui-chat / ChatView.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.frame {
+  flex-direction: column;
+  flex: auto;
+  min-height: 0;
+  display: flex;
+  position: relative;
+  container-type: inline-size;
+}
+
+.root {
+  flex-direction: column;
+  flex: auto;
+  min-height: 0;
+  display: flex;
+  position: relative;
+  overflow: visible clip;
+}
+
+.scroll {
+  min-height: 0;
+  padding: 16px calc(var(--dsh-composer-side-clearance) + 16px);
+  flex: auto;
+  overflow: clip auto;
+  container-type: inline-size;
+}
+
+.root[data-chat-following-tail] .scroll,
+[data-conversation-scroll]:has(.root[data-chat-following-tail]) {
+  overflow-anchor: none;
+}
+
+[data-conversation-scroll] .frame,
+[data-conversation-scroll] .root {
+  flex: none;
+  height: auto;
+  min-height: auto;
+}
+
+[data-conversation-scroll] .scroll {
+  flex: none;
+  min-height: auto;
+  overflow: clip visible;
+}
+
+.column {
+  max-width: var(--dsh-chat-content-width);
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+
+:is(.column,[data-slot="conversation.chat.flow"])>:not([hidden]):not(.textInteraction):not(.flowItem:is(:empty,:has(>[data-slot="conversation.chat.node"]:empty)))~:not([hidden]):not(.textInteraction):not(.flowItem:is(:empty,:has(>[data-slot="conversation.chat.node"]:empty))),
+.column>.older+[data-slot="conversation.chat.flow"]>:not([hidden]):not(.textInteraction):not(.flowItem:is(:empty,:has(>[data-slot="conversation.chat.node"]:empty))) {
+  margin-top: var(--dsh-chat-flow-gap,4px);
+}
+
+.flowItem[data-chat-group-part=response],
+:is(.column,[data-slot="conversation.chat.flow"])>[data-chat-group-part=response]:not([hidden]):not(:empty)+:not([hidden]):not(.flowItem:is(:empty,:has(>[data-slot="conversation.chat.node"]:empty))):not(.running):not(:has(>[data-slot="conversation.chat.node"]>[data-chat-steering-batch])) {
+  --dsh-chat-flow-gap: 12px;
+}
+
+.flowItem {
+  min-width: 0;
+}
+
+.turnSpacer {
+  height: 0;
+}
+
+.column[data-chat-motion]>:not([data-chat-motion]),
+.column[data-chat-motion]>[data-slot="conversation.chat.flow"]>:not([data-chat-motion]) {
+  transition: margin-top .16s cubic-bezier(.4,0,.2,1);
+}
+
+.column[data-input-fold]>:not([data-chat-motion]),
+.column[data-input-fold]>[data-slot="conversation.chat.flow"]>:not([data-chat-motion]) {
+  transition: none;
+}
+
+.column[data-chat-motion]>[data-chat-flow-kind=turn-process],
+.column[data-chat-motion]>[data-slot="conversation.chat.flow"]>[data-chat-flow-kind=turn-process] {
+  transition: none;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .column[data-chat-motion]>:not([data-chat-motion]),
+  .column[data-chat-motion]>[data-slot="conversation.chat.flow"]>:not([data-chat-motion]) {
+    transition: none;
+  }
+}
+
+.flowItem[data-chat-flow-kind=turn-process],
+:is(.column,[data-slot="conversation.chat.flow"])>[data-chat-flow-kind=turn-process]:not(:empty,:has(>[data-slot="conversation.chat.node"]:empty))+:not([hidden]):not(.flowItem:is(:empty,:has(>[data-slot="conversation.chat.node"]:empty))):not(.running):not(:has(>[data-slot="conversation.chat.node"]>[data-chat-steering-batch])),
+:is(.column,[data-slot="conversation.chat.flow"])>[data-chat-flow-kind=turn-process]+:not([hidden]):not(.flowItem:is(:empty,:has(>[data-slot="conversation.chat.node"]:empty))):not(.running):not([data-submission-echo],[data-pending-steering]):not(:has(>[data-slot="conversation.chat.node"]>[data-chat-steering-batch])) {
+  --dsh-chat-flow-gap: 16px;
+}
+
+:is(.column,[data-slot="conversation.chat.flow"])>.flowItem:has(>[data-slot="conversation.chat.node"]>[data-chat-steering-batch=start]) {
+  --dsh-chat-flow-gap: calc(44px + var(--dsh-content-font-delta,0px));
+}
+
+.running+[data-pending-steering] {
+  --dsh-chat-flow-gap: 0px;
+}
+
+.flowItem[data-chat-flow-kind=turn-tail]+.running {
+  display: none;
+}
+
+@media (prefers-reduced-motion:no-preference) {
+  :where(.column>[data-slot="conversation.chat.flow"]>.flowItem[data-chat-flow-kind=steering])+.running {
+    animation: .14s cubic-bezier(.2,.8,.2,1) running-enters-slot;
+  }
+  .column[data-input-fold] .running {
+    animation-duration: 0s;
+  }
+}
+
+@keyframes running-enters-slot {
+  0% {
+    opacity: 0;
+    translate: 0 calc(-44px - var(--dsh-content-font-delta,0px));
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+.flowItem:is(:empty,:has(>[data-slot="conversation.chat.node"]:empty)) {
+  height: 0;
+}
+
+.callRow {
+  border-radius: var(--dsw-radius-sm);
+}
+
+.hint {
+  color: var(--dsw-alias-label-tertiary);
+  font-size: var(--dsh-content-font-size-secondary,13px);
+  line-height: calc(18px + var(--dsh-content-font-delta-secondary,0px));
+}
+
+.running {
+  --dsh-chat-flow-gap: 12px;
+  --dsw-alias-label-shimmer: var(--dsw-alias-label-deep-diving-shimmer);
+  color: var(--dsw-alias-label-deep-diving);
+  font-size: calc(var(--dsh-content-font-size,14px) - 2px);
+  line-height: calc(22px + var(--dsh-content-font-delta,0px));
+  flex-direction: column;
+  align-items: flex-start;
+  display: flex;
+  position: relative;
+}
+
+.running[data-holding] {
+  visibility: hidden;
+  opacity: 0;
+}
+
+:is(.column,[data-slot="conversation.chat.flow"])>:nth-last-child(2 of :not([hidden]):not([data-pending-steering]):not(.flowItem:is(:empty,:has(>[data-slot="conversation.chat.node"]:empty)))):is(.flowItem:not([data-chat-flow-kind=user]):not([data-chat-flow-kind=steering]):not([data-chat-flow-kind=turn-trigger]),[data-chat-group-key])~.running>.runningDivider {
+  opacity: 1;
+}
+
+.runningDivider {
+  background: color-mix(in srgb, var(--dsw-alias-border-l1) 75%, var(--dsw-alias-border-l2));
+  opacity: 0;
+  pointer-events: none;
+  height: .5px;
+  position: absolute;
+  top: -4px;
+  left: 0;
+  right: 0;
+}
+
+@media (prefers-reduced-motion:no-preference) {
+  .runningDivider {
+    transition: opacity .16s;
+  }
+}
+
+.runningContent {
+  min-width: 0;
+  height: calc(28px + var(--dsh-content-font-delta,0px));
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  display: inline-flex;
+}
+
+.runningText {
+  font-variant-numeric: tabular-nums;
+  min-width: 0;
+}
+
+.runningIcon {
+  width: calc(14px + var(--dsh-content-font-delta,0px));
+  height: calc(14px + var(--dsh-content-font-delta,0px));
+  contain: strict;
+  flex: none;
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.runningWhaleAnimated {
+  display: none;
+  position: absolute;
+  inset: 0;
+}
+
+.runningWhaleStill {
+  display: initial;
+}
+
+@supports (mask-mode:alpha) and (mask-image:url('')) {
+  @media (prefers-reduced-motion:no-preference) and (forced-colors:none) {
+    .runningWhaleAnimated {
+      will-change: transform;
+      background: currentColor;
+      display: block;
+      mask: url(plugins/@deepseek-ai/dsh-client-ui-chat/assets/running-whale%402x-06738fa29b2f.png) 50%/100% 100% no-repeat alpha;
+    }
+    .runningWhaleStill {
+      display: none;
+    }
+  }
+}
+
+.openError {
+  color: var(--dsw-alias-state-error-primary);
+  font-size: var(--dsh-content-font-size-secondary,13px);
+  line-height: calc(18px + var(--dsh-content-font-delta-secondary,0px));
+}
+
+.older {
+  justify-content: center;
+  display: flex;
+}
+
+.older button {
+  border-radius: var(--dsw-radius-sm);
+  color: var(--dsw-alias-label-secondary);
+  background: var(--dsw-alias-interactive-bg-hover-solid);
+  cursor: pointer;
+  border: none;
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+.older button:disabled {
+  cursor: default;
+  opacity: .6;
+}
+
+.toBottomSlot {
+  z-index: 8;
+  height: 0;
+  padding-right: max(calc(var(--dsh-composer-side-clearance) + 16px), calc((100% - var(--dsh-chat-content-width)) / 2));
+  pointer-events: none;
+  justify-content: flex-end;
+  display: flex;
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+}
+
+[data-conversation-scroll] .toBottomSlot {
+  bottom: calc(var(--dsh-composer-height,152px) + 16px);
+  position: sticky;
+}
+
+.toBottom {
+  --dsw-elevation-stroke-color: var(--dsw-alias-border-l3);
+  corner-shape: round;
+  width: 34px;
+  height: 34px;
+  color: var(--dsw-alias-label-primary);
+  background: var(--dsw-alias-button-floating-fill);
+  box-shadow: var(--dsw-elevation-panel);
+  cursor: pointer;
+  pointer-events: auto;
+  border: 0;
+  border-radius: 100px;
+  justify-content: center;
+  align-items: center;
+  margin-top: -34px;
+  padding: 0;
+  display: flex;
+}
+
+@media (hover:hover) {
+  .toBottom:hover {
+    background: var(--dsw-alias-button-floating-hover);
+  }
+}
+
+.modalAction {
+  min-width: 72px;
+}
+
+.column>.textInteraction {
+  z-index: 6;
+  visibility: hidden;
+  width: max-content;
+  margin: 0;
+  position: absolute;
+}

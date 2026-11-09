@@ -11,4 +11,15 @@ logs
 node_modules
 temp
 .eslintcache
-.agents/skills
+.tmp-*
+
+
+# 1. Ignore everything inside the skills folder by default
+**/skills/*
+
+# 2. But keep the specific dsh-components folder and its contents tracked
+!skills/dsh-components/
+!skills/dsh-components/**
+# local verification artefacts
+.shot
+.vitest-report.json

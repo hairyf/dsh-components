@@ -1,0 +1,384 @@
+/* @deepseek-ai/dsh-client-ui-directory-picker-browse / DirectoryBrowser.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.dialog.dialog {
+  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);
+  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);
+  gap: 0;
+  width: min(680px,100%);
+  height: min(500px,100dvh - 32px);
+  padding: 0;
+}
+
+.editorScope {
+  display: contents;
+}
+
+.header {
+  border-bottom: .5px solid var(--dsw-alias-border-l3);
+  flex-direction: column;
+  flex: none;
+  gap: 8px;
+  padding: 16px 14px 8px 24px;
+  display: flex;
+}
+
+.title {
+  min-height: 28px;
+  color: var(--dsw-alias-label-primary);
+  align-items: flex-end;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 510;
+  line-height: 24px;
+  display: flex;
+}
+
+.crumbBar {
+  box-sizing: border-box;
+  border-radius: var(--dsw-radius-sm);
+  border: 1px solid #0000;
+  align-items: center;
+  gap: 4px;
+  min-height: 24px;
+  margin-left: -9px;
+  padding: 0 8px;
+  display: flex;
+}
+
+.crumbBar:has(.crumbEditZone:focus-visible),
+.crumbBar:has(.pathInput) {
+  border-color: var(--dsw-alias-border-l2);
+}
+
+@media (hover:hover) {
+  .crumbBar:has(.crumbEditZone:enabled:hover) {
+    border-color: var(--dsw-alias-border-l2);
+  }
+}
+
+.millerRow {
+  scrollbar-width: none;
+  flex: 1 1 0;
+  align-items: stretch;
+  gap: 12px;
+  min-height: 0;
+  display: flex;
+  overflow-x: auto;
+}
+
+.crumbTrail {
+  scrollbar-width: none;
+  flex: 0 auto;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  display: flex;
+  overflow-x: auto;
+}
+
+.crumbSeat {
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  display: inline-flex;
+}
+
+.crumb {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 160px;
+  color: var(--dsw-alias-label-tertiary);
+  cursor: pointer;
+  background: 0 0;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  overflow: hidden;
+}
+
+.crumb:focus-visible {
+  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color,var(--dsw-alias-state-business-primary));
+  outline-offset: -2px;
+}
+
+@media (hover:hover) {
+  .crumb:hover {
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.crumbChevron {
+  color: var(--dsw-alias-label-tertiary);
+  flex: none;
+}
+
+.crumbEditZone {
+  cursor: text;
+  background: 0 0;
+  border: none;
+  outline: none;
+  flex: 1 0 34px;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 34px;
+  height: 22px;
+  padding: 0;
+  display: flex;
+}
+
+.crumbEditGlyph {
+  color: var(--dsw-alias-label-tertiary);
+  flex: none;
+}
+
+.crumbEditZone:focus-visible .crumbEditGlyph {
+  color: var(--dsw-alias-label-primary);
+}
+
+@media (hover:hover) {
+  .crumbEditZone:enabled:hover .crumbEditGlyph {
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.crumbEditZone:disabled {
+  cursor: default;
+}
+
+.crumbEditZone:disabled .crumbEditGlyph {
+  color: var(--dsw-alias-label-caption);
+}
+
+.pathInput {
+  box-sizing: border-box;
+  min-width: 0;
+  height: 22px;
+  color: var(--dsw-alias-label-primary);
+  background: 0 0;
+  border: none;
+  outline: none;
+  flex: 1 1 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.content {
+  flex-direction: column;
+  flex: 1 1 0;
+  min-height: 0;
+  padding: 16px 16px 16px 24px;
+  display: flex;
+  position: relative;
+}
+
+.column {
+  flex-direction: column;
+  flex: 1 1 0;
+  gap: 2px;
+  min-width: 256px;
+  padding-right: 8px;
+  display: flex;
+  overflow-y: auto;
+}
+
+.divider {
+  background: var(--dsw-alias-border-l3);
+  flex: none;
+  width: .5px;
+}
+
+.rowSeat {
+  flex: none;
+  display: flex;
+}
+
+.row {
+  border-radius: var(--dsw-radius-sm);
+  text-align: left;
+  cursor: pointer;
+  background: 0 0;
+  border: none;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  height: 28px;
+  padding: 4px;
+  display: flex;
+}
+
+.row:focus-visible {
+  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color,var(--dsw-alias-state-business-primary));
+  outline-offset: -2px;
+}
+
+@media (hover:hover) {
+  .row:hover {
+    background: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.rowSelected {
+  background: var(--dsw-alias-interactive-bg-active,var(--dsw-alias-interactive-bg-hover));
+}
+
+@media (hover:hover) {
+  .rowSelected:hover {
+    background: var(--dsw-alias-interactive-bg-active,var(--dsw-alias-interactive-bg-hover));
+  }
+}
+
+.rowIcon {
+  color: var(--dsw-alias-label-secondary);
+  flex: none;
+}
+
+.rowIconSelected {
+  color: var(--dsw-alias-button-info-fill);
+  flex: none;
+}
+
+.rowName {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  color: var(--dsw-alias-label-primary);
+  flex: 1 1 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  overflow: hidden;
+}
+
+.rowChevron {
+  color: var(--dsw-alias-label-tertiary);
+  flex: none;
+}
+
+.status,
+.error {
+  padding: 4px 120px 4px 4px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.status {
+  color: var(--dsw-alias-label-secondary);
+}
+
+.error {
+  color: var(--dsw-alias-state-error-primary);
+}
+
+.loadingFloat {
+  background: var(--dsw-alias-bg-layer-2);
+  padding: 2px 8px;
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+.footerBar {
+  border-top: .5px solid var(--dsw-alias-border-l3);
+  flex-wrap: wrap;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  display: flex;
+}
+
+.showHiddenToggle {
+  color: var(--dsw-alias-label-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  background: 0 0;
+  border: none;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  display: inline-flex;
+}
+
+@media (hover:hover) {
+  .showHiddenToggle:hover {
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.showHiddenToggle:disabled {
+  color: var(--dsw-alias-label-caption);
+  cursor: default;
+}
+
+.showHiddenToggleActive {
+  color: var(--dsw-alias-label-primary);
+}
+
+.footerGap {
+  flex: 1 1 0;
+}
+
+.footerAction {
+  min-width: 72px;
+}
+
+.createDialog.createDialog {
+  gap: 0;
+  width: min(380px,100%);
+  padding: 0;
+}
+
+.createBody {
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 24px 20px;
+  display: flex;
+}
+
+.createTitle {
+  color: var(--dsw-alias-label-primary);
+  margin: 0;
+  font-size: 16px;
+  font-weight: 510;
+  line-height: 24px;
+}
+
+.createIn {
+  color: var(--dsw-alias-label-primary);
+  margin: 0;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.createInput {
+  box-sizing: border-box;
+  border: .5px solid var(--dsw-alias-border-l4);
+  border-radius: var(--dsw-radius-lg);
+  width: 100%;
+  height: 44px;
+  color: var(--dsw-alias-label-primary);
+  background: 0 0;
+  outline: none;
+  padding: 7px 14px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.createInput::placeholder {
+  color: var(--dsw-alias-label-caption);
+}
+
+.createActions {
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  display: flex;
+}

@@ -1,0 +1,7 @@
+/* @deepseek-ai/dsh-client-ui-sidebar-documentpreview / OfficeBody.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.body {
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+}

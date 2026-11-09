@@ -1,0 +1,40 @@
+// Extracted from @deepseek-ai/dsh-client-ui-open-in-app (lib/client.js); region lib/types/client/applications.js
+// Compiled bundle code copied verbatim from the region; imports are hoisted in the original bundle, so this file is not standalone.
+
+/** Label keys for applications supported by this client. */
+const APP_LABEL_KEY = {
+	finder: "app.finder",
+	explorer: "app.explorer",
+	filemanager: "app.filemanager",
+	cursor: "app.cursor",
+	vscode: "app.vscode",
+	vscodeinsiders: "app.vscodeinsiders",
+	windsurf: "app.windsurf",
+	zed: "app.zed",
+	sublimetext: "app.sublimetext",
+	xcode: "app.xcode",
+	androidstudio: "app.androidstudio",
+	intellij: "app.intellij",
+	pycharm: "app.pycharm",
+	webstorm: "app.webstorm",
+	phpstorm: "app.phpstorm",
+	goland: "app.goland",
+	rider: "app.rider",
+	rustrover: "app.rustrover",
+	fork: "app.fork",
+	sourcetree: "app.sourcetree",
+	github: "app.github",
+	tower: "app.tower",
+	gitkraken: "app.gitkraken",
+	smartgit: "app.smartgit",
+	sublimemerge: "app.sublimemerge",
+	ghostty: "app.ghostty",
+	warp: "app.warp",
+	iterm: "app.iterm",
+	kitty: "app.kitty",
+	terminal: "app.terminal",
+	windowsterminal: "app.windowsterminal",
+	gitbash: "app.gitbash",
+	gnometerminal: "app.gnometerminal",
+	konsole: "app.konsole"
+};

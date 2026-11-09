@@ -1,0 +1,214 @@
+/* @deepseek-ai/dsh-client-ui-skill / SkillRow.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.card {
+  flex-direction: column;
+  display: flex;
+}
+
+.row {
+  height: calc(24px + var(--dsh-content-font-delta,0px));
+  min-width: 0;
+  color: var(--dsw-alias-label-tertiary);
+  align-items: center;
+  transition: color .1s;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (hover:hover) {
+  .row:hover {
+    color: var(--dsw-alias-label-secondary);
+  }
+}
+
+.row[data-expandable] {
+  cursor: pointer;
+}
+
+.leading {
+  width: calc(16px + var(--dsh-content-font-delta,0px));
+  height: calc(16px + var(--dsh-content-font-delta,0px));
+  color: inherit;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  margin-right: 6px;
+  display: inline-flex;
+  position: relative;
+}
+
+.leading svg {
+  width: calc(14px + var(--dsh-content-font-delta,0px));
+  height: calc(14px + var(--dsh-content-font-delta,0px));
+}
+
+.chevron {
+  color: inherit;
+}
+
+.iconIdle {
+  opacity: 1;
+  transition: opacity .1s;
+  display: inline-flex;
+}
+
+.chevronHover {
+  opacity: 0;
+  margin: auto;
+  transition: opacity .1s;
+  position: absolute;
+  inset: 0;
+}
+
+@media (hover:hover) {
+  .row:hover .iconIdle {
+    opacity: 0;
+  }
+  .row:hover .chevronHover {
+    opacity: 1;
+  }
+}
+
+.title {
+  font-size: var(--dsh-content-font-size-secondary,13px);
+  line-height: calc(24px + var(--dsh-content-font-delta,0px));
+  flex: none;
+}
+
+.separator {
+  background: var(--dsw-alias-label-caption);
+  border-radius: 1px;
+  flex: none;
+  width: 2px;
+  height: 2px;
+  margin: 0 8px;
+}
+
+.summary {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  font-size: var(--dsh-content-font-size-secondary,13px);
+  line-height: calc(24px + var(--dsh-content-font-delta,0px));
+  flex: auto;
+  overflow: hidden;
+}
+
+.errorSummary {
+  color: var(--dsw-alias-state-error-primary);
+}
+
+.stoppedSummary {
+  color: var(--dsw-alias-state-warn-label);
+}
+
+.bodyWrap {
+  flex-direction: column;
+  display: flex;
+}
+
+.instructionsCard {
+  border: .5px solid var(--dsw-alias-border-l1);
+  border-radius: var(--dsw-radius-lg);
+  background: var(--dsw-alias-markdown-code-block);
+  flex-direction: column;
+  max-height: 260px;
+  margin: 4px 0 4px 4px;
+  display: flex;
+  overflow: hidden;
+}
+
+.instructionsHeader {
+  border-bottom: .5px solid var(--dsw-alias-border-l2);
+  background: var(--dsw-alias-markdown-code-block-banner);
+  color: var(--dsw-alias-label-caption);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  flex: none;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.instructions {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-height: 0;
+  font: var(--dsw-font-markdown-code-block-small);
+  color: var(--dsw-alias-label-secondary);
+  margin: 0;
+  padding: 10px 12px 12px;
+  overflow: auto;
+}
+
+.instructions[data-error] {
+  color: var(--dsw-alias-state-error-primary);
+}
+
+.instructions::-webkit-scrollbar-thumb {
+  border-radius: var(--dsw-radius-sm);
+  background-clip: padding-box;
+  border: 2px solid #0000;
+}
+
+.instructions::-webkit-scrollbar-track {
+  margin: 6px 0;
+}
+
+.inspectButton {
+  border: .5px solid var(--dsw-alias-border-l4);
+  corner-shape: round;
+  background: var(--dsw-alias-bg-base);
+  color: var(--dsw-alias-label-secondary);
+  cursor: pointer;
+  opacity: 0;
+  border-radius: 999px;
+  align-self: flex-start;
+  align-items: center;
+  gap: 4px;
+  margin: 4px 0 2px 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  line-height: 16px;
+  transition: opacity .1s;
+  display: inline-flex;
+}
+
+.inspectButton:focus-visible {
+  opacity: 1;
+}
+
+@media (hover:hover) {
+  .card:hover .inspectButton {
+    opacity: 1;
+  }
+  .inspectButton:hover {
+    background: var(--dsw-alias-interactive-bg-hover-solid);
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.visuallyHidden {
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .row,
+  .iconIdle,
+  .chevronHover,
+  .inspectButton {
+    transition: none;
+  }
+}
+
+@media (hover:none) {
+  .inspectButton {
+    opacity: 1;
+  }
+}

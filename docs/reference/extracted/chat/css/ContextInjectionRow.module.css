@@ -1,0 +1,61 @@
+/* @deepseek-ai/dsh-client-ui-chat / ContextInjectionRow.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.root {
+  min-width: 0;
+}
+
+.root[data-open] {
+  padding-bottom: 4px;
+}
+
+.chevron {
+  color: var(--dsw-alias-label-secondary);
+}
+
+.sep {
+  background: var(--dsw-alias-label-caption);
+  border-radius: 1px;
+  flex: none;
+  width: 2px;
+  height: 2px;
+  margin: 0 8px;
+}
+
+.source {
+  min-width: 0;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: var(--dsh-content-font-size-secondary,13px);
+  line-height: calc(24px + var(--dsh-content-font-delta,0px));
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: none;
+  overflow: hidden;
+}
+
+.summary {
+  min-width: 0;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: var(--dsh-content-font-size-secondary,13px);
+  line-height: calc(24px + var(--dsh-content-font-delta,0px));
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: auto;
+  overflow: hidden;
+}
+
+.body {
+  box-sizing: border-box;
+  width: calc(100% - 22px - var(--dsh-content-font-delta,0px));
+  max-height: 141px;
+  margin: 4px 0 0 calc(22px + var(--dsh-content-font-delta,0px));
+  border-radius: var(--dsw-radius-md);
+  background: var(--dsw-alias-markdown-code-block);
+  color: var(--dsw-alias-label-tertiary);
+  font: 400 11px/16px var(--ds-font-family-code);
+  border: none;
+  padding: 10px 16px 12px 12px;
+  overflow: auto;
+}
+
+.toolChanges {
+  white-space: nowrap;
+}

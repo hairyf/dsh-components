@@ -1,0 +1,20 @@
+/* @deepseek-ai/dsh-client-ui-sidebar-right / ExpandButton.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.button {
+  width: 28px;
+  color: var(--dsw-alias-label-secondary);
+  flex: none;
+  padding: 0;
+}
+
+.button svg {
+  width: 15px;
+  height: 15px;
+}
+
+.expanded {
+  visibility: hidden;
+}
+
+.icon {
+  transform: scaleX(-1);
+}

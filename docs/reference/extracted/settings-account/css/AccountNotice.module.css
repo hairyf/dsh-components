@@ -1,0 +1,91 @@
+/* @deepseek-ai/dsh-client-ui-settings-account / AccountNotice.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.stack {
+  z-index: 40;
+  isolation: isolate;
+  width: 280px;
+  max-width: calc(100vw - 16px);
+  position: fixed;
+}
+
+.card {
+  box-sizing: border-box;
+  background: var(--dsw-specific-input-major);
+  width: 100%;
+  box-shadow: var(--dsw-elevation-panel);
+  color: var(--dsw-alias-label-secondary);
+  z-index: calc(0 - var(--notice-depth));
+  transform: translateY(calc(-4px * var(--notice-depth))) scaleX(var(--notice-scale));
+  transform-origin: top;
+  border: 0;
+  border-radius: 16px;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 22px;
+  transition: transform .25s ease-out;
+  position: relative;
+}
+
+.card[data-front=false] {
+  pointer-events: none;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+.copy {
+  overflow-wrap: anywhere;
+  flex-direction: column;
+  gap: 2px;
+  display: flex;
+}
+
+.copy p {
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+.title {
+  align-items: flex-start;
+  gap: 2px;
+  font-weight: 500;
+  line-height: 20px;
+  display: flex;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  color: var(--dsw-alias-brand-primary-new-colorprimary-new-color);
+  flex: none;
+  margin-top: 1px;
+  display: flex;
+}
+
+.close {
+  width: 18px;
+  height: 18px;
+  color: var(--dsw-alias-label-caption);
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  display: flex;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--dsw-focus-ring-color,var(--dsw-alias-state-business-primary));
+  outline-offset: 2px;
+  border-radius: 4px;
+}

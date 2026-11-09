@@ -1,0 +1,253 @@
+// Extracted from @deepseek-ai/dsh-client-ui-agent-preset (lib/client.js); region lib/types/client/index.js
+// Compiled bundle code copied verbatim from the region; imports are hoisted in the original bundle, so this file is not standalone.
+
+/**
+* Agent-preset surface plugin, browser half — three surfaces over one roster:
+* a chip on the new-session screen for the session about to start, a
+* read-only label in the session header, and a settings section that lists
+* the roster (selection, the new-task default, a read-only view of each
+* declared composition, and the way into Creator mode).
+*
+* A running session keeps the composition it began with (the host switches a
+* session's preset only before its first turn). That is what splits
+* the choice from the display: the hero chip is before-the-fact, while the
+* header only reports what a session already runs. The default preset is
+* edited where the roster is visible — the settings section's "make default"
+* — so General settings carries no duplicate control for the same field.
+*
+* Coding Tools (General settings) hide PTC and Minimal from the hero menu
+* and Settings roster when off. Hidden saved defaults fall back to Standard;
+* the existing gate clears staged choices while existing sessions keep their composition.
+*/
+/** Required services (cordis fiber inject). */
+const inject = [
+	"slots",
+	"sessions",
+	"locale",
+	"remote",
+	"remote.agentPresets",
+	"remote.settings",
+	"configForms"
+];
+/**
+* Mount the roster surfaces: hero chip, session-header label, settings section.
+* @param ctx - the browser plugin context.
+*/
+function apply(ctx) {
+	const toolsSettings = ctx.configForms.get("ui-settings");
+	const presetSettings = ctx.configForms.get(AGENT_PRESET_SETTINGS_NS);
+	let active = true;
+	const codingToolsDisabled = () => active && toolsSettings.getSnapshot().value?.enabled === false;
+	const controller = new AgentPresetSettingsController(ctx);
+	const staged = {
+		id: void 0,
+		introduce: false
+	};
+	const seats = new WeakMapWithValues();
+	const boundSeatDisposers = /* @__PURE__ */ new Set();
+	ctx.effect(() => async () => {
+		await Promise.all([...boundSeatDisposers].map((dispose) => dispose()));
+	}, "ui-agent-preset: bound selections");
+	const unboundSeat = new AgentPresetSeatController(ctx, () => void 0, staged);
+	const seatFor = (binding) => {
+		const existing = seats.get(binding);
+		if (existing !== void 0) return existing;
+		const seat = new AgentPresetSeatController(ctx, () => {
+			if (ctx.sessions.binding(binding.sessionId) !== binding) return void 0;
+			const summary = ctx.sessions.list.getSnapshot().byId[binding.sessionId];
+			return summary !== void 0 && (ctx.sessions.retainInfo(binding.sessionId).getSnapshot().retainedBy.mainView ?? 0) > 0 ? summary : void 0;
+		}, staged);
+		seats.set(binding, seat);
+		const dispose = binding.ctx.effect(() => {
+			const stop = ctx.sessions.list.subscribe(() => {
+				seat.apply();
+			});
+			return () => {
+				stop();
+				seats.delete(binding);
+				boundSeatDisposers.delete(dispose);
+			};
+		}, "ui-agent-preset: Provider binding");
+		boundSeatDisposers.add(dispose);
+		return seat;
+	};
+	const section = new AgentPresetSectionController(ctx);
+	const developerTools = ctx.configForms.developerTools.enabled;
+	ctx.effect(() => developerTools.subscribe(() => {
+		if (developerTools.getSnapshot()) return;
+		staged.id = void 0;
+		staged.introduce = false;
+		unboundSeat.apply();
+		for (const seat of seats.values) seat.apply();
+	}), "ui-agent-preset: Developer tools gate");
+	const mainBlank = () => Object.values(ctx.sessions.list.getSnapshot().byId).find((session) => {
+		/* v8 ignore next -- retained source counts omit zero-valued entries. */
+		return session.blank && (session.retainedBy.mainView ?? 0) > 0;
+	});
+	const mainBlankSeat = () => {
+		const summary = mainBlank();
+		const binding = summary === void 0 ? void 0 : ctx.sessions.binding(summary.id);
+		return binding === void 0 ? void 0 : seatFor(binding);
+	};
+	ctx.effect(() => ctx.locale.register("settings.agentPreset", {
+		zh,
+		en,
+		ja,
+		es,
+		fr,
+		de,
+		ru,
+		pt
+	}), "ui-agent-preset: settings row dictionaries");
+	ctx.effect(() => {
+		let requested = 0;
+		let pending;
+		const reconcile = () => {
+			requested++;
+			pending ??= Promise.resolve().then(async () => {
+				try {
+					for (;;) {
+						const revision = requested;
+						await section.reconcileCodingTools(codingToolsDisabled);
+						if (!active || requested === revision) return;
+					}
+				} finally {
+					pending = void 0;
+				}
+			});
+		};
+		const refresh = () => {
+			controller.load();
+			if (section.store.getSnapshot().status !== "idle") section.load();
+			unboundSeat.load();
+			for (const seat of seats.values) seat.load();
+			reconcile();
+		};
+		const disposers = [
+			toolsSettings.subscribe(reconcile),
+			presetSettings.subscribe(reconcile),
+			ctx.remote.$on("settings/document-updated", (ns) => {
+				if (ns !== "agent-preset-registry") return;
+				refresh();
+			}),
+			ctx.on("connection/reset", refresh)
+		];
+		reconcile();
+		return async () => {
+			active = false;
+			for (const dispose of disposers) dispose();
+			await pending;
+		};
+	}, "ui-agent-preset: settings refresh");
+	let creatorDraft;
+	ctx.inject([
+		"slots",
+		"conversation",
+		"sessions",
+		"uiWorkspace"
+	], (scope) => {
+		const seatInjected = (sessionId) => {
+			const binding = sessionId === void 0 ? void 0 : ctx.sessions.binding(sessionId);
+			const seat = binding === void 0 ? unboundSeat : seatFor(binding);
+			return {
+				hooks: {
+					agentPresetSeat: seat.store,
+					developerTools: ctx.configForms.developerTools.enabled
+				},
+				load: () => seat.load(),
+				select: async (id) => {
+					const from = analyticsMode(seat.store.getSnapshot().current);
+					const to = analyticsMode(id);
+					const enabled = toolsSettings.getSnapshot().value?.enabled;
+					const outcome = await seat.select(id);
+					if ((outcome.kind === "applied" || outcome.kind === "staged" && sessionId === void 0) && from !== void 0 && to !== void 0 && to !== "other" && from !== to && enabled !== void 0) ctx.get("productAnalytics")?.track("agent_preset_switch", {
+						switch_from: from,
+						switch_to: to,
+						code_work_view_enabled: enabled
+					});
+					return outcome.kind === "refused" ? outcome.reason : void 0;
+				},
+				dismissRefusal: (error) => {
+					seat.dismissRefusal(error);
+				},
+				introduced: () => {
+					seat.introduced();
+				}
+			};
+		};
+		const labelInjected = () => ({
+			hooks: { agentPresets: controller.store },
+			load: () => controller.load()
+		});
+		const startCreatorDraft = () => {
+			const listed = mainBlank()?.projectionValues?.agentPreset;
+			if (typeof listed !== "string" || listed === "cordis") (mainBlankSeat() ?? unboundSeat).stage("cordis", true);
+			scope.uiWorkspace.startSession(void 0, {
+				clearPreviousDraft: false,
+				agentPreset: "cordis"
+			});
+		};
+		scope.effect(() => {
+			creatorDraft = startCreatorDraft;
+			const chip = scope.slots.register({
+				name: "conversation.hero.agentPreset",
+				locale: "settings.agentPreset",
+				inject: seatInjected
+			}, AgentPresetSeat);
+			const label = scope.slots.register({
+				name: "conversation.session.header.actions",
+				id: "agent-preset",
+				order: -10,
+				locale: "settings.agentPreset",
+				inject: labelInjected
+			}, AgentPresetLabel);
+			return () => {
+				creatorDraft = void 0;
+				chip();
+				label();
+			};
+		}, "ui-agent-preset: new-session chip and header label");
+		scope.slots.inject("plugins.add.actions", () => scope.slots.register({
+			name: "plugins.add.actions",
+			id: "create-plugin",
+			locale: "settings.agentPreset",
+			inject: () => ({
+				hooks: { agentPresets: controller.store },
+				load: () => controller.load(),
+				startCreatorDraft
+			})
+		}, CreatePluginMenuItem));
+	});
+	/** Capture the exact blank Session one Settings action may update. */
+	const captureBlankSessionSync = () => {
+		const summary = Object.values(ctx.sessions.list.getSnapshot().byId).find((session) => session.blank && (session.retainedBy.mainView ?? 0) > 0);
+		const binding = summary === void 0 ? void 0 : ctx.sessions.binding(summary.id);
+		const seat = binding === void 0 ? void 0 : seatFor(binding);
+		const sessionId = seat?.blankSessionId();
+		return async (id) => {
+			if (seat === void 0 || sessionId === void 0 || binding === void 0 || seats.get(binding) !== seat) return void 0;
+			return await seat.syncBlankSession(sessionId, id);
+		};
+	};
+	const sectionInjected = () => ({
+		hooks: {
+			agentPresetSection: section.store,
+			developerTools: ctx.configForms.developerTools.enabled
+		},
+		load: () => section.load(),
+		view: (id) => section.view(id),
+		closeView: () => {
+			section.closeView();
+		},
+		...creatorDraft === void 0 ? {} : { startCreatorDraft: creatorDraft },
+		makeDefault: (id) => section.makeDefault(id, captureBlankSessionSync())
+	});
+	ctx.slots.inject("settings.section", () => ctx.slots.register({
+		name: "settings.section",
+		id: "agent-presets",
+		order: 20,
+		label: () => ctx.locale.bind("settings.agentPreset")("nav"),
+		locale: "settings.agentPreset",
+		inject: sectionInjected
+	}, AgentPresetSection));
+}

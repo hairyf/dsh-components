@@ -1,0 +1,13 @@
+/* @deepseek-ai/dsh-client-ui-tool / ToolCallTree.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.callRow {
+  border-radius: var(--dsw-radius-sm);
+}
+
+.subCalls {
+  border-left: .5px solid var(--dsw-alias-border-l2);
+  flex-direction: column;
+  gap: 4px;
+  margin: 4px 0 2px 22px;
+  padding-left: 8px;
+  display: flex;
+}

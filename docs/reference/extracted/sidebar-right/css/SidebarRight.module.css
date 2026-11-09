@@ -1,0 +1,218 @@
+/* @deepseek-ai/dsh-client-ui-sidebar-right / SidebarRight.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.session {
+  display: contents;
+}
+
+.session[hidden] {
+  display: none;
+}
+
+.panel {
+  --dsh-dockkit-dock-layer: 10;
+  --dsh-dockkit-float-layer: 60;
+  pointer-events: none;
+  flex-direction: column;
+  min-width: 0;
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow: clip;
+}
+
+.panel [data-dockkit-host=dock],
+.panel [data-dockkit-empty],
+.panel [data-dockkit-divider] {
+  transform: translateX(var(--dsh-sidebar-width));
+  visibility: hidden;
+  transition: transform var(--ds-transition-duration-slow) var(--ds-ease-in-out), visibility 0s linear var(--ds-transition-duration-slow);
+}
+
+.panel[data-sidebar-right-open] [data-dockkit-host=dock],
+.panel[data-sidebar-right-open] [data-dockkit-empty],
+.panel[data-sidebar-right-open] [data-dockkit-divider] {
+  visibility: visible;
+  transition: transform var(--ds-transition-duration-slow) var(--ds-ease-in-out);
+  transform: none;
+}
+
+@starting-style {
+  .panel[data-sidebar-right-opening] [data-dockkit-host=dock],
+  .panel[data-sidebar-right-opening] [data-dockkit-empty],
+  .panel[data-sidebar-right-opening] [data-dockkit-divider] {
+    transform: translateX(var(--dsh-sidebar-width));
+  }
+}
+
+.panel[data-sidebar-right-panel=fullscreen] {
+  --dsh-dockkit-dock-layer: 40;
+}
+
+[data-windows-titlebar] .panel[data-sidebar-right-panel=fullscreen] {
+  max-width: calc(100vw - var(--dsh-windows-sidebar-width));
+}
+
+[data-windows-titlebar] .panel[data-sidebar-right-panel=fullscreen] [data-dockkit-column="0"][data-dockkit-pane] {
+  border-radius: var(--dsh-windows-content-radius) 0 0 0;
+  corner-shape: round;
+}
+
+[data-platform=darwin] .panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column="0"] {
+  --dsh-dockkit-strip-inline-start: 88px;
+}
+
+[data-platform=darwin] .panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column="1"] {
+  --dsh-dockkit-strip-inline-start: 10px;
+}
+
+[data-platform=darwin][data-fullscreen] .panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column="0"] {
+  --dsh-dockkit-strip-inline-start: 10px;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .panel [data-dockkit-host=dock],
+  .panel [data-dockkit-empty],
+  .panel [data-dockkit-divider],
+  .panel[data-sidebar-right-open] [data-dockkit-host=dock],
+  .panel[data-sidebar-right-open] [data-dockkit-empty],
+  .panel[data-sidebar-right-open] [data-dockkit-divider] {
+    transition: none;
+  }
+}
+
+.iconButton {
+  width: 28px;
+  height: 28px;
+  color: var(--dsw-alias-label-secondary);
+  border-radius: var(--dsw-radius-sm);
+  cursor: pointer;
+  background: 0 0;
+  border: none;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  line-height: 1;
+  display: inline-flex;
+}
+
+.iconButton svg {
+  width: 15px;
+  height: 15px;
+}
+
+@media (hover:hover) {
+  .iconButton:hover {
+    background: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.collapseGlyph {
+  transform: scaleX(-1);
+}
+
+.panelBody {
+  flex: auto;
+  min-height: 0;
+  display: flex;
+}
+
+@media (pointer:coarse) {
+  .panelBody [data-dockkit-split-control]:has(>[data-dockkit-split-blocked]) {
+    visibility: hidden;
+  }
+}
+
+.unavailable {
+  color: var(--dsw-alias-label-tertiary);
+  font-size: var(--dsh-content-font-size-secondary,13px);
+  margin: 0;
+  padding: 12px;
+}
+
+.tabTitle {
+  display: contents;
+}
+
+.tabBody {
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.panel [data-dockkit-pane][data-sidebar-right-flash],
+.panel [data-dockkit-float][data-sidebar-right-flash] {
+  --sidebar-right-flash-color: var(--dsw-alias-brand-primary-new-colorprimary-new-color);
+  --sidebar-right-flash-ring: color-mix(in srgb, var(--sidebar-right-flash-color) 48%, transparent);
+  --sidebar-right-flash-near: color-mix(in srgb, var(--sidebar-right-flash-color) 16%, transparent);
+  --sidebar-right-flash-far: color-mix(in srgb, var(--sidebar-right-flash-color) 10%, transparent);
+}
+
+body[data-ds-dark-theme] .panel [data-dockkit-pane][data-sidebar-right-flash],
+body[data-ds-dark-theme] .panel [data-dockkit-float][data-sidebar-right-flash] {
+  --sidebar-right-flash-color: var(--dsw-static-neutral-00);
+}
+
+.panel [data-dockkit-pane][data-sidebar-right-flash] {
+  position: relative;
+}
+
+.panel [data-dockkit-pane][data-sidebar-right-flash]:after {
+  content: "";
+  z-index: 7;
+  pointer-events: none;
+  --sidebar-right-flash-from: inset 0 0 0 1px var(--sidebar-right-flash-ring), inset 0 2px 4px 0 var(--sidebar-right-flash-near), inset 0 0 10px 0 var(--sidebar-right-flash-far);
+  --sidebar-right-flash-to: inset 0 0 0 1px transparent, inset 0 2px 4px 0 transparent, inset 0 0 10px 0 transparent;
+  position: absolute;
+  inset: 0;
+}
+
+.panel [data-dockkit-float][data-sidebar-right-flash] {
+  --sidebar-right-flash-from: var(--dsw-elevation-prominent), 0 0 0 1px var(--sidebar-right-flash-ring), 0 2px 4px 0 var(--sidebar-right-flash-near), 0 0 10px 0 var(--sidebar-right-flash-far);
+  --sidebar-right-flash-to: var(--dsw-elevation-prominent), 0 0 0 1px transparent, 0 2px 4px 0 transparent, 0 0 10px 0 transparent;
+}
+
+.panel [data-dockkit-pane][data-sidebar-right-flash]:after,
+.panel [data-dockkit-float][data-sidebar-right-flash] {
+  animation-duration: calc(var(--ds-transition-duration-slow) * 2);
+  animation-timing-function: var(--ds-ease-in-out);
+}
+
+.panel [data-dockkit-pane][data-sidebar-right-flash=odd]:after,
+.panel [data-dockkit-float][data-sidebar-right-flash=odd] {
+  animation-name: flashOdd;
+}
+
+.panel [data-dockkit-pane][data-sidebar-right-flash=even]:after,
+.panel [data-dockkit-float][data-sidebar-right-flash=even] {
+  animation-name: flashEven;
+}
+
+@keyframes flashOdd {
+  0% {
+    box-shadow: var(--sidebar-right-flash-from);
+  }
+  to {
+    box-shadow: var(--sidebar-right-flash-to);
+  }
+}
+
+@keyframes flashEven {
+  0% {
+    box-shadow: var(--sidebar-right-flash-from);
+  }
+  to {
+    box-shadow: var(--sidebar-right-flash-to);
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .panel [data-dockkit-pane][data-sidebar-right-flash]:after,
+  .panel [data-dockkit-float][data-sidebar-right-flash] {
+    animation-timing-function: step-end;
+  }
+}

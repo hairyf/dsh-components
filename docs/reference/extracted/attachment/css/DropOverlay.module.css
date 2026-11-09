@@ -1,0 +1,55 @@
+/* @deepseek-ai/dsh-client-ui-attachment / DropOverlay.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.mask {
+  z-index: 1000;
+  pointer-events: none;
+  background-color: var(--dsw-alias-bg-mask-drop);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  animation: .16s ease-out fade-in;
+  display: flex;
+  position: fixed;
+  inset: 0;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .mask {
+    animation: none;
+  }
+}
+
+.wrap {
+  color: var(--dsw-alias-label-primary);
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -3%;
+  padding: 0 40px;
+  display: flex;
+}
+
+.illustration {
+  width: 115px;
+  height: 84px;
+}
+
+.title {
+  font: var(--dsw-font-l-20);
+  margin-top: 16px;
+}
+
+.desc {
+  font: var(--dsw-font-s-14);
+  color: var(--dsw-alias-label-tertiary);
+  white-space: pre-wrap;
+  margin-top: 16px;
+}

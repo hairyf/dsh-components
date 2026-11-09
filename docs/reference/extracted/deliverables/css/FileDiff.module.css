@@ -1,0 +1,182 @@
+/* @deepseek-ai/dsh-client-ui-deliverables / FileDiff.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.root {
+  --diff-empty-fill: color-mix(in srgb, var(--dsw-alias-interactive-bg-hover) 50%, transparent);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+  color: var(--dsw-alias-label-primary);
+  flex-direction: column;
+  display: flex;
+}
+
+.header {
+  box-sizing: border-box;
+  border-bottom: .5px solid var(--dsw-alias-border-l3);
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 6px 0 8px;
+  display: flex;
+}
+
+.status {
+  color: var(--dsw-alias-label-secondary);
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 16px;
+  font-size: 13px;
+  display: flex;
+}
+
+.body {
+  min-height: 0;
+  font: var(--dsw-font-markdown-code-block);
+  flex-direction: column;
+  flex: auto;
+  padding: 8px 0 16px;
+  display: flex;
+  overflow: auto;
+}
+
+.columns {
+  flex: auto;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  min-height: 0;
+  display: grid;
+}
+
+.column,
+.body[data-review-view=unified]:not([data-review-wrap]) {
+  grid-template-columns: minmax(max-content,100%);
+  align-content: start;
+  display: grid;
+}
+
+.column {
+  overscroll-behavior: none;
+  min-width: 0;
+  overflow-x: scroll;
+}
+
+.column+.column {
+  border-left: .5px solid var(--dsw-alias-border-l3);
+}
+
+.sideLine {
+  box-sizing: border-box;
+  white-space: pre;
+  grid-template-columns: 3.5em max-content;
+  width: max-content;
+  min-width: 100%;
+  min-height: 22px;
+  line-height: 22px;
+  display: grid;
+}
+
+.note {
+  font: var(--dsw-font-xs-13);
+  color: var(--dsw-alias-label-tertiary);
+  margin: 0;
+  padding: 4px 16px 8px;
+}
+
+.hunk {
+  margin-bottom: 8px;
+}
+
+.hunkHeader {
+  color: var(--dsw-alias-label-tertiary);
+  white-space: pre;
+  padding: 4px 16px;
+}
+
+.line {
+  box-sizing: border-box;
+  white-space: pre;
+  grid-template-columns: 3.5em 3.5em 1.2em minmax(0,1fr);
+  min-height: 22px;
+  line-height: 22px;
+  display: grid;
+}
+
+.splitLine {
+  white-space: pre;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  min-height: 22px;
+  line-height: 22px;
+  display: grid;
+}
+
+.cell {
+  box-sizing: border-box;
+  grid-template-columns: 3.5em minmax(0,1fr);
+  min-width: 0;
+  display: grid;
+}
+
+.cell+.cell {
+  border-left: .5px solid var(--dsw-alias-border-l3);
+}
+
+.number {
+  color: var(--dsw-alias-label-tertiary);
+  text-align: right;
+  user-select: none;
+  padding-right: 8px;
+}
+
+.sign {
+  text-align: center;
+  user-select: none;
+}
+
+.text {
+  padding-right: 16px;
+}
+
+.body[data-review-wrap] .line,
+.body[data-review-wrap] .splitLine {
+  white-space: pre-wrap;
+}
+
+.body[data-review-wrap] .text {
+  overflow-wrap: anywhere;
+}
+
+.add {
+  --diff-gutter-fill: var(--dsw-alias-file-diff-added-gutter);
+  --diff-marker: var(--dsw-alias-file-diff-added-marker);
+  background: var(--dsw-alias-file-diff-added-bg);
+}
+
+.del {
+  --diff-gutter-fill: var(--dsw-alias-file-diff-deleted-gutter);
+  --diff-marker: var(--dsw-alias-file-diff-deleted-marker);
+  background: var(--dsw-alias-file-diff-deleted-bg);
+}
+
+.add .number,
+.del .number {
+  background: var(--diff-gutter-fill);
+  color: var(--diff-marker);
+}
+
+.add .number:first-child,
+.del .number:first-child {
+  box-shadow: inset 3px 0 0 var(--diff-marker);
+}
+
+.add .sign,
+.del .sign {
+  color: var(--diff-marker);
+}
+
+.context .text {
+  color: var(--dsw-alias-label-secondary);
+}
+
+.empty {
+  background: var(--diff-empty-fill);
+}

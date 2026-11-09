@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "jsx": "react-jsx",
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "Preserve",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@dsh-components": [
+        "../src/index.ts"
+      ],
+      "@dsh-components/*": [
+        "../src/*"
+      ],
+      "@deepseek-ai/dsh-client-store": [
+        "./src/shims/dsh-client-store.ts"
+      ],
+      "@deepseek-ai/dsh-util-workspace-path": [
+        "./src/shims/dsh-util-workspace-path.ts"
+      ],
+      "@deepseek-ai/dsh-util-code-language": [
+        "./src/shims/dsh-util-code-language.ts"
+      ]
+    },
+    "types": [
+      "node",
+      "vite/client"
+    ],
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "../node_modules",
+    "../dist"
+  ]
+}

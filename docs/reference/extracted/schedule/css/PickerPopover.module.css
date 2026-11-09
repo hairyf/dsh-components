@@ -1,0 +1,20 @@
+/* @deepseek-ai/dsh-client-ui-schedule / PickerPopover.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.panel {
+  box-sizing: border-box;
+  z-index: 1100;
+  background: var(--dsw-specific-menu);
+  backdrop-filter: var(--dsw-menu-backdrop-filter);
+  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);
+  box-shadow: var(--dsw-elevation-prominent);
+  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);
+  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);
+  max-width: var(--dsh-anchored-max-width,none);
+  max-height: var(--dsh-anchored-max-height,none);
+  border: 0;
+  border-radius: 16px;
+  display: flex;
+  position: fixed;
+  top: auto;
+  left: auto;
+  overflow: hidden auto;
+}

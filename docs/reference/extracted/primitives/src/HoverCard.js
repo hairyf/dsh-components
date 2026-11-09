@@ -1,0 +1,367 @@
+// Extracted from @deepseek-ai/dsh-client-ui-primitives (lib/index.js); region lib/types/HoverCard.js
+// Compiled bundle code copied verbatim from the region; imports are hoisted in the original bundle, so this file is not standalone.
+
+/** Preview opacity transition and retained lifetime during dismissal. */
+const PREVIEW_FADE_MS = 100;
+const PREVIEW_MAX_HEIGHT = 420;
+const PREVIEW_INSET = 24;
+const INLINE_PREVIEW_WIDTH = 300;
+const ANCHOR_GAP = 8;
+const VIEWPORT_MARGIN = 8;
+/**
+* Render an anchor with a hover-triggered preview card independently of nested tooltips.
+* Touch entry does not open a preview or intercept the anchor's action.
+* @param props.anchor - the hover target (rendered in place inside a wrapper span).
+* @param props.content - card content; the pointer may rest on it, so it is
+* readable and selectable, but it carries no dismissal affordance of its own.
+* @param props.openDelayMs - hover dwell before the card shows (default 500).
+* @param props.variant - compact card beside the anchor, or a preview above/below it
+* with 24px side insets, a 420px height cap, the frame-top clearance (capped below an anchor inside the top strip),
+* and 100ms opacity transitions.
+* @param props.widthAnchorRef - optional element whose width and horizontal position size the preview.
+* @param props.inline - keep the anchor in prose; show a contained preview on hover or keyboard focus.
+* Its hover region connects the anchor and preview across the visual gap.
+* @param props.fitContent - size an inline card to its content within the usual width cap.
+* @param props.disabled - suppress opening; turning true dismisses an open card.
+* @param props.grouped - share first-display dwell across the surrounding list and active portal.
+* Group replacement removes the previous card immediately, including a fading preview.
+* @param props.copyText - optional primary value copied by activation and
+* included in the card's accessible name.
+* @param props.copyLabel - localized accessible activation-label prefix.
+* @param props.copiedLabel - localized visible success label.
+* @returns anchor wrapper with the conditional portaled card.
+*/
+function HoverCard({ anchor, content, openDelayMs = 500, disabled = false, grouped = false, copyText, copyLabel, copiedLabel, variant = "compact", widthAnchorRef, inline = false, fitContent = false }) {
+	const rootRef = useRef(null);
+	const cardRef = useRef(null);
+	const portalRef = useRef(null);
+	const timerRef = useRef(null);
+	const copyTimerRef = useRef(null);
+	const copyHeightRef = useRef(null);
+	const copyEpochRef = useRef(0);
+	const copyingRef = useRef(false);
+	const mountedRef = useRef(true);
+	const [phase, setPhase] = useState("closed");
+	const open = phase !== "closed";
+	const closing = phase === "closing";
+	const [pos, setPos] = useState(null);
+	const positioned = pos !== null;
+	const [copied, setCopied] = useState(false);
+	const parentGroup = useContext(HoverCardGroupContext);
+	const group = grouped ? parentGroup : null;
+	const [groupOwner] = useState(() => Symbol("hover-card"));
+	const clearCopied = useCallback(() => {
+		if (copyTimerRef.current !== null) {
+			clearTimeout(copyTimerRef.current);
+			copyTimerRef.current = null;
+		}
+		copyHeightRef.current = null;
+		setCopied(false);
+	}, []);
+	const close = useCallback(() => {
+		copyEpochRef.current += 1;
+		clearCopied();
+		setPhase((current) => variant === "preview" && current !== "closed" ? "closing" : "closed");
+	}, [clearCopied, variant]);
+	const { arm: armClose, cancel: cancelClose } = usePointerGrace(close);
+	const clearTimer = useCallback(() => {
+		if (timerRef.current !== null) {
+			clearTimeout(timerRef.current);
+			timerRef.current = null;
+		}
+	}, []);
+	const dismissImmediately = useCallback(() => {
+		clearTimer();
+		cancelClose();
+		copyEpochRef.current += 1;
+		clearCopied();
+		setPhase("closed");
+	}, [
+		clearTimer,
+		cancelClose,
+		clearCopied
+	]);
+	const groupVisible = open && positioned;
+	useLayoutEffect(() => {
+		if (!groupVisible || group === null) return;
+		group.shown(groupOwner, dismissImmediately, portalRef.current);
+		return () => {
+			group.release(groupOwner);
+		};
+	}, [
+		group,
+		groupOwner,
+		groupVisible,
+		dismissImmediately
+	]);
+	useEffect(() => {
+		if (!closing) return;
+		const timer = setTimeout(() => {
+			setPhase("closed");
+		}, PREVIEW_FADE_MS);
+		return () => {
+			clearTimeout(timer);
+		};
+	}, [closing]);
+	useEffect(() => {
+		if (!disabled) return;
+		clearTimer();
+		cancelClose();
+		close();
+	}, [
+		disabled,
+		cancelClose,
+		close
+	]);
+	useEffect(() => {
+		mountedRef.current = true;
+		return () => {
+			mountedRef.current = false;
+			copyEpochRef.current += 1;
+			clearTimer();
+			if (copyTimerRef.current !== null) {
+				clearTimeout(copyTimerRef.current);
+				copyTimerRef.current = null;
+			}
+		};
+	}, []);
+	useEffect(() => {
+		if (!open || variant !== "preview" && !inline) return;
+		const dismiss = (event) => {
+			if (event.key !== "Escape") return;
+			if (inline) event.stopPropagation();
+			clearTimer();
+			cancelClose();
+			close();
+		};
+		window.addEventListener("keydown", dismiss, inline);
+		return () => {
+			window.removeEventListener("keydown", dismiss, inline);
+		};
+	}, [
+		open,
+		variant,
+		inline,
+		cancelClose,
+		close
+	]);
+	useLayoutEffect(() => {
+		if (!open) {
+			setPos(null);
+			return;
+		}
+		const place = () => {
+			const wrapper = rootRef.current;
+			/* v8 ignore next -- the ref is attached before the layout effect runs and the listeners die with it. */
+			if (wrapper === null) return;
+			if (wrapper.closest("[inert], [hidden]") !== null) {
+				dismissImmediately();
+				return;
+			}
+			const r = wrapper.getBoundingClientRect();
+			const h = cardRef.current?.offsetHeight ?? 0;
+			if (variant === "preview") {
+				const bounds = widthAnchorRef?.current?.getBoundingClientRect() ?? r;
+				const width = Math.max(0, Math.min(bounds.width - PREVIEW_INSET * 2, window.innerWidth - VIEWPORT_MARGIN * 2));
+				const topMargin = overlayTopMargin(VIEWPORT_MARGIN, r, ANCHOR_GAP);
+				const belowTop = Math.max(topMargin, r.bottom + ANCHOR_GAP);
+				const above = Math.max(0, r.top - ANCHOR_GAP - topMargin);
+				const below = Math.max(0, window.innerHeight - belowTop - VIEWPORT_MARGIN);
+				const onTop = above >= Math.min(PREVIEW_MAX_HEIGHT, below);
+				const maxHeight = Math.min(PREVIEW_MAX_HEIGHT, onTop ? above : below);
+				setPos({
+					left: Math.max(VIEWPORT_MARGIN, Math.min(bounds.left + PREVIEW_INSET, window.innerWidth - width - VIEWPORT_MARGIN)),
+					top: onTop ? Math.max(topMargin, r.top - Math.min(h, maxHeight) - ANCHOR_GAP) : belowTop,
+					width,
+					maxHeight
+				});
+				return;
+			}
+			if (inline) {
+				const height = Math.max(h, cardRef.current?.scrollHeight ?? 0);
+				const maxWidth = Math.max(0, Math.min(INLINE_PREVIEW_WIDTH, window.innerWidth - VIEWPORT_MARGIN * 2));
+				const width = fitContent ? Math.min(cardRef.current?.offsetWidth ?? maxWidth, maxWidth) : maxWidth;
+				const topMargin = overlayTopMargin(VIEWPORT_MARGIN, r, ANCHOR_GAP);
+				const belowTop = Math.max(topMargin, r.bottom + ANCHOR_GAP);
+				const above = Math.max(0, r.top - ANCHOR_GAP - topMargin);
+				const below = Math.max(0, window.innerHeight - belowTop - VIEWPORT_MARGIN);
+				const onTop = height > below && above > below;
+				const maxHeight = onTop ? above : below;
+				const left = Math.max(VIEWPORT_MARGIN, Math.min(r.left, window.innerWidth - width - VIEWPORT_MARGIN));
+				const top = onTop ? r.top - ANCHOR_GAP - Math.min(height, maxHeight) : belowTop;
+				const bridgeTop = onTop ? top + Math.min(height, maxHeight) : r.bottom;
+				const bridgeLeft = Math.min(r.left, left);
+				setPos({
+					left,
+					top,
+					...fitContent ? {} : { width },
+					maxWidth,
+					maxHeight,
+					bridge: {
+						left: bridgeLeft,
+						top: bridgeTop,
+						width: Math.max(r.right, left + width) - bridgeLeft,
+						height: Math.max(0, (onTop ? r.top : top) - bridgeTop)
+					}
+				});
+				return;
+			}
+			const top = r.top + h > window.innerHeight - VIEWPORT_MARGIN ? window.innerHeight - h - VIEWPORT_MARGIN : r.top;
+			setPos({
+				left: r.right + ANCHOR_GAP,
+				top
+			});
+		};
+		place();
+		const visibility = new MutationObserver(place);
+		for (let ancestor = rootRef.current?.parentElement; ancestor != null; ancestor = ancestor.parentElement) visibility.observe(ancestor, {
+			attributes: true,
+			attributeFilter: ["inert", "hidden"]
+		});
+		const observer = (variant === "preview" || inline) && typeof ResizeObserver !== "undefined" ? new ResizeObserver(place) : null;
+		for (const element of [
+			cardRef.current,
+			rootRef.current,
+			widthAnchorRef?.current
+		]) if (element !== null && element !== void 0) observer?.observe(element);
+		window.addEventListener("scroll", place, true);
+		window.addEventListener("resize", place);
+		return () => {
+			observer?.disconnect();
+			visibility.disconnect();
+			window.removeEventListener("scroll", place, true);
+			window.removeEventListener("resize", place);
+		};
+	}, [
+		open,
+		variant,
+		widthAnchorRef,
+		positioned,
+		inline,
+		fitContent,
+		dismissImmediately
+	]);
+	useLayoutEffect(() => {
+		if (!open || pos === null || variant === "preview" || inline) return;
+		/* v8 ignore next -- the card is mounted whenever pos is set, so the ref is attached here. */
+		const h = cardRef.current?.offsetHeight ?? 0;
+		if (pos.top + h > window.innerHeight - VIEWPORT_MARGIN) setPos({
+			left: pos.left,
+			top: window.innerHeight - h - VIEWPORT_MARGIN
+		});
+	}, [
+		open,
+		pos,
+		variant,
+		inline
+	]);
+	const copy = async (text) => {
+		if (copied || copyingRef.current) return;
+		copyingRef.current = true;
+		const copyEpoch = copyEpochRef.current;
+		const accepted = await writeClipboard(text);
+		copyingRef.current = false;
+		const card = cardRef.current;
+		if (!accepted || !mountedRef.current || copyEpoch !== copyEpochRef.current || card === null) return;
+		const height = card.offsetHeight;
+		copyHeightRef.current = height > 0 ? height : null;
+		setCopied(true);
+		copyTimerRef.current = setTimeout(clearCopied, 1e3);
+	};
+	const copyable = copyText !== void 0;
+	const dismissFromAnchor = (event) => {
+		if (portalRef.current?.contains(event.target)) return;
+		clearTimer();
+		cancelClose();
+		close();
+	};
+	const card = open && pos !== null && jsx("div", {
+		ref: cardRef,
+		className: clsx(css$22.card, variant === "preview" && css$22.preview, inline && css$22.media, inline && fitContent && css$22.fitContent, copyable && css$22.copyable, copied && css$22.feedback),
+		"data-closing": closing || void 0,
+		style: {
+			left: pos.left,
+			top: pos.top,
+			width: pos.width,
+			maxWidth: pos.maxWidth,
+			maxHeight: pos.maxHeight,
+			minHeight: copied && copyHeightRef.current !== null ? copyHeightRef.current : void 0,
+			"--dsh-hover-preview-fade": `${PREVIEW_FADE_MS}ms`
+		},
+		role: copyable ? "button" : void 0,
+		tabIndex: copyable ? 0 : void 0,
+		"aria-label": copyable ? `${copyLabel}: ${copyText}` : void 0,
+		onClick: copyable ? (e) => {
+			const selection = window.getSelection();
+			if (selection !== null && !selection.isCollapsed) {
+				for (let i = 0; i < selection.rangeCount; i += 1) if (selection.getRangeAt(i).intersectsNode(e.currentTarget)) return;
+			}
+			copy(copyText);
+		} : void 0,
+		onKeyDown: copyable ? (e) => {
+			if (e.key !== "Enter" && e.key !== " ") return;
+			e.preventDefault();
+			copy(copyText);
+		} : void 0,
+		children: copied ? jsx("span", {
+			className: css$22.copied,
+			"aria-hidden": "true",
+			children: copiedLabel
+		}) : content
+	});
+	return jsxs("span", {
+		ref: rootRef,
+		className: clsx(css$22.root, inline && css$22.inline),
+		onFocus: inline ? (event) => {
+			if (!disabled && event.target.matches(":focus-visible")) {
+				cancelClose();
+				setPhase("open");
+			}
+		} : void 0,
+		onBlur: inline ? (event) => {
+			if (!event.currentTarget.contains(event.relatedTarget)) {
+				clearTimer();
+				cancelClose();
+				close();
+			}
+		} : void 0,
+		onPointerEnter: (event) => {
+			if (disabled || event.pointerType === "touch") return;
+			if (event.pointerType === "mouse" && !window.matchMedia("(any-hover: hover)").matches) return;
+			cancelClose();
+			if (open) {
+				setPhase("open");
+				return;
+			}
+			clearTimer();
+			if (group?.isWarm()) setPhase("open");
+			else timerRef.current = setTimeout(() => {
+				setPhase("open");
+			}, openDelayMs);
+		},
+		onPointerLeave: () => {
+			clearTimer();
+			if (open) armClose();
+		},
+		onPointerDownCapture: dismissFromAnchor,
+		onClickCapture: dismissFromAnchor,
+		children: [
+			anchor,
+			open && copyable && jsx("span", {
+				className: css$22.status,
+				role: "status",
+				children: copied ? copiedLabel : ""
+			}),
+			card !== false && createPortal(jsxs("span", {
+				ref: portalRef,
+				className: css$22.portal,
+				children: [pos.bridge !== void 0 && jsx("span", {
+					className: css$22.bridge,
+					style: pos.bridge,
+					"data-hovercard-bridge": "",
+					"aria-hidden": true
+				}), card]
+			}), document.body)
+		]
+	});
+}

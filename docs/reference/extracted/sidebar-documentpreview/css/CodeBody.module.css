@@ -1,0 +1,58 @@
+/* @deepseek-ai/dsh-client-ui-sidebar-documentpreview / CodeBody.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.renderer {
+  white-space: normal;
+  flex-direction: column;
+  flex: auto;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.renderer .code {
+  --dsl-code-block-border-radius: 0px;
+  --dsl-code-block-line-white-space: pre;
+  --dsl-code-block-background: transparent;
+  flex-direction: column;
+  flex: auto;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  display: flex;
+  position: static;
+}
+
+.renderer .code>[data-code-block-content] {
+  flex: auto;
+  min-width: 0;
+  min-height: 0;
+  display: block;
+  position: relative;
+  overflow: auto;
+}
+
+.renderer .code>[data-code-block-content]::-webkit-scrollbar-track {
+  margin: 2px;
+}
+
+.renderer .code pre {
+  box-sizing: border-box;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+  min-width: 100%;
+  padding: 16px;
+  overflow: visible;
+}
+
+.renderer[data-wrap=true] .code {
+  --dsl-code-block-line-white-space: pre-wrap;
+}
+
+.renderer[data-wrap=true] .code pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

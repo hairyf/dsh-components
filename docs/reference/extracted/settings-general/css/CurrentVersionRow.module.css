@@ -1,0 +1,8 @@
+/* @deepseek-ai/dsh-client-ui-settings-general / CurrentVersionRow.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.row {
+  color: var(--dsw-alias-label-primary);
+  overflow-wrap: anywhere;
+  padding: 16px 0;
+  font-size: 14px;
+  line-height: 22px;
+}

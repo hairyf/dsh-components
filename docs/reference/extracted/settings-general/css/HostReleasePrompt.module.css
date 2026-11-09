@@ -1,0 +1,59 @@
+/* @deepseek-ai/dsh-client-ui-settings-general / HostReleasePrompt.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.dialog {
+  width: min(480px,100%);
+}
+
+.transitions {
+  grid-template-columns: max-content minmax(0,max-content) 56px minmax(0,max-content);
+  justify-content: start;
+  align-items: center;
+  gap: 8px 12px;
+  font-size: 13px;
+  line-height: 20px;
+  display: grid;
+}
+
+.label {
+  color: var(--dsw-alias-label-secondary);
+}
+
+.release {
+  font-family: var(--ds-font-family-code);
+  overflow-wrap: anywhere;
+}
+
+.solid {
+  color: var(--dsw-alias-label-primary);
+}
+
+.faded {
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.line {
+  border-top-width: 1px;
+  height: 0;
+  position: relative;
+}
+
+.line:after {
+  content: "";
+  border-top: 3px solid #0000;
+  border-bottom: 3px solid #0000;
+  border-left: 5px solid;
+  position: absolute;
+  top: -3.5px;
+  right: -1px;
+}
+
+.done {
+  border-top-style: solid;
+  border-top-color: var(--dsw-alias-state-success-primary);
+  color: var(--dsw-alias-state-success-primary);
+}
+
+.pending {
+  border-top-style: dashed;
+  border-top-color: var(--dsw-alias-label-tertiary);
+  color: var(--dsw-alias-label-tertiary);
+}

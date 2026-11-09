@@ -1,0 +1,119 @@
+/* @deepseek-ai/dsh-client-ui-settings-account / SignInDialog.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.dialog {
+  user-select: none;
+  box-sizing: border-box;
+  border: .5px solid var(--dsw-alias-border-inverted);
+}
+
+.content {
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+}
+
+.header {
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 22px 24px 12px;
+  display: flex;
+}
+
+.title {
+  color: var(--dsw-alias-label-primary);
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.close {
+  box-sizing: border-box;
+  border-radius: var(--dsw-radius-sm);
+  width: 28px;
+  height: 28px;
+  color: var(--dsw-alias-label-primary);
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  display: inline-flex;
+}
+
+@media (hover:hover) {
+  .close:hover {
+    background: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.actions {
+  box-sizing: border-box;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0 24px;
+  display: flex;
+}
+
+.primaryButton,
+.secondaryButton {
+  box-sizing: border-box;
+  border-radius: var(--dsw-radius-md);
+  min-width: 72px;
+  height: 36px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.primaryButton {
+  padding: 0 16px;
+  font-weight: 500;
+}
+
+.secondaryButton {
+  --dsh-button-outline-color: var(--dsw-alias-border-l2);
+  padding: 0 14px;
+}
+
+.description {
+  color: var(--dsw-alias-label-primary);
+  margin: 0;
+  padding: 0 24px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.link {
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.spinner {
+  flex: none;
+  animation: 1s linear infinite spin;
+}
+
+.primaryButton:has(.spinner) {
+  opacity: 1;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .spinner {
+    animation: none;
+  }
+}

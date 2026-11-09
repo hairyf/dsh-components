@@ -1,0 +1,400 @@
+/* @deepseek-ai/dsh-client-ui-subagent / SubagentHeaderLineage.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.root {
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  display: inline-flex;
+  position: relative;
+}
+
+.switcherRoot {
+  min-width: 0;
+  margin-left: 6px;
+}
+
+.trigger,
+.switcherTrigger {
+  border-radius: var(--dsw-radius-sm);
+  min-height: 28px;
+  color: var(--dsw-alias-label-tertiary);
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  align-items: center;
+  padding: 3px 2px;
+  font-size: 12px;
+  line-height: 18px;
+  display: inline-flex;
+}
+
+.trigger {
+  gap: 4px;
+}
+
+.switcherTrigger {
+  min-width: 0;
+  max-width: 244px;
+  color: var(--dsw-alias-label-primary);
+  gap: 4px;
+  font-weight: 500;
+}
+
+.ancestorSwitcherTrigger {
+  color: var(--dsw-alias-label-tertiary);
+  font-weight: 400;
+}
+
+.switcherTitle {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.switcherTrigger svg {
+  flex: none;
+}
+
+.activitySlot {
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+}
+
+.trigger:focus-visible {
+  color: var(--dsw-alias-label-primary);
+}
+
+@media (hover:hover) {
+  .trigger:hover {
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.switcherTrigger:focus-visible {
+  color: var(--dsw-alias-label-primary);
+}
+
+@media (hover:hover) {
+  .switcherTrigger:hover {
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.ancestorSwitcherTrigger:focus-visible {
+  color: var(--dsw-alias-label-tertiary);
+}
+
+@media (hover:hover) {
+  .ancestorSwitcherTrigger:hover {
+    color: var(--dsw-alias-label-tertiary);
+  }
+}
+
+.trigger svg,
+.switcherTrigger svg {
+  transition: transform .12s;
+}
+
+.triggerOpen {
+  transform: rotate(180deg);
+}
+
+.menu {
+  z-index: 100;
+  box-sizing: border-box;
+  border-radius: var(--dsw-radius-lg);
+  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);
+  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);
+  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);
+  width: 336px;
+  max-width: min(400px,100vw - 32px);
+  max-height: min(560px,100vh - 140px);
+  box-shadow: var(--dsw-elevation-prominent);
+  flex-direction: column;
+  padding: 4px;
+  display: flex;
+  position: fixed;
+  overflow: hidden;
+}
+
+.menu:before {
+  content: "";
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--dsw-specific-menu);
+  backdrop-filter: var(--dsw-menu-backdrop-filter);
+  position: absolute;
+  inset: 0;
+}
+
+.menuBody {
+  flex-direction: column;
+  flex: auto;
+  min-height: 0;
+  display: flex;
+  overflow: auto;
+}
+
+.node {
+  min-width: 0;
+  position: relative;
+}
+
+.menuBody>.node {
+  margin-left: -2px;
+}
+
+.row {
+  box-sizing: border-box;
+  border-radius: var(--dsw-radius-md);
+  width: 100%;
+  min-height: 44px;
+  color: var(--dsw-alias-label-primary);
+  text-align: left;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  outline: none;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 6px 7px 6px 9px;
+  font-size: 12px;
+  line-height: 17px;
+  display: flex;
+  position: relative;
+}
+
+.row:focus-visible>.clickarea {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+@media (hover:hover) {
+  .row:hover>.clickarea {
+    background: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.clickarea {
+  box-sizing: border-box;
+  border-radius: var(--dsw-radius-md);
+  flex: 1;
+  align-self: stretch;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+  margin: -6px -7px;
+  padding: 6px 7px;
+  display: flex;
+}
+
+.rowActivitySlot {
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 17px;
+  display: inline-flex;
+}
+
+.disclosure,
+.disclosureSpace {
+  flex: none;
+  width: 14px;
+  height: 17px;
+}
+
+.disclosure {
+  color: var(--dsw-alias-label-tertiary);
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: transform .12s;
+  display: inline-flex;
+}
+
+.disclosure svg {
+  width: 12px;
+  height: 12px;
+}
+
+@media (hover:hover) {
+  .disclosure:hover {
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.disclosureOpen {
+  transform: rotate(90deg);
+}
+
+.content {
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.label,
+.summary {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.label {
+  color: inherit;
+  font-weight: 400;
+}
+
+.currentLabel {
+  font-weight: 600;
+}
+
+.summary,
+.metrics {
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.metrics {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+  flex: none;
+  grid-template-rows: 17px 15px;
+  display: grid;
+}
+
+.metricToken {
+  grid-row: 1;
+  line-height: 17px;
+}
+
+.metricDuration {
+  grid-row: 2;
+}
+
+.sidebarButton,
+.sidebarSpace {
+  box-sizing: border-box;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  margin: 4px 0;
+}
+
+.sidebarButton {
+  border-radius: var(--dsw-radius-sm);
+  color: var(--dsw-alias-label-tertiary);
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  display: inline-flex;
+}
+
+.sidebarButton:focus-visible {
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-primary);
+}
+
+@media (hover:hover) {
+  .sidebarButton:hover {
+    background: var(--dsw-alias-interactive-bg-hover);
+    color: var(--dsw-alias-label-primary);
+  }
+}
+
+.children {
+  margin-left: 16px;
+  padding-left: 3px;
+  position: relative;
+}
+
+.children:before,
+.children>.node:before {
+  content: "";
+  border-left: .5px solid var(--dsw-alias-border-l2);
+  position: absolute;
+  left: 0;
+}
+
+.children:before {
+  height: 23px;
+  top: -23px;
+}
+
+.children[aria-busy=true]:before {
+  content: none;
+}
+
+.children>.node:before {
+  top: 0;
+  bottom: 0;
+  left: -3px;
+}
+
+.children>.node:last-child:before {
+  height: 15px;
+  bottom: auto;
+}
+
+.children>.node>.row:before {
+  content: "";
+  border-top: .5px solid var(--dsw-alias-border-l2);
+  width: 12px;
+  position: absolute;
+  top: 14px;
+  left: -3px;
+}
+
+.notice,
+.error {
+  color: var(--dsw-alias-label-tertiary);
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.error {
+  color: var(--dsw-alias-state-error-primary);
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.refresh {
+  border-radius: var(--dsw-radius-sm);
+  color: inherit;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  flex: none;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 5px;
+  display: inline-flex;
+}
+
+.refresh svg {
+  width: 12px;
+  height: 12px;
+}
+
+@media (hover:hover) {
+  .refresh:hover {
+    background: var(--dsw-alias-interactive-bg-hover);
+  }
+}

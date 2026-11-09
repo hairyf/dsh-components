@@ -1,0 +1,21 @@
+/* @deepseek-ai/dsh-client-ui-subagent / SubagentReadOnlyComposer.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.frame {
+  border: .5px solid var(--dsw-alias-border-l4);
+  border-radius: var(--dsw-radius-lg);
+  background: var(--dsw-alias-bg-layer-1);
+  min-height: 54px;
+  color: var(--dsw-alias-label-tertiary);
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0 24px 20px;
+  padding: 10px 16px;
+  font-size: 13px;
+  line-height: 20px;
+  display: flex;
+}
+
+.frame strong {
+  color: var(--dsw-alias-label-primary);
+  font-weight: 510;
+}

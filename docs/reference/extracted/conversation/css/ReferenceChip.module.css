@@ -1,0 +1,31 @@
+/* @deepseek-ai/dsh-client-ui-conversation / ReferenceChip.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.chip {
+  max-width: 240px;
+  color: var(--dsw-alias-state-business-primary);
+  user-select: none;
+  align-items: baseline;
+  gap: 3px;
+  display: inline-flex;
+}
+
+.marker {
+  flex: none;
+  font-weight: 500;
+}
+
+.icon {
+  flex: none;
+  align-self: center;
+}
+
+.label {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.invalid {
+  color: var(--dsw-alias-state-error-primary);
+  opacity: .7;
+  text-decoration: line-through;
+}

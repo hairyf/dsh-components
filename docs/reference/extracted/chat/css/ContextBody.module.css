@@ -1,0 +1,152 @@
+/* @deepseek-ai/dsh-client-ui-chat / ContextBody.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.text {
+  color: var(--dsw-alias-label-secondary);
+  font: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 0;
+}
+
+.fields {
+  border-top: .5px solid var(--dsw-alias-border-l2);
+  flex-direction: column;
+  gap: 2px;
+  margin: 8px 0 0;
+  padding-top: 8px;
+  display: flex;
+}
+
+.field {
+  gap: 8px;
+  min-width: 0;
+  display: flex;
+}
+
+.fieldKey {
+  min-width: 96px;
+  color: var(--dsw-alias-label-caption);
+  flex: none;
+}
+
+.fieldValue {
+  min-width: 0;
+  color: var(--dsw-alias-label-tertiary);
+  overflow-wrap: anywhere;
+  flex: auto;
+  margin: 0;
+}
+
+.files {
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.file {
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+  display: flex;
+}
+
+.filePath {
+  color: var(--dsw-alias-label-secondary);
+  overflow-wrap: anywhere;
+}
+
+.fileAction {
+  color: var(--dsw-alias-label-caption);
+}
+
+.catalogNotice {
+  color: var(--dsw-alias-label-caption);
+  margin: 0 0 6px;
+}
+
+.entries {
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.entry {
+  gap: 8px;
+  min-width: 0;
+  display: flex;
+}
+
+.entryName {
+  color: var(--dsw-alias-label-secondary);
+  flex: none;
+}
+
+.entryDescription {
+  min-width: 0;
+  color: var(--dsw-alias-label-tertiary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: auto;
+  overflow: hidden;
+}
+
+.sections {
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  display: flex;
+}
+
+.section {
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  display: flex;
+}
+
+.sectionName {
+  color: var(--dsw-alias-label-caption);
+}
+
+.sectionText {
+  color: var(--dsw-alias-label-secondary);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 0;
+}
+
+.relaySender {
+  color: var(--dsw-alias-label-caption);
+  overflow-wrap: anywhere;
+  margin: 0 0 6px;
+}
+
+.recalls {
+  flex-direction: column;
+  gap: 2px;
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.recall {
+  gap: 8px;
+  min-width: 0;
+  display: flex;
+}
+
+.recallLabel {
+  color: var(--dsw-alias-label-secondary);
+  overflow-wrap: anywhere;
+}
+
+.recallCounts {
+  color: var(--dsw-alias-label-caption);
+  flex: none;
+}

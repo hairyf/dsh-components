@@ -1,0 +1,30 @@
+/* @deepseek-ai/dsh-client-ui-conversation / composer-editor.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.reference {
+  border-radius: var(--dsw-radius-sm);
+  line-height: inherit;
+  vertical-align: baseline;
+  color: var(--dsw-alias-state-business-primary);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background: 0 0;
+  padding: 0 4px;
+}
+
+@media (hover:hover) {
+  .reference:hover {
+    background: var(--dsw-alias-state-business-tertiary);
+  }
+}
+
+.openable {
+  cursor: pointer;
+}
+
+[data-composer-command][data-selected]>.reference {
+  background: var(--dsw-alias-state-business-tertiary);
+}
+
+.textRef {
+  max-width: 100%;
+  display: inline-block;
+}

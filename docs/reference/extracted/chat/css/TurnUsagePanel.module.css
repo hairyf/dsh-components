@@ -1,0 +1,65 @@
+/* @deepseek-ai/dsh-client-ui-chat / TurnUsagePanel.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.root {
+  min-width: 0;
+  display: inline-flex;
+}
+
+.root+.root {
+  margin-left: -6px;
+}
+
+.trigger {
+  min-width: 0;
+  height: calc(28px + var(--dsh-content-font-delta,0px));
+  border-radius: var(--dsw-radius-sm);
+  color: var(--dsw-alias-label-tertiary);
+  font-size: calc(var(--dsh-content-font-size-secondary,13px) - 1px);
+  font-variant-numeric: tabular-nums;
+  line-height: calc(24px + var(--dsh-content-font-delta,0px));
+  white-space: nowrap;
+  cursor: pointer;
+  background: 0 0;
+  border: none;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  display: inline-flex;
+}
+
+.label {
+  text-overflow: ellipsis;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.trigger svg {
+  width: calc(15px + var(--dsh-content-font-delta,0px));
+  height: calc(15px + var(--dsh-content-font-delta,0px));
+  flex: none;
+}
+
+.trigger[aria-expanded=true] {
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-tertiary);
+}
+
+@media (hover:hover) {
+  .trigger:hover {
+    background: var(--dsw-alias-interactive-bg-hover);
+    color: var(--dsw-alias-label-tertiary);
+  }
+}
+
+@media (width<=480px) {
+  .trigger {
+    width: calc(28px + var(--dsh-content-font-delta,0px));
+    justify-content: center;
+    padding: 6px;
+  }
+  .trigger .label {
+    display: none;
+  }
+  .root+.root {
+    margin-left: 0;
+  }
+}

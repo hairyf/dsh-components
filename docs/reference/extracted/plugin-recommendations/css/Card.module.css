@@ -1,0 +1,107 @@
+/* @deepseek-ai/dsh-client-ui-plugin-recommendations / Card.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.header {
+  background: var(--dsw-alias-bg-module-platform);
+  color: var(--dsw-alias-label-secondary);
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  font-size: 12px;
+  line-height: 1.5;
+  display: flex;
+}
+
+.badge {
+  font-size: 12px;
+}
+
+.body {
+  padding: 20px;
+}
+
+.details {
+  box-sizing: border-box;
+  border-radius: var(--dsw-radius-sm);
+  width: calc(100% + 16px);
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  margin: -8px;
+  padding: 8px;
+  transition: background-color .12s;
+  display: block;
+}
+
+@media (hover:hover) {
+  .details:hover {
+    background: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.details:focus-visible {
+  background: var(--dsw-alias-interactive-bg-hover);
+  box-shadow: inset 0 0 0 2px var(--dsw-focus-ring-color,var(--dsw-alias-state-business-primary));
+  outline: none;
+}
+
+.title {
+  overflow-wrap: anywhere;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  display: block;
+}
+
+.description {
+  color: var(--dsw-alias-label-secondary);
+  overflow-wrap: anywhere;
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.7;
+  display: block;
+}
+
+.placeholder {
+  vertical-align: middle;
+  border-radius: var(--dsw-radius-xs);
+  background: var(--dsw-alias-bg-skeleton);
+  width: 50%;
+  height: .8em;
+  display: inline-block;
+}
+
+.footer {
+  border-top: .5px solid var(--dsw-alias-border-l1);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  display: flex;
+}
+
+.scope {
+  color: var(--dsw-alias-label-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.actions {
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  display: flex;
+}
+
+.status {
+  border-top: .5px solid var(--dsw-alias-border-l1);
+  color: var(--dsw-alias-label-secondary);
+  margin: 16px 0 0;
+  padding-top: 12px;
+  font-size: 12px;
+  line-height: 1.6;
+}

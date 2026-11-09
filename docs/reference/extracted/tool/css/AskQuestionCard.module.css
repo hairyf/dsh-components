@@ -1,0 +1,68 @@
+/* @deepseek-ai/dsh-client-ui-tool / AskQuestionCard.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.card {
+  border: .5px solid var(--dsw-alias-border-l1);
+  border-radius: var(--dsw-radius-lg);
+  background: var(--dsw-alias-bg-base);
+  flex-direction: column;
+  gap: 16px;
+  max-height: 360px;
+  margin: 4px 0 4px 4px;
+  padding: 16px 20px;
+  display: flex;
+  overflow-y: auto;
+}
+
+.item {
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  display: flex;
+}
+
+.question,
+.answer {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: var(--dsh-content-font-size,14px);
+  line-height: calc(24px + var(--dsh-content-font-delta,0px));
+  margin: 0;
+}
+
+.question {
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.answer {
+  color: var(--dsw-alias-label-primary);
+}
+
+.answerLine {
+  display: block;
+}
+
+.skipped {
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.verdict {
+  color: var(--dsw-alias-label-primary);
+  font-size: var(--dsh-content-font-size,14px);
+  line-height: calc(24px + var(--dsh-content-font-delta,0px));
+  margin: 0;
+}
+
+.questionList {
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+}
+
+.unansweredQuestion {
+  color: var(--dsw-alias-label-tertiary);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: var(--dsh-content-font-size,14px);
+  line-height: calc(24px + var(--dsh-content-font-delta,0px));
+}

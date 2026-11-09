@@ -1,0 +1,122 @@
+/* @deepseek-ai/dsh-client-ui-agent-preset / AgentPresetSeat.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.menuAnchor {
+  min-width: 54px;
+  max-width: 100%;
+}
+
+.seat {
+  border-radius: var(--dsw-radius-sm);
+  min-width: 0;
+  max-width: min(100%,240px);
+  min-height: 28px;
+  color: var(--dsw-alias-label-primary);
+  white-space: nowrap;
+  cursor: pointer;
+  background: 0 0;
+  border: none;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  display: inline-flex;
+}
+
+.seat[aria-expanded=true] {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+@media (hover:hover) {
+  .seat:not(:disabled):hover {
+    background: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.seat:disabled {
+  cursor: default;
+  color: var(--dsw-alias-label-quaternary);
+}
+
+.seatIcon {
+  color: var(--dsw-alias-label-primary);
+  flex: none;
+}
+
+.seatLabel {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.introIcon {
+  animation: .15s cubic-bezier(.16,1,.3,1) both seat-icon-in;
+}
+
+@keyframes seat-icon-in {
+  0% {
+    opacity: 0;
+    transform: scale(.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.introText {
+  white-space: pre;
+  display: inline-block;
+}
+
+.introChar {
+  white-space: pre;
+  opacity: 0;
+  animation: .4s ease-out forwards seat-char-in;
+  display: inline-block;
+}
+
+@keyframes seat-char-in {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .introIcon,
+  .introChar {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+.chevron {
+  color: var(--dsw-alias-label-caption);
+  flex: none;
+}
+
+.item {
+  flex-direction: column;
+  gap: 2px;
+  max-width: 280px;
+  display: flex;
+}
+
+.itemName {
+  color: var(--dsw-alias-label-primary);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.itemDesc {
+  color: var(--dsw-alias-label-caption);
+  white-space: normal;
+  font-size: 12px;
+  line-height: 16px;
+}

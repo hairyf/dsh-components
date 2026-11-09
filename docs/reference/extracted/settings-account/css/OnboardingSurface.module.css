@@ -1,0 +1,53 @@
+/* @deepseek-ai/dsh-client-ui-settings-account / OnboardingSurface.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.onboardingOverlay {
+  z-index: 900;
+  background: var(--dsw-alias-bg-base);
+  user-select: none;
+  flex-direction: column;
+  display: flex;
+  position: fixed;
+  inset: 0;
+}
+
+html[data-platform=darwin] .onboardingOverlay {
+  background: 0 0;
+}
+
+.onboardingOverlay[data-exiting] {
+  pointer-events: none;
+  animation: .18s ease-out forwards onboardingExit;
+}
+
+@keyframes onboardingExit {
+  0% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .onboardingOverlay[data-exiting] {
+    animation: none;
+  }
+}
+
+html[data-platform=darwin] .dragBand {
+  pointer-events: none;
+  position: absolute;
+  inset: 8px;
+}
+
+.onboardingStage {
+  -webkit-app-region: initial;
+  flex: 1;
+  justify-content: center;
+  min-height: 0;
+  display: flex;
+  overflow: auto;
+}
+
+.onboardingOverlay[inert] .dragBand {
+  -webkit-app-region: no-drag;
+}

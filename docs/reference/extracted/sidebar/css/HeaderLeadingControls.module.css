@@ -1,0 +1,27 @@
+/* @deepseek-ai/dsh-client-ui-sidebar / HeaderLeadingControls.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.controls {
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.iconButton {
+  border-radius: var(--dsw-radius-sm);
+  width: 28px;
+  height: 28px;
+  color: var(--dsw-alias-label-secondary);
+  cursor: pointer;
+  background: 0 0;
+  border: none;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  display: inline-flex;
+}
+
+@media (hover:hover) {
+  .iconButton:hover {
+    background: var(--dsw-alias-interactive-bg-hover);
+  }
+}

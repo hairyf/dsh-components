@@ -1,0 +1,61 @@
+// Extracted from @deepseek-ai/dsh-client-ui-chat (lib/client.js); region lib/types/client/chat/turn-trigger.js
+// Compiled bundle code copied verbatim from the region; imports are hoisted in the original bundle, so this file is not standalone.
+
+function record(value) {
+	return typeof value === "object" && value !== null && !Array.isArray(value) ? value : {};
+}
+function field(source, key) {
+	return typeof source[key] === "string" ? source[key] : "";
+}
+/**
+* Describe a waking message using its recorded source.
+* @param node - durable context, including the original notification body.
+* @returns localized title key and source-family icon.
+*/
+function turnTriggerDetails(node) {
+	const source = record(node.source);
+	const kind = field(source, "kind");
+	let title = "message.trigger.request";
+	let icon = "request";
+	switch (kind) {
+		case "goal":
+			title = "message.trigger.goal";
+			icon = "goal";
+			break;
+		case "agent-message":
+			title = "message.trigger.agent";
+			icon = "agent";
+			break;
+		case "team-message":
+			title = "message.trigger.team";
+			icon = "team";
+			break;
+		case "subagent-settled":
+			title = "message.trigger.subagent";
+			icon = "subagent";
+			break;
+		case "webhook": {
+			const github = field(source, "provider") === "github";
+			title = github ? "message.trigger.github" : "message.trigger.webhook";
+			icon = github ? "github" : "webhook";
+			break;
+		}
+		case "schedule":
+			title = "message.trigger.schedule";
+			icon = "schedule";
+			break;
+		case "tool-jobs":
+			title = "message.trigger.job";
+			icon = "job";
+			break;
+		case "cordis-host-runner":
+			title = "message.trigger.plugin";
+			icon = "plugin";
+			break;
+		default: break;
+	}
+	return {
+		title,
+		icon
+	};
+}

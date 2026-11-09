@@ -1,0 +1,9 @@
+/* @deepseek-ai/dsh-client-ui-chat / accessibility.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.visuallyHidden {
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+}

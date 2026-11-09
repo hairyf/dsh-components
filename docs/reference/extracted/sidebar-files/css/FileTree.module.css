@@ -1,0 +1,101 @@
+/* @deepseek-ai/dsh-client-ui-sidebar-files / FileTree.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
+.level {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.level .level {
+  padding-left: 18px;
+}
+
+.item {
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  border-radius: var(--dsw-radius-md);
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+}
+
+.action {
+  min-width: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  border-radius: var(--dsw-radius-md);
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  flex: 1;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  display: flex;
+}
+
+.accessory:empty {
+  display: none;
+}
+
+.accessory {
+  flex: none;
+  align-items: center;
+  padding-right: 10px;
+  display: flex;
+}
+
+@media (hover:hover) {
+  .row:hover {
+    background: var(--dsw-alias-interactive-bg-hover);
+  }
+  .current:hover {
+    background: var(--dsw-alias-interactive-bg-active);
+  }
+}
+
+.current {
+  background: var(--dsw-alias-interactive-bg-active);
+}
+
+.icon {
+  color: var(--dsw-alias-label-tertiary);
+  flex: none;
+}
+
+.fileIcon {
+  flex: none;
+}
+
+.name {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.hidden {
+  color: var(--dsw-alias-label-secondary);
+}
+
+.other {
+  color: var(--dsw-alias-label-tertiary);
+  cursor: default;
+}
+
+@media (hover:hover) {
+  .inactive:hover {
+    background: 0 0;
+  }
+}
+
+.note {
+  color: var(--dsw-alias-label-tertiary);
+  margin: 0;
+  padding: 3px 10px;
+  font-size: 12px;
+}
