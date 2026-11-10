@@ -1,21 +1,30 @@
 # dsh-components
 
-Source-level React components for the DeepSeek Harness Web UI.
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![bundle][bundle-src]][bundle-href]
+[![License][license-src]][license-href]
 
-Every component reproduces an official DSH component: the stylesheet is the one
-the product ships, recovered from its prebundles with the build hashes stripped and
-embedded verbatim in the component file. Nothing is redrawn by eye, and
-`pnpm audit:fidelity` fails if a declaration cannot be traced back to an official
-stylesheet.
+🧩 **dsh-components** 仅适用于插件作者，为 DeepSeek Harness 插件提供一套**通用 UI 组件**：每个组件的样式表都逐字取自官方 DSH，因此拼出来的界面与产品本身一致。
 
-## Install
+组件名不绑定任何业务：没有 `FontSettingsPanel`，只有 `SettingsRow` + `Stepper` + `Select`。因此没被预先设计过的界面，也能用既有零件拼出来。
+
+## 📦 安装
 
 ```sh
 pnpm add dsh-components
 ```
 
-Then enable it alongside the plugin that uses it, in that plugin's
-`cordis.patch.yml`:
+仅有一个运行时依赖 `css-render`。React、DSH 基础组件与宿主模块都是 peer，由宿提供。
+
+> Are you an AI?
+>
+> 本仓库自带技能 `skills/dsh-components`：`npx skills add hairyf/dsh-components --skill dsh-components -y`。
+> 它会告诉你如何查询组件、样式与令牌。请先问你的 owner 需要支持哪些 Agent，避免装一堆用不上的目录。
+
+## 接入插件
+
+在插件的 `cordis.patch.yml` 里与自身一起插入，用户启用插件时本库随之启用：
 
 ```yaml
 - insert:
@@ -25,128 +34,95 @@ Then enable it alongside the plugin that uses it, in that plugin's
       name: dsh-components
 ```
 
-When the user enables your plugin, `dsh-components` is enabled with it. The patch
-file ships in this package (`cordis.patch.yml`), and `package.json` points at it with
-`dsh.bundle.patch`, so this is the whole wiring — there is no separate install step
-for the end user.
+并在自身 `package.json` 之外，让构建把本库视为外部依赖，避免打进第二份：
 
-## One copy, however many plugins use it
-
-This is the part that matters when several plugins depend on the library.
-
-DSH loads client code through `window.__ModuleLoader__`, which is a lazy CJS table:
-a bundle only *registers* `{ id, factory }`, and the factory runs on first `require`
-and is then memoized by id. The host owns that table, not the plugins.
-
-So the contract is: **the host provides `dsh-components`; plugins require it.**
-
-```jsonc
-// your plugin's package.json
-{
-  "dsh": {
-    "client": {
-      "platform": "web",
-      "external": ["dsh-components"]
-    }
-  }
-}
-```
-
-`dsh.client.external` is the DSH field that says "do not bundle this, the host has
-it". With it, your build emits `require('dsh-components')`, the host resolves it to
-the single registered factory, and every plugin — plus the app itself — shares one
-materialized instance, one set of stylesheets, one React context tree.
-
-If two plugins each bundled their own copy instead, both would register the same
-module id and the loader would reject the second registration; that guard exists
-precisely to make accidental duplication loud rather than silently double-loading
-styles.
-
-## Build setup
-
-Keep `dsh-components` and its own peers out of your bundle:
+tsdown 配置里把本库与 DSH 包、React 一起排除出打包：
 
 ```ts
 // tsdown.config.ts
-import { defineConfig } from 'tsdown'
-
-export default defineConfig({
-  entry: ['src/client.ts'],
-  format: 'cjs',
+const config = {
   deps: {
-    // Provided by the DSH client graph at runtime.
-    neverBundle: [
-      /^dsh-components$/,
-      /^@deepseek-ai\//,
-      /^react($|\/)/,
-      /^react-dom($|\/)/,
-    ],
+    neverBundle: [/^dsh-components$/, /^@deepseek-ai\//, /^react($|\/)/],
   },
-  banner: `window.__ModuleLoader__.load({id:'dsh-my-plugin',factory:(require)=>{var module={exports:{}};var exports=module.exports;`,
-  footer: 'return module.exports;}});',
-})
+}
 ```
 
-The banner and footer are what make the bundle a registered DSH module; the
-`neverBundle` list is what keeps it from carrying a second copy of this library.
+> ⚠️ DSH 用 `window.__ModuleLoader__` 装载客户端代码，模块按 id 记忆化。宿主提供一份，多个插件共享同一份样式与 React 状态。
 
-## Use
+## 特性
 
-Nothing to set up. A plugin runs inside DSH, and the host has already installed the
-design tokens and the colour scheme, so the components resolve `var(--dsw-*)` on
-their own.
+- **官方样式**：72 个组件内嵌 71 张官方样式表，逐字复制、保留官方类名；`pnpm audit:fidelity` 断言 4819 条声明 100% 命中官方，无一条编造
+- **通用可组合**：`primitives` / `layout` / `settings` / `feedback` / `media` / `content` / `viewer` 七类，全部受控、插槽接受任意节点
+- **一个 prop 展开**：`Bar`、`SettingsGroup`、`ListRow`、`Select` 加 `expandable` / `collapsible` 即出现箭头并展开内容
+- **三个入口**：`dsh-components`、`/provider`、`/styles` 分开导出，导入一个按钮不会把令牌表拖进模块图
+- **图标是同源资产**：官方 `Icon*` 随库导出，无需自绘 SVG
+- **升级可控**：`docs/reference/component-map.json` 逐组件记录对应的官方样式表，DSH 升级时按表重拷即可
 
-Compose a screen from generic parts:
+> ⚠️ 组件内不安装设计令牌：DSH 宿主已经装好 `--dsw-*` 与暗色属性。在宿主外渲染（例如展厅）才需要 `DshProvider`。
+
+## 🚀 快速开始
+
+### 1. 直接使用
+
+组件是受控的，传入值与回调即可：
 
 ```tsx
-import {
-  Bar, Button, Checklist, IconChecklistOutlineRegular,
-  OptionGroup, Select, SettingsGroup, SettingsRow, Stepper, Surface,
-} from 'dsh-components'
+import { Button, Switch } from 'dsh-components'
 
-export function Preferences() {
-  const [size, setSize] = useState(14)
-  const [theme, setTheme] = useState('system')
-  const [scope, setScope] = useState('workspace')
-
+export function Actions() {
   return (
-    <Surface>
-      <SettingsGroup title="外观">
-        <SettingsRow title="字号" description="影响正文与代码">
-          <Stepper value={size} min={12} max={20} unit="px" onChange={setSize} />
-        </SettingsRow>
-        <SettingsRow title="主题" description="跟随系统或固定">
-          <OptionGroup value={theme} onChange={setTheme} options={THEMES} />
-        </SettingsRow>
-        <SettingsRow title="访问范围" description="本轮运行的权限">
-          <Select value={scope} onChange={setScope} options={SCOPES} />
-        </SettingsRow>
-      </SettingsGroup>
-      <Bar glyph={<IconChecklistOutlineRegular size={14} />} label="待办" expandable>
-        <Checklist items={todos} />
-      </Bar>
-    </Surface>
+    <>
+      <Button variant="primary" onClick={save}>保存</Button>
+      <Switch checked={enabled} onChange={setEnabled} />
+    </>
   )
 }
 ```
 
-Components are controlled: pass `value`/`onChange`, `open`/`onOpenChange`. None of
-them hold application state, and none of them know what they are being used for.
+### 2. 组合成界面
 
-`DshProvider` exists for the one case the host does not cover: rendering these
-components outside DSH, such as the gallery in `playground/`. Do not use it inside
-a plugin.
+不存在的界面，用零件拼出来：
 
-## What is in the box
+```tsx
+import {
+  OptionGroup,
+  Select,
+  SettingsGroup,
+  SettingsRow,
+  Stepper,
+  Surface,
+} from 'dsh-components'
 
-Generic pieces an agent recombines, not DSH screens. The test for every
-component is that its name mentions no product feature: if it says `font`,
-`plan`, `todo`, `skill`, `tool` or `permission`, it is business code and does
-not belong here. See [the map](docs/reference/generic-component-map.md).
+<Surface>
+  <SettingsGroup title="外观">
+    <SettingsRow title="字号" description="影响正文与代码">
+      <Stepper value={size} min={12} max={20} unit="px" onChange={setSize} />
+    </SettingsRow>
+    <SettingsRow title="主题" description="跟随系统或固定">
+      <OptionGroup value={theme} onChange={setTheme} options={THEMES} />
+    </SettingsRow>
+    <SettingsRow title="访问范围" description="本轮运行的权限">
+      <Select value={scope} onChange={setScope} options={SCOPES} />
+    </SettingsRow>
+  </SettingsGroup>
+</Surface>
+```
 
-| Group | Components |
+### 3. 使用官方图标
+
+```tsx
+import { IconChecklistOutlineRegular, IconChevronDownOutlineRegular } from 'dsh-components'
+
+<IconChecklistOutlineRegular size={14} />
+```
+
+---
+
+## 🧱 组件
+
+| 分组 | 组件 |
 | --- | --- |
-| `primitives` | Button, IconButton, Input, Textarea, Checkbox, Switch, Tag, Pill, Chip, StateDot, Spinner, Text, MaskedText, Avatar, Tooltip, HoverCard, Modal, Toast, Menu, MenuSurface, MenuGroup, SegmentedControl, SegmentedTabs, DisclosureRow, AnimatedRows, TextShimmer, ShortcutKeys, InlineEditor, PathLabel, FileTypeIcon, Field, Form, DatePicker, TimePicker |
+| `primitives` | Button, IconButton, Input, Textarea, Field, Form, Checkbox, Switch, Tag, Pill, Chip, StateDot, Spinner, Text, MaskedText, Avatar, DatePicker, TimePicker, Tooltip, HoverCardGroup, Modal, Toast, MenuItemButton, MenuGroup, SegmentedControl, SegmentedTabs, DisclosureRow, AnimatedRows, TextShimmer, ShortcutKeys, InlineEditor, PathLabel, FileTypeIcon |
 | `layout` | Surface, Bar, Stack, ListRow, Tree, DescriptionList, Checklist, Meter, Table, Toolbar, Carousel, FileChangeCard |
 | `settings` | SettingsRow, SettingsGroup, Stepper, OptionGroup, Select, SplitButton |
 | `feedback` | ConfirmPanel, FormDialog, SearchDialog, ActionCard, DropOverlay |
@@ -154,94 +130,93 @@ not belong here. See [the map](docs/reference/generic-component-map.md).
 | `content` | MarkdownText, CodeBlock, DiffBlock, SplitDiff, JsonTree, JsonBlock, Terminal, Document |
 | `viewer` | ZoomControls, ZoomViewport, PreviewFrame |
 
-Every one copies an official DSH stylesheet verbatim and keeps the official class
-names; the name is generic, the pixels are the product's.
+## 📚 API 参考
 
-## Entries
+### 入口
 
-The package has three, so the document baseline never rides along with a
-component import:
+```ts
+import { Button } from 'dsh-components' // 组件与 props 类型
+import { DshProvider } from 'dsh-components/provider' // 宿主外渲染时安装令牌与图标
+import { installDshTheme, setDshDarkMode } from 'dsh-components/styles'
+```
 
-| Import | What it is |
-| --- | --- |
-| `dsh-components` | every component and its prop types |
-| `dsh-components/provider` | `DshProvider`, for rendering outside DSH |
-| `dsh-components/styles` | `installDshTheme`, `setDshDarkMode`, the token sheets |
+### `DshProvider`
 
-`css-render` is the only runtime dependency. React, the DSH primitives and the
-host modules are peers, supplied by the host.
-
-## Icons
-
-The official artwork ships with the library; do not draw your own.
+仅用于在 DSH 之外渲染本库（例如展厅）。插件内不要使用。
 
 ```tsx
-import { IconSearchOutlineRegular, IconPanelLeftOutlineRegular } from 'dsh-components'
-
-<IconPanelLeftOutlineRegular size={16} />
+<DshProvider colorScheme="dark">{children}</DshProvider>
 ```
 
-## Slots
+它安装与宿主相同的令牌表与图标 sprite，并在卸载时移除。
 
-DSH renders named DOM seats that plugins contribute to. `ShellSlot` reproduces that
-wrapper exactly, so injected content lands where the product reads it:
+### `installDshTheme(cssr?)`
 
-```tsx
-<SessionRow sessionId="s1" title="重构登录流程" leading={<IconSparkleRegular size={14} />} />
+把令牌与文档基线挂到 `document.head`，返回 `{ cssr, dispose }`。传入 `cssr` 可与自有样式共用同一实例。
+
+### `setDshDarkMode(dark)`
+
+DSH 用 body 属性切主题，而非 class 或 data-theme：
+
+```ts
+setDshDarkMode(true) // body[data-ds-dark-theme]
 ```
 
-Query the catalogue rather than guessing a key:
+### 组件约定
+
+- **受控**：`value`/`onChange`、`open`/`onOpenChange`、`selected`/`onSelect`。组件不持有业务状态、不发请求、不读 store
+- **插槽是节点**：`children`、`leading`、`trailing`、`actions`、`icon` 接受 `ReactNode`
+- **类名作用域**：每个组件用 `useStyle(scope, css)` 把自己的官方类名加前缀，互不冲突
+
+---
+
+## 💡 示例项目
+
+`playground/` 是 Vite 展厅，72 个组件每个都有多状态示例，支持亮/暗主题与筛选：
 
 ```sh
-node skills/dsh-components/scripts/get_slots.mjs session.row
+pnpm install
+pnpm playground
+
+# 打开 http://localhost:5173/#<组件名>
+# 加 ?light 切浅色：http://localhost:5173/#select?light
 ```
 
-## Design tokens
+组件也可在 DSH 中通过 `cordis.patch.yml` 挂载后直接查看。
 
-Never hardcode a colour, radius, or duration.
+## 🛠️ 开发
 
 ```sh
-node skills/dsh-components/scripts/get_tokens.mjs radius
+pnpm typecheck        # 库与测试
+pnpm lint             # 代码风格
+pnpm test             # 先构建再跑测试
+pnpm audit:fidelity   # 每条声明都可追溯到官方样式表
+pnpm gen              # 重新生成 barrel、关系表与技能索引
 ```
 
-## Development
+### 升级 DSH
+
+`docs/reference/component-map.json` 记录每个组件对应哪张官方样式表。升级流程见 [`AGENTS.md`](./AGENTS.md)：
 
 ```sh
-pnpm typecheck        # library and tests
-pnpm lint             # house style
-pnpm test             # builds, then runs the suite
-pnpm audit:fidelity   # every shipped declaration traces to an official sheet
-pnpm playground       # component gallery (Vite)
+pnpm gen:reference                              # 重新抽取官方样式表
+node scripts/generate-component-map.mjs         # 列出与新表不一致的组件
 ```
 
-Regenerate the recovered data:
+第二行输出的清单就是全部工作量，逐个按新表重拷即可。
 
-```sh
-pnpm gen:reference                      # re-extract CSS, slots, locales, tokens
-node scripts/generate-skill-index.mjs   # refresh the skill index
-```
+## 📜️ 许可证
 
-## The agent skill
+- MIT © [hairyf](https://github.com/hairyf)
+- 样式与图标取自 DeepSeek Harness 官方产物，遵循其上游授权
 
-`skills/dsh-components` is a skill for coding agents, shaped like the HeroUI skills:
-a `SKILL.md` plus `scripts/*.mjs` that resolve what they need at run time — a local
-checkout when one is present, GitHub raw otherwise — so it works when installed
-outside this repository.
+<!-- Badges -->
 
-```sh
-node skills/dsh-components/scripts/get_component.mjs MarkdownText
-```
-
-## Ground truth
-
-| Fact | Where |
-| --- | --- |
-| Official stylesheets | `docs/reference/extracted/<package>/css/` |
-| Official component source | `docs/reference/extracted/<package>/src/` |
-| Slot catalog | `docs/reference/slots.json` |
-| Design tokens | `docs/reference/design-tokens.json` |
-| Official UI copy | `docs/reference/extracted/locales-merged.json` |
-
-## License
-
-MIT
+[npm-version-src]: https://img.shields.io/npm/v/dsh-components?style=flat&colorA=080f12&colorB=1fa669
+[npm-version-href]: https://npmjs.com/package/dsh-components
+[npm-downloads-src]: https://img.shields.io/npm/dm/dsh-components?style=flat&colorA=080f12&colorB=1fa669
+[npm-downloads-href]: https://npmjs.com/package/dsh-components
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/dsh-components?style=flat&colorA=080f12&colorB=1fa669&label=minzip
+[bundle-href]: https://bundlephobia.com/result?p=dsh-components
+[license-src]: https://img.shields.io/github/license/hairyf/dsh-components.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/hairyf/dsh-components/blob/main/LICENSE.md
