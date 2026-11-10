@@ -1,6 +1,5 @@
 import {
   Button,
-  DshProvider,
   FishLogo,
   IconChevronDownOutlineRegular,
   IconCloseFillRegular,
@@ -8,6 +7,7 @@ import {
   IconLightOutlineRegular,
   IconSearchOutlineRegular,
 } from '@dsh-components'
+import { DshProvider } from '@dsh-components/provider'
 import { useEffect, useState } from 'react'
 import { EXAMPLE_GROUPS, EXAMPLES } from './examples'
 

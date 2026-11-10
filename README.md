@@ -157,7 +157,19 @@ not belong here. See [the map](docs/reference/generic-component-map.md).
 Every one copies an official DSH stylesheet verbatim and keeps the official class
 names; the name is generic, the pixels are the product's.
 
-`DshProvider` is not part of the component surface; it only backs the gallery.
+## Entries
+
+The package has three, so the document baseline never rides along with a
+component import:
+
+| Import | What it is |
+| --- | --- |
+| `dsh-components` | every component and its prop types |
+| `dsh-components/provider` | `DshProvider`, for rendering outside DSH |
+| `dsh-components/styles` | `installDshTheme`, `setDshDarkMode`, the token sheets |
+
+`css-render` is the only runtime dependency. React, the DSH primitives and the
+host modules are peers, supplied by the host.
 
 ## Icons
 

@@ -7,6 +7,8 @@ const { name } = JSON.parse(readFileSync(new URL('./package.json', import.meta.u
 export default defineConfig({
   entry: [
     'src/index.ts',
+    'src/provider.ts',
+    'src/styles.ts',
   ],
   dts: true,
   format: 'cjs',

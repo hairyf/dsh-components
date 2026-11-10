@@ -1,0 +1,19 @@
+refactor: one runtime dependency, three entries
+
+The bundle only requires `css-render`, `react`, `react-dom` and the DSH
+primitives. The rest (`anser`, `clsx`, `shiki`, `@shikijs/langs`,
+`simple-icons`) were only ever needed because the primitives prebundle imports
+them at module scope, which the host resolves for us, so they move to
+devDependencies where the test and gallery builds can still see them. A plugin
+now installs one package and nothing else.
+
+The document baseline also stops being part of the component surface:
+
+- `dsh-components` exports components and their prop types only
+- `dsh-components/provider` exports `DshProvider`
+- `dsh-components/styles` exports `installDshTheme`, `setDshDarkMode` and the
+  token sheets
+
+Importing a Button no longer pulls the token sheets or the theme installer into
+the module graph, and a consumer that never renders outside DSH never loads
+either entry.

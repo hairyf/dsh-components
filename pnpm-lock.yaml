@@ -296,24 +296,9 @@ importers:
       '@deepseek-ai/dsh':
         specifier: '>=0.2.2-rc.1'
         version: 0.2.2-rc.1(f4fcd78babed3c98553cf401f08d8f94)
-      '@shikijs/langs':
-        specifier: 'catalog:'
-        version: 4.4.3
-      anser:
-        specifier: ^2.3.5
-        version: 2.3.5
-      clsx:
-        specifier: 'catalog:'
-        version: 2.1.1
       css-render:
         specifier: 'catalog:'
         version: 0.15.14
-      shiki:
-        specifier: 'catalog:'
-        version: 4.4.3
-      simple-icons:
-        specifier: 'catalog:'
-        version: 16.31.0
     devDependencies:
       '@antfu/eslint-config':
         specifier: catalog:cli
@@ -330,6 +315,9 @@ importers:
       '@deepseek-ai/dsh-client-ui-primitives':
         specifier: ^0.2.2-rc.1
         version: 0.2.2-rc.1(@deepseek-ai/cordis@4.1.0)
+      '@shikijs/langs':
+        specifier: 'catalog:'
+        version: 4.4.3
       '@types/node':
         specifier: catalog:types
         version: 26.6.5
@@ -339,9 +327,15 @@ importers:
       '@types/react-dom':
         specifier: catalog:types
         version: 19.3.0(@types/react@19.3.0)
+      anser:
+        specifier: ^2.3.5
+        version: 2.3.5
       bumpp:
         specifier: catalog:cli
         version: 12.3.0
+      clsx:
+        specifier: 'catalog:'
+        version: 2.1.1
       eslint:
         specifier: catalog:cli
         version: 10.13.0(jiti@2.7.0)
@@ -369,9 +363,15 @@ importers:
       react-dom:
         specifier: catalog:runtime
         version: 19.3.1(react@19.3.1)
+      shiki:
+        specifier: 'catalog:'
+        version: 4.4.3
       simple-git-hooks:
         specifier: catalog:cli
         version: 2.14.0
+      simple-icons:
+        specifier: 'catalog:'
+        version: 16.31.0
       taze:
         specifier: catalog:cli
         version: 21.3.0

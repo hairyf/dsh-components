@@ -21,6 +21,8 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.cjs",
+    "./provider": "./dist/provider.cjs",
+    "./styles": "./dist/styles.cjs",
     "./package.json": "./package.json"
   },
   "types": "./dist/index.d.cts",
@@ -75,10 +77,13 @@
     "@antfu/skills": "catalog:agentic",
     "@antfu/utils": "catalog:inlined",
     "@deepseek-ai/dsh-client-ui-primitives": "^0.2.2-rc.1",
+    "@shikijs/langs": "catalog:",
     "@types/node": "catalog:types",
     "@types/react": "catalog:types",
     "@types/react-dom": "catalog:types",
+    "anser": "^2.3.5",
     "bumpp": "catalog:cli",
+    "clsx": "catalog:",
     "eslint": "catalog:cli",
     "eslint-plugin-slop": "catalog:cli",
     "eslint-plugin-sonarjs": "catalog:cli",
@@ -88,7 +93,9 @@
     "publint": "catalog:cli",
     "react": "catalog:runtime",
     "react-dom": "catalog:runtime",
+    "shiki": "catalog:",
     "simple-git-hooks": "catalog:cli",
+    "simple-icons": "catalog:",
     "taze": "catalog:cli",
     "tsdown": "catalog:cli",
     "tsdown-stale-guard": "catalog:testing",
@@ -109,12 +116,7 @@
     "playground/**/*.{ts,tsx}": "eslint --fix --no-warn-ignored"
   },
   "dependencies": {
-    "css-render": "catalog:",
-    "anser": "^2.3.5",
-    "clsx": "catalog:",
-    "simple-icons": "catalog:",
-    "shiki": "catalog:",
-    "@shikijs/langs": "catalog:"
+    "css-render": "catalog:"
   },
   "main": "./dist/index.cjs",
   "dsh": {
