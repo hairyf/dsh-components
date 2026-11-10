@@ -1,509 +1,492 @@
 {
-  "generatedAt": "2026-11-10T05:28:20.811Z",
+  "generatedAt": "2026-11-10T08:20:59.893Z",
   "components": [
     {
       "name": "CodeBlock",
       "group": "content",
       "file": "src/components/content/code-block.tsx",
       "props": "CodeBlockProps",
-      "sheet": null
-    },
-    {
-      "name": "DiffBlock",
-      "group": "content",
-      "file": "src/components/content/diff-block.tsx",
-      "props": "DiffBlockProps",
-      "sheet": "primitives/DiffBlock.module.css"
+      "sheet": "primitives/CodeBlock.module.css",
+      "sheets": [
+        "primitives/CodeBlock.module.css",
+        "primitives/CodeCard.module.css"
+      ]
     },
     {
       "name": "Document",
       "group": "content",
       "file": "src/components/content/document.tsx",
       "props": "DocumentProps",
-      "sheet": null
-    },
-    {
-      "name": "JsonBlock",
-      "group": "content",
-      "file": "src/components/content/json-block.tsx",
-      "props": "JsonBlockProps",
-      "sheet": null
-    },
-    {
-      "name": "JsonTree",
-      "group": "content",
-      "file": "src/components/content/json-tree.tsx",
-      "props": "JsonTreeProps",
-      "sheet": null
-    },
-    {
-      "name": "MarkdownText",
-      "group": "content",
-      "file": "src/components/content/markdown-text.tsx",
-      "props": "MarkdownTextProps",
-      "sheet": "primitives/MarkdownText.module.css"
+      "sheet": "primitives/DetailDocument.module.css",
+      "sheets": [
+        "primitives/DetailDocument.module.css"
+      ]
     },
     {
       "name": "SplitDiff",
       "group": "content",
       "file": "src/components/content/split-diff.tsx",
       "props": "SplitDiffProps",
-      "sheet": "deliverables/FileDiff.module.css"
+      "sheet": "deliverables/FileDiff.module.css",
+      "sheets": [
+        "deliverables/FileDiff.module.css"
+      ]
     },
     {
       "name": "Terminal",
       "group": "content",
       "file": "src/components/content/terminal.tsx",
       "props": "TerminalProps",
-      "sheet": "@deepseek-ai/dsh-client-ui-primitives lib/Terminal.module.css; official CSS, verbatim."
+      "sheet": "primitives/TerminalBlock.module.css",
+      "sheets": [
+        "primitives/TerminalBlock.module.css",
+        "primitives/CommandText.module.css"
+      ]
     },
     {
       "name": "ActionCard",
       "group": "feedback",
       "file": "src/components/feedback/action-card.tsx",
       "props": "ActionCardProps",
-      "sheet": "action-cards/Card.module.css"
+      "sheet": "action-cards/Card.module.css",
+      "sheets": [
+        "action-cards/Card.module.css"
+      ]
     },
     {
       "name": "ConfirmPanel",
       "group": "feedback",
       "file": "src/components/feedback/confirm-panel.tsx",
       "props": "ConfirmPanelProps",
-      "sheet": null
+      "sheet": "approval/ApprovalPanel.module.css",
+      "sheets": [
+        "approval/ApprovalPanel.module.css"
+      ]
     },
     {
       "name": "DropOverlay",
       "group": "feedback",
       "file": "src/components/feedback/drop-overlay.tsx",
       "props": "DropOverlayProps",
-      "sheet": null
+      "sheet": "attachment/DropOverlay.module.css",
+      "sheets": [
+        "attachment/DropOverlay.module.css"
+      ]
     },
     {
       "name": "FormDialog",
       "group": "feedback",
       "file": "src/components/feedback/form-dialog.tsx",
       "props": "FormDialogProps",
-      "sheet": null
+      "sheet": "message-feedback/FeedbackDialog.module.css",
+      "sheets": [
+        "message-feedback/FeedbackDialog.module.css"
+      ]
     },
     {
       "name": "SearchDialog",
       "group": "feedback",
       "file": "src/components/feedback/search-dialog.tsx",
       "props": "SearchDialogProps",
-      "sheet": null
+      "sheet": "shortcuts/Reference.module.css",
+      "sheets": [
+        "shortcuts/Reference.module.css"
+      ]
     },
     {
       "name": "Bar",
       "group": "layout",
       "file": "src/components/layout/bar.tsx",
       "props": "ExpansionBarProps",
-      "sheet": null
+      "sheet": "chat/TurnProcessNodeView.module.css",
+      "sheets": [
+        "chat/TurnProcessNodeView.module.css",
+        "conversation/TodoPanel.module.css"
+      ]
     },
     {
       "name": "Carousel",
       "group": "layout",
       "file": "src/components/layout/carousel.tsx",
       "props": "CarouselProps",
-      "sheet": "attachment/AttachmentRail.module.css"
+      "sheet": "attachment/AttachmentRail.module.css",
+      "sheets": [
+        "attachment/AttachmentRail.module.css"
+      ]
     },
     {
       "name": "Checklist",
       "group": "layout",
       "file": "src/components/layout/checklist.tsx",
       "props": "ChecklistProps",
-      "sheet": null
+      "sheet": "conversation/TodoPanel.module.css",
+      "sheets": [
+        "conversation/TodoPanel.module.css"
+      ]
     },
     {
       "name": "DescriptionList",
       "group": "layout",
       "file": "src/components/layout/description-list.tsx",
       "props": "DescriptionListProps",
-      "sheet": "tool/ToolDetails.module.css"
+      "sheet": "tool/ToolDetails.module.css",
+      "sheets": [
+        "tool/ToolDetails.module.css"
+      ]
     },
     {
       "name": "FileChangeCard",
       "group": "layout",
       "file": "src/components/layout/file-change-card.tsx",
       "props": "FileChangeCardProps",
-      "sheet": "deliverables/ChangedFiles.module.css"
+      "sheet": "deliverables/ChangedFiles.module.css",
+      "sheets": [
+        "deliverables/ChangedFiles.module.css"
+      ]
     },
     {
       "name": "ListRow",
       "group": "layout",
       "file": "src/components/layout/list-row.tsx",
       "props": "ListRowProps",
-      "sheet": null
+      "sheet": "primitives/DisclosureRow.module.css",
+      "sheets": [
+        "primitives/DisclosureRow.module.css"
+      ]
     },
     {
       "name": "Meter",
       "group": "layout",
       "file": "src/components/layout/meter.tsx",
       "props": "MeterProps",
-      "sheet": "conversation/ContextMeter.module.css"
+      "sheet": "conversation/ContextMeter.module.css",
+      "sheets": [
+        "conversation/ContextMeter.module.css"
+      ]
     },
     {
       "name": "Stack",
       "group": "layout",
       "file": "src/components/layout/stack.tsx",
       "props": "StackProps",
-      "sheet": "conversation/TodoPanel.module.css"
+      "sheet": "conversation/TodoPanel.module.css",
+      "sheets": [
+        "conversation/TodoPanel.module.css"
+      ]
     },
     {
       "name": "Surface",
       "group": "layout",
       "file": "src/components/layout/surface.tsx",
       "props": "SurfaceProps",
-      "sheet": null
+      "sheet": "conversation/ContextMeter.module.css",
+      "sheets": [
+        "conversation/ContextMeter.module.css"
+      ]
     },
     {
       "name": "Table",
       "group": "layout",
       "file": "src/components/layout/table.tsx",
       "props": "TableProps",
-      "sheet": "trajectory/TrajectoryTable.module.css"
+      "sheet": "trajectory/TrajectoryTable.module.css",
+      "sheets": [
+        "trajectory/TrajectoryTable.module.css"
+      ]
     },
     {
       "name": "Toolbar",
       "group": "layout",
       "file": "src/components/layout/toolbar.tsx",
       "props": "ToolbarProps",
-      "sheet": "trajectory/TrajectoryToolbar.module.css"
+      "sheet": "trajectory/TrajectoryToolbar.module.css",
+      "sheets": [
+        "trajectory/TrajectoryToolbar.module.css"
+      ]
     },
     {
       "name": "Tree",
       "group": "layout",
       "file": "src/components/layout/tree.tsx",
       "props": "TreeProps",
-      "sheet": "sidebar-files/FileTree.module.css"
+      "sheet": "sidebar-files/FileTree.module.css",
+      "sheets": [
+        "sidebar-files/FileTree.module.css"
+      ]
     },
     {
       "name": "FileCard",
       "group": "media",
       "file": "src/components/media/file-card.tsx",
       "props": "FileCardProps",
-      "sheet": null
+      "sheet": "attachment/FileCard.module.css",
+      "sheets": [
+        "attachment/FileCard.module.css"
+      ]
     },
     {
       "name": "ImageTile",
       "group": "media",
       "file": "src/components/media/image-tile.tsx",
       "props": "ImageTileProps",
-      "sheet": null
+      "sheet": "attachment/MessageImage.module.css",
+      "sheets": [
+        "attachment/MessageImage.module.css"
+      ]
     },
     {
       "name": "Image",
       "group": "media",
       "file": "src/components/media/image.tsx",
       "props": "ImageProps",
-      "sheet": null
+      "sheet": "primitives/ImagePreview.module.css",
+      "sheets": [
+        "primitives/ImagePreview.module.css"
+      ]
     },
     {
       "name": "Lightbox",
       "group": "media",
       "file": "src/components/media/lightbox.tsx",
       "props": "LightboxProps",
-      "sheet": null
-    },
-    {
-      "name": "AnimatedRows",
-      "group": "primitives",
-      "file": "src/components/primitives/animated-rows.tsx",
-      "props": "AnimatedRowsProps",
-      "sheet": "primitives/AnimatedRows.module.css"
+      "sheet": "primitives/ImageLightbox.module.css",
+      "sheets": [
+        "primitives/ImageLightbox.module.css"
+      ]
     },
     {
       "name": "Avatar",
       "group": "primitives",
       "file": "src/components/primitives/avatar.tsx",
       "props": "AvatarProps",
-      "sheet": "settings-account/AccountAvatar.module.css"
-    },
-    {
-      "name": "Button",
-      "group": "primitives",
-      "file": "src/components/primitives/button.tsx",
-      "props": "ButtonProps",
-      "sheet": "primitives/Button.module.css"
-    },
-    {
-      "name": "Checkbox",
-      "group": "primitives",
-      "file": "src/components/primitives/checkbox.tsx",
-      "props": "CheckboxProps",
-      "sheet": "primitives/Checkbox.module.css"
+      "sheet": "settings-account/AccountAvatar.module.css",
+      "sheets": [
+        "settings-account/AccountAvatar.module.css"
+      ]
     },
     {
       "name": "Chip",
       "group": "primitives",
       "file": "src/components/primitives/chip.tsx",
       "props": "ChipProps",
-      "sheet": null
+      "sheet": "conversation/ReferenceChip.module.css",
+      "sheets": [
+        "conversation/ReferenceChip.module.css",
+        "conversation/composer-editor.module.css",
+        "primitives/QuotePreview.module.css"
+      ]
     },
     {
       "name": "DatePicker",
       "group": "primitives",
       "file": "src/components/primitives/date-picker.tsx",
       "props": "DatePickerProps",
-      "sheet": "schedule/DatePicker.module.css"
-    },
-    {
-      "name": "DisclosureRow",
-      "group": "primitives",
-      "file": "src/components/primitives/disclosure-row.tsx",
-      "props": "DisclosureRowProps",
-      "sheet": "primitives/DisclosureRow.module.css"
+      "sheet": "schedule/DatePicker.module.css",
+      "sheets": [
+        "schedule/DatePicker.module.css",
+        "schedule/PickerPopover.module.css"
+      ]
     },
     {
       "name": "Field",
       "group": "primitives",
       "file": "src/components/primitives/field.tsx",
       "props": "FieldProps",
-      "sheet": "primitives/fields.module.css"
-    },
-    {
-      "name": "FileTypeIcon",
-      "group": "primitives",
-      "file": "src/components/primitives/file-type-icon.tsx",
-      "props": "FileTypeIconProps",
-      "sheet": "primitives/FileTypeIcon.module.css"
+      "sheet": "primitives/fields.module.css",
+      "sheets": [
+        "primitives/fields.module.css"
+      ]
     },
     {
       "name": "Form",
       "group": "primitives",
       "file": "src/components/primitives/form.tsx",
       "props": "FormProps",
-      "sheet": "primitives/SettingsForm.module.css"
-    },
-    {
-      "name": "HoverCard",
-      "group": "primitives",
-      "file": "src/components/primitives/hover-card.tsx",
-      "props": "HoverCardProps",
-      "sheet": "primitives/HoverCard.module.css"
+      "sheet": "primitives/SettingsForm.module.css",
+      "sheets": [
+        "primitives/SettingsForm.module.css"
+      ]
     },
     {
       "name": "IconButton",
       "group": "primitives",
       "file": "src/components/primitives/icon-button.tsx",
       "props": "IconButtonProps",
-      "sheet": null
-    },
-    {
-      "name": "InlineEditor",
-      "group": "primitives",
-      "file": "src/components/primitives/inline-editor.tsx",
-      "props": "InlineEditorProps",
-      "sheet": "primitives/InlineEditor.module.css"
-    },
-    {
-      "name": "Input",
-      "group": "primitives",
-      "file": "src/components/primitives/input.tsx",
-      "props": "InputProps",
-      "sheet": "primitives/Input.module.css"
+      "sheet": "message-feedback/MessageFeedbackActions.module.css",
+      "sheets": [
+        "message-feedback/MessageFeedbackActions.module.css"
+      ]
     },
     {
       "name": "MaskedText",
       "group": "primitives",
       "file": "src/components/primitives/masked-text.tsx",
       "props": "MaskedTextProps",
-      "sheet": null
-    },
-    {
-      "name": "MenuGroup",
-      "group": "primitives",
-      "file": "src/components/primitives/menu-group.tsx",
-      "props": "MenuGroupProps",
-      "sheet": "primitives/MenuGroup.module.css"
+      "sheet": "secret-mask/SecretText.module.css",
+      "sheets": [
+        "secret-mask/SecretText.module.css"
+      ]
     },
     {
       "name": "MenuSurface",
       "group": "primitives",
       "file": "src/components/primitives/menu-surface.tsx",
       "props": "MenuSurfaceProps",
-      "sheet": "primitives/MenuSurface.module.css"
+      "sheet": "primitives/MenuSurface.module.css",
+      "sheets": [
+        "primitives/MenuSurface.module.css"
+      ]
     },
     {
       "name": "Menu",
       "group": "primitives",
       "file": "src/components/primitives/menu.tsx",
       "props": "MenuProps",
-      "sheet": "primitives/Menu.module.css"
-    },
-    {
-      "name": "Modal",
-      "group": "primitives",
-      "file": "src/components/primitives/modal.tsx",
-      "props": "ModalProps",
-      "sheet": "primitives/Modal.module.css"
-    },
-    {
-      "name": "PathLabel",
-      "group": "primitives",
-      "file": "src/components/primitives/path-label.tsx",
-      "props": "PathLabelProps",
-      "sheet": "primitives/PathLabel.module.css"
-    },
-    {
-      "name": "Pill",
-      "group": "primitives",
-      "file": "src/components/primitives/pill.tsx",
-      "props": "PillProps",
-      "sheet": "primitives/Pill.module.css"
-    },
-    {
-      "name": "SegmentedControl",
-      "group": "primitives",
-      "file": "src/components/primitives/segmented-control.tsx",
-      "props": "SegmentedControlProps",
-      "sheet": "primitives/SegmentedControl.module.css"
-    },
-    {
-      "name": "SegmentedTabs",
-      "group": "primitives",
-      "file": "src/components/primitives/segmented-tabs.tsx",
-      "props": "SegmentedTabsProps",
-      "sheet": "primitives/SegmentedTabs.module.css"
-    },
-    {
-      "name": "ShortcutKeys",
-      "group": "primitives",
-      "file": "src/components/primitives/shortcut-keys.tsx",
-      "props": "ShortcutKeysProps",
-      "sheet": "primitives/ShortcutKeys.module.css"
+      "sheet": "primitives/Menu.module.css",
+      "sheets": [
+        "primitives/Menu.module.css"
+      ]
     },
     {
       "name": "Spinner",
       "group": "primitives",
       "file": "src/components/primitives/spinner.tsx",
       "props": "SpinnerProps",
-      "sheet": null
-    },
-    {
-      "name": "StateDot",
-      "group": "primitives",
-      "file": "src/components/primitives/state-dot.tsx",
-      "props": "StateDotProps",
-      "sheet": "primitives/StateDot.module.css"
-    },
-    {
-      "name": "Switch",
-      "group": "primitives",
-      "file": "src/components/primitives/switch.tsx",
-      "props": "SwitchProps",
-      "sheet": "primitives/Switch.module.css"
-    },
-    {
-      "name": "Tag",
-      "group": "primitives",
-      "file": "src/components/primitives/tag.tsx",
-      "props": "TagProps",
-      "sheet": "primitives/Tag.module.css"
-    },
-    {
-      "name": "TextShimmer",
-      "group": "primitives",
-      "file": "src/components/primitives/text-shimmer.tsx",
-      "props": "TextShimmerProps",
-      "sheet": "primitives/TextShimmer.module.css"
+      "sheet": "sidebar-documentpreview/LoadingIndicator.module.css",
+      "sheets": [
+        "sidebar-documentpreview/LoadingIndicator.module.css"
+      ]
     },
     {
       "name": "Text",
       "group": "primitives",
       "file": "src/components/primitives/text.tsx",
       "props": "TextProps",
-      "sheet": null
+      "sheet": "conversation/UserText.module.css",
+      "sheets": [
+        "conversation/UserText.module.css"
+      ]
     },
     {
       "name": "Textarea",
       "group": "primitives",
       "file": "src/components/primitives/textarea.tsx",
       "props": "TextareaProps",
-      "sheet": null
+      "sheet": "message-feedback/FeedbackDialog.module.css",
+      "sheets": [
+        "message-feedback/FeedbackDialog.module.css"
+      ]
     },
     {
       "name": "TimePicker",
       "group": "primitives",
       "file": "src/components/primitives/time-picker.tsx",
       "props": "TimePickerProps",
-      "sheet": "schedule/ClockPicker.module.css"
+      "sheet": "schedule/ClockPicker.module.css",
+      "sheets": [
+        "schedule/ClockPicker.module.css",
+        "schedule/PickerPopover.module.css"
+      ]
     },
     {
       "name": "Toast",
       "group": "primitives",
       "file": "src/components/primitives/toast.tsx",
       "props": "ToastProps",
-      "sheet": "primitives/Toast.module.css"
-    },
-    {
-      "name": "Tooltip",
-      "group": "primitives",
-      "file": "src/components/primitives/tooltip.tsx",
-      "props": "TooltipProps",
-      "sheet": "primitives/Tooltip.module.css"
+      "sheet": "primitives/Toast.module.css",
+      "sheets": [
+        "primitives/Toast.module.css"
+      ]
     },
     {
       "name": "OptionGroup",
       "group": "settings",
       "file": "src/components/settings/option-group.tsx",
       "props": "OptionGroupProps",
-      "sheet": "theme/AppearanceRow.module.css"
+      "sheet": "theme/AppearanceRow.module.css",
+      "sheets": [
+        "theme/AppearanceRow.module.css"
+      ]
     },
     {
       "name": "Select",
       "group": "settings",
       "file": "src/components/settings/select.tsx",
       "props": "SelectProps",
-      "sheet": "permission-presets/PermissionSelect.module.css"
+      "sheet": "permission-presets/PermissionSelect.module.css",
+      "sheets": [
+        "permission-presets/PermissionSelect.module.css"
+      ]
     },
     {
       "name": "SettingsGroup",
       "group": "settings",
       "file": "src/components/settings/settings-group.tsx",
       "props": "SettingsGroupProps",
-      "sheet": "theme/FontSettingsGroup.module.css"
+      "sheet": "theme/FontSizeRow.module.css",
+      "sheets": [
+        "theme/FontSizeRow.module.css"
+      ]
     },
     {
       "name": "SettingsRow",
       "group": "settings",
       "file": "src/components/settings/settings-row.tsx",
       "props": "SettingsRowProps",
-      "sheet": "theme/FontSizeRow.module.css"
+      "sheet": "theme/FontSizeRow.module.css",
+      "sheets": [
+        "theme/FontSizeRow.module.css"
+      ]
     },
     {
       "name": "SplitButton",
       "group": "settings",
       "file": "src/components/settings/split-button.tsx",
       "props": "SplitButtonProps",
-      "sheet": "open-in-app/OpenTargetButton.module.css"
+      "sheet": "open-in-app/OpenTargetButton.module.css",
+      "sheets": [
+        "open-in-app/OpenTargetButton.module.css"
+      ]
     },
     {
       "name": "Stepper",
       "group": "settings",
       "file": "src/components/settings/stepper.tsx",
       "props": "StepperProps",
-      "sheet": "theme/FontSizeRow.module.css"
+      "sheet": "theme/FontSizeRow.module.css",
+      "sheets": [
+        "theme/FontSizeRow.module.css"
+      ]
     },
     {
       "name": "PreviewFrame",
       "group": "viewer",
       "file": "src/components/viewer/preview-frame.tsx",
       "props": "PreviewFrameProps",
-      "sheet": "sidebar-documentpreview/TextPreview.module.css"
+      "sheet": "sidebar-documentpreview/TextPreview.module.css",
+      "sheets": [
+        "sidebar-documentpreview/TextPreview.module.css"
+      ]
     },
     {
       "name": "ZoomControls",
       "group": "viewer",
       "file": "src/components/viewer/zoom-controls.tsx",
       "props": "ZoomControlsProps",
-      "sheet": "primitives/ZoomControls.module.css"
+      "sheet": "primitives/ZoomControls.module.css",
+      "sheets": [
+        "primitives/ZoomControls.module.css"
+      ]
     },
     {
       "name": "ZoomViewport",
       "group": "viewer",
       "file": "src/components/viewer/zoom-viewport.tsx",
       "props": "ZoomViewportProps",
-      "sheet": "sidebar-documentpreview/ZoomViewport.module.css"
+      "sheet": "sidebar-documentpreview/ZoomViewport.module.css",
+      "sheets": [
+        "sidebar-documentpreview/ZoomViewport.module.css"
+      ]
     }
   ],
   "packages": [
@@ -3055,5 +3038,1976 @@
         "count": 1
       }
     ]
+  },
+  "official": {
+    "values": [
+      {
+        "name": "AnimatedRows",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "BrandWordmark",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "Button",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "Checkbox",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "classifyFileType",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "classifyLinkPath",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "closeTopModal",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "CODE_HIGHLIGHT_EXTENSIONS",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "CommandText",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ConnectionIndicator",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DEFAULT_DIFF_MAX_LINES",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DEFAULT_READ_MAX_LINES",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DEFAULT_SEARCH_MAX_LINES",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DetailDocument",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "detailDocumentState",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DiffBlock",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "diffTotals",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DisclosureRow",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DOCUMENT_ZOOM",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DraggableImage",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "extractMarkdownPlainText",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "fileExtension",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "fileSizeText",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "FileTypeIcon",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "FISH_LOGO_PATH",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "FISH_LOGO_VIEWBOX",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "FishLogo",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "focusWithoutRing",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "formatQuoteText",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "GuideArtworkBrowser",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "GuideArtworkFiles",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "HoverCard",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "HoverCardGroup",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ICON_MEDIUM_STROKE",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ICON_REGULAR_STROKE",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ICON_SYMBOLS",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconAgentPresetOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconAgentPresetOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconAlarmClockOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconAlarmClockOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconApiOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconApiOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconAppsAddOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconAppsAddOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconArchiveCheckOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconArchiveCheckOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconArchiveOffOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconArchiveOffOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconArchiveOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconArchiveOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconBranchOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconBranchOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconBrowseOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconBrowseOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCheckCircleFillMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCheckCircleFillRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCheckCircleOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCheckCircleOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChecklistOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChecklistOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCheckOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCheckOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChevronDownOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChevronDownOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChevronLeftOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChevronLeftOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChevronRightOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChevronRightOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChevronsUpDownOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChevronsUpDownOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChevronUpOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconChevronUpOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconClockOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconClockOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCloseCircleFillMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCloseCircleFillRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCloseFillMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCloseFillRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCloseOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCloseOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCodeOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCodeOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCompactOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCompactOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCompareSplitOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCompareSplitOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconContextInjectionOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconContextInjectionOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCopyOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCopyOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCordisPluginOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconCordisPluginOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDarkOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDarkOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDatabaseOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDatabaseOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDataOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDataOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDeliverDocMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDeliverDocRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDislikeFillMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDislikeFillRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDislikeOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDislikeOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDownloadOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDownloadOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDragHandleOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconDragHandleOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconEditOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconEditOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconEllipsisOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconEllipsisOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconEnhanceOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconEnhanceOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFlatListOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFlatListOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFolderCloseMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFolderCloseRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFolderOpenMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFolderOpenOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFolderOpenOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFolderOpenRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFollowsystemOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFollowsystemOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFullscreenOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconFullscreenOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconGaugeOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconGaugeOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconGlobeOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconGlobeOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconGoalOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconGoalOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconInfoOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconInfoOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconInspectOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconInspectOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconLightOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconLightOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconLikeFillMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconLikeFillRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconLikeOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconLikeOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconLinkOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconLinkOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconListPenOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconListPenOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconLoadingOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconLoadingOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconMicrophoneOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconMicrophoneOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconNewChatOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconNewChatOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconNowrapFillMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconNowrapFillRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPanelLeftOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPanelLeftOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPaperclipOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPaperclipOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPaperPlaneOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPaperPlaneOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPauseOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPauseOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPersonalizationOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPersonalizationOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPinFillMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPinFillRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPinOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPinOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPlanOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPlanOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPlayOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPlayOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPluginPinwheelOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPluginPinwheelOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPlusOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconPlusOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconProjectAddOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconProjectAddOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconQuestionOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconQuestionOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconQueueOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconQueueOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconRefreshOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconRefreshOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconRightUpOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconRightUpOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSaveOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSaveOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSearchOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSearchOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSendOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSendOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSettingsOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSettingsOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconShareOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconShareOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconShieldOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconShieldOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSkillOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSkillOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSlidersTwoOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSlidersTwoOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSparkleMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconSparkleRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconStopFillMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconStopFillRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconThinkOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconThinkOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconTrashOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconTrashOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconTreeCornerMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconTreeCornerRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconTriangleRightFillMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconTriangleRightFillRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconUnarchiveOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconUnarchiveOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconUserOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconUserOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconUsersOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconUsersOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconWarningOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconWarningOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconWarningTriangleOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconWarningTriangleOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconWorkspaceTreeOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconWorkspaceTreeOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconWrapFillMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconWrapFillRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconWrapLinesOutlineMedium",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "IconWrapLinesOutlineRegular",
+        "kind": "icon",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ImageLightbox",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "InlineEditor",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "Input",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "isBehindModal",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "isDarwinDesktop",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "isMobileDevice",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "JsonBlock",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "JsonTree",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "languageForPath",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "LinkIconMedium",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "LinkIconRegular",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownDelegateProvider",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownText",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MenuGroup",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "Modal",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "modalSelector",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "observeComposition",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "observeStickyMenuGroups",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PathLabel",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PermissionIconAutoReviewMedium",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PermissionIconAutoReviewRegular",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PermissionIconFullAccessMedium",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PermissionIconFullAccessRegular",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PermissionIconReadOnlyMedium",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PermissionIconReadOnlyRegular",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PermissionIconWorkspaceWriteMedium",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PermissionIconWorkspaceWriteRegular",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "Pill",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PluginArtworkDefault",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PluginArtworkLoop",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PluginArtworkSearch",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PluginArtworkSubagent",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PluginArtworkTerminal",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "pointerModality",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "QuotePreview",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "rankByName",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ReadBlock",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ReferenceChip",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ReferenceIconMedium",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ReferenceIconRegular",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "relativeTime",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "RiskConfirmation",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SearchBlock",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SegmentedControl",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SegmentedTabs",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsForm",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFormModel",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "settingsNumberField",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsSecretField",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "settingsTextField",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsValueField",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SHIELD_OUTLINE_PATH",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ShortcutKeys",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "StateDot",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "Switch",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "Tag",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "TerminalBlock",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "TextShimmer",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "Tooltip",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "useAnchoredMaxHeight",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "useClipboardCopy",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "useCodeHighlighter",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "useDetailDocumentLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "useDismissOnOutsidePointer",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "useMarkdownDelegate",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "useModalLayer",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "UserMessageBubble",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "useRowDragPreview",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "UserTextRun",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "WebBlock",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "writeClipboard",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      }
+    ],
+    "types": [
+      {
+        "name": "AnimatedRowsProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "BrandWordmarkProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ButtonVariant",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ClipboardCopyState",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "CodeFileType",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "CodeHighlighter",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "CodeToolbarLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "CommandTextProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ConnectionIndicatorState",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DetailDocumentCopy",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DetailDocumentLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DetailDocumentRead",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DetailDocumentState",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DiffBlockLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DiffBlockProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DiffHunk",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DisclosureRowProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DocumentZoomLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "DraggableImageProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "FileDragActions",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "FileDragSource",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "FileType",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "FileTypeIconProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "FileTypeKind",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "FileTypeProjectContext",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "HighlightSpan",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ImageLightboxLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "JsonTreeLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "JsonTreeProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "LinkIconKind",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "LinkIconProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownCodeLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownDelegate",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownDelegateProviderProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownExternalLinkHandler",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownFileMentions",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownMenuTarget",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownPathImages",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownPlainTextMode",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "MarkdownPlainTextOptions",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "PreparedFileDrag",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "QuotePreviewProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "QuotePreviewRemoval",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ReadBlockLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ReadBlockLine",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ReadBlockProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ReferenceChipProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ReferenceIconKind",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ReferenceIconProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "RelativeTime",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "RelativeTimeUnit",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "RiskConfirmationProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SearchBlockLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SearchBlockLineMatch",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SearchBlockProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SearchFileGroup",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SearchMatchesBlockProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SearchPathsBlockProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SegmentedControlOption",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SegmentedTab",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFieldProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFieldSpec",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFieldState",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFieldWrite",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFormActions",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFormLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFormPathOp",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFormProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFormScope",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFormScopeSnapshot",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsFormShell",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "SettingsSecretSpec",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "StateDotState",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "TagTone",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "TerminalBlockLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "TerminalBlockProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "TextShimmerProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "TooltipSide",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "UserMessageBubbleProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "UserTextRunProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "WebBlockLabels",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "WebBlockProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "WebFetchBlockProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "WebSearchBlockProps",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "WebSourceView",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      },
+      {
+        "name": "ZoomControlsHandle",
+        "kind": "utility",
+        "from": "dsh-client-ui-primitives"
+      }
+    ],
+    "forked": [
+      "AnchoredPositionOptions",
+      "CodeBlock",
+      "CodeBlockProps",
+      "DEFAULT_TERMINAL_MAX_LINES",
+      "MENU_TRANSITION_MS",
+      "Menu",
+      "MenuEntry",
+      "MenuItem",
+      "MenuItemButton",
+      "MenuItemButtonProps",
+      "MenuLabel",
+      "MenuSeparator",
+      "MenuSurface",
+      "MenuSurfaceProps",
+      "Toast",
+      "ZoomControls",
+      "useAnchoredPosition"
+    ],
+    "counts": {
+      "values": 301,
+      "types": 87,
+      "icons": 194,
+      "forked": 17
+    }
   }
 }

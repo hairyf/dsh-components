@@ -1,6 +1,6 @@
 import type * as React from 'react'
+import { PathLabel } from '@deepseek-ai/dsh-client-ui-primitives'
 import { cx, useStyle } from '../../lib/style'
-import { PathLabel } from '../primitives/path-label'
 
 /**
  * Recovered from @deepseek-ai/dsh-client-ui-sidebar-documentpreview / TextPreview.module.css (verbatim).

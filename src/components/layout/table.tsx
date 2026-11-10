@@ -1,6 +1,6 @@
 import type * as React from 'react'
+import { StateDot } from '@deepseek-ai/dsh-client-ui-primitives'
 import { cx, useStyle } from '../../lib/style'
-import { StateDot } from '../primitives/state-dot'
 
 /**
  * Recovered from @deepseek-ai/dsh-client-ui-trajectory / TrajectoryTable.module.css

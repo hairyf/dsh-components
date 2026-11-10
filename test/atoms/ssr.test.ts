@@ -1,16 +1,12 @@
 // @vitest-environment node
 import type * as React from 'react'
-import type { TooltipAnchorProps } from '../../src/components/primitives/tooltip'
+import { HoverCard, MenuGroup, Modal, Tooltip } from '@deepseek-ai/dsh-client-ui-primitives'
 import { createElement } from 'react'
 import { renderToString } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
-import { HoverCard } from '../../src/components/primitives/hover-card'
 import { Menu } from '../../src/components/primitives/menu'
-import { MenuGroup } from '../../src/components/primitives/menu-group'
 import { MenuSurface } from '../../src/components/primitives/menu-surface'
-import { Modal } from '../../src/components/primitives/modal'
 import { Toast } from '../../src/components/primitives/toast'
-import { Tooltip } from '../../src/components/primitives/tooltip'
 
 /**
  * Server-render one element, the way a plugin's SSR pass would.
@@ -25,7 +21,7 @@ describe('server rendering', () => {
   it('renders a tooltip anchor without its bubble', () => {
     // Tooltip clones its anchor, so it requires an element whose props overlap its
     // injected ones; createElement infers a bare props object, hence the cast.
-    const anchor = createElement('button', { type: 'button' }, '刷新') as React.ReactElement<TooltipAnchorProps>
+    const anchor = createElement('button', { type: 'button' }, '刷新') as React.ReactElement<Record<string, unknown>>
     const html = render(createElement(Tooltip, { label: '刷新', children: anchor }))
     expect(html).toContain('<button')
     expect(html).not.toContain('role="tooltip"')

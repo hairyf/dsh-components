@@ -11,20 +11,6 @@
   "modules": [
     {
       "group": "primitives",
-      "file": "src/components/primitives/animated-rows.tsx",
-      "exports": [
-        {
-          "name": "AnimatedRowsProps",
-          "summary": "Row fade length in ms; entry fades and exit fades share it. */ const ROW_FADE_MS = 100 /** Row glide length in ms for rows that changed position. */ const ROW_GLIDE_MS = 200 /** Keyed row content, list semantics, and animation readiness."
-        },
-        {
-          "name": "AnimatedRows",
-          "summary": "Unique DOM-order keys matching the rendered data-row-key attributes. */ rowKeys: readonly string[] ready: boolean /** Changes that replace the view or reveal hidden rows settle immediately. */ resetKey: string } interface RowPosition { element: HTMLElement rect: DOMRect opacity: number } interface RowSnapshot { positions: Map<string, RowPosition> removed: Map<string, RowPosition> } interface RowExit { element: HTMLElement animation: Animation } interface AnimatedRowsListProps extends AnimatedRowsProps { /** Class of the inert overlay that holds fading exit clones. */ exitsClassName: string } function sameRows(previous: AnimatedRowsProps, next: AnimatedRowsProps): boolean { return previous.rowKeys.length === next.rowKeys.length && previous.rowKeys.every((key, index) => key === next.rowKeys[index]) } function intersects(row: DOMRect, viewport: DOMRect): boolean { return row.bottom > viewport.top && row.top < viewport.bottom && row.right > viewport.left && row.left < viewport.right } /** Animate keyed rows on membership or order changes; the class keeps the commit-time measurements that the official component performs. / class AnimatedRowsList extends Component<AnimatedRowsListProps> { private armed = false private readonly list = createRef<HTMLDivElement>() private readonly overlay = createRef<HTMLDivElement>() private readonly movements = new Map<HTMLElement, Animation>() private readonly exits = new Map<string, RowExit>() getSnapshotBeforeUpdate(previous: AnimatedRowsListProps): RowSnapshot | null { const list = this.list.current if ( !this.armed || sameRows(previous, this.props) || previous.resetKey !== this.props.resetKey || !previous.ready || !this.props.ready || list === null || typeof list.animate !== 'function' || window.matchMedia('(prefers-reduced-motion: reduce)').matches ) { return null } const viewport = list.getBoundingClientRect() const positions = this.readPositions() const nextKeys = new Set(this.props.rowKeys) const removed = new Map<string, RowPosition>() for (const [key, row] of positions) { if (nextKeys.has(key) || !intersects(row.rect, viewport)) continue const clone = row.element.cloneNode(true) as HTMLElement clone.removeAttribute('data-row-key') clone.inert = true clone.style.paddingInlineStart = getComputedStyle(row.element).paddingInlineStart removed.set(key, { ...row, element: clone }) } return { positions, removed } } componentDidUpdate(previous: AnimatedRowsListProps, _state: unknown, snapshot: RowSnapshot | null): void { if (snapshot === null) { if (sameRows(previous, this.props) && previous.resetKey === this.props.resetKey && previous.ready === this.props.ready) return this.clear() return } this.cancelMovements() const list = this.list.current const overlay = this.overlay.current if (list === null || overlay === null) return const viewport = list.getBoundingClientRect() const origin = overlay.getBoundingClientRect() const positions = this.readPositions() for (const [key, row] of positions) { this.removeExit(key) const previousRow = snapshot.positions.get(key) if (!intersects(row.rect, viewport) && (previousRow === undefined || !intersects(previousRow.rect, viewport))) continue if (previousRow === undefined) { this.move(row.element, [ { opacity: 0 }, { opacity: 1 }, ], ROW_FADE_MS) continue } const dx = previousRow.rect.left - row.rect.left const dy = previousRow.rect.top - row.rect.top if (dx === 0 && dy === 0 && previousRow.opacity === 1) continue this.move( row.element, [ { transform: `translate(${String(dx)}px, ${String(dy)}px)`, opacity: previousRow.opacity }, { transform: 'translate(0, 0)', opacity: 1 }, ], ROW_GLIDE_MS, ) } for (const [key, row] of snapshot.removed) { const { element } = row this.removeExit(key) Object.assign(element.style, { position: 'absolute', margin: '0', transform: 'none', boxSizing: 'border-box', left: `${String(row.rect.left - origin.left)}px`, top: `${String(row.rect.top - origin.top)}px`, width: `${String(row.rect.width)}px`, height: `${String(row.rect.height)}px`, }) overlay.append(element) const animation = element.animate([ { opacity: row.opacity }, { opacity: 0 }, ], { duration: ROW_FADE_MS, easing: 'ease-out', fill: 'forwards', }) this.exits.set(key, { element, animation }) animation.onfinish = () => { this.removeExit(key) } } } componentWillUnmount(): void { this.clear() } private readPositions(): Map<string, RowPosition> { const list = this.list.current const rows = list === null ? [] : Array.from(list.querySelectorAll<HTMLElement>('[data-row-key]')) return new Map(rows.map(element => [ String(element.dataset.rowKey), { element, rect: element.getBoundingClientRect(), opacity: this.movements.has(element) ? Number(getComputedStyle(element).opacity) : 1, }, ])) } private move(element: HTMLElement, keyframes: Keyframe[], duration: number): void { const animation = element.animate(keyframes, { duration, easing: 'ease-out' }) this.movements.set(element, animation) animation.onfinish = () => { this.movements.delete(element) animation.cancel() } } private cancelMovements(): void { for (const animation of this.movements.values()) { animation.onfinish = null animation.cancel() } this.movements.clear() } private removeExit(key: string): void { const exit = this.exits.get(key) if (exit === undefined) return exit.animation.onfinish = null exit.animation.cancel() exit.element.remove() this.exits.delete(key) } private clear(): void { this.cancelMovements() for (const key of this.exits.keys()) this.removeExit(key) } render(): React.ReactNode { return ( <> <div ref={this.list} className={this.props.className} role={this.props.role} aria-label={this.props.label} onPointerDownCapture={() => { this.armed = true }} onKeyDownCapture={() => { this.armed = true }} > {this.props.children} </div> <div ref={this.overlay} className={this.props.exitsClassName} aria-hidden=\"true\" /> </> ) } } /** Animates keyed rows only when their rendered membership or order changes. Motion starts after the first pointer or keyboard input inside the mounted list. The parent supplies a positioned container for the inert exit overlay."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
       "file": "src/components/primitives/avatar.tsx",
       "exports": [
         {
@@ -34,42 +20,6 @@
         {
           "name": "Avatar",
           "summary": "Image URL; when absent or failed to load, the name's initial is shown. */ src?: string /** Name used for the fallback initial and the default description. */ name?: string /** Accessible image description; defaults to name, and an empty string marks it decorative. */ alt?: string /** Width and height in pixels (default 32). */ size?: number /** Extra class for layout placement. */ className?: string } /** Render a round avatar: the image while src loads, otherwise the name's initial. The official sheet only describes the image's fill and radius, so the box size is inline and no extra class is invented."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/button.tsx",
-      "exports": [
-        {
-          "name": "ButtonVariant",
-          "summary": "Visual variant, each backed by its --dsw-alias-button-* token family."
-        },
-        {
-          "name": "ButtonProps",
-          "summary": "Props for {@link Button}: the official variant, size and leading-icon slots."
-        },
-        {
-          "name": "useButtonStyle",
-          "summary": "Visual family (default 'ghost'); outlined buttons use a DPR-aware inset stroke. */ variant?: ButtonVariant /** 'md' 36px control with 12px corners or 'sm' 28px control with 8px corners. */ size?: 'md' | 'sm' /** Optional leading 16px icon node. */ icon?: React.ReactNode } /** Return the button class map, mounting its sheet on first use. Composites call this before their own `useStyle` so Button.module.css keeps its official position in the cascade (it precedes every composite that draws a button, and equal-specificity rules such as `.zoomButton`'s padding depend on it)."
-        },
-        {
-          "name": "Button",
-          "summary": "Render a button. Native button attributes pass through, so the caller owns type overrides."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/checkbox.tsx",
-      "exports": [
-        {
-          "name": "CheckboxProps",
-          "summary": "Props for {@link Checkbox}. Passing `checked` makes the control fully controlled; otherwise it keeps its own state starting at `defaultChecked`."
-        },
-        {
-          "name": "Checkbox",
-          "summary": "Current checked state; omit for an uncontrolled checkbox. */ checked?: boolean /** Initial state of an uncontrolled checkbox. */ defaultChecked?: boolean /** Receives the requested checked state. */ onChange?: (next: boolean) => void /** Localized visible and accessible label. */ label: string /** Whether the control refuses changes. */ disabled?: boolean /** Optional localized hover text. */ title?: string /** Extra class for the label's placement. */ className?: string } /** Render a labeled checkbox with native keyboard and form semantics."
         }
       ]
     },
@@ -107,20 +57,6 @@
     },
     {
       "group": "primitives",
-      "file": "src/components/primitives/disclosure-row.tsx",
-      "exports": [
-        {
-          "name": "DisclosureRowProps",
-          "summary": "Shared 24px process row: tertiary text and icons, secondary on hover."
-        },
-        {
-          "name": "DisclosureRow",
-          "summary": "Animate the complete header while its owning operation is running. */ running?: boolean /** Makes the title row the disclosure target; with an accessory, it shrinks to its content width. */ expandOnRowClick?: boolean /** Replaces the collapsed icon with a chevron while the row is hovered. */ previewChevron?: boolean /** Keeps `collapsedContent` inline while open. */ keepContentWhenOpen?: boolean collapsedContent?: React.ReactNode /** Independent action beside the title, outside the disclosure target and shimmer. */ headerAccessory?: React.ReactNode children?: React.ReactNode className?: string rowClassName?: string /** Sizing class for the header text area, beside the leading icon. */ contentClassName?: string /** Layout class shared by the header text and its decorative copy. */ contentLayoutClassName?: string leadingClassName?: string chevronClassName?: string titleClassName?: string } /** Render one disclosure header and its controlled expanded content. Shallow prop comparison requires stable callbacks and React nodes to skip unchanged renders."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
       "file": "src/components/primitives/field.tsx",
       "exports": [
         {
@@ -130,44 +66,6 @@
         {
           "name": "Field",
           "summary": "Visible field label. */ label: React.ReactNode /** The control the label describes; it owns its own value and events. */ children?: React.ReactNode /** Id of that control, so the label activates it. */ htmlFor?: string /** Help text revealed by the help button. */ help?: React.ReactNode /** Accessible name of the help button and region. */ helpLabel?: string /** Badges shown at the end of the label row. */ badges?: React.ReactNode /** Clear action for the field's value; renders the reset button when present. */ onReset?: () => void /** Visible label of the reset action. */ resetLabel?: string /** Mark the field unavailable and disable its clear action. */ disabled?: boolean /** Extra class for layout placement. */ className?: string } /** Render one form field: its label, the control it describes, optional help, badges and reset. The field never owns the control's value: the control arrives as children and keeps its own controlled props. The help text toggles in place and the reset action sits at the end of the label row."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/file-type-icon.tsx",
-      "exports": [
-        {
-          "name": "CodeFileType",
-          "summary": "Code and configuration categories with embedded full-color glyphs. */ const CODE_FILE_TYPES = [ 'angular', 'c', 'clojure', 'cmake', 'cpp', 'csharp', 'css', 'dart', 'docker', 'elixir', 'env', 'erlang', 'flutter', 'git', 'go', 'graphql', 'haskell', 'ini', 'java', 'javascript', 'json', 'kotlin', 'lua', 'makefile', 'node', 'objective-c', 'perl', 'php', 'powershell', 'protobuf', 'python', 'r', 'react', 'ruby', 'rust', 'scala', 'shell', 'solidity', 'sql', 'svelte', 'swift', 'toml', 'typescript', 'vue', 'wasm', 'xml', 'yaml', 'zig', ] as const /** A code or configuration file category with its own full-color square glyph."
-        },
-        {
-          "name": "FileTypeProjectContext",
-          "summary": "Optional project files used by context-sensitive code-icon rules."
-        },
-        {
-          "name": "FileType",
-          "summary": "Text content keyed by project-relative or basename path. */ readonly files: Readonly<Record<string, string | undefined>> } /** File categories with distinct 28px glyphs."
-        },
-        {
-          "name": "FileTypeKind",
-          "summary": "Compatibility name for consumers that pass an already resolved category."
-        },
-        {
-          "name": "FileTypeIconProps",
-          "summary": "The traditional (single-color) presentation categories. */ type TraditionalFileType = 'code' | 'excel' | 'folder' | 'html' | 'image' | 'markdown' | 'other' | 'pdf' | 'ppt' | 'video' | 'word' type ClassifiedFileType = Exclude<FileType, 'folder'> /** Props for {@link FileTypeIcon}: either a path to classify or an already resolved kind."
-        },
-        {
-          "name": "fileExtension",
-          "summary": "Square edge in px; defaults to 28. */ readonly size?: number /** Extra class for layout placement; the caller owns the accessible name. */ readonly className?: string } & ( | { /** File path or name to classify. */ readonly path: string /** Optional project-file snapshot for context-sensitive code icons such as Flutter. */ readonly context?: FileTypeProjectContext } | { /** Explicit category for callers that already resolved the file type. */ readonly kind: FileTypeKind } ) const EXTENSION_TYPES: Readonly<Record<string, Exclude<TraditionalFileType, 'folder'>>> = { scss: 'code', sass: 'code', less: 'code', vue: 'code', svelte: 'code', astro: 'code', bat: 'code', cmd: 'code', csv: 'excel', tsv: 'excel', html: 'html', htm: 'html', png: 'image', jpg: 'image', jpeg: 'image', gif: 'image', svg: 'image', webp: 'image', avif: 'image', bmp: 'image', ico: 'image', tif: 'image', tiff: 'image', heic: 'image', heif: 'image', md: 'markdown', mdx: 'markdown', markdown: 'markdown', pdf: 'pdf', ppt: 'ppt', pptx: 'ppt', key: 'ppt', mp4: 'video', mov: 'video', m4v: 'video', webm: 'video', mkv: 'video', avi: 'video', mpg: 'video', mpeg: 'video', doc: 'word', docx: 'word', rtf: 'word', odt: 'word', pages: 'word', xls: 'excel', xlsx: 'excel', xlsm: 'excel', xlsb: 'excel', xlt: 'excel', xltx: 'excel', xltm: 'excel', ods: 'excel', ots: 'excel', fods: 'excel', numbers: 'excel', } const NAME_TYPES: Readonly<Record<string, Exclude<TraditionalFileType, 'folder'>>> = { changelog: 'markdown', contributing: 'markdown', readme: 'markdown', } const FILE_NAME_TYPES: Readonly<Record<string, CodeFileType>> = { '.bash_profile': 'shell', '.bashrc': 'shell', '.env': 'env', '.gitattributes': 'git', '.gitconfig': 'git', '.gitignore': 'git', '.gitmodules': 'git', '.mailmap': 'git', '.profile': 'shell', '.zprofile': 'shell', '.zshrc': 'shell', 'bsdmakefile': 'makefile', 'cmakelists.txt': 'cmake', 'commit_editmsg': 'git', 'compose.yaml': 'docker', 'compose.yml': 'docker', 'docker-compose.yaml': 'docker', 'docker-compose.yml': 'docker', 'dockerfile': 'docker', 'gemfile': 'ruby', 'gnumakefile': 'makefile', 'guardfile': 'ruby', 'makefile': 'makefile', 'npm-shrinkwrap.json': 'node', 'package-lock.json': 'node', 'package.json': 'node', 'podfile': 'ruby', 'rakefile': 'ruby', } const FILE_NAME_PREFIX_TYPES: readonly (readonly [string, CodeFileType])[] = [ ['dockerfile.', 'docker'], ['.env.', 'env'], ] const FILE_NAME_SUFFIX_TYPES: readonly (readonly [string, CodeFileType])[] = [ ['.component.ts', 'angular'], ['.component.html', 'angular'], ['.directive.ts', 'angular'], ['.service.ts', 'angular'], ['.module.ts', 'angular'], ['.pipe.ts', 'angular'], ['.guard.ts', 'angular'], ['.interceptor.ts', 'angular'], ['.dockerfile', 'docker'], ] const CODE_EXTENSION_TYPES: Readonly<Record<string, CodeFileType>> = { 'bash': 'shell', 'c': 'c', 'c++': 'cpp', 'cc': 'cpp', 'cfg': 'ini', 'cjs': 'javascript', 'clj': 'clojure', 'cljc': 'clojure', 'cljs': 'clojure', 'cmake': 'cmake', 'cpp': 'cpp', 'cs': 'csharp', 'csh': 'shell', 'css': 'css', 'csx': 'csharp', 'cts': 'typescript', 'cxx': 'cpp', 'dart': 'dart', 'dtd': 'xml', 'edn': 'clojure', 'env': 'env', 'erl': 'erlang', 'es6': 'javascript', 'escript': 'erlang', 'ex': 'elixir', 'exs': 'elixir', 'fish': 'shell', 'gemspec': 'ruby', 'go': 'go', 'gql': 'graphql', 'graphql': 'graphql', 'h': 'c', 'h++': 'cpp', 'hh': 'cpp', 'hpp': 'cpp', 'hrl': 'erlang', 'hs': 'haskell', 'hxx': 'cpp', 'ini': 'ini', 'ipp': 'cpp', 'java': 'java', 'js': 'javascript', 'json': 'json', 'json5': 'json', 'jsonc': 'json', 'jsx': 'react', 'ksh': 'shell', 'kt': 'kotlin', 'kts': 'kotlin', 'lhs': 'haskell', 'lua': 'lua', 'm': 'objective-c', 'mak': 'makefile', 'mjs': 'javascript', 'mk': 'makefile', 'mm': 'objective-c', 'mts': 'typescript', 'node': 'node', 'pch': 'objective-c', 'php': 'php', 'php3': 'php', 'php4': 'php', 'php5': 'php', 'phps': 'php', 'phtml': 'php', 'pl': 'perl', 'plist': 'xml', 'pm': 'perl', 'pod': 'perl', 'proto': 'protobuf', 'ps1': 'powershell', 'psd1': 'powershell', 'psm1': 'powershell', 'py': 'python', 'pyi': 'python', 'pyw': 'python', 'pyx': 'python', 'r': 'r', 'rake': 'ruby', 'rb': 'ruby', 'rmd': 'r', 'rs': 'rust', 'sc': 'scala', 'scala': 'scala', 'sh': 'shell', 'sol': 'solidity', 'sql': 'sql', 'svelte': 'svelte', 'swift': 'swift', 't': 'perl', 'tcsh': 'shell', 'toml': 'toml', 'tpp': 'cpp', 'ts': 'typescript', 'tsx': 'react', 'vue': 'vue', 'wasm': 'wasm', 'wast': 'wasm', 'wat': 'wasm', 'xml': 'xml', 'xsd': 'xml', 'xsl': 'xml', 'xslt': 'xml', 'yaml': 'yaml', 'yml': 'yaml', 'zig': 'zig', 'zsh': 'shell', } const CODE_FILE_TYPE_SET: ReadonlySet<string> = new Set(CODE_FILE_TYPES) /** Read the final path segment. / function basename(path: string): string { return path.slice(Math.max(path.lastIndexOf('/'), path.lastIndexOf('\\\\')) + 1) } /** Extract the final suffix from a file path without changing its case. A leading dot starts a suffix, while a missing or trailing dot returns an empty string."
-        },
-        {
-          "name": "classifyFileType",
-          "summary": "Resolve the most specific code/configuration icon according to the supplied map priority. / function classifyCodeFileType(name: string, extension: string, context?: FileTypeProjectContext): CodeFileType | null { const exact = FILE_NAME_TYPES[name] if (exact !== undefined) return exact for (const [prefix, type] of FILE_NAME_PREFIX_TYPES) { if (name.startsWith(prefix)) return type } for (const [suffix, type] of FILE_NAME_SUFFIX_TYPES) { if (name.endsWith(suffix)) return type } if (extension === 'dart' && context !== undefined) { const pubspec = Object.entries(context.files).find(([path]) => basename(path).toLowerCase() === 'pubspec.yaml')?.[1] if (pubspec?.includes('flutter:') === true) return 'flutter' } return CODE_EXTENSION_TYPES[extension] ?? null } /** Classify a file path or name for file-card presentation. Matching is case-insensitive and applies code filename rules before extension rules; unknown names fall back to `other`."
-        },
-        {
-          "name": "FileTypeIcon",
-          "summary": "Render the decorative SVG for one traditional category. / function glyph(type: TraditionalFileType, size: number, className?: string): React.JSX.Element { switch (type) { case 'code': return ( <FileGlyph size={size} className={className}> <path d={CODE_LEFT} stroke=\"currentColor\" strokeWidth=\"1.35\" /> <path d={CODE_RIGHT} stroke=\"currentColor\" strokeWidth=\"1.35\" /> <path d={CODE_SLASH} stroke=\"currentColor\" strokeWidth=\"1.35\" /> </FileGlyph> ) case 'excel': return <SpreadsheetGlyph size={size} className={className} /> case 'folder': return <FolderGlyph size={size} className={className} /> case 'html': return ( <FileGlyph size={size} className={className} markTransform={FILE_MARK_TRANSFORM}> <path fillRule=\"evenodd\" clipRule=\"evenodd\" d={HTML_GLOBE} fill=\"currentColor\" /> </FileGlyph> ) case 'image': return ( <FileGlyph size={size} className={className} markTransform={FILE_MARK_TRANSFORM}> <path d={IMAGE_MOUNTAIN} fill=\"currentColor\" /> <path d={IMAGE_HILL} fill=\"currentColor\" /> <path d={IMAGE_SUN} fill=\"currentColor\" /> </FileGlyph> ) case 'markdown': return ( <FileGlyph size={size} className={className} markTransform={LARGE_FILE_MARK_TRANSFORM}> <path d={MARKDOWN_MARK} fill=\"currentColor\" /> </FileGlyph> ) case 'other': return <FileGlyph size={size} className={className} muted /> case 'pdf': return ( <FileGlyph size={size} className={className} markTransform={LARGE_FILE_MARK_TRANSFORM}> <path d={PDF_MARK} fill=\"currentColor\" /> </FileGlyph> ) case 'ppt': return ( <FileGlyph size={size} className={className} markTransform={LARGE_FILE_MARK_TRANSFORM}> <path d={PPT_MARK} fill=\"currentColor\" /> </FileGlyph> ) case 'video': return ( <FileGlyph size={size} className={className} markTransform={FILE_MARK_TRANSFORM}> <path d={VIDEO_MARK} fill=\"currentColor\" /> </FileGlyph> ) case 'word': return ( <FileGlyph size={size} className={className} markTransform={LARGE_FILE_MARK_TRANSFORM}> <path d={WORD_MARK} fill=\"currentColor\" /> </FileGlyph> ) /* Closed-union backstop; only reached if a type is forged. */ default: throw new Error(`unreachable traditional file type: ${String(type)}`) } } /** Render a decorative file-type glyph for a path or an explicitly resolved kind. Code and configuration files render the shared code glyph here: the official per-language full-color artwork is a separate asset module the primitives package does not export, so the category color token carries the distinction. override the color through `--dsh-file-type-icon-color`."
         }
       ]
     },
@@ -187,32 +85,6 @@
     },
     {
       "group": "primitives",
-      "file": "src/components/primitives/hover-card.tsx",
-      "exports": [
-        {
-          "name": "HoverCardGroupContext",
-          "summary": "Preview opacity transition and retained lifetime during dismissal. */ const PREVIEW_FADE_MS = 100 const PREVIEW_MAX_HEIGHT = 420 const PREVIEW_INSET = 24 const INLINE_PREVIEW_WIDTH = 300 const ANCHOR_GAP = 8 const VIEWPORT_MARGIN = 8 interface GroupState { isWarm: () => boolean enter: (overCard: boolean) => void leave: () => void containsCard: (target: EventTarget | null) => boolean shown: (owner: symbol, dismiss: () => void, element: HTMLElement | null) => void release: (owner: symbol) => void } /** Private coordination shared only by opted-in HoverCards inside one mounted group."
-        },
-        {
-          "name": "HoverCardGroupProps",
-          "summary": "Props for {@link HoverCardGroup}."
-        },
-        {
-          "name": "HoverCardGroup",
-          "summary": "List contents, including opted-in HoverCards. */ children: React.ReactNode /** Classes for the physical list container. */ className?: string /** Physical container tag; use span to preserve inline text layout. */ as?: 'div' | 'span' } /** Share first-display dwell across a list and its active portal, including the card's existing pointer grace."
-        },
-        {
-          "name": "HoverCardProps",
-          "summary": "The hover target (rendered in place inside a wrapper span). */ anchor: React.ReactNode /** Inline media preview using the shared menu material and keyboard focus. */ inline?: boolean fitContent?: boolean /** Card content; the pointer may rest on it, so it is readable and selectable. */ content: React.ReactNode /** Hover dwell before the card shows (default 500). */ openDelayMs?: number /** Suppress opening; turning true dismisses an open card. */ disabled?: boolean /** Share first-display dwell across the surrounding list and active portal. */ grouped?: boolean /** Compact card beside the anchor, or a preview above/below it. */ variant?: 'compact' | 'preview' /** Optional element whose width and horizontal position size the preview. */ widthAnchorRef?: React.RefObject<HTMLElement | null> } /** Props for {@link HoverCard}."
-        },
-        {
-          "name": "HoverCard",
-          "summary": "Write text to the host clipboard, preferring the async Clipboard API and falling back to `execCommand('copy')` on hosts that omit it. / async function writeClipboard(text: string): Promise<boolean> { if (navigator.clipboard?.writeText) { try { await navigator.clipboard.writeText(text) return true } catch { return false } } const exec = typeof document.execCommand === 'function' ? document.execCommand.bind(document) : undefined if (exec === undefined) return false const element = document.createElement('textarea') element.value = text element.setAttribute('readonly', '') element.style.position = 'fixed' element.style.left = '-9999px' document.body.appendChild(element) element.select() try { return exec('copy') } catch { return false } finally { element.remove() } } /** Render an anchor with a hover-triggered preview card independently of nested tooltips. Touch entry does not open a preview or intercept the anchor's action."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
       "file": "src/components/primitives/icon-button.tsx",
       "exports": [
         {
@@ -227,34 +99,6 @@
     },
     {
       "group": "primitives",
-      "file": "src/components/primitives/inline-editor.tsx",
-      "exports": [
-        {
-          "name": "InlineEditorProps",
-          "summary": "Props for {@link InlineEditor}. Passing `value` makes the draft fully controlled; otherwise the editor keeps its own copy starting at `defaultValue`."
-        },
-        {
-          "name": "InlineEditor",
-          "summary": "Current draft text of a controlled editor. */ value?: string /** Initial draft text of an uncontrolled editor. */ defaultValue?: string /** Localized accessible name. */ label: string /** Receives the edited text. */ onChange?: (value: string) => void /** Called for a plain Enter. */ onSave: () => void /** Called for Escape. */ onCancel: () => void /** Extra class for the editor's placement. */ className?: string } /** Render an autofocused textarea that grows with its text up to six lines, then scrolls. A textarea rather than an input: HTML strips newlines from single-line input values. Enter saves, Shift+Enter breaks the line, Enter during IME composition does nothing, and Escape cancels."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/input.tsx",
-      "exports": [
-        {
-          "name": "InputProps",
-          "summary": "Props for {@link Input}: every native input attribute plus the leading-icon slot."
-        },
-        {
-          "name": "Input",
-          "summary": "Optional 16px leading icon node. */ icon?: React.ReactNode } /** Render a text input with an optional leading icon. Controlled and uncontrolled use are both native: pass `value` or `defaultValue`."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
       "file": "src/components/primitives/masked-text.tsx",
       "exports": [
         {
@@ -264,24 +108,6 @@
         {
           "name": "MaskedText",
           "summary": "The value in full, shown while revealed. */ readonly value: string /** Masked spelling with asterisk runs; defaults to one asterisk per character. */ readonly masked?: string /** Asterisk count when masked is not given; defaults to the value length. */ readonly count?: number /** Whether the full value is showing (owner-controlled). */ readonly revealed?: boolean /** Accessible name of the reveal control. */ readonly revealLabel?: string /** Accessible name of the hide control. */ readonly hideLabel?: string /** Renders the reveal control; omit it for a read-only mask. */ readonly onRevealedChange?: (revealed: boolean) => void /** Extra class for placement. */ readonly className?: string } /** Draw one eye glyph at text size. */ function EyeGlyph(props: { readonly path: string, readonly className: string }): React.JSX.Element { return ( <svg className={props.className} viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" strokeWidth={1.3} strokeLinecap=\"round\" aria-hidden=\"true\" > <path d={props.path} /> </svg> ) } /** Split the masked form into kept text and mask runs. Runs keep their characters for copying and assistive technology but draw centered marks, because an asterisk in running text sits near the cap height. / function MaskedValue(props: { readonly masked: string, readonly className: string }): React.JSX.Element { let offset = 0 return ( <> {props.masked.split(MASK_RUNS).map((part) => { const key = offset offset += part.length if (part === '') return null return part.startsWith('*') ? <span className={props.className} key={key}>{part}</span> : <span key={key}>{part}</span> })} </> ) } /** Render a masked value with an optional reveal control."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/menu-group.tsx",
-      "exports": [
-        {
-          "name": "MenuGroupProps",
-          "summary": "Props for {@link MenuGroup}."
-        },
-        {
-          "name": "MenuGroup",
-          "summary": "Caller-localized group label, exposed as the group's accessible name. */ label: string /** Optional menu rows of this group. */ children?: React.ReactNode } /** Render a named group with an instance-owned heading id and an inaccessible position sentinel."
-        },
-        {
-          "name": "observeStickyMenuGroups",
-          "summary": "Update heading backgrounds asynchronously from native intersection and viewport-size observations. Headings remain transparent until observations identify a section crossing the viewport top. Without IntersectionObserver or ResizeObserver, CSS sticky headings remain transparent. Group membership is captured at setup; dispose before observing changed groups or the same viewport again."
         }
       ]
     },
@@ -371,130 +197,6 @@
     },
     {
       "group": "primitives",
-      "file": "src/components/primitives/modal.tsx",
-      "exports": [
-        {
-          "name": "modalSelector",
-          "summary": "Dialog and menu elements whose document order determines foreground shortcut ownership."
-        },
-        {
-          "name": "focusWithoutRing",
-          "summary": "Focus an automatic destination without a focus outline until keyboard navigation or blur. The theme suppresses outlines while data-dsh-automatic-focus is present; borders and shadows remain intact. Tab and directional navigation restore normal focus styling."
-        },
-        {
-          "name": "observeComposition",
-          "summary": "Observe composition until its closing key is released or consumed."
-        },
-        {
-          "name": "closeTopModal",
-          "summary": "Request closure of the foreground registered modal using its current onClose callback. A newer menu or unregistered dialog blocks dismissal of the modal behind it."
-        },
-        {
-          "name": "isBehindModal",
-          "summary": "Whether an anchor belongs behind the current modal and must yield keyboard input."
-        },
-        {
-          "name": "useModalLayer",
-          "summary": "Give only the top modal Escape and Tab ownership, then restore its previous focus. Automatic entry and return focus omit outlines; keyboard traversal retains its indicators. Controls mounted with the dialog use data-modal-autofocus for initial focus, because React autoFocus runs before this layer can capture the invoking control. Local menus handle their Escape during capture before this bubble listener."
-        },
-        {
-          "name": "useModalStyle",
-          "summary": "Return the modal class map, mounting its sheet on first use. RiskConfirmation calls this before its own `useStyle` so Modal.module.css keeps its official position ahead of RiskConfirmation.module.css, whose `.confirmation` width is an equal-specificity override of `.dialog`'s."
-        },
-        {
-          "name": "ModalProps",
-          "summary": "Whether the dialog is showing. */ open: boolean /** Application close command, Escape, or mask click. */ onClose: () => void /** Dialog heading (aria-label in every mode). */ title: string /** Optional supporting sentence under the title. */ description?: string /** Dialog body; mark its initial-focus control with data-modal-autofocus. */ children?: React.ReactNode /** Action row (Cancel / Create). */ footer?: React.ReactNode /** Extra class on the dialog card. */ className?: string /** Optional class for a scrollable content region. */ contentClassName?: string /** Command scope allowed by shortcut owners. */ shortcutModal?: string /** Handle a nested dialog's keys before the document Escape listeners. */ onKeyDownCapture?: React.KeyboardEventHandler<HTMLDivElement> /** Disable when the caller already blurs the page; defaults to true. */ backdropBlur?: boolean } /** Props for {@link Modal}; a headless dialog owns its own close affordance."
-        },
-        {
-          "name": "Modal",
-          "summary": "Render a centered, body-portaled modal over a blurred page mask. While a menu is open inside the dialog, Escape belongs to that menu first."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/path-label.tsx",
-      "exports": [
-        {
-          "name": "PathLabelProps",
-          "summary": "Props for {@link PathLabel}: a path plus the outer span's attributes."
-        },
-        {
-          "name": "PathLabel",
-          "summary": "Split a path for display: the directories through their last separator, and the final segment after it. Both `/` and `\\\\` separate, trailing separators are dropped first, and a path with no separator is all name. / function pathPartsOf(path: string): { directory: string, name: string } { const trimmed = path.replace(/[/\\\\]+$/, '') if (trimmed === '') return { directory: '', name: path } const cut = Math.max(trimmed.lastIndexOf('/'), trimmed.lastIndexOf('\\\\')) + 1 return { directory: trimmed.slice(0, cut), name: trimmed.slice(cut), } } /** Render subdued directories and a primary filename, with the complete path on hover. Fitting text is left-aligned; overflow clips and fades at the left edge."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/pill.tsx",
-      "exports": [
-        {
-          "name": "PillProps",
-          "summary": "Props for {@link Pill}; native button attributes pass through on the interactive form."
-        },
-        {
-          "name": "Pill",
-          "summary": "Selected/active visual state. */ active?: boolean } /** Render a pill chip. Interactive when onClick is supplied (renders a button); otherwise a static span."
-        },
-        {
-          "name": "usePillStyle",
-          "summary": "Return the pill class map, mounting its sheet on first use. SegmentedTabs calls this before its own `useStyle` so Pill.module.css keeps its official position ahead of SegmentedTabs.module.css; the tab's height, padding and type are equal-specificity overrides of the pill's and depend on that order."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/segmented-control.tsx",
-      "exports": [
-        {
-          "name": "SegmentedControlOption",
-          "summary": "One segment of a {@link SegmentedControl}."
-        },
-        {
-          "name": "SegmentedControlProps",
-          "summary": "The value the owner receives when this segment is chosen. */ value: Value /** Localized segment text. */ label: string /** Whether the segment refuses selection. */ disabled?: boolean /** Localized hover text, typically why the segment is locked. */ title?: string } /** Props for {@link SegmentedControl}. Passing `value` makes the control fully controlled; otherwise it keeps its own selection starting at `defaultValue`."
-        },
-        {
-          "name": "SegmentedControl",
-          "summary": "The owner's base id: each tab is `<id>-<value>` and names `<id>-<value>-panel` as the panel it controls. */ id: string /** The selected option's value of a controlled control. */ value?: Value /** Initial selection of an uncontrolled control. */ defaultValue?: Value /** The segments in display order; at least two. */ options: readonly SegmentedControlOption<Value>[] /** Called with the value a click or a walk key asks for, never with the value already selected. */ onChange?: (next: Value) => void /** Localized accessible name of the tablist. */ label: string /** Lock every segment, typically while the shown panel has a write or a fetch in flight. */ disabled?: boolean /** Extra class for layout placement. */ className?: string } type WalkKey = 'ArrowLeft' | 'ArrowRight' | 'ArrowUp' | 'ArrowDown' | 'Home' | 'End' function isWalkKey(key: string): key is WalkKey { return key === 'ArrowLeft' || key === 'ArrowRight' || key === 'ArrowUp' || key === 'ArrowDown' || key === 'Home' || key === 'End' } /** The enabled option a walk key lands on from the selected one: arrows step to the nearest enabled neighbour and wrap, Home and End jump to the first and last enabled option. / function walk<Value extends string>( options: readonly SegmentedControlOption<Value>[], from: number, key: WalkKey, ): SegmentedControlOption<Value> | undefined { const enabled = options.filter(option => option.disabled !== true) if (key === 'Home') return enabled[0] if (key === 'End') return enabled[enabled.length - 1] const step = key === 'ArrowRight' || key === 'ArrowDown' ? 1 : -1 const count = options.length for (let offset = 1; offset < count; offset += 1) { const candidate = options[((from + step * offset) % count + count) % count] if (candidate !== undefined && candidate.disabled !== true) return candidate } return undefined } /** Render a segmented control as a keyboard-walkable tablist."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/segmented-tabs.tsx",
-      "exports": [
-        {
-          "name": "SegmentedTab",
-          "summary": "A tab links its localized label to a caller-owned panel."
-        },
-        {
-          "name": "SegmentedTabsProps",
-          "summary": "Props for {@link SegmentedTabs}. Passing `value` makes the selection fully controlled; otherwise it keeps its own selection starting at `defaultValue`."
-        },
-        {
-          "name": "SegmentedTabs",
-          "summary": "Non-empty ordered tabs with unique values and DOM ids. */ items: readonly [SegmentedTab<Value>, ...SegmentedTab<Value>[]] /** Selected value of a controlled tab list. */ value?: Value /** Initial selection of an uncontrolled tab list. */ defaultValue?: Value /** Selection requested by click, Left/Right, or Home/End. */ onChange?: (value: Value) => void /** Localized accessible name for the tab list. */ label: string /** Layout placement; panels remain caller-owned. */ className?: string /** `sm` draws 30px tabs with a 2px inset; the default `md` draws 34px tabs with a 4px inset. */ size?: 'sm' | 'md' } /** Render equal-width tabs with a sliding selection indicator. Keyboard selection also moves focus; only the selected tab is a tab stop."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/shortcut-keys.tsx",
-      "exports": [
-        {
-          "name": "ShortcutKeysProps",
-          "summary": "Props for {@link ShortcutKeys}: the caller-resolved key labels and their presentation."
-        },
-        {
-          "name": "ShortcutKeys",
-          "summary": "Render one command's keycaps without owning binding defaults or localized copy. Keys render unboxed by default, or as tooltip keycaps with plus-separated combinations grouped into one cap."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
       "file": "src/components/primitives/spinner.tsx",
       "exports": [
         {
@@ -504,70 +206,6 @@
         {
           "name": "Spinner",
           "summary": "'sm' is the inline 14px form, 'md' the 28px block form with its label. */ readonly size?: 'sm' | 'md' /** Accessible status copy; the block form also shows it under the indicator. */ readonly label?: string /** Extra class for placement. */ readonly className?: string } /** Render an indeterminate loading indicator."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/state-dot.tsx",
-      "exports": [
-        {
-          "name": "StateDotState",
-          "summary": "State semantic: green done / amber user-attention / tertiary-grey loading / red error / neutral-grey idle for a tracked subject with nothing in progress."
-        },
-        {
-          "name": "StateDotProps",
-          "summary": "Props for {@link StateDot}."
-        },
-        {
-          "name": "StateDot",
-          "summary": "Which of `done`, `warning`, `ongoing`, `error`, or `idle` to show. */ state: StateDotState /** Outer diameter in px; defaults to 14 for ongoing and 10 for solid states. */ size?: number /** Extra class for layout placement. */ className?: string /** Compact dot by default; step uses a filled check or hollow pending circle. */ appearance?: 'dot' | 'step' } /** Set every CSS animation in the loader's subtree to start at document time zero, so loaders inserted at different moments rotate in phase. / function pinSpinner(element: SVGSVGElement): void { for (const animation of element.getAnimations?.({ subtree: true }) ?? []) animation.startTime = 0 } /** Pin the loader's CSS animations to document time zero on mount and on every restart of its own animation. / function syncSpinner(element: SVGSVGElement | null): void { if (element === null) return pinSpinner(element) element.addEventListener('animationstart', () => { pinSpinner(element) }) } /** Render a state dot (aria-hidden; pair with text for accessibility)."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/switch.tsx",
-      "exports": [
-        {
-          "name": "SwitchProps",
-          "summary": "Props for {@link Switch}. Passing `checked` makes the control fully controlled, matching the official render sites; omit it for an uncontrolled toggle that keeps its own state starting at `defaultChecked`."
-        },
-        {
-          "name": "Switch",
-          "summary": "The current state of a controlled switch. */ checked?: boolean /** Initial state of an uncontrolled switch. */ defaultChecked?: boolean /** Called with the state the click asks for. */ onChange?: (next: boolean) => void /** Localized accessible name, owned by the render site. */ label: string /** Whether the control refuses input; owners also set it while a write is in flight. */ disabled?: boolean /** Localized hover text, typically why the toggle is locked. */ title?: string /** Extra class for layout placement. */ className?: string } /** Render a toggle switch. The visual state keys off aria-checked, so it cannot disagree with the state assistive technology reads."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/tag.tsx",
-      "exports": [
-        {
-          "name": "TagTone",
-          "summary": "Palette selector; each tone names one shipped appearance."
-        },
-        {
-          "name": "TagProps",
-          "summary": "Props for {@link Tag}."
-        },
-        {
-          "name": "Tag",
-          "summary": "Which palette to use (default `outline`). */ tone?: TagTone /** Extra class for layout placement. */ className?: string /** The localized label, owned by the render site. */ children?: React.ReactNode } /** Render a read-only tag."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/text-shimmer.tsx",
-      "exports": [
-        {
-          "name": "TextShimmerProps",
-          "summary": "Text activity animation shared by a row and its nested text fragments. */ const DecorativeCopy = createContext<boolean | undefined>(undefined) /** Text and activity supplied by the owning row."
-        },
-        {
-          "name": "TextShimmer",
-          "summary": "Text or presentational children with text in nested TextShimmer instances. No effects or element ids. */ children: React.ReactNode /** Whether to animate; nested instances share the containing row's activity. */ active?: boolean className?: string /** Layout class applied equally to the base and decorative content. */ contentClassName?: string } interface TextContentProps { children?: React.ReactNode className?: string } function TextContent({ children, className }: TextContentProps): React.JSX.Element { const s = useStyle('text-shimmer', CSS) const generated = useContext(DecorativeCopy) === true && typeof children === 'string' return ( <span className={cx(s.text, className)} data-shimmer-text={generated ? children : undefined}> {generated ? null : children} </span> ) } /** Render text with one shared highlight while retaining selectable, accessible content. Nested instances inherit the outer animation. Keep icons outside; mark decorative separators with data-shimmer-decoration so their background follows the highlight. Active children also render in an inert, clipped decoration; supply only presentation."
         }
       ]
     },
@@ -632,36 +270,6 @@
         {
           "name": "Toast",
           "summary": "Resolved banner copy; the owner passes localized text. */ text: string /** Optional leading glyph; ignored under `tone=\"success\"`, which brings its own glyph. */ icon?: React.ReactNode /** `success` renders the design's circled green check as the leading glyph. */ tone?: 'success' /** Optional element whose horizontal center the banner follows. */ anchor?: HTMLElement | null /** Full-opacity hold before the fade; defaults to 3000. */ holdMs?: number /** Optional inline actions continuing the sentence. */ actions?: readonly ToastAction[] /** Called once the fade completes; unmount the toast here. */ onDone: () => void } /** Transient top-center banner: slides in, holds at full opacity, fades out, then reports done so the owner can unmount it. Rendered through a body portal so an owner inside a transformed or filtered ancestor cannot trap the fixed banner in that ancestor's box."
-        }
-      ]
-    },
-    {
-      "group": "primitives",
-      "file": "src/components/primitives/tooltip.tsx",
-      "exports": [
-        {
-          "name": "TooltipSide",
-          "summary": "Side a tooltip bubble was placed on."
-        },
-        {
-          "name": "TooltipSuppression",
-          "summary": "Prefer the requested side, its opposite, then perpendicular sides without covering the anchor. / function placeTooltip(input: TooltipPlacementInput): TooltipPlacement { const { anchor, viewportWidth, viewportHeight, side, align, gap } = input const margin = 12 const maxWidth = Math.max(0, viewportWidth - margin * 2) const maxHeight = Math.max(0, viewportHeight - margin * 2) const width = Math.min(input.width, maxWidth) const height = Math.min(input.height, maxHeight) const clampX = (x: number): number => Math.max(margin, Math.min(x, viewportWidth - margin - width)) const clampY = (y: number): number => Math.max(margin, Math.min(y, viewportHeight - margin - height)) const horizontal = side === 'right' || side === 'left' const candidates: TooltipSide[] = [ side, opposite[side], ...(horizontal ? ['bottom', 'top'] as const : ['right', 'left'] as const), ] const positions: Record<TooltipSide, { left: number, top: number }> = { right: { left: anchor.right + 10, top: clampY((anchor.top + anchor.bottom - height) / 2), }, left: { left: anchor.left - 10 - width, top: clampY((anchor.top + anchor.bottom - height) / 2), }, bottom: { left: clampX(align === 'end' ? anchor.right - width : (anchor.left + anchor.right - width) / 2), top: anchor.bottom + gap, }, top: { left: clampX(align === 'end' ? anchor.right - width : (anchor.left + anchor.right - width) / 2), top: anchor.top - gap - height, }, } for (const candidate of candidates) { const position = positions[candidate] if ( position.left >= margin && position.top >= margin && position.left + width <= viewportWidth - margin && position.top + height <= viewportHeight - margin ) { return { ...position, side: candidate, width, height, overflow: false, } } } const position = positions[side] return { left: clampX(position.left), top: clampY(position.top), side, width, height, overflow: true, } } /** Modality values published on the document element. */ const INPUT_MODALITY_ATTRIBUTE = 'data-input-modality' const FOCUS_NAVIGATION = new Set([ 'Tab', 'Home', 'End', 'PageUp', 'PageDown', ]) let pointer = false let pointerOwnsFocus = false let keyFocusOrigin: EventTarget | undefined function publishModality(): void { document.documentElement.setAttribute(INPUT_MODALITY_ATTRIBUTE, pointerOwnsFocus ? 'pointer' : 'keyboard') } /** Whether the last input came from a pointer, independently of ring visibility. The document-wide listeners mirror the official input-modality tracker; they live for the document lifetime and are inert during server render. / if (typeof window !== 'undefined') { window.addEventListener('pointerdown', () => { pointer = true pointerOwnsFocus = true keyFocusOrigin = undefined publishModality() }, true) window.addEventListener('keydown', (event) => { pointer = false if (event.isComposing) { keyFocusOrigin = undefined return } keyFocusOrigin = event.composedPath()[0] if (!FOCUS_NAVIGATION.has(event.key) && !event.key.startsWith('Arrow')) return pointerOwnsFocus = false publishModality() }, true) window.addEventListener('focusin', (event) => { if (keyFocusOrigin === undefined || event.composedPath()[0] === keyFocusOrigin) return keyFocusOrigin = undefined if (!pointerOwnsFocus) return pointerOwnsFocus = false publishModality() }, true) window.addEventListener('blur', () => { keyFocusOrigin = undefined }) } /** Whether the last input came from a pointer, independently of ring visibility. / function pointerModality(): boolean { return pointer } /** Close an open popover when a pointerdown lands outside its root element. / function useDismissOnOutsidePointer( root: React.RefObject<HTMLElement | null>, open: boolean, dismiss: () => void, portal?: React.RefObject<HTMLElement | null>, ): void { useEffect(() => { if (!open || typeof document === 'undefined') return const closeOutside = (event: PointerEvent): void => { if (event.target instanceof Node && root.current?.contains(event.target) !== true && portal?.current?.contains(event.target) !== true) dismiss() } document.addEventListener('pointerdown', closeOutside) return () => { document.removeEventListener('pointerdown', closeOutside) } }, [root, open, dismiss, portal]) } /** Suppression channel for nested tooltips: a visible descendant tooltip withdraws the enclosing tooltip while its bubble is shown."
-        },
-        {
-          "name": "TooltipAnchorProps",
-          "summary": "Props Tooltip injects into its anchor child; the child's own handlers are chained ahead of the tooltip's."
-        },
-        {
-          "name": "TooltipLabel",
-          "summary": "Label text, or a resolver evaluated only while the bubble is visible."
-        },
-        {
-          "name": "TooltipProps",
-          "summary": "Props for {@link Tooltip}; the anchor element is cloned, never wrapped."
-        },
-        {
-          "name": "Tooltip",
-          "summary": "Bubble text, or a resolver evaluated only while visible; an empty string shows only shortcut keys. */ label: TooltipLabel /** Effective key labels rendered as platform-formatted keycaps after optional text. */ shortcutKeys?: readonly string[] /** Preferred placement (default 'right'); fitting tries the opposite then perpendicular sides. */ side?: TooltipSide /** Horizontal anchor-edge alignment for 'bottom'/'top' bubbles; horizontal placements ignore it. */ align?: 'center' | 'end' /** Hover delay in milliseconds (default 0). */ delayMs?: number /** Keyboard focus delay in milliseconds (default 0). */ focusDelayMs?: number /** Anchor-to-bubble distance in pixels for 'bottom'/'top' bubbles (default 8). */ gap?: number /** Suppress the bubble while true; the anchor renders identically. */ disabled?: boolean /** Render the bubble under document.body, so an ancestor's clipping cannot hide it. */ portal?: boolean /** Bubble width cap in pixels, always bounded by viewport margins. */ maxWidth?: number /** Clicking or tapping also pins the bubble for reading. */ openOnClick?: boolean /** Show the bubble only when the anchor or an HTML element inside it overflows horizontally. */ onlyWhenClipped?: boolean /** A single anchor element; its own ref is forwarded alongside the tooltip's. */ children: React.ReactElement<TooltipAnchorProps> } function clipped(anchor: HTMLElement): boolean { return [ anchor, ...anchor.querySelectorAll<HTMLElement>('*'), ].some(element => element.scrollWidth > element.clientWidth) } /** Attach a hover/focus tooltip to an anchor element. The bubble is fixed-position, measured through ResizeObserver, and portaled only on request."
         }
       ]
     },
@@ -1167,40 +775,6 @@
     },
     {
       "group": "content",
-      "file": "src/components/content/diff-block.tsx",
-      "exports": [
-        {
-          "name": "DEFAULT_DIFF_MAX_LINES",
-          "summary": "Output lines shown before the height cap collapses the middle."
-        },
-        {
-          "name": "MAX_DIFF_EDIT_LENGTH",
-          "summary": "Bound the synchronous edit-graph search; one replacement consumes two edits."
-        },
-        {
-          "name": "DiffHunk",
-          "summary": "Context lines structuredPatch keeps around each changed region. */ const DIFF_CONTEXT_LINES = 3 /** One file change in the form {@link DiffBlock} renders."
-        },
-        {
-          "name": "DiffBlockLabels",
-          "summary": "The changed file's path, drawn verbatim as the hunk's header. */ readonly path: string /** Prior content including context, or null when no prior content is available. */ readonly oldText: string | null /** Content after the change, including any shared context. */ readonly newText: string } /** Localized chrome for {@link DiffBlock}."
-        },
-        {
-          "name": "DiffBlockProps",
-          "summary": "Copy-button idle label. */ readonly copy: string /** Copy-button label during the post-copy confirmation window. */ readonly copied: string /** Collapse-toggle aria label while expanded. */ readonly collapseAria: string /** Expand-toggle aria label while capped, given the hidden line count. */ readonly expandAria: (hidden: number) => string /** Collapse-toggle text while expanded. */ readonly collapse: string /** Expand-toggle text while capped, given the hidden line count. */ readonly expand: (hidden: number) => string } /** Props for {@link DiffBlock}."
-        },
-        {
-          "name": "diffTotals",
-          "summary": "One entry per applied hunk, in file order; empty renders nothing. */ readonly diffs: readonly DiffHunk[] /** Localized chrome supplied by the owning render site. */ readonly labels: DiffBlockLabels /** Height cap in body lines before the middle collapses (default {@link DEFAULT_DIFF_MAX_LINES}). */ readonly maxLines?: number | undefined /** Extra class merged onto the wrapper. */ readonly className?: string | undefined } type DiffOpKind = 'equal' | 'del' | 'add' interface DiffOp { readonly kind: DiffOpKind readonly text: string } interface RenderHunk { readonly lines: readonly string[] } type DiffRowKind = 'path' | 'gap' | 'del' | 'add' | 'context' interface DiffRow { readonly kind: DiffRowKind readonly text: string } /** Split a side's text into its content lines. Empty text is zero lines, and a single trailing newline is a line terminator rather than an extra empty line; an interior blank line survives. / function contentLines(text: string): string[] { if (text === '') return [] return (text.endsWith('\\n') ? text.slice(0, -1) : text).split('\\n') } /** Pick the furthest-reaching x for one diagonal of the edit graph. / function furthestX(v: Int32Array, offset: number, depth: number, k: number): number { if (k === -depth || (k !== depth && v[offset + k - 1] < v[offset + k + 1])) return v[offset + k + 1] return v[offset + k - 1] + 1 } /** Count the identical lines shared from one position on both sides. / function snakeLength(a: readonly string[], b: readonly string[], x: number, y: number): number { let run = 0 while (x + run < a.length && y + run < b.length && a[x + run] === b[y + run]) run += 1 return run } /** Bound synchronous Myers diff; returns undefined once the minimal edit distance exceeds the cap. / function myersDiff(a: readonly string[], b: readonly string[], maxEdits: number): DiffOp[] | undefined { const n = a.length const m = b.length const offset = n + m const v = new Int32Array(2 * offset + 3) const trace: Int32Array[] = [] const limit = Math.min(offset, maxEdits) for (let depth = 0; depth <= limit; depth += 1) { trace.push(v.slice()) for (let k = -depth; k <= depth; k += 2) { const startX = furthestX(v, offset, depth, k) const x = startX + snakeLength(a, b, startX, startX - k) const y = x - k v[offset + k] = x if (x >= n && y >= m) return backtrack(trace, a, b, depth) } } return undefined } /** Walk the saved furthest-reaching paths back into an edit script. / function backtrack(trace: readonly Int32Array[], a: readonly string[], b: readonly string[], depth: number): DiffOp[] { const ops: DiffOp[] = [] const offset = a.length + b.length let x = a.length let y = b.length for (let current = depth; current > 0; current -= 1) { const v = trace[current] const k = x - y const prevK = k === -current || (k !== current && v[offset + k - 1] < v[offset + k + 1]) ? k + 1 : k - 1 const prevX = v[offset + prevK] const prevY = prevX - prevK while (x > prevX && y > prevY) { ops.push({ kind: 'equal', text: a[x - 1] }) x -= 1 y -= 1 } if (x === prevX) { ops.push({ kind: 'add', text: b[y - 1] }) y -= 1 } else { ops.push({ kind: 'del', text: a[x - 1] }) x -= 1 } } while (x > 0 && y > 0) { ops.push({ kind: 'equal', text: a[x - 1] }) x -= 1 y -= 1 } while (x > 0) { ops.push({ kind: 'del', text: a[x - 1] }) x -= 1 } while (y > 0) { ops.push({ kind: 'add', text: b[y - 1] }) y -= 1 } ops.reverse() return ops } /** Index the offsets of every non-context operation. / function changedOffsets(ops: readonly DiffOp[]): number[] { const changed: number[] = [] for (const [index, op] of ops.entries()) { if (op.kind !== 'equal') changed.push(index) } return changed } /** Group changed offsets into hunk ranges separated by more than the context window. / function hunkRanges(changed: readonly number[]): { readonly first: number, readonly last: number }[] { const ranges: { first: number, last: number }[] = [] for (const offset of changed) { const current = ranges[ranges.length - 1] if (current !== undefined && offset - current.last <= 2 * DIFF_CONTEXT_LINES + 1) { ranges[ranges.length - 1] = { first: current.first, last: offset } continue } ranges.push({ first: offset, last: offset }) } return ranges } /** Render one operation as a patch line with its +/-, or two spaces as context. / function patchLine(op: DiffOp): string { if (op.kind === 'equal') return ` ${op.text}` return `${op.kind === 'del' ? '-' : '+'}${op.text}` } /** Derive exact local patches, or one whole-fragment replacement when the edit search exceeds {@link MAX_DIFF_EDIT_LENGTH}. / function localHunks(diff: DiffHunk): RenderHunk[] { const oldLines = contentLines(diff.oldText ?? '') const newLines = contentLines(diff.newText) const ops = myersDiff(oldLines, newLines, MAX_DIFF_EDIT_LENGTH) if (ops === undefined) { return [ { lines: [ ...oldLines.map(line => `-${line}`), ...newLines.map(line => `+${line}`), ], }, ] } const changed = changedOffsets(ops) if (changed.length === 0) return [] return hunkRanges(changed).map(range => ({ lines: ops .slice(Math.max(0, range.first - DIFF_CONTEXT_LINES), Math.min(ops.length, range.last + DIFF_CONTEXT_LINES + 1)) .map(patchLine), })) } /** Count displayed additions and deletions. Exact patches exclude shared context; comparisons exceeding the edit limit count both complete fragments as replaced. Text follows {@link contentLines}'s terminator rule."
-        },
-        {
-          "name": "DiffBlock",
-          "summary": "Draw one patch line as a diff row. / function lineRow(line: string): DiffRow { if (line.startsWith('-')) { return { kind: 'del', text: line.slice(1), } } if (line.startsWith('+')) { return { kind: 'add', text: line.slice(1), } } return { kind: 'context', text: line.slice(1), } } /** Flatten one file's patches into rows, opening a gap before later fragments. / function rowsForDiff(diff: DiffHunk, prevPath: string | undefined): DiffRow[] { const rows: DiffRow[] = [ diff.path === prevPath ? { kind: 'gap', text: '⋯' } : { kind: 'path', text: diff.path }, ] for (const [index, hunk] of localHunks(diff).entries()) { if (index > 0) rows.push({ kind: 'gap', text: '⋯' }) for (const line of hunk.lines) rows.push(lineRow(line)) } return rows } /** Flatten local patches into rows. A path header opens each new file; a gap marker separates consecutive same-file fragments and distant patches. / function buildRows(diffs: readonly DiffHunk[]): DiffRow[] { const rows: DiffRow[] = [] let prevPath: string | undefined for (const diff of diffs) { rows.push(...rowsForDiff(diff, prevPath)) prevPath = diff.path } return rows } /** Render one row as its copyable patch line. / function copyLine(row: DiffRow): string { switch (row.kind) { case 'del': return `- ${row.text}` case 'add': return `+ ${row.text}` case 'context': return `  ${row.text}` case 'path': case 'gap': return row.text } } /** Copy the full diff, including folded rows. / function copyText(rows: readonly DiffRow[]): string { return rows.map(copyLine).join('\\n') } const ROW_CLASS: Record<DiffRowKind, string> = { path: 'path', del: 'del', add: 'add', context: 'context', gap: 'gap', } /** Render a file mutation as an inline diff surface."
-        }
-      ]
-    },
-    {
-      "group": "content",
       "file": "src/components/content/document.tsx",
       "exports": [
         {
@@ -1234,84 +808,6 @@
         {
           "name": "Document",
           "summary": "The read to show. */ readonly state: DocumentState /** Localized region name, placeholder name, retry text, and Markdown chrome. */ readonly labels: DocumentLabels /** Resolves the document's relative image destinations to displayable URLs. */ readonly images?: MarkdownPathImages | undefined /** Called to read the document again after a failure. */ readonly onRetry: () => void } /** A section showing a long Markdown description: skeleton lines while it loads, the document once found, or the caller's failure message with a retry. Nothing renders for none."
-        }
-      ]
-    },
-    {
-      "group": "content",
-      "file": "src/components/content/json-block.tsx",
-      "exports": [
-        {
-          "name": "JSON_BLOCK_MAX_CHARS",
-          "summary": "Characters a JSON payload renders before the body is truncated."
-        },
-        {
-          "name": "JsonBlockProps",
-          "summary": "Props for the collapsible JSON payload block."
-        },
-        {
-          "name": "JsonBlock",
-          "summary": "Toggle text, supplied by the owning render site. */ readonly label: string /** Any JSON-serializable payload. */ readonly payload: unknown /** Whether the body starts open. */ readonly defaultOpen?: boolean | undefined /** Footer appended when the body exceeds the character cap, given the full length. */ readonly truncatedLabel: (total: number) => string } /** Render a JSON payload behind a disclosure toggle. The body is stringified only while open and capped at {@link JSON_BLOCK_MAX_CHARS} characters, so a huge payload cannot stall the containing message."
-        }
-      ]
-    },
-    {
-      "group": "content",
-      "file": "src/components/content/json-tree.tsx",
-      "exports": [
-        {
-          "name": "JsonTreeLabels",
-          "summary": "Entries an object preview draws before it elides the rest. */ const OBJECT_PREVIEW_LIMIT = 4 /** Entries an array preview draws before it elides the rest. */ const ARRAY_PREVIEW_LIMIT = 5 /** Nested preview depth after which values collapse to an ellipsis. */ const PREVIEW_DEPTH_LIMIT = 2 /** Collapsed string lines shown before the expand affordance appears. */ const DEFAULT_COLLAPSED_STRING_LINES = 3 /** Display copy for the tree's copy affordances; the owner passes localized labels."
-        },
-        {
-          "name": "JsonTreeStringWrapping",
-          "summary": "Menu item: copy the raw primitive value. */ readonly copyValue: string /** Menu item: copy the value as compact JSON (primitive rows). */ readonly copyJson: string /** Menu item: copy the property path. */ readonly copyPath: string /** Menu item: copy the value as pretty-printed JSON. */ readonly copyPrettyJson: string /** Menu item: copy the value as compact JSON (object rows). */ readonly copyCompactJson: string /** Copy-button state label after a successful copy. */ readonly copied: string /** Copy-button state label after a failed copy. */ readonly copyFailed: string /** Expander aria label while expanded. */ readonly collapseNode: string /** Expander aria label while collapsed. */ readonly expandNode: string /** Copy-button tooltip, given the current action label. */ readonly copyButtonTitle: (action: string) => string } /** Optional wrap toggle; each expansion reads the shared default without changing other open strings."
-        },
-        {
-          "name": "JsonTreeProps",
-          "summary": "Localized label for the wrapping toggle. */ readonly label: string /** Read the wrapping preference when a string is expanded. */ readonly getDefault: () => boolean /** Remember a user toggle for future expansions. */ readonly setDefault: (wrapped: boolean) => void } /** Props for the read-only, token-themed JSON tree."
-        },
-        {
-          "name": "JsonTree",
-          "summary": "Parsed JSON object or array. */ readonly data: object | unknown[] /** Accessible label for the tree. */ readonly label: string /** Optional positioning class owned by the caller. */ readonly className?: string | undefined /** Maximum visible lines per collapsed string; defaults to 3. */ readonly collapsedStringLines?: number | undefined /** Optional wrap toggle for expanded strings. */ readonly stringWrapping?: JsonTreeStringWrapping | undefined /** Whether JSON rows expose copy actions. */ readonly copyable?: boolean | undefined /** Whether the top-level object or array is always expanded. */ readonly expandTopLevel?: boolean | undefined /** Localized display copy supplied by the owning render site. */ readonly labels: JsonTreeLabels } type PathPart = string | number interface CopyTarget { readonly path: readonly PathPart[] readonly value: unknown } type CopyState = 'idle' | 'copied' | 'failed' function isExpandableValue(value: unknown): value is object { return typeof value === 'object' && value !== null && !(value instanceof Date) } function entriesOf(value: object): [string, unknown][] { if (Array.isArray(value)) { return value.map((item, index) => [ String(index), item, ]) } return Object.keys(value).map(key => [key, (value as Record<string, unknown>)[key]]) } function bracketOf(value: object): [string, string] { return Array.isArray(value) ? ['[', ']'] : ['{', '}'] } function fieldText(field: string): string { return field === '' ? '\"\"' : field } function pathId(path: readonly PathPart[]): string { return path.map(part => typeof part === 'number' ? `n${String(part)}` : `s${String(part.length)}:${part}`).join('/') } function copyText(target: CopyTarget): string { const { value } = target if (typeof value === 'string') return value if (typeof value === 'undefined') return 'undefined' if (typeof value === 'bigint') return value.toString() if (typeof value === 'symbol') return value.description ?? 'Symbol' if (typeof value === 'function') return value.name || 'Function' return JSON.stringify(value, null, 2) ?? String(value) } function previewValue(value: unknown, depth: number, s: Record<string, string>): ReactNode { if (!isExpandableValue(value)) return previewPrimitive(value, s) const array = Array.isArray(value) const entries = entriesOf(value) const limit = array ? ARRAY_PREVIEW_LIMIT : OBJECT_PREVIEW_LIMIT const visible = entries.slice(0, limit) const [open, close] = bracketOf(value) return ( <> <span className={s.punctuation}>{open}</span> {depth >= PREVIEW_DEPTH_LIMIT ? <span className={s.previewEllipsis}>…</span> : visible.map(([key, item], index) => ( <span key={key}> {index > 0 && <span className={s.punctuation}>, </span>} {!array && ( <> <span className={s.previewProperty}>{key}</span> <span className={s.punctuation}>{': '}</span> </> )} {previewValue(item, depth + 1, s)} </span> ))} {depth < PREVIEW_DEPTH_LIMIT && entries.length > limit && <span className={s.previewEllipsis}>, …</span>} <span className={s.punctuation}>{close}</span> </> ) } function primitiveValue(value: unknown, s: Record<string, string>): ReactNode { if (value === null) return <span className={s.keywordValue}>null</span> if (typeof value === 'string') return <span className={s.stringValue}>{JSON.stringify(value)}</span> if (typeof value === 'boolean') return <span className={s.keywordValue}>{String(value)}</span> if (typeof value === 'number') return <span className={s.numberValue}>{String(value)}</span> if (typeof value === 'bigint') return <span className={s.numberValue}>{`${value.toString()}n`}</span> if (value instanceof Date) return <span className={s.otherValue}>{value.toISOString()}</span> if (typeof value === 'function') return <span className={s.otherValue}>{'function() { }'}</span> if (typeof value === 'undefined') return <span className={s.otherValue}>undefined</span> return <span className={s.otherValue}>{String(value)}</span> } function previewPrimitive(value: unknown, s: Record<string, string>): ReactNode { if (value === null) return <span className={s.keywordValue}>null</span> if (typeof value === 'string') return <span className={s.stringValue}>{JSON.stringify(value)}</span> if (typeof value === 'number') return <span className={s.numberValue}>{String(value)}</span> if (typeof value === 'boolean') return <span className={s.keywordValue}>{String(value)}</span> if (typeof value === 'bigint') return <span className={s.otherValue}>{value.toString()}</span> if (typeof value === 'undefined') return <span className={s.otherValue}>undefined</span> if (typeof value === 'symbol') return <span className={s.otherValue}>{value.description ?? 'Symbol'}</span> if (typeof value === 'function') return <span className={s.otherValue}>{value.name || 'Function'}</span> return null } interface CopyActionProps { readonly target: CopyTarget readonly labels: JsonTreeLabels readonly s: Record<string, string> } function CopyAction({ target, labels, s }: CopyActionProps): React.JSX.Element { const [state, setState] = useState<CopyState>('idle') const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined) useEffect(() => () => { if (timer.current !== undefined) clearTimeout(timer.current) }, []) const object = typeof target.value === 'object' && target.value !== null const action = state === 'copied' ? labels.copied : state === 'failed' ? labels.copyFailed : object ? labels.copyPrettyJson : labels.copyValue return ( <span className={s.copySlot}> <button type=\"button\" className={s.actionButton} data-json-copy-button=\"true\" data-state={state} aria-label={action} title={labels.copyButtonTitle(action)} onClick={() => { void writeClipboard(copyText(target)).then((ok) => { setState(ok ? 'copied' : 'failed') if (timer.current !== undefined) clearTimeout(timer.current) timer.current = setTimeout(() => { setState('idle') }, 1500) }) }} > {state === 'copied' ? <IconCheckOutlineRegular size={12} /> : <IconCopyOutlineRegular size={12} />} </button> </span> ) } function NodeField({ field, expandable, onToggle, s }: { readonly field: string | undefined, readonly expandable: boolean, readonly onToggle: () => void, readonly s: Record<string, string> }): React.JSX.Element | null { if (field === undefined) return null return ( <span className={cx(s.label, expandable ? s.clickableLabel : undefined)} onClick={expandable ? onToggle : undefined}> {fieldText(field)} : </span> ) } interface JsonStringProps { readonly collapsedStringLines: number readonly stringWrapping: JsonTreeStringWrapping | undefined readonly field: string | undefined readonly value: string readonly labels: JsonTreeLabels readonly lastElement: boolean readonly renderCopy: (() => ReactNode) | undefined readonly s: Record<string, string> } function JsonString({ collapsedStringLines, stringWrapping, field, value, labels, lastElement, renderCopy, s }: JsonStringProps): React.JSX.Element { const contentsId = useId() const contentRef = useRef<HTMLSpanElement>(null) const [expanded, setExpanded] = useState(false) const [wrapped, setWrapped] = useState(false) const [truncated, setTruncated] = useState(false) useLayoutEffect(() => { if (expanded) return undefined const content = contentRef.current if (content === null) return undefined const measure = (): void => { const lineHeight = Number.parseFloat(getComputedStyle(content).lineHeight) setTruncated(content.scrollHeight > lineHeight * collapsedStringLines) } measure() if (typeof ResizeObserver === 'undefined') return undefined const observer = new ResizeObserver(measure) observer.observe(content) return () => { observer.disconnect() } }, [ collapsedStringLines, expanded, field, lastElement, value, ]) if (expanded) { const fieldId = `${contentsId}-field` return ( <div className={s.stringField} data-expanded=\"true\"> {field !== undefined && ( <span id={fieldId} className={s.label}> {fieldText(field)} : </span> )} <pre id={contentsId} className={s.stringRaw} data-wrap={wrapped ? 'true' : 'false'} tabIndex={0} aria-labelledby={field === undefined ? undefined : fieldId} > {value} </pre> {!lastElement && <span className={s.punctuation}>,</span>} <div className={s.stringActions}> {stringWrapping !== undefined && ( <button type=\"button\" className={s.actionButton} aria-label={stringWrapping.label} title={stringWrapping.label} aria-pressed={wrapped} aria-controls={contentsId} onClick={() => { const next = !wrapped setWrapped(next) stringWrapping.setDefault(next) }} > <IconWrapLinesOutlineRegular size={12} /> </button> )} <button type=\"button\" className={s.actionButton} aria-label={labels.collapseNode} title={labels.collapseNode} aria-expanded aria-controls={contentsId} onClick={() => { setExpanded(false) }} > <svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" aria-hidden=\"true\"> <path d=\"M9.5 1.5V6.5H14.5M1.5 9.5H6.5V14.5\" /> </svg> </button> {renderCopy?.()} </div> </div> ) } return ( <> {renderCopy?.()} <span className={s.stringField} data-expanded=\"false\"> <span ref={contentRef} id={contentsId} className={s.stringText}> {truncated && ( <span className={s.stringToggleSlot}> <button type=\"button\" className={s.stringToggle} aria-label={labels.expandNode} aria-expanded={false} aria-controls={contentsId} onClick={() => { setWrapped(stringWrapping?.getDefault() ?? false) setExpanded(true) }} > <span aria-hidden=\"true\">…</span> {labels.expandNode} </button> </span> )} {field !== undefined && ( <span className={s.label}> {fieldText(field)} : </span> )} {primitiveValue(value, s)} {!lastElement && <span className={s.punctuation}>,</span>} </span> </span> </> ) } /** Move keyboard focus to the neighbouring expander in the enclosing tree. / function moveExpanderFocus(from: HTMLElement, direction: number): void { const tree = from.closest('[role=\"tree\"]') if (tree === null) return const expanders = Array.from(tree.querySelectorAll<HTMLElement>('[data-json-expander]')) const current = expanders.indexOf(from) if (current < 0 || expanders.length === 0) return expanders[(current + direction + expanders.length) % expanders.length]?.focus() } /** Props for one row's expander control. */ interface JsonExpanderProps { readonly expanderRef: React.RefObject<HTMLSpanElement | null> readonly expanded: boolean readonly contentsId: string readonly tabStop: boolean readonly labels: JsonTreeLabels readonly expanderClass: string readonly collapseClass: string readonly onToggle: () => void readonly onFocus: () => void readonly onKeyDown: (event: React.KeyboardEvent<HTMLSpanElement>) => void } /** Render the triangle expander of one container row. / function JsonExpander({ expanderRef, expanded, contentsId, tabStop, labels, expanderClass, collapseClass, onToggle, onFocus, onKeyDown }: JsonExpanderProps): React.JSX.Element { return ( <span ref={expanderRef} className={cx(expanderClass, expanded ? collapseClass : undefined)} data-json-expander=\"true\" role=\"button\" aria-label={expanded ? labels.collapseNode : labels.expandNode} aria-expanded={expanded} aria-controls={expanded ? contentsId : undefined} tabIndex={tabStop ? 0 : -1} onFocus={onFocus} onClick={onToggle} onKeyDown={onKeyDown} /> ) } /** Shared state a container row passes down to its children. */ interface JsonChildListProps { readonly collapsedStringLines: number readonly stringWrapping: JsonTreeStringWrapping | undefined readonly labels: JsonTreeLabels readonly renderCopy: ((target: CopyTarget) => ReactNode) | undefined readonly tabStopId: string | null readonly onClaimTabStop: (id: string) => void readonly styles: Record<string, string> readonly contentsId: string readonly path: readonly PathPart[] readonly container: object } /** Render a container row's expanded children. / function JsonChildList({ collapsedStringLines, stringWrapping, labels, renderCopy, tabStopId, onClaimTabStop, styles, contentsId, path, container }: JsonChildListProps): React.JSX.Element { const array = Array.isArray(container) const entries = entriesOf(container) return ( <ul id={contentsId} role=\"group\" className={styles.children}> {entries.map(([key, item], index) => ( <JsonTreeNode key={key} collapsedStringLines={collapsedStringLines} stringWrapping={stringWrapping} field={key} value={item} path={[ ...path, array ? index : key, ]} labels={labels} lastElement={index === entries.length - 1} initialExpanded={false} tabStopId={tabStopId} onClaimTabStop={onClaimTabStop} renderCopy={renderCopy} s={styles} /> ))} </ul> ) } interface JsonTreeNodeProps { readonly collapsedStringLines: number readonly stringWrapping: JsonTreeStringWrapping | undefined readonly field: string | undefined readonly initialExpanded: boolean readonly labels: JsonTreeLabels readonly lastElement: boolean readonly onClaimTabStop: (id: string) => void readonly path: readonly PathPart[] readonly renderCopy: ((target: CopyTarget) => ReactNode) | undefined readonly tabStopId: string | null readonly value: unknown readonly s: Record<string, string> } function JsonTreeNode({ collapsedStringLines, stringWrapping, field, initialExpanded, labels, lastElement, onClaimTabStop, path, renderCopy, tabStopId, value, s }: JsonTreeNodeProps): React.JSX.Element { const contentsId = useId() const expanderRef = useRef<HTMLSpanElement>(null) const [expanded, setExpanded] = useState(initialExpanded) const nodeId = pathId(path) const container = isExpandableValue(value) const entries = container ? entriesOf(value) : [] const expandable = entries.length > 0 const target: CopyTarget = { path, value } const copy = renderCopy?.(target) const toggle = (): void => { setExpanded(current => !current) expanderRef.current?.focus() } const onExpanderKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>): void => { if (event.key === 'ArrowUp' || event.key === 'ArrowDown') { event.preventDefault() moveExpanderFocus(event.currentTarget, event.key === 'ArrowUp' ? -1 : 1) return } if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault() setExpanded(event.key === 'ArrowRight') } } const row = (children: ReactNode, ariaExpanded?: boolean): React.JSX.Element => ( <div className={s.row} role=\"treeitem\" aria-expanded={ariaExpanded}> {typeof value !== 'string' && copy} {children} </div> ) if (typeof value === 'string') { return row( <JsonString collapsedStringLines={collapsedStringLines} stringWrapping={stringWrapping} field={field} value={value} labels={labels} lastElement={lastElement} renderCopy={renderCopy === undefined ? undefined : () => copy} s={s} />, ) } if (!container) { return row( <> <NodeField field={field} expandable={false} onToggle={toggle} s={s} /> {primitiveValue(value, s)} {!lastElement && <span className={s.punctuation}>,</span>} </>, ) } const [open, close] = bracketOf(value) if (!expandable) { return row( <> <NodeField field={field} expandable={false} onToggle={toggle} s={s} /> <span className={s.punctuation}>{open}</span> <span className={s.punctuation}>{close}</span> {!lastElement && <span className={s.punctuation}>,</span>} </>, ) } return row( <> <JsonExpander expanderRef={expanderRef} expanded={expanded} contentsId={contentsId} tabStop={tabStopId === nodeId} labels={labels} expanderClass={s.expander} collapseClass={s.collapseIcon} onToggle={toggle} onFocus={() => { onClaimTabStop(nodeId) }} onKeyDown={onExpanderKeyDown} /> <span className={s.summary}> <NodeField field={field} expandable onToggle={toggle} s={s} /> <span className={s.preview}>{previewValue(value, 0, s)}</span> {!lastElement && <span className={s.punctuation}>,</span>} </span> {expanded && ( <JsonChildList collapsedStringLines={collapsedStringLines} stringWrapping={stringWrapping} labels={labels} renderCopy={renderCopy} tabStopId={tabStopId} onClaimTabStop={onClaimTabStop} styles={s} contentsId={contentsId} path={path} container={value} /> )} </>, expanded, ) } /** Render parsed JSON as a compact, keyboard-accessible inspector tree. Rows collapse/expand with the shared expander, strings reveal a raw view once they exceed {@link DEFAULT_COLLAPSED_STRING_LINES} lines, and every row can copy its value. The official context-menu modes are collapsed into one copy action; the labels keep their official names."
-        }
-      ]
-    },
-    {
-      "group": "content",
-      "file": "src/components/content/markdown-text.tsx",
-      "exports": [
-        {
-          "name": "MarkdownCodeLabels",
-          "summary": "Lightweight, dependency-free Markdown renderer for the shared content blocks. This is deliberately NOT the official micromark/mdast pipeline. It covers the common GFM subset callers actually draw: paragraphs, h1-h6, bold/italic/strikethrough, inline code, links, ordered and unordered lists (nested), blockquotes, thematic breaks, tables, fenced code blocks (rendered by ./code-block) and images (rendered by ../media/image). Known omissions versus the official renderer: reference-style links and definitions, footnotes, inline and fenced math (KaTeX), task-list checkboxes, autolinks, setext headings and raw HTML blocks. Raw inline HTML renders as text unless omitHtml is set, in which case simple tags are dropped. Pass incremental (or the official streaming alias) while text is still arriving: an unclosed fence keeps rendering as a code block and forwards the streaming flag to CodeBlock. / /** Copy-button labels forwarded to fence CodeBlocks."
-        },
-        {
-          "name": "MarkdownLabels",
-          "summary": "Copy-button idle label. */ readonly copyLabel: string /** Copy-button label during the post-copy confirmation window. */ readonly copiedLabel: string /** Shared card controls; omitted for custom toolbar layouts. */ readonly toolbarLabels?: CodeToolbarLabels | undefined } /** Localized chrome for a Markdown document."
-        },
-        {
-          "name": "MarkdownFileMentions",
-          "summary": "Fence chrome. */ readonly code: MarkdownCodeLabels /** Footnote section heading (kept for official prop compatibility). */ readonly footnotes: string } /** File-mention affordance for inline code."
-        },
-        {
-          "name": "MarkdownPathImages",
-          "summary": "Resolve one inline-code token. / readonly resolve: (value: string) => { readonly open: () => void readonly contextMenuProps?: Pick<HTMLAttributes<HTMLElement>, 'onContextMenu' | 'onKeyDown' | 'tabIndex'> readonly label: string readonly title: string } | undefined } /** Local-path image vocabulary for image destinations."
-        },
-        {
-          "name": "MarkdownImageStatusLabels",
-          "summary": "Resolve one authored image destination. / readonly resolve: (value: string) => string | undefined } /** Localized status copy for an image the lightweight renderer draws."
-        },
-        {
-          "name": "MarkdownTextProps",
-          "summary": "Status text while the image loads. */ readonly loading: string /** Status text after the image fails. */ readonly failed: string } /** Props for the dependency-free Markdown renderer."
-        },
-        {
-          "name": "DEFAULT_MARKDOWN_IMAGE_LABELS",
-          "summary": "Markdown source text. */ readonly text: string /** Official streaming alias: parse incrementally while text arrives. */ readonly streaming?: boolean | undefined /** Incremental rendering flag (equivalent to streaming). */ readonly incremental?: boolean | undefined /** Localized fence chrome. */ readonly labels: MarkdownLabels /** Optional inline-code file opener. */ readonly fileMentions?: MarkdownFileMentions | undefined /** Optional local-path image vocabulary. */ readonly pathImages?: MarkdownPathImages | undefined /** Document typography variant. */ readonly variant?: 'body' | 'compact' | undefined /** Drop simple raw HTML tags instead of rendering them literally. */ readonly omitHtml?: boolean | undefined /** Mark the root as a source for text-selection interactions. */ readonly textInteractionSource?: boolean | undefined /** Localized loading/failure status for images; defaults to the zh strings. */ readonly imageLabels?: MarkdownImageStatusLabels | undefined } /** Default image status copy, matching the library's zh default locale."
-        },
-        {
-          "name": "MarkdownText",
-          "summary": "Fence markers this renderer accepts. */ const FENCE_CHARS = ['`', '~'] /** Characters an inline escape can quote. */ const ESCAPABLE = /[\\\\`*_{}[\\]#+\\-.!~|>]/ /** Leading tags dropped by omitHtml. */ const SIMPLE_HTML_TAG = /^<\\/?[a-z][^>]*>/i /** Horizontal-rule line: three or more of the same marker, spaces allowed between. */ const THEMATIC_BREAK = /^ {0,3}(?:(?:\\*[ \\t]*){3,}|(?:-[ \\t]*){3,}|(?:_[ \\t]*){3,})$/ interface BlockContext { readonly styles: Record<string, string> readonly labels: MarkdownLabels readonly fileMentions: MarkdownFileMentions | undefined readonly pathImages: MarkdownPathImages | undefined readonly imageLabels: MarkdownImageStatusLabels readonly omitHtml: boolean readonly streaming: boolean readonly inLink: boolean readonly inBlockquote: boolean } /** A block handler's result: one rendered node and the next source line. */ interface BlockHit { readonly node: ReactNode readonly next: number } /** One recognized construct at an offset, with the offset just past it. */ interface InlineHit { readonly node: ReactNode readonly next: number } /** Whether a line holds nothing but spaces or tabs. / function isBlank(line: string): boolean { return line.trim() === '' } /** Count a line's leading spaces, stopping at the first non-space. / function indentOf(line: string): number { let count = 0 while (line[count] === ' ') count += 1 return count } /** Read a fence opener from a line. / function fenceStart(line: string): { readonly marker: string, readonly info: string } | undefined { const indent = indentOf(line) if (indent > 3) return undefined const char = line[indent] if (char === undefined || !FENCE_CHARS.includes(char)) return undefined let run = 0 while (line[indent + run] === char) run += 1 if (run < 3) return undefined return { marker: char.repeat(run), info: line.slice(indent + run), } } /** Whether a line closes the fence opened with marker. / function isFenceClose(line: string, marker: string): boolean { if (indentOf(line) > 3) return false const char = marker[0] let run = 0 while (line[indentOf(line) + run] === char) run += 1 if (run < marker.length) return false return line.slice(indentOf(line) + run).trim() === '' } /** Read a list marker from a line. / function listStart(line: string): { readonly ordered: boolean, readonly start: number, readonly contentIndent: number, readonly rest: string } | undefined { const indent = indentOf(line) if (indent > 3) return undefined const bullet = line[indent] let cursor = indent let ordered = false let start = 1 if (bullet === '-' || bullet === '+' || bullet === '*') { cursor += 1 } else { let digits = 0 while (digits < 9 && line[indent + digits] !== undefined && line[indent + digits] >= '0' && line[indent + digits] <= '9') digits += 1 const delimiter = line[indent + digits] if (digits === 0 || (delimiter !== '.' && delimiter !== ')')) return undefined ordered = true start = Number.parseInt(line.slice(indent, indent + digits), 10) cursor = indent + digits + 1 } if (line[cursor] !== ' ' && line[cursor] !== '\\t') return undefined let spaces = 0 while (spaces < 4 && (line[cursor + spaces] === ' ' || line[cursor + spaces] === '\\t')) spaces += 1 const contentIndent = cursor + spaces return { ordered, start, contentIndent, rest: line.slice(contentIndent), } } /** Read an ATX heading from a line. / function headingStart(line: string): { readonly depth: number, readonly text: string } | undefined { const indent = indentOf(line) if (indent > 3 || line[indent] !== '#') return undefined let depth = 0 while (depth < 7 && line[indent + depth] === '#') depth += 1 if (depth > 6 || depth === 0) return undefined const after = line[indent + depth] if (after !== undefined && after !== ' ' && after !== '\\t') return undefined return { depth, text: line.slice(indent + depth).trim().replace(/[ \\t]+#+[ \\t]*$/, ''), } } /** Whether a line opens a block the paragraph scanner must stop at. / function startsBlock(line: string): boolean { if (fenceStart(line) !== undefined || headingStart(line) !== undefined || THEMATIC_BREAK.test(line)) return true if (indentOf(line) <= 3 && line[indentOf(line)] === '>') return true return listStart(line) !== undefined } /** Split one table row into its trimmed cells, honoring escaped pipes. / function tableCells(row: string): string[] { let value = row.trim() if (value.startsWith('|')) value = value.slice(1) if (value.endsWith('|')) value = value.slice(0, -1) const cells: string[] = [] let current = '' for (let index = 0; index < value.length; index += 1) { const char = value[index] if (char === '\\\\' && value[index + 1] === '|') { current += '|' index += 1 continue } if (char === '|') { cells.push(current.trim()) current = '' continue } current += char } cells.push(current.trim()) return cells } /** Read one delimiter cell's alignment. / function delimiterAlign(cell: string): 'left' | 'right' | 'center' | undefined { const trimmed = cell.trim() if (trimmed === '') return undefined const left = trimmed.startsWith(':') const right = trimmed.endsWith(':') const middle = trimmed.slice(left ? 1 : 0, right ? -1 : undefined) if (middle === '' || !/^-+$/.test(middle)) return undefined if (left && right) return 'center' if (left) return 'left' if (right) return 'right' return 'left' } /** Whether the line at index opens a table. / function isTableStart(lines: readonly string[], index: number): boolean { const header = lines[index] const delimiter = lines[index + 1] if (header === undefined || delimiter === undefined) return false if (!header.includes('|') || !delimiter.includes('|')) return false return tableCells(delimiter).every(cell => delimiterAlign(cell) !== undefined) } /** Whether a destination names a local file path rather than a URL. / function isExplicitFilePath(value: string): boolean { return /^[A-Z]:[\\\\/]/i.test(value) || /^\\\\\\\\/.test(value) } /** Reject scriptable URL protocols. / function safeHref(value: string): string { if (isExplicitFilePath(value)) return '' try { const { protocol } = new URL(value) if (protocol === 'javascript:' || protocol === 'vbscript:' || protocol === 'data:' || protocol === 'blob:') return '' return value } catch { return '' } } /** Resolve the displayable source for one image destination. / function imageSource(destination: string, pathImages: MarkdownPathImages | undefined): string | undefined { const remote = safeHref(destination) if (remote.startsWith('http:') || remote.startsWith('https:')) return remote const rewritten = pathImages?.resolve(destination) if (rewritten === undefined) return undefined try { const { protocol } = new URL(rewritten) // Only a displayable web URL survives; a host-specific scheme is the // resolver's business, not the renderer's. return protocol === 'http:' || protocol === 'https:' || protocol === 'blob:' || protocol === 'data:' ? rewritten : undefined } catch { return undefined } } /** Find the bracket that closes the label opened at start. / function findLabelEnd(text: string, start: number): number { let depth = 0 for (let index = start; index < text.length; index += 1) { const char = text[index] if (char === '\\\\') { index += 1 continue } if (char === '[') { depth += 1 continue } if (char !== ']') continue depth -= 1 if (depth === 0) return index } return -1 } /** Read a parenthesized destination, honoring nested parentheses and escapes. / function parseDestination(text: string, open: number): { readonly destination: string, readonly end: number } | undefined { let end = open + 1 if (text[end] === '<') { const angleClose = text.indexOf('>', end + 1) if (angleClose < 0 || text[angleClose + 1] !== ')') return undefined return { destination: text.slice(end + 1, angleClose), end: angleClose + 2, } } const start = end let nested = 0 while (end < text.length) { const char = text[end] if (char === '\\\\') { end += 2 continue } if (char === '(') { nested += 1 } else if (char === ')') { if (nested === 0) break nested -= 1 } end += 1 } if (end >= text.length) return undefined const raw = text.slice(start, end).trim() return { destination: raw.split(/\\s+/)[0] ?? '', end: end + 1 } } /** Read the bracketed label and parenthesized destination of an inline link. / function parseLink(text: string, start: number): { readonly label: string, readonly destination: string, readonly end: number } | undefined { if (text[start] !== '[') return undefined const close = findLabelEnd(text, start) if (close < 0 || text[close + 1] !== '(') return undefined const destination = parseDestination(text, close + 1) if (destination === undefined) return undefined return { label: text.slice(start + 1, close), destination: destination.destination, end: destination.end, } } /** Read an emphasis-style run whose body starts at start + marker.length. / function delimit(text: string, start: number, marker: string): { readonly body: string, readonly end: number } | undefined { const close = text.indexOf(marker, start + marker.length) if (close <= start + marker.length) return undefined return { body: text.slice(start + marker.length, close), end: close + marker.length, } } /** Render a backtick code span. / function tryCode(text: string, start: number, ctx: BlockContext): InlineHit | undefined { if (text[start] !== '`') return undefined let runLength = 1 while (text[start + runLength] === '`') runLength += 1 const run = '`'.repeat(runLength) const close = text.indexOf(run, start + runLength) if (close < 0) return undefined const value = text.slice(start + runLength, close).replace(/\\r?\\n|\\r/g, ' ') const mention = ctx.inLink ? undefined : ctx.fileMentions?.resolve(value) const node = mention === undefined ? <code key={`code-${String(start)}`}>{value}</code> : ( <code key={`code-${String(start)}`}> <button type=\"button\" className={ctx.styles.fileMention} title={mention.title} aria-label={mention.label} onClick={mention.open} {...mention.contextMenuProps} > <LinkIconMedium kind={classifyLinkPath(value)} className={ctx.styles.linkIcon} /> {value} </button> </code> ) return { node, next: close + runLength } } /** Render an inline image or link. / function tryLink(text: string, start: number, ctx: BlockContext): InlineHit | undefined { const image = text[start] === '!' && text[start + 1] === '[' const link = parseLink(text, image ? start + 1 : start) if (link === undefined) return undefined if (image) { const src = imageSource(link.destination, ctx.pathImages) const node = src === undefined ? <span key={`image-${String(start)}`} className={ctx.styles.imageAlt}>{link.label}</span> : ( <Image key={`image-${String(start)}`} src={src} alt={link.label} loadingLabel={ctx.imageLabels.loading} failedLabel={ctx.imageLabels.failed} /> ) return { node, next: link.end } } const href = safeHref(link.destination) if (href === '') return { node: <Fragment key={`link-${String(start)}`}>{inline(link.label, { ...ctx, inLink: true })}</Fragment>, next: link.end } const external = href.startsWith('http:') || href.startsWith('https:') return { node: ( <a key={`link-${String(start)}`} href={href} {...external ? { target: '_blank', rel: 'noopener noreferrer' } : {}} > <LinkIconMedium kind=\"url\" href={href} className={ctx.styles.linkIcon} /> {inline(link.label, { ...ctx, inLink: true })} </a> ), next: link.end, } } /** Render a strong, emphasis or strikethrough run. / function tryEmphasis(text: string, start: number, ctx: BlockContext): InlineHit | undefined { const char = text[start] if (char !== '*' && char !== '_' && char !== '~') return undefined const doubled = text[start + 1] === char // A single tilde is ordinary text; only the GFM double tilde marks a deletion. if (char === '~' && !doubled) return undefined const marker = doubled ? char + char : char if (!doubled && (text[start + 1] === undefined || text[start + 1] === ' ')) return undefined const hit = delimit(text, start, marker) if (hit === undefined || hit.body.endsWith(' ') || (doubled && hit.body.trim() === '')) return undefined const children = inline(hit.body, ctx) const key = (doubled ? 'double-' : 'single-') + char + String(start) if (doubled && char === '~') return { node: <del key={key}>{children}</del>, next: hit.end } if (doubled) return { node: <strong key={key}>{children}</strong>, next: hit.end } return { node: <em key={key}>{children}</em>, next: hit.end } } /** Render one inline construct starting at an offset. / function scanInline(text: string, start: number, ctx: BlockContext): InlineHit | undefined { const char = text[start] if (char === '\\\\' && text[start + 1] !== undefined && ESCAPABLE.test(text[start + 1])) return { node: text[start + 1], next: start + 2 } if (char === '`') return tryCode(text, start, ctx) if (char === '!' || char === '[') return tryLink(text, start, ctx) if (char === '*' || char === '_' || char === '~') return tryEmphasis(text, start, ctx) if (char === '\\n' && / {2,}$/.test(text.slice(Math.max(0, start - 2), start))) return { node: <br key={`br-${String(start)}`} />, next: start + 1 } if (char === '<' && ctx.omitHtml) { const tag = SIMPLE_HTML_TAG.exec(text.slice(start)) if (tag !== null) return { node: null, next: start + tag[0].length } } return undefined } /** Render inline Markdown source into React children. / function inline(text: string, ctx: BlockContext): ReactNode[] { const nodes: ReactNode[] = [] let buffer = '' let index = 0 while (index < text.length) { const hit = scanInline(text, index, ctx) if (hit !== undefined) { if (buffer !== '') { nodes.push(buffer) buffer = '' } nodes.push(hit.node) index = hit.next continue } buffer += text[index] index += 1 } if (buffer !== '') nodes.push(buffer) return nodes } /** Drop the paragraph wrappers of a tight list item. / function unwrapTightParagraphs(nodes: ReactNode[], tight: boolean): ReactNode[] { if (!tight) return nodes return nodes.map((node) => { if (isValidElement<{ children?: ReactNode }>(node) && node.type === 'p') return <Fragment key={node.key ?? undefined}>{node.props.children}</Fragment> return node }) } /** Render a fenced code block. / function parseFence(lines: readonly string[], index: number, ctx: BlockContext): BlockHit | undefined { const start = fenceStart(lines[index]) if (start === undefined) return undefined const code: string[] = [] let cursor = index + 1 while (cursor < lines.length && !isFenceClose(lines[cursor], start.marker)) { code.push(lines[cursor]) cursor += 1 } const info = start.info.trim() const lang = /^[\\w-]+/.exec(info)?.[0] return { node: ( <CodeBlock key={`fence-${String(index)}`} code={`${code.join('\\n')}\\n`} lang={lang} streaming={ctx.streaming} copyLabel={ctx.labels.code.copyLabel} copiedLabel={ctx.labels.code.copiedLabel} toolbarLabels={ctx.labels.code.toolbarLabels} /> ), next: Math.min(cursor + 1, lines.length), } } /** Render an ATX heading. / function parseHeading(lines: readonly string[], index: number, ctx: BlockContext): BlockHit | undefined { const heading = headingStart(lines[index]) if (heading === undefined) return undefined return { node: createElement(`h${String(heading.depth)}`, { key: `h-${String(index)}` }, ...inline(heading.text, ctx)), next: index + 1, } } /** Render a thematic break. / function parseThematicBreak(lines: readonly string[], index: number): BlockHit | undefined { if (!THEMATIC_BREAK.test(lines[index])) return undefined return { node: createElement('hr', { key: `hr-${String(index)}` }), next: index + 1, } } /** Render a blockquote and its nested blocks. / function parseBlockquote(lines: readonly string[], index: number, ctx: BlockContext): BlockHit | undefined { if (indentOf(lines[index]) > 3 || lines[index][indentOf(lines[index])] !== '>') return undefined const quoted: string[] = [] let cursor = index while (cursor < lines.length && indentOf(lines[cursor]) <= 3 && lines[cursor][indentOf(lines[cursor])] === '>') { quoted.push(lines[cursor].slice(indentOf(lines[cursor]) + 1).replace(/^ /, '')) cursor += 1 } return { node: createElement( 'blockquote', { key: `quote-${String(index)}` }, ...parseBlocks(quoted, { ...ctx, inBlockquote: true }), ), next: cursor, } } /** Render a table with its header, body and per-column alignment. / function parseTable(lines: readonly string[], index: number, ctx: BlockContext): BlockHit | undefined { if (!isTableStart(lines, index)) return undefined const header = tableCells(lines[index]) const alignments = tableCells(lines[index + 1]).map(cell => delimiterAlign(cell) ?? 'left') const body: string[][] = [] let cursor = index + 2 while (cursor < lines.length && !isBlank(lines[cursor]) && lines[cursor].includes('|')) { body.push(tableCells(lines[cursor])) cursor += 1 } const columns = Math.max(header.length, alignments.length) const wide = columns >= 4 && !ctx.inBlockquote const renderRow = (cells: readonly string[], tag: 'th' | 'td', key: string): ReactNode => ( <tr key={key}> {Array.from({ length: columns }, (_, cellIndex) => createElement(tag, { key: cellIndex, style: { textAlign: alignments[cellIndex] ?? 'left' } as CSSProperties, }, ...inline(cells[cellIndex] ?? '', ctx)))} </tr> ) return { node: ( <div key={`table-${String(index)}`} className={cx(ctx.styles.tableScroll, wide ? 'md-table-wide' : ctx.styles.tableFill)} tabIndex={wide ? 0 : undefined} > <table> <thead>{renderRow(header, 'th', 'head')}</thead> {body.length > 0 && <tbody>{body.map((row, rowIndex) => renderRow(row, 'td', `row-${String(rowIndex)}`))}</tbody>} </table> </div> ), next: cursor, } } /** Collect one list item's dedented source lines, up to the next sibling item. / function collectItemLines(lines: readonly string[], start: number, contentIndent: number, firstLine: string): { readonly lines: string[], readonly next: number } { const itemLines = [firstLine] let cursor = start + 1 while (cursor < lines.length) { const next = lines[cursor] if (!isBlank(next) && indentOf(next) >= contentIndent) { itemLines.push(next.slice(contentIndent)) cursor += 1 continue } if (!isBlank(next)) break let lookahead = cursor + 1 while (lookahead < lines.length && isBlank(lines[lookahead])) lookahead += 1 if (lookahead >= lines.length || indentOf(lines[lookahead]) < contentIndent) { cursor = lookahead break } itemLines.push('') cursor += 1 } return { lines: itemLines, next: cursor } } /** Render a list and its items, keeping nested blocks inside each item. / function parseList(lines: readonly string[], index: number, ctx: BlockContext): BlockHit | undefined { const first = listStart(lines[index]) if (first === undefined) return undefined const items: string[][] = [] let cursor = index while (cursor < lines.length) { const marker = listStart(lines[cursor]) if (marker === undefined || marker.ordered !== first.ordered) break const item = collectItemLines(lines, cursor, marker.contentIndent, marker.rest) items.push(item.lines) cursor = item.next } const children = items.map((itemLines, itemIndex) => createElement( 'li', { key: `li-${String(itemIndex)}` }, ...unwrapTightParagraphs(parseBlocks(itemLines, ctx), !itemLines.some(isBlank)), )) const listProps: Record<string, unknown> = { key: `list-${String(index)}` } if (first.ordered && first.start !== 1) listProps.start = first.start return { node: createElement(first.ordered ? 'ol' : 'ul', listProps, ...children), next: cursor, } } /** Render a paragraph and its inline content. / function parseParagraph(lines: readonly string[], index: number, ctx: BlockContext): BlockHit { const paragraph: string[] = [lines[index]] let cursor = index + 1 while (cursor < lines.length && !isBlank(lines[cursor]) && !startsBlock(lines[cursor])) { paragraph.push(lines[cursor]) cursor += 1 } return { node: createElement('p', { key: `p-${String(index)}` }, ...inline(paragraph.join('\\n').trimEnd(), ctx)), next: cursor, } } /** Render a run of source lines into block-level React children. / function parseBlocks(lines: readonly string[], ctx: BlockContext): ReactNode[] { const nodes: ReactNode[] = [] let index = 0 while (index < lines.length) { if (isBlank(lines[index])) { index += 1 continue } const hit = parseFence(lines, index, ctx) ?? parseHeading(lines, index, ctx) ?? parseThematicBreak(lines, index) ?? parseBlockquote(lines, index, ctx) ?? parseTable(lines, index, ctx) ?? parseList(lines, index, ctx) ?? parseParagraph(lines, index, ctx) nodes.push(hit.node) index = hit.next } return nodes } /** Render untrusted assistant-authored Markdown as semantic React elements. the optional file/image vocabularies."
         }
       ]
     },
@@ -1416,44 +912,12 @@
   ],
   "forked": [
     "AnchoredPositionOptions",
-    "AnimatedRows",
-    "AnimatedRowsProps",
-    "Button",
-    "ButtonVariant",
-    "Checkbox",
     "CodeBlock",
     "CodeBlockProps",
-    "CodeFileType",
-    "DEFAULT_DIFF_MAX_LINES",
     "DEFAULT_TERMINAL_MAX_LINES",
-    "DiffBlock",
-    "DiffBlockLabels",
-    "DiffBlockProps",
-    "DiffHunk",
-    "DisclosureRow",
-    "DisclosureRowProps",
-    "FileType",
-    "FileTypeIcon",
-    "FileTypeIconProps",
-    "FileTypeKind",
-    "FileTypeProjectContext",
-    "HoverCard",
-    "HoverCardGroup",
-    "InlineEditor",
-    "Input",
-    "JsonBlock",
-    "JsonTree",
-    "JsonTreeLabels",
-    "JsonTreeProps",
     "MENU_TRANSITION_MS",
-    "MarkdownCodeLabels",
-    "MarkdownFileMentions",
-    "MarkdownLabels",
-    "MarkdownPathImages",
-    "MarkdownText",
     "Menu",
     "MenuEntry",
-    "MenuGroup",
     "MenuItem",
     "MenuItemButton",
     "MenuItemButtonProps",
@@ -1461,39 +925,12 @@
     "MenuSeparator",
     "MenuSurface",
     "MenuSurfaceProps",
-    "Modal",
-    "PathLabel",
-    "Pill",
-    "SegmentedControl",
-    "SegmentedControlOption",
-    "SegmentedTab",
-    "SegmentedTabs",
-    "ShortcutKeys",
-    "StateDot",
-    "StateDotState",
-    "Switch",
-    "Tag",
-    "TagTone",
-    "TextShimmer",
-    "TextShimmerProps",
     "Toast",
-    "Tooltip",
-    "TooltipSide",
     "ZoomControls",
-    "classifyFileType",
-    "closeTopModal",
-    "diffTotals",
-    "fileExtension",
-    "focusWithoutRing",
-    "isBehindModal",
-    "modalSelector",
-    "observeComposition",
-    "observeStickyMenuGroups",
-    "useAnchoredPosition",
-    "useModalLayer"
+    "useAnchoredPosition"
   ],
   "upstream": {
-    "values": 265,
-    "types": 64
+    "values": 301,
+    "types": 87
   }
 }

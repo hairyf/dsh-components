@@ -1,11 +1,9 @@
 import type * as React from 'react'
 import type { MenuEntry } from '../primitives/menu'
-import { IconChevronDownOutlineRegular, IconPlusOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+import { Button, IconChevronDownOutlineRegular, IconPlusOutlineRegular, Tooltip } from '@deepseek-ai/dsh-client-ui-primitives'
 import { useState } from 'react'
 import { cx, useStyle } from '../../lib/style'
-import { Button, useButtonStyle } from '../primitives/button'
 import { Menu } from '../primitives/menu'
-import { Tooltip } from '../primitives/tooltip'
 
 /** Accessible name of the toolbar. */
 const TOOLBAR_LABEL = 'Zoom'
@@ -131,7 +129,6 @@ function steppedZoom(value: number, direction: -1 | 1, min: number, max: number,
  */
 export function ZoomControls(props: ZoomControlsProps): React.JSX.Element {
   const { value, onChange, min = 0.25, max = 4, step = 0.25, presets = DEFAULT_PRESETS, visible = false, zoomInLabel, zoomOutLabel, resetLabel, className } = props
-  useButtonStyle()
   const s = useStyle('zoom-controls', CSS)
   const [open, setOpen] = useState(false)
   const percent = `${String(Math.round(value * 100))}%`

@@ -1,8 +1,7 @@
 import type * as React from 'react'
-import { IconCloseOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+import { IconCloseOutlineRegular, Modal } from '@deepseek-ai/dsh-client-ui-primitives'
 import { useRef } from 'react'
 import { useStyle } from '../../lib/style'
-import { Modal, useModalStyle } from '../primitives/modal'
 
 /**
  * Recovered verbatim from @deepseek-ai/dsh-client-ui-shortcuts / Reference.module.css.
@@ -586,7 +585,6 @@ export function SearchDialog(props: SearchDialogProps): React.JSX.Element {
   } = props
   // Modal.module.css precedes Reference.module.css: `.dialog` overrides the
   // shared card's gap, width and padding at equal specificity.
-  useModalStyle()
   const s = useStyle('search-dialog', CSS)
   const input = useRef<HTMLInputElement>(null)
   const close = (): void => {

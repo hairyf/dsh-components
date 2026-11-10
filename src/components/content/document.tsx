@@ -1,9 +1,8 @@
+import type { MarkdownLabels, MarkdownPathImages } from '@deepseek-ai/dsh-client-ui-primitives'
 import type * as React from 'react'
-import type { MarkdownLabels, MarkdownPathImages } from './markdown-text'
-import { Button, StateDot } from '@deepseek-ai/dsh-client-ui-primitives'
+import { Button, MarkdownText, StateDot } from '@deepseek-ai/dsh-client-ui-primitives'
 import { useMemo } from 'react'
 import { useStyle } from '../../lib/style'
-import { MarkdownText } from './markdown-text'
 
 /* The embedded sheet below is the official stylesheet, copied verbatim. */
 const CSS = `.section {

@@ -26,6 +26,13 @@ const MANIFEST_FILE = 'docs/reference/extracted/manifest.json'
 const SLOTS_FILE = 'docs/reference/slots.json'
 const STYLES_FILE = 'src/theme/styles.ts'
 
+// component-map.json resolves each component to its real sheet, including the
+// files whose header names the sheet without the package.
+const componentMap = existsSync(join(ROOT, 'docs/reference/component-map.json'))
+  ? readJson('docs/reference/component-map.json')
+  : { components: [] }
+const sheetsByFile = new Map(componentMap.components.map(entry => [entry.file, entry.sheets]))
+
 /** Stop with a message. */
 function fail(message) {
   console.error(`error: ${message}`)
@@ -116,6 +123,54 @@ function sheetName(source, packagesByFullName) {
     : reference
 }
 
+/**
+ * The official surface the library re-exports as-is.
+ *
+ * `official.ts` is generated from the primitives bundle, so reading it is the
+ * same as reading upstream, and it is the only place that knows which names this
+ * library shadows. An agent asking "is there an official IconX" is answered from
+ * here, not from the component tree.
+ * @returns every value and type the package exports from the DSH primitives.
+ */
+function readOfficialSurface() {
+  const rel = 'src/components/official.ts'
+  if (!existsSync(join(ROOT, rel)))
+    fail(`missing ${rel}; run pnpm gen`)
+  const source = readText(rel)
+  const values = []
+  const types = []
+  for (const line of source.matchAll(/^export (type )?\{ (.*) \} from '([^']+)'/gm)) {
+    const names = line[2].split(',').map(name => name.trim()).filter(Boolean)
+    for (const name of names) {
+      const entry = {
+        name,
+        kind: name.startsWith('Icon')
+          ? 'icon'
+          : 'utility',
+        from: 'dsh-client-ui-primitives',
+      }
+      if (line[1])
+        types.push(entry)
+      else
+        values.push(entry)
+    }
+  }
+  const forked = [
+    ...source.matchAll(/^ {2}'([^']+)',$/gm),
+  ].map(match => match[1])
+  return {
+    values,
+    types,
+    forked,
+    counts: {
+      values: values.length,
+      types: types.length,
+      icons: values.filter(entry => entry.kind === 'icon').length,
+      forked: forked.length,
+    },
+  }
+}
+
 /** Read the component tree, one entry per .tsx file. */
 function readComponents(packagesByFullName) {
   if (!existsSync(COMPONENTS_DIR))
@@ -138,12 +193,17 @@ function readComponents(packagesByFullName) {
       const source = readText(rel)
       const base = basename(file, '.tsx')
       const name = componentName(base, source)
+      const mapped = sheetsByFile.get(rel) ?? []
+      const reasons = mapped
+        .filter(sheet => sheet.package !== null && sheet.sheet !== null)
+        .map(sheet => `${sheet.package}/${sheet.sheet}`)
       components.push({
         name,
         group,
         file: rel,
         props: propsType(name, source),
-        sheet: sheetName(source, packagesByFullName),
+        sheet: reasons[0] ?? sheetName(source, packagesByFullName),
+        sheets: reasons,
       })
     }
   }
@@ -221,12 +281,14 @@ const index = {
   packages: readPackages(manifest),
   slots: readSlots(),
   tokens: readTokens(),
+  official: readOfficialSurface(),
 }
 
 const text = `${JSON.stringify(index, null, 2)}\n`
 writeFileSync(INDEX_FILE, text)
 console.log(
   `wrote skills/dsh-components/index.json: ${index.components.length} components, `
+  + `${index.official.counts.values} official values (${index.official.counts.icons} icons), `
   + `${index.packages.length} packages, ${index.slots.length} slots, ${index.tokens.total} tokens, `
   + `${(Buffer.byteLength(text) / 1024).toFixed(1)} KiB`,
 )

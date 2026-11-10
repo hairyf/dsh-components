@@ -1,7 +1,6 @@
 import type * as React from 'react'
-import { fileSizeText, IconCloseFillRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+import { fileExtension, fileSizeText, FileTypeIcon, IconCloseFillRegular } from '@deepseek-ai/dsh-client-ui-primitives'
 import { cx, useStyle } from '../../lib/style'
-import { fileExtension, FileTypeIcon } from '../primitives/file-type-icon'
 
 const CSS = `/* @deepseek-ai/dsh-client-ui-attachment / FileCard.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
 .card {

@@ -1,9 +1,9 @@
 // @vitest-environment happy-dom
 import type { Root } from 'react-dom/client'
+import { Modal } from '@deepseek-ai/dsh-client-ui-primitives'
 import { act, createElement } from 'react'
 import { createRoot } from 'react-dom/client'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { Modal } from '../../src/components/primitives/modal'
 
 declare global {
   // eslint-disable-next-line vars-on-top

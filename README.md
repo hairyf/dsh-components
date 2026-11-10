@@ -122,13 +122,19 @@ import { IconChecklistOutlineRegular, IconChevronDownOutlineRegular } from 'dsh-
 
 | 分组 | 组件 |
 | --- | --- |
-| `primitives` | Button, IconButton, Input, Textarea, Field, Form, Checkbox, Switch, Tag, Pill, Chip, StateDot, Spinner, Text, MaskedText, Avatar, DatePicker, TimePicker, Tooltip, HoverCardGroup, Modal, Toast, MenuItemButton, MenuGroup, SegmentedControl, SegmentedTabs, DisclosureRow, AnimatedRows, TextShimmer, ShortcutKeys, InlineEditor, PathLabel, FileTypeIcon |
+| `primitives` | Avatar, Chip, DatePicker, Field, Form, IconButton, MaskedText, MenuItemButton, Spinner, Text, Textarea, TimePicker, Toast |
 | `layout` | Surface, Bar, Stack, ListRow, Tree, DescriptionList, Checklist, Meter, Table, Toolbar, Carousel, FileChangeCard |
 | `settings` | SettingsRow, SettingsGroup, Stepper, OptionGroup, Select, SplitButton |
 | `feedback` | ConfirmPanel, FormDialog, SearchDialog, ActionCard, DropOverlay |
 | `media` | Image, ImageTile, Lightbox, FileCard |
-| `content` | MarkdownText, CodeBlock, DiffBlock, SplitDiff, JsonTree, JsonBlock, Terminal, Document |
+| `content` | CodeToolbar, SplitDiff, Terminal, Document |
 | `viewer` | ZoomControls, ZoomViewport, PreviewFrame |
+
+这 48 个是产品里有、但官方包没有导出的部件。官方**已经导出**的（Button、Input、Switch、Tag、MarkdownText、JsonTree 等以及全部 194 个图标）直接透传，不重复实现；共 301 个值、87 个类型：
+
+```sh
+node skills/dsh-components/scripts/list_official.mjs chevron
+```
 
 ## 📚 API 参考
 

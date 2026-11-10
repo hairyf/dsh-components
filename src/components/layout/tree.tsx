@@ -1,7 +1,6 @@
 import type * as React from 'react'
-import { IconFolderCloseRegular, IconFolderOpenRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+import { FileTypeIcon, IconFolderCloseRegular, IconFolderOpenRegular } from '@deepseek-ai/dsh-client-ui-primitives'
 import { cx, useStyle } from '../../lib/style'
-import { FileTypeIcon } from '../primitives/file-type-icon'
 
 /**
  * Recovered from @deepseek-ai/dsh-client-ui-sidebar-files / FileTree.module.css:

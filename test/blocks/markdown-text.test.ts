@@ -1,8 +1,8 @@
-import type { MarkdownLabels } from '../../src/components/content/markdown-text'
+import type { MarkdownLabels } from '@deepseek-ai/dsh-client-ui-primitives'
+import { MarkdownText } from '@deepseek-ai/dsh-client-ui-primitives'
 import { createElement } from 'react'
 import { renderToStaticMarkup, renderToString } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
-import { MarkdownText } from '../../src/components/content/markdown-text'
 
 const labels: MarkdownLabels = {
   code: {
@@ -13,8 +13,8 @@ const labels: MarkdownLabels = {
   footnotes: '脚注',
 }
 
-function render(text: string, incremental = false): string {
-  return renderToStaticMarkup(createElement(MarkdownText, { text, labels, incremental }))
+function render(text: string, streaming = false): string {
+  return renderToStaticMarkup(createElement(MarkdownText, { text, labels, streaming }))
 }
 
 describe('markdownText headings', () => {
@@ -41,7 +41,7 @@ describe('markdownText lists', () => {
 
   it('keeps nested lists inside their parent item', () => {
     const html = render('- outer\n  - inner')
-    expect(html).toContain('<li>outer<ul><li>inner</li></ul></li>')
+    expect(html).toMatch(/<li>outer\s*<ul><li>inner<\/li><\/ul>\s*<\/li>/)
   })
 })
 
@@ -114,7 +114,7 @@ describe('markdownText inline content', () => {
 
   it('renders blockquotes and thematic breaks', () => {
     const html = render('> quoted\n\n---')
-    expect(html).toContain('<blockquote><p>quoted</p></blockquote>')
+    expect(html).toMatch(/<blockquote>\s*<p>quoted<\/p>\s*<\/blockquote>/)
     expect(html).toContain('<hr/>')
   })
 

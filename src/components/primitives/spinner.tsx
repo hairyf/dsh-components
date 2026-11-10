@@ -1,6 +1,6 @@
 import type * as React from 'react'
+import { StateDot } from '@deepseek-ai/dsh-client-ui-primitives'
 import { cx, useStyle } from '../../lib/style'
-import { StateDot } from './state-dot'
 
 const CSS = `/* recovered verbatim from the official loading sheet */
 .loading {

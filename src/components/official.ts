@@ -9,105 +9,83 @@
  * The Icon* artwork is not forked and passes through unchanged.
  */
 
-export { BrandWordmark, classifyLinkPath, CODE_HIGHLIGHT_EXTENSIONS, CommandText, ConnectionIndicator, DEFAULT_READ_MAX_LINES } from '@deepseek-ai/dsh-client-ui-primitives'
-export { DEFAULT_SEARCH_MAX_LINES, DetailDocument, detailDocumentState, DOCUMENT_ZOOM, DraggableImage, extractMarkdownPlainText } from '@deepseek-ai/dsh-client-ui-primitives'
-export { fileSizeText, FISH_LOGO_PATH, FISH_LOGO_VIEWBOX, FishLogo, formatQuoteText, GuideArtworkBrowser } from '@deepseek-ai/dsh-client-ui-primitives'
-export { GuideArtworkFiles, ICON_MEDIUM_STROKE, ICON_REGULAR_STROKE, ICON_SYMBOLS, IconAgentPresetOutlineMedium, IconAgentPresetOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconAlarmClockOutlineMedium, IconAlarmClockOutlineRegular, IconApiOutlineMedium, IconApiOutlineRegular, IconAppsAddOutlineMedium, IconAppsAddOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconArchiveCheckOutlineMedium, IconArchiveCheckOutlineRegular, IconArchiveOffOutlineMedium, IconArchiveOffOutlineRegular, IconArchiveOutlineMedium, IconArchiveOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconBranchOutlineMedium, IconBranchOutlineRegular, IconBrowseOutlineMedium, IconBrowseOutlineRegular, IconCheckCircleFillMedium, IconCheckCircleFillRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconCheckCircleOutlineMedium, IconCheckCircleOutlineRegular, IconChecklistOutlineMedium, IconChecklistOutlineRegular, IconCheckOutlineMedium, IconCheckOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconChevronDownOutlineMedium, IconChevronDownOutlineRegular, IconChevronLeftOutlineMedium, IconChevronLeftOutlineRegular, IconChevronRightOutlineMedium, IconChevronRightOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconChevronsUpDownOutlineMedium, IconChevronsUpDownOutlineRegular, IconChevronUpOutlineMedium, IconChevronUpOutlineRegular, IconClockOutlineMedium, IconClockOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconCloseCircleFillMedium, IconCloseCircleFillRegular, IconCloseFillMedium, IconCloseFillRegular, IconCloseOutlineMedium, IconCloseOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconCodeOutlineMedium, IconCodeOutlineRegular, IconCompactOutlineMedium, IconCompactOutlineRegular, IconCompareSplitOutlineMedium, IconCompareSplitOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconContextInjectionOutlineMedium, IconContextInjectionOutlineRegular, IconCopyOutlineMedium, IconCopyOutlineRegular, IconCordisPluginOutlineMedium, IconCordisPluginOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconDarkOutlineMedium, IconDarkOutlineRegular, IconDatabaseOutlineMedium, IconDatabaseOutlineRegular, IconDataOutlineMedium, IconDataOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconDeliverDocMedium, IconDeliverDocRegular, IconDislikeFillMedium, IconDislikeFillRegular, IconDislikeOutlineMedium, IconDislikeOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconDownloadOutlineMedium, IconDownloadOutlineRegular, IconDragHandleOutlineMedium, IconDragHandleOutlineRegular, IconEditOutlineMedium, IconEditOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconEllipsisOutlineMedium, IconEllipsisOutlineRegular, IconEnhanceOutlineMedium, IconEnhanceOutlineRegular, IconFlatListOutlineMedium, IconFlatListOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconFolderCloseMedium, IconFolderCloseRegular, IconFolderOpenMedium, IconFolderOpenOutlineMedium, IconFolderOpenOutlineRegular, IconFolderOpenRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconFollowsystemOutlineMedium, IconFollowsystemOutlineRegular, IconFullscreenOutlineMedium, IconFullscreenOutlineRegular, IconGaugeOutlineMedium, IconGaugeOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconGlobeOutlineMedium, IconGlobeOutlineRegular, IconGoalOutlineMedium, IconGoalOutlineRegular, IconInfoOutlineMedium, IconInfoOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconInspectOutlineMedium, IconInspectOutlineRegular, IconLightOutlineMedium, IconLightOutlineRegular, IconLikeFillMedium, IconLikeFillRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconLikeOutlineMedium, IconLikeOutlineRegular, IconLinkOutlineMedium, IconLinkOutlineRegular, IconListPenOutlineMedium, IconListPenOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconLoadingOutlineMedium, IconLoadingOutlineRegular, IconMicrophoneOutlineMedium, IconMicrophoneOutlineRegular, IconNewChatOutlineMedium, IconNewChatOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconNowrapFillMedium, IconNowrapFillRegular, IconPanelLeftOutlineMedium, IconPanelLeftOutlineRegular, IconPaperclipOutlineMedium, IconPaperclipOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconPaperPlaneOutlineMedium, IconPaperPlaneOutlineRegular, IconPauseOutlineMedium, IconPauseOutlineRegular, IconPersonalizationOutlineMedium, IconPersonalizationOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconPinFillMedium, IconPinFillRegular, IconPinOutlineMedium, IconPinOutlineRegular, IconPlanOutlineMedium, IconPlanOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconPlayOutlineMedium, IconPlayOutlineRegular, IconPluginPinwheelOutlineMedium, IconPluginPinwheelOutlineRegular, IconPlusOutlineMedium, IconPlusOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconProjectAddOutlineMedium, IconProjectAddOutlineRegular, IconQuestionOutlineMedium, IconQuestionOutlineRegular, IconQueueOutlineMedium, IconQueueOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconRefreshOutlineMedium, IconRefreshOutlineRegular, IconRightUpOutlineMedium, IconRightUpOutlineRegular, IconSaveOutlineMedium, IconSaveOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconSearchOutlineMedium, IconSearchOutlineRegular, IconSendOutlineMedium, IconSendOutlineRegular, IconSettingsOutlineMedium, IconSettingsOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconShareOutlineMedium, IconShareOutlineRegular, IconShieldOutlineMedium, IconShieldOutlineRegular, IconSkillOutlineMedium, IconSkillOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconSlidersTwoOutlineMedium, IconSlidersTwoOutlineRegular, IconSparkleMedium, IconSparkleRegular, IconStopFillMedium, IconStopFillRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconThinkOutlineMedium, IconThinkOutlineRegular, IconTrashOutlineMedium, IconTrashOutlineRegular, IconTreeCornerMedium, IconTreeCornerRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconTriangleRightFillMedium, IconTriangleRightFillRegular, IconUnarchiveOutlineMedium, IconUnarchiveOutlineRegular, IconUserOutlineMedium, IconUserOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconUsersOutlineMedium, IconUsersOutlineRegular, IconWarningOutlineMedium, IconWarningOutlineRegular, IconWarningTriangleOutlineMedium, IconWarningTriangleOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { IconWorkspaceTreeOutlineMedium, IconWorkspaceTreeOutlineRegular, IconWrapFillMedium, IconWrapFillRegular, IconWrapLinesOutlineMedium, IconWrapLinesOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { ImageLightbox, isDarwinDesktop, isMobileDevice, languageForPath, LinkIconMedium, LinkIconRegular } from '@deepseek-ai/dsh-client-ui-primitives'
-export { MarkdownDelegateProvider, PermissionIconAutoReviewMedium, PermissionIconAutoReviewRegular, PermissionIconFullAccessMedium, PermissionIconFullAccessRegular, PermissionIconReadOnlyMedium } from '@deepseek-ai/dsh-client-ui-primitives'
-export { PermissionIconReadOnlyRegular, PermissionIconWorkspaceWriteMedium, PermissionIconWorkspaceWriteRegular, PluginArtworkDefault, PluginArtworkLoop, PluginArtworkSearch } from '@deepseek-ai/dsh-client-ui-primitives'
-export { PluginArtworkSubagent, PluginArtworkTerminal, pointerModality, QuotePreview, rankByName, ReadBlock } from '@deepseek-ai/dsh-client-ui-primitives'
-export { ReferenceChip, ReferenceIconMedium, ReferenceIconRegular, relativeTime, RiskConfirmation, SearchBlock } from '@deepseek-ai/dsh-client-ui-primitives'
-export { SettingsForm, SettingsFormModel, settingsNumberField, SettingsSecretField, settingsTextField, SettingsValueField } from '@deepseek-ai/dsh-client-ui-primitives'
-export { SHIELD_OUTLINE_PATH, TerminalBlock, useAnchoredMaxHeight, useClipboardCopy, useCodeHighlighter, useDetailDocumentLabels } from '@deepseek-ai/dsh-client-ui-primitives'
-export { useDismissOnOutsidePointer, useMarkdownDelegate, UserMessageBubble, useRowDragPreview, UserTextRun, WebBlock } from '@deepseek-ai/dsh-client-ui-primitives'
+export { AnimatedRows, BrandWordmark, Button, Checkbox, classifyFileType, classifyLinkPath } from '@deepseek-ai/dsh-client-ui-primitives'
+export { closeTopModal, CODE_HIGHLIGHT_EXTENSIONS, CommandText, ConnectionIndicator, DEFAULT_DIFF_MAX_LINES, DEFAULT_READ_MAX_LINES } from '@deepseek-ai/dsh-client-ui-primitives'
+export { DEFAULT_SEARCH_MAX_LINES, DetailDocument, detailDocumentState, DiffBlock, diffTotals, DisclosureRow } from '@deepseek-ai/dsh-client-ui-primitives'
+export { DOCUMENT_ZOOM, DraggableImage, extractMarkdownPlainText, fileExtension, fileSizeText, FileTypeIcon } from '@deepseek-ai/dsh-client-ui-primitives'
+export { FISH_LOGO_PATH, FISH_LOGO_VIEWBOX, FishLogo, focusWithoutRing, formatQuoteText, GuideArtworkBrowser } from '@deepseek-ai/dsh-client-ui-primitives'
+export { GuideArtworkFiles, HoverCard, HoverCardGroup, ICON_MEDIUM_STROKE, ICON_REGULAR_STROKE, ICON_SYMBOLS } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconAgentPresetOutlineMedium, IconAgentPresetOutlineRegular, IconAlarmClockOutlineMedium, IconAlarmClockOutlineRegular, IconApiOutlineMedium, IconApiOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconAppsAddOutlineMedium, IconAppsAddOutlineRegular, IconArchiveCheckOutlineMedium, IconArchiveCheckOutlineRegular, IconArchiveOffOutlineMedium, IconArchiveOffOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconArchiveOutlineMedium, IconArchiveOutlineRegular, IconBranchOutlineMedium, IconBranchOutlineRegular, IconBrowseOutlineMedium, IconBrowseOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconCheckCircleFillMedium, IconCheckCircleFillRegular, IconCheckCircleOutlineMedium, IconCheckCircleOutlineRegular, IconChecklistOutlineMedium, IconChecklistOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconCheckOutlineMedium, IconCheckOutlineRegular, IconChevronDownOutlineMedium, IconChevronDownOutlineRegular, IconChevronLeftOutlineMedium, IconChevronLeftOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconChevronRightOutlineMedium, IconChevronRightOutlineRegular, IconChevronsUpDownOutlineMedium, IconChevronsUpDownOutlineRegular, IconChevronUpOutlineMedium, IconChevronUpOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconClockOutlineMedium, IconClockOutlineRegular, IconCloseCircleFillMedium, IconCloseCircleFillRegular, IconCloseFillMedium, IconCloseFillRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconCloseOutlineMedium, IconCloseOutlineRegular, IconCodeOutlineMedium, IconCodeOutlineRegular, IconCompactOutlineMedium, IconCompactOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconCompareSplitOutlineMedium, IconCompareSplitOutlineRegular, IconContextInjectionOutlineMedium, IconContextInjectionOutlineRegular, IconCopyOutlineMedium, IconCopyOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconCordisPluginOutlineMedium, IconCordisPluginOutlineRegular, IconDarkOutlineMedium, IconDarkOutlineRegular, IconDatabaseOutlineMedium, IconDatabaseOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconDataOutlineMedium, IconDataOutlineRegular, IconDeliverDocMedium, IconDeliverDocRegular, IconDislikeFillMedium, IconDislikeFillRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconDislikeOutlineMedium, IconDislikeOutlineRegular, IconDownloadOutlineMedium, IconDownloadOutlineRegular, IconDragHandleOutlineMedium, IconDragHandleOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconEditOutlineMedium, IconEditOutlineRegular, IconEllipsisOutlineMedium, IconEllipsisOutlineRegular, IconEnhanceOutlineMedium, IconEnhanceOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconFlatListOutlineMedium, IconFlatListOutlineRegular, IconFolderCloseMedium, IconFolderCloseRegular, IconFolderOpenMedium, IconFolderOpenOutlineMedium } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconFolderOpenOutlineRegular, IconFolderOpenRegular, IconFollowsystemOutlineMedium, IconFollowsystemOutlineRegular, IconFullscreenOutlineMedium, IconFullscreenOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconGaugeOutlineMedium, IconGaugeOutlineRegular, IconGlobeOutlineMedium, IconGlobeOutlineRegular, IconGoalOutlineMedium, IconGoalOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconInfoOutlineMedium, IconInfoOutlineRegular, IconInspectOutlineMedium, IconInspectOutlineRegular, IconLightOutlineMedium, IconLightOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconLikeFillMedium, IconLikeFillRegular, IconLikeOutlineMedium, IconLikeOutlineRegular, IconLinkOutlineMedium, IconLinkOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconListPenOutlineMedium, IconListPenOutlineRegular, IconLoadingOutlineMedium, IconLoadingOutlineRegular, IconMicrophoneOutlineMedium, IconMicrophoneOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconNewChatOutlineMedium, IconNewChatOutlineRegular, IconNowrapFillMedium, IconNowrapFillRegular, IconPanelLeftOutlineMedium, IconPanelLeftOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconPaperclipOutlineMedium, IconPaperclipOutlineRegular, IconPaperPlaneOutlineMedium, IconPaperPlaneOutlineRegular, IconPauseOutlineMedium, IconPauseOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconPersonalizationOutlineMedium, IconPersonalizationOutlineRegular, IconPinFillMedium, IconPinFillRegular, IconPinOutlineMedium, IconPinOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconPlanOutlineMedium, IconPlanOutlineRegular, IconPlayOutlineMedium, IconPlayOutlineRegular, IconPluginPinwheelOutlineMedium, IconPluginPinwheelOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconPlusOutlineMedium, IconPlusOutlineRegular, IconProjectAddOutlineMedium, IconProjectAddOutlineRegular, IconQuestionOutlineMedium, IconQuestionOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconQueueOutlineMedium, IconQueueOutlineRegular, IconRefreshOutlineMedium, IconRefreshOutlineRegular, IconRightUpOutlineMedium, IconRightUpOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconSaveOutlineMedium, IconSaveOutlineRegular, IconSearchOutlineMedium, IconSearchOutlineRegular, IconSendOutlineMedium, IconSendOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconSettingsOutlineMedium, IconSettingsOutlineRegular, IconShareOutlineMedium, IconShareOutlineRegular, IconShieldOutlineMedium, IconShieldOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconSkillOutlineMedium, IconSkillOutlineRegular, IconSlidersTwoOutlineMedium, IconSlidersTwoOutlineRegular, IconSparkleMedium, IconSparkleRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconStopFillMedium, IconStopFillRegular, IconThinkOutlineMedium, IconThinkOutlineRegular, IconTrashOutlineMedium, IconTrashOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconTreeCornerMedium, IconTreeCornerRegular, IconTriangleRightFillMedium, IconTriangleRightFillRegular, IconUnarchiveOutlineMedium, IconUnarchiveOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconUserOutlineMedium, IconUserOutlineRegular, IconUsersOutlineMedium, IconUsersOutlineRegular, IconWarningOutlineMedium, IconWarningOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconWarningTriangleOutlineMedium, IconWarningTriangleOutlineRegular, IconWorkspaceTreeOutlineMedium, IconWorkspaceTreeOutlineRegular, IconWrapFillMedium, IconWrapFillRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { IconWrapLinesOutlineMedium, IconWrapLinesOutlineRegular, ImageLightbox, InlineEditor, Input, isBehindModal } from '@deepseek-ai/dsh-client-ui-primitives'
+export { isDarwinDesktop, isMobileDevice, JsonBlock, JsonTree, languageForPath, LinkIconMedium } from '@deepseek-ai/dsh-client-ui-primitives'
+export { LinkIconRegular, MarkdownDelegateProvider, MarkdownText, MenuGroup, Modal, modalSelector } from '@deepseek-ai/dsh-client-ui-primitives'
+export { observeComposition, observeStickyMenuGroups, PathLabel, PermissionIconAutoReviewMedium, PermissionIconAutoReviewRegular, PermissionIconFullAccessMedium } from '@deepseek-ai/dsh-client-ui-primitives'
+export { PermissionIconFullAccessRegular, PermissionIconReadOnlyMedium, PermissionIconReadOnlyRegular, PermissionIconWorkspaceWriteMedium, PermissionIconWorkspaceWriteRegular, Pill } from '@deepseek-ai/dsh-client-ui-primitives'
+export { PluginArtworkDefault, PluginArtworkLoop, PluginArtworkSearch, PluginArtworkSubagent, PluginArtworkTerminal, pointerModality } from '@deepseek-ai/dsh-client-ui-primitives'
+export { QuotePreview, rankByName, ReadBlock, ReferenceChip, ReferenceIconMedium, ReferenceIconRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+export { relativeTime, RiskConfirmation, SearchBlock, SegmentedControl, SegmentedTabs, SettingsForm } from '@deepseek-ai/dsh-client-ui-primitives'
+export { SettingsFormModel, settingsNumberField, SettingsSecretField, settingsTextField, SettingsValueField, SHIELD_OUTLINE_PATH } from '@deepseek-ai/dsh-client-ui-primitives'
+export { ShortcutKeys, StateDot, Switch, Tag, TerminalBlock, TextShimmer } from '@deepseek-ai/dsh-client-ui-primitives'
+export { Tooltip, useAnchoredMaxHeight, useClipboardCopy, useCodeHighlighter, useDetailDocumentLabels, useDismissOnOutsidePointer } from '@deepseek-ai/dsh-client-ui-primitives'
+export { useMarkdownDelegate, useModalLayer, UserMessageBubble, useRowDragPreview, UserTextRun, WebBlock } from '@deepseek-ai/dsh-client-ui-primitives'
 export { writeClipboard } from '@deepseek-ai/dsh-client-ui-primitives'
 
-export type { BrandWordmarkProps, ClipboardCopyState, CodeHighlighter, CodeToolbarLabels, CommandTextProps, ConnectionIndicatorState } from '@deepseek-ai/dsh-client-ui-primitives'
-export type { DetailDocumentCopy, DetailDocumentLabels, DetailDocumentRead, DetailDocumentState, DocumentZoomLabels, DraggableImageProps } from '@deepseek-ai/dsh-client-ui-primitives'
-export type { FileDragActions, FileDragSource, HighlightSpan, ImageLightboxLabels, LinkIconKind, LinkIconProps } from '@deepseek-ai/dsh-client-ui-primitives'
-export type { MarkdownDelegate, MarkdownDelegateProviderProps, MarkdownExternalLinkHandler, MarkdownMenuTarget, MarkdownPlainTextMode, MarkdownPlainTextOptions } from '@deepseek-ai/dsh-client-ui-primitives'
-export type { PreparedFileDrag, QuotePreviewProps, QuotePreviewRemoval, ReadBlockLabels, ReadBlockLine, ReadBlockProps } from '@deepseek-ai/dsh-client-ui-primitives'
-export type { ReferenceChipProps, ReferenceIconKind, ReferenceIconProps, RelativeTime, RelativeTimeUnit, RiskConfirmationProps } from '@deepseek-ai/dsh-client-ui-primitives'
-export type { SearchBlockLabels, SearchBlockLineMatch, SearchBlockProps, SearchFileGroup, SearchMatchesBlockProps, SearchPathsBlockProps } from '@deepseek-ai/dsh-client-ui-primitives'
-export type { SettingsFieldProps, SettingsFieldSpec, SettingsFieldState, SettingsFieldWrite, SettingsFormActions, SettingsFormLabels } from '@deepseek-ai/dsh-client-ui-primitives'
-export type { SettingsFormPathOp, SettingsFormProps, SettingsFormScope, SettingsFormScopeSnapshot, SettingsFormShell, SettingsSecretSpec } from '@deepseek-ai/dsh-client-ui-primitives'
-export type { TerminalBlockLabels, TerminalBlockProps, UserMessageBubbleProps, UserTextRunProps, WebBlockLabels, WebBlockProps } from '@deepseek-ai/dsh-client-ui-primitives'
-export type { WebFetchBlockProps, WebSearchBlockProps, WebSourceView, ZoomControlsHandle } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { AnimatedRowsProps, BrandWordmarkProps, ButtonVariant, ClipboardCopyState, CodeFileType, CodeHighlighter } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { CodeToolbarLabels, CommandTextProps, ConnectionIndicatorState, DetailDocumentCopy, DetailDocumentLabels, DetailDocumentRead } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { DetailDocumentState, DiffBlockLabels, DiffBlockProps, DiffHunk, DisclosureRowProps, DocumentZoomLabels } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { DraggableImageProps, FileDragActions, FileDragSource, FileType, FileTypeIconProps, FileTypeKind } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { FileTypeProjectContext, HighlightSpan, ImageLightboxLabels, JsonTreeLabels, JsonTreeProps, LinkIconKind } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { LinkIconProps, MarkdownCodeLabels, MarkdownDelegate, MarkdownDelegateProviderProps, MarkdownExternalLinkHandler, MarkdownFileMentions } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { MarkdownLabels, MarkdownMenuTarget, MarkdownPathImages, MarkdownPlainTextMode, MarkdownPlainTextOptions, PreparedFileDrag } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { QuotePreviewProps, QuotePreviewRemoval, ReadBlockLabels, ReadBlockLine, ReadBlockProps, ReferenceChipProps } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { ReferenceIconKind, ReferenceIconProps, RelativeTime, RelativeTimeUnit, RiskConfirmationProps, SearchBlockLabels } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { SearchBlockLineMatch, SearchBlockProps, SearchFileGroup, SearchMatchesBlockProps, SearchPathsBlockProps, SegmentedControlOption } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { SegmentedTab, SettingsFieldProps, SettingsFieldSpec, SettingsFieldState, SettingsFieldWrite, SettingsFormActions } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { SettingsFormLabels, SettingsFormPathOp, SettingsFormProps, SettingsFormScope, SettingsFormScopeSnapshot, SettingsFormShell } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { SettingsSecretSpec, StateDotState, TagTone, TerminalBlockLabels, TerminalBlockProps, TextShimmerProps } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { TooltipSide, UserMessageBubbleProps, UserTextRunProps, WebBlockLabels, WebBlockProps, WebFetchBlockProps } from '@deepseek-ai/dsh-client-ui-primitives'
+export type { WebSearchBlockProps, WebSourceView, ZoomControlsHandle } from '@deepseek-ai/dsh-client-ui-primitives'
 
 /** Names the library reforked, so they are not re-exported from upstream. */
 export const forkedNames = [
   'AnchoredPositionOptions',
-  'AnimatedRows',
-  'AnimatedRowsProps',
-  'Button',
-  'ButtonVariant',
-  'Checkbox',
   'CodeBlock',
   'CodeBlockProps',
-  'CodeFileType',
-  'DEFAULT_DIFF_MAX_LINES',
   'DEFAULT_TERMINAL_MAX_LINES',
-  'DiffBlock',
-  'DiffBlockLabels',
-  'DiffBlockProps',
-  'DiffHunk',
-  'DisclosureRow',
-  'DisclosureRowProps',
-  'FileType',
-  'FileTypeIcon',
-  'FileTypeIconProps',
-  'FileTypeKind',
-  'FileTypeProjectContext',
-  'HoverCard',
-  'HoverCardGroup',
-  'InlineEditor',
-  'Input',
-  'JsonBlock',
-  'JsonTree',
-  'JsonTreeLabels',
-  'JsonTreeProps',
   'MENU_TRANSITION_MS',
-  'MarkdownCodeLabels',
-  'MarkdownFileMentions',
-  'MarkdownLabels',
-  'MarkdownPathImages',
-  'MarkdownText',
   'Menu',
   'MenuEntry',
-  'MenuGroup',
   'MenuItem',
   'MenuItemButton',
   'MenuItemButtonProps',
@@ -115,34 +93,7 @@ export const forkedNames = [
   'MenuSeparator',
   'MenuSurface',
   'MenuSurfaceProps',
-  'Modal',
-  'PathLabel',
-  'Pill',
-  'SegmentedControl',
-  'SegmentedControlOption',
-  'SegmentedTab',
-  'SegmentedTabs',
-  'ShortcutKeys',
-  'StateDot',
-  'StateDotState',
-  'Switch',
-  'Tag',
-  'TagTone',
-  'TextShimmer',
-  'TextShimmerProps',
   'Toast',
-  'Tooltip',
-  'TooltipSide',
   'ZoomControls',
-  'classifyFileType',
-  'closeTopModal',
-  'diffTotals',
-  'fileExtension',
-  'focusWithoutRing',
-  'isBehindModal',
-  'modalSelector',
-  'observeComposition',
-  'observeStickyMenuGroups',
   'useAnchoredPosition',
-  'useModalLayer',
 ] as const

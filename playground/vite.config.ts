@@ -77,8 +77,10 @@ export default defineConfig({
     alias: {
       // The gallery consumes the library from source, so a change under src/ is
       // picked up by the dev server without a package build.
+      // Order matters: the subpath entries are matched first.
+      '@dsh-components/provider': here('../src/provider.ts'),
+      '@dsh-components/styles': here('../src/styles.ts'),
       '@dsh-components': here('../src/index.ts'),
-      '@dsh-components/': here('../src/'),
       // The DSH client injects these three modules at runtime; the primitives
       // barrel imports them at module scope, so the gallery substitutes local
       // stand-ins.

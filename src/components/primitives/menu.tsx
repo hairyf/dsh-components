@@ -1,13 +1,10 @@
 /* eslint-disable slop/no-em-dash -- the stylesheet below is copied verbatim from the official CSS module, comments included. */
 import type * as React from 'react'
-import { IconCheckOutlineRegular } from '@deepseek-ai/dsh-client-ui-primitives'
+import { focusWithoutRing, IconCheckOutlineRegular, isBehindModal, observeComposition, ShortcutKeys, Tooltip } from '@deepseek-ai/dsh-client-ui-primitives'
 import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { cx, useStyle } from '../../lib/style'
 import { MenuSurface } from './menu-surface'
-import { focusWithoutRing, isBehindModal, observeComposition } from './modal'
-import { ShortcutKeys } from './shortcut-keys'
-import { Tooltip } from './tooltip'
 
 const CSS = `/* recovered from @deepseek-ai/dsh-client-ui-primitives/lib/Menu.module.css */
 .root {

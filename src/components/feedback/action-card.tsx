@@ -1,7 +1,7 @@
 import type * as React from 'react'
+import { Button } from '@deepseek-ai/dsh-client-ui-primitives'
 import { useId } from 'react'
 import { cx, useStyle } from '../../lib/style'
-import { Button, useButtonStyle } from '../primitives/button'
 
 /** Recovered from @deepseek-ai/dsh-client-ui-action-cards / Card.module.css. */
 const CSS = `/* @deepseek-ai/dsh-client-ui-action-cards / Card.module.css - class hashes removed and reflowed by scripts/extract-dsh-source.mjs. */
@@ -156,7 +156,6 @@ export function ActionCard({
   className,
 }: ActionCardProps): React.JSX.Element {
   // Button.module.css precedes Card.module.css: `.toggle`'s sizing overrides Button's.
-  useButtonStyle()
   const s = useStyle('action-card', CSS)
   const id = useId()
   const preview = foldedPreview(brief)

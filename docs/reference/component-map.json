@@ -2,10 +2,10 @@
   "generatedBy": "scripts/generate-component-map.mjs",
   "purpose": "Which official stylesheet each component reproduces. An upgrade agent reads this to resync one component at a time.",
   "counts": {
-    "components": 72,
+    "components": 48,
     "officialSheets": 202,
-    "reproduced": 71,
-    "unreproduced": 131
+    "reproduced": 48,
+    "unreproduced": 154
   },
   "components": [
     {
@@ -34,23 +34,6 @@
       ]
     },
     {
-      "name": "DiffBlock",
-      "group": "content",
-      "file": "src/components/content/diff-block.tsx",
-      "scope": "diff-block",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 1408,
-          "package": "primitives",
-          "sheet": "DiffBlock.module.css",
-          "declared": "DiffBlock.module.css",
-          "identical": true
-        }
-      ]
-    },
-    {
       "name": "Document",
       "group": "content",
       "file": "src/components/content/document.tsx",
@@ -62,57 +45,6 @@
           "bytes": 1558,
           "package": "primitives",
           "sheet": "DetailDocument.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "JsonBlock",
-      "group": "content",
-      "file": "src/components/content/json-block.tsx",
-      "scope": "json-block",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 698,
-          "package": "primitives",
-          "sheet": "JsonBlock.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "JsonTree",
-      "group": "content",
-      "file": "src/components/content/json-tree.tsx",
-      "scope": "json-tree",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 7020,
-          "package": "primitives",
-          "sheet": "JsonTree.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "MarkdownText",
-      "group": "content",
-      "file": "src/components/content/markdown-text.tsx",
-      "scope": "markdown-text",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 11518,
-          "package": "primitives",
-          "sheet": "MarkdownText.module.css",
           "declared": null,
           "identical": true
         }
@@ -622,23 +554,6 @@
       ]
     },
     {
-      "name": "AnimatedRows",
-      "group": "primitives",
-      "file": "src/components/primitives/animated-rows.tsx",
-      "scope": "animated-rows",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 193,
-          "package": "primitives",
-          "sheet": "AnimatedRows.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
       "name": "Avatar",
       "group": "primitives",
       "file": "src/components/primitives/avatar.tsx",
@@ -656,40 +571,6 @@
           "package": "settings-account",
           "sheet": "AccountAvatar.module.css",
           "declared": "AccountAvatar.module.css",
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "Button",
-      "group": "primitives",
-      "file": "src/components/primitives/button.tsx",
-      "scope": "button",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 1896,
-          "package": "primitives",
-          "sheet": "Button.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "Checkbox",
-      "group": "primitives",
-      "file": "src/components/primitives/checkbox.tsx",
-      "scope": "checkbox",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 649,
-          "package": "primitives",
-          "sheet": "Checkbox.module.css",
-          "declared": null,
           "identical": true
         }
       ]
@@ -758,23 +639,6 @@
       ]
     },
     {
-      "name": "DisclosureRow",
-      "group": "primitives",
-      "file": "src/components/primitives/disclosure-row.tsx",
-      "scope": "disclosure-row",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 2589,
-          "package": "primitives",
-          "sheet": "DisclosureRow.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
       "name": "Field",
       "group": "primitives",
       "file": "src/components/primitives/field.tsx",
@@ -792,23 +656,6 @@
           "package": "primitives",
           "sheet": "fields.module.css",
           "declared": "fields.module.css",
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "FileTypeIcon",
-      "group": "primitives",
-      "file": "src/components/primitives/file-type-icon.tsx",
-      "scope": "file-type-icon",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 1143,
-          "package": "primitives",
-          "sheet": "FileTypeIcon.module.css",
-          "declared": null,
           "identical": true
         }
       ]
@@ -836,23 +683,6 @@
       ]
     },
     {
-      "name": "HoverCardGroup",
-      "group": "primitives",
-      "file": "src/components/primitives/hover-card.tsx",
-      "scope": "hover-card",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 2168,
-          "package": "primitives",
-          "sheet": "HoverCard.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
       "name": "IconButton",
       "group": "primitives",
       "file": "src/components/primitives/icon-button.tsx",
@@ -870,40 +700,6 @@
       ]
     },
     {
-      "name": "InlineEditor",
-      "group": "primitives",
-      "file": "src/components/primitives/inline-editor.tsx",
-      "scope": "inline-editor",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 687,
-          "package": "primitives",
-          "sheet": "InlineEditor.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "Input",
-      "group": "primitives",
-      "file": "src/components/primitives/input.tsx",
-      "scope": "input",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 799,
-          "package": "primitives",
-          "sheet": "Input.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
       "name": "MaskedText",
       "group": "primitives",
       "file": "src/components/primitives/masked-text.tsx",
@@ -915,23 +711,6 @@
           "bytes": 1474,
           "package": "secret-mask",
           "sheet": "SecretText.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "MenuGroup",
-      "group": "primitives",
-      "file": "src/components/primitives/menu-group.tsx",
-      "scope": "menu-group",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 668,
-          "package": "primitives",
-          "sheet": "MenuGroup.module.css",
           "declared": null,
           "identical": true
         }
@@ -972,108 +751,6 @@
       ]
     },
     {
-      "name": "Modal",
-      "group": "primitives",
-      "file": "src/components/primitives/modal.tsx",
-      "scope": "modal",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 2993,
-          "package": "primitives",
-          "sheet": "Modal.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "PathLabel",
-      "group": "primitives",
-      "file": "src/components/primitives/path-label.tsx",
-      "scope": "path-label",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 632,
-          "package": "primitives",
-          "sheet": "PathLabel.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "Pill",
-      "group": "primitives",
-      "file": "src/components/primitives/pill.tsx",
-      "scope": "pill",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 703,
-          "package": "primitives",
-          "sheet": "Pill.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "SegmentedControl",
-      "group": "primitives",
-      "file": "src/components/primitives/segmented-control.tsx",
-      "scope": "segmented-control",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 2341,
-          "package": "primitives",
-          "sheet": "SegmentedControl.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "SegmentedTabs",
-      "group": "primitives",
-      "file": "src/components/primitives/segmented-tabs.tsx",
-      "scope": "segmented-tabs",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 1684,
-          "package": "primitives",
-          "sheet": "SegmentedTabs.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "ShortcutKeys",
-      "group": "primitives",
-      "file": "src/components/primitives/shortcut-keys.tsx",
-      "scope": "shortcut-keys",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 887,
-          "package": "primitives",
-          "sheet": "ShortcutKeys.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
       "name": "Spinner",
       "group": "primitives",
       "file": "src/components/primitives/spinner.tsx",
@@ -1085,74 +762,6 @@
           "bytes": 609,
           "package": "sidebar-documentpreview",
           "sheet": "LoadingIndicator.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "StateDot",
-      "group": "primitives",
-      "file": "src/components/primitives/state-dot.tsx",
-      "scope": "state-dot",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 2531,
-          "package": "primitives",
-          "sheet": "StateDot.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "Switch",
-      "group": "primitives",
-      "file": "src/components/primitives/switch.tsx",
-      "scope": "switch",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 1228,
-          "package": "primitives",
-          "sheet": "Switch.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "Tag",
-      "group": "primitives",
-      "file": "src/components/primitives/tag.tsx",
-      "scope": "tag",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 1934,
-          "package": "primitives",
-          "sheet": "Tag.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "TextShimmer",
-      "group": "primitives",
-      "file": "src/components/primitives/text-shimmer.tsx",
-      "scope": "text-shimmer",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 1819,
-          "package": "primitives",
-          "sheet": "TextShimmer.module.css",
           "declared": null,
           "identical": true
         }
@@ -1234,23 +843,6 @@
           "bytes": 2936,
           "package": "primitives",
           "sheet": "Toast.module.css",
-          "declared": null,
-          "identical": true
-        }
-      ]
-    },
-    {
-      "name": "Tooltip",
-      "group": "primitives",
-      "file": "src/components/primitives/tooltip.tsx",
-      "scope": "tooltip",
-      "declared": [],
-      "sheets": [
-        {
-          "binding": "CSS",
-          "bytes": 1905,
-          "package": "primitives",
-          "sheet": "Tooltip.module.css",
           "declared": null,
           "identical": true
         }
@@ -1427,42 +1019,19 @@
   ],
   "packages": {
     "primitives": [
-      "AnimatedRows.module.css",
-      "Button.module.css",
-      "Checkbox.module.css",
       "CodeBlock.module.css",
       "CodeCard.module.css",
       "CommandText.module.css",
       "DetailDocument.module.css",
-      "DiffBlock.module.css",
       "DisclosureRow.module.css",
-      "FileTypeIcon.module.css",
-      "HoverCard.module.css",
       "ImageLightbox.module.css",
       "ImagePreview.module.css",
-      "InlineEditor.module.css",
-      "Input.module.css",
-      "JsonBlock.module.css",
-      "JsonTree.module.css",
-      "MarkdownText.module.css",
       "Menu.module.css",
-      "MenuGroup.module.css",
       "MenuSurface.module.css",
-      "Modal.module.css",
-      "PathLabel.module.css",
-      "Pill.module.css",
       "QuotePreview.module.css",
-      "SegmentedControl.module.css",
-      "SegmentedTabs.module.css",
       "SettingsForm.module.css",
-      "ShortcutKeys.module.css",
-      "StateDot.module.css",
-      "Switch.module.css",
-      "Tag.module.css",
       "TerminalBlock.module.css",
-      "TextShimmer.module.css",
       "Toast.module.css",
-      "Tooltip.module.css",
       "ZoomControls.module.css",
       "fields.module.css"
     ],
@@ -1588,11 +1157,34 @@
     "plugin-manager/PluginManagerPage.module.css",
     "plugin-market/DiscoverSection.module.css",
     "plugin-recommendations/Card.module.css",
+    "primitives/AnimatedRows.module.css",
+    "primitives/Button.module.css",
+    "primitives/Checkbox.module.css",
     "primitives/ConnectionIndicator.module.css",
+    "primitives/DiffBlock.module.css",
+    "primitives/FileTypeIcon.module.css",
+    "primitives/HoverCard.module.css",
+    "primitives/InlineEditor.module.css",
+    "primitives/Input.module.css",
+    "primitives/JsonBlock.module.css",
+    "primitives/JsonTree.module.css",
+    "primitives/MarkdownText.module.css",
+    "primitives/MenuGroup.module.css",
+    "primitives/Modal.module.css",
+    "primitives/PathLabel.module.css",
+    "primitives/Pill.module.css",
     "primitives/ReadBlock.module.css",
     "primitives/RiskConfirmation.module.css",
     "primitives/RowDragPreview.module.css",
     "primitives/SearchBlock.module.css",
+    "primitives/SegmentedControl.module.css",
+    "primitives/SegmentedTabs.module.css",
+    "primitives/ShortcutKeys.module.css",
+    "primitives/StateDot.module.css",
+    "primitives/Switch.module.css",
+    "primitives/Tag.module.css",
+    "primitives/TextShimmer.module.css",
+    "primitives/Tooltip.module.css",
     "primitives/UserMessageBubble.module.css",
     "primitives/WebBlock.module.css",
     "primitives/user-text.module.css",

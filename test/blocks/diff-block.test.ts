@@ -1,5 +1,5 @@
+import { DEFAULT_DIFF_MAX_LINES, diffTotals } from '@deepseek-ai/dsh-client-ui-primitives'
 import { describe, expect, it } from 'vitest'
-import { DEFAULT_DIFF_MAX_LINES, diffTotals } from '../../src/components/content/diff-block'
 
 const PATH = 'src/app.tsx'
 

@@ -25,27 +25,42 @@ names, which makes the file the documentation:
 **DO NOT** invent props, class names, or declarations. A declaration that is not in
 an official sheet is a defect, and `pnpm audit:fidelity` fails on it.
 
+**DO NOT** assume a component exists because the product shows one. 154 of the
+202 official stylesheets have no component here. `list_unreproduced.mjs` names
+them, and `get_styles.mjs` still gives you their real CSS, so you can copy the
+declarations into your own markup instead of guessing.
+
 ## Start here
 
 ```sh
-node scripts/list_components.mjs        # every component, its group and props type
-node scripts/get_component.mjs Select   # the primary read, before you use anything
+node scripts/list_components.mjs          # components this library ships
+node scripts/list_official.mjs            # every official DSH export it re-exports
+node scripts/list_unreproduced.mjs        # official styles with no component yet
+node scripts/get_component.mjs Select     # the primary read, before you use anything
 ```
+
+There are two halves to the surface, and you need both:
+
+- **components** (48). Recovered and reforks: each one keeps an official
+  stylesheet verbatim, so use these for anything you lay out.
+- **official exports** (388: 301 values, 87 types, 194 of them `Icon*`). Passed
+  through from `@deepseek-ai/dsh-client-ui-primitives` unchanged, because the
+  library does not refork them. Icons live here, and so do the helpers
+  (`writeClipboard`, `formatQuoteText`, `SettingsForm`, ...).
+
+Never `list_components.mjs IconSomething`; icons are not components. Use
+`list_official.mjs <query>`.
 
 Groups:
 
-- `primitives`: Button, IconButton, Input, Textarea, Checkbox, Switch, Tag, Pill,
-  Chip, StateDot, Spinner, Text, MaskedText, Avatar, Tooltip, HoverCard, Modal,
-  Toast, Menu, MenuSurface, MenuGroup, SegmentedControl, SegmentedTabs,
-  DisclosureRow, AnimatedRows, TextShimmer, ShortcutKeys, InlineEditor, PathLabel,
-  FileTypeIcon, Field, Form, DatePicker, TimePicker
+- `primitives`: Avatar, Chip, DatePicker, Field, Form, IconButton, MaskedText,
+  MenuItemButton, Spinner, Text, Textarea, TimePicker, Toast
 - `layout`: Surface, Bar, Stack, ListRow, Tree, DescriptionList, Checklist, Meter,
   Table, Toolbar, Carousel, FileChangeCard
 - `settings`: SettingsRow, SettingsGroup, Stepper, OptionGroup, Select, SplitButton
 - `feedback`: ConfirmPanel, FormDialog, SearchDialog, ActionCard, DropOverlay
 - `media`: Image, ImageTile, Lightbox, FileCard
-- `content`: MarkdownText, CodeBlock, DiffBlock, SplitDiff, JsonTree, JsonBlock,
-  Terminal, Document
+- `content`: CodeToolbar, SplitDiff, Terminal, Document
 - `viewer`: ZoomControls, ZoomViewport, PreviewFrame
 
 ## Compose, do not reach for a screen
@@ -131,6 +146,8 @@ from `get_styles.mjs`; never weaken the check.
 | Question | Command |
 | --- | --- |
 | Which components exist? | `list_components.mjs` |
+| Is there an official icon or helper? | `list_official.mjs <query>` |
+| The product shows X but there is no component | `list_unreproduced.mjs [package]` |
 | What props does X take? | `get_component.mjs X` |
 | What official CSS backs X? | `get_styles.mjs <package> X` |
 | How does the official source do it? | `get_source.mjs <package> X` |

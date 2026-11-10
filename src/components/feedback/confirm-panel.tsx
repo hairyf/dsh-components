@@ -1,6 +1,6 @@
 import type * as React from 'react'
+import { Button } from '@deepseek-ai/dsh-client-ui-primitives'
 import { useStyle } from '../../lib/style'
-import { Button, useButtonStyle } from '../primitives/button'
 
 /**
  * Recovered verbatim from @deepseek-ai/dsh-client-ui-approval / ApprovalPanel.module.css.
@@ -165,7 +165,6 @@ export function ConfirmPanel(props: ConfirmPanelProps): React.JSX.Element {
   } = props
   // Button.module.css precedes ApprovalPanel.module.css: `.reject`'s danger
   // hover and the action row's button sizing rely on that cascade order.
-  useButtonStyle()
   const s = useStyle('confirm-panel', CSS)
   const inactive = busy || disabled
   return (

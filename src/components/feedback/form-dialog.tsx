@@ -1,7 +1,6 @@
 import type * as React from 'react'
+import { Button, Modal } from '@deepseek-ai/dsh-client-ui-primitives'
 import { cx, useStyle } from '../../lib/style'
-import { Button, useButtonStyle } from '../primitives/button'
-import { Modal, useModalStyle } from '../primitives/modal'
 
 /**
  * Recovered verbatim from @deepseek-ai/dsh-client-ui-message-feedback / FeedbackDialog.module.css.
@@ -174,8 +173,6 @@ export function FormDialog(props: FormDialogProps): React.JSX.Element {
   } = props
   // Button.module.css and Modal.module.css precede FeedbackDialog.module.css:
   // the doubled `.dialog.dialog` selector and `.submit` sizing rely on that order.
-  useButtonStyle()
-  useModalStyle()
   const s = useStyle('form-dialog', CSS)
   const close = (): void => {
     onOpenChange(false)

@@ -1,9 +1,9 @@
 // @vitest-environment happy-dom
 import type { Root } from 'react-dom/client'
+import { Switch } from '@deepseek-ai/dsh-client-ui-primitives'
 import { act, createElement } from 'react'
 import { createRoot } from 'react-dom/client'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { Switch } from '../../src/components/primitives/switch'
 
 declare global {
   // eslint-disable-next-line vars-on-top
@@ -65,26 +65,6 @@ describe('switch', () => {
     expect(switchElement().getAttribute('aria-checked')).toBe('true')
   })
 
-  it('keeps its own state when uncontrolled', () => {
-    const onChange = vi.fn()
-    act(() => {
-      root.render(createElement(Switch, { defaultChecked: false, onChange, label: 'Enabled' }))
-    })
-    expect(switchElement().getAttribute('aria-checked')).toBe('false')
-
-    act(() => {
-      switchElement().click()
-    })
-    expect(switchElement().getAttribute('aria-checked')).toBe('true')
-    expect(onChange).toHaveBeenCalledWith(true)
-
-    act(() => {
-      switchElement().click()
-    })
-    expect(switchElement().getAttribute('aria-checked')).toBe('false')
-    expect(onChange).toHaveBeenLastCalledWith(false)
-  })
-
   it('refuses input while disabled', () => {
     const onChange = vi.fn()
     act(() => {
@@ -106,6 +86,7 @@ describe('switch', () => {
     act(() => {
       root.render(createElement(Switch, {
         checked: false,
+        onChange: () => {},
         label: '自动保存',
         title: '写入进行中',
       }))

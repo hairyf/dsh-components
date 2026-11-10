@@ -1,7 +1,7 @@
 import type * as React from 'react'
+import { FileTypeIcon } from '@deepseek-ai/dsh-client-ui-primitives'
 import { useState } from 'react'
 import { cx, useStyle } from '../../lib/style'
-import { FileTypeIcon } from '../primitives/file-type-icon'
 
 /**
  * Recovered from @deepseek-ai/dsh-client-ui-deliverables / ChangedFiles.module.css (verbatim).
