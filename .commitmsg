@@ -1,0 +1,17 @@
+feat(playground): shape the index like the official sidebar
+
+The gallery's left column was a flat list of 72 names with ad-hoc styling. It
+now borrows the DSH sidebar's real metrics: the official sidebar fill, 8px
+inline padding, 36px rows with 3px transparent side paint, and the Input
+sheet's border and placeholder tokens. Same values, so the index reads like the
+product it documents.
+
+Also fixes what 72 entries made obvious:
+- a filter box, since scrolling to find one component was the main annoyance
+- collapsible groups, defaulting to open
+- the theme toggle uses the library Button and the official dark/light glyphs
+  instead of a text emoji, and the scheme is addressable as `#<name>?light`
+- the hash now resolves `#name` before the scheme flag; before this,
+  `#settings-group?light` silently fell back to the first component
+
+Verified in a real browser: dark and light, both with the correct component.

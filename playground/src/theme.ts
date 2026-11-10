@@ -40,52 +40,250 @@ body {
   height: 100%;
 }
 
+/*
+ * The index copies the official DSH sidebar: the same fill, the same 8px inline
+ * padding, the same 36px rows and 3px transparent side paint. Only the values
+ * are borrowed; the gallery draws no box of its own beyond these.
+ */
+
 .pg-nav {
-  overflow-y: auto;
-  border-right: 1px solid var(--dsw-alias-border-l2);
-  background: var(--dsw-alias-bg-layer-1);
-  padding: 12px 8px 32px;
+  --dsh-sidebar-inline-padding: 8px;
+  --dsh-sidebar-row-padding: 12px;
+  --dsh-sidebar-label-gap: 6px;
+  --dsh-sidebar-paint-inset: 3px;
+  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);
+  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);
+  box-sizing: border-box;
+  height: 100%;
+  padding: 6px var(--dsh-sidebar-inline-padding);
+  background: var(--dsw-specific-sidebar-fill);
+  color: var(--dsw-alias-label-primary);
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
 }
 
-.pg-nav-title {
-  font-size: 12px;
+/* Official .logoRow / .brandName / .brandMark. */
+.pg-brand {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 4px 0 6px;
+}
+
+.pg-brand-mark {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dsw-alias-label-primary);
+}
+
+.pg-brand-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 18px;
   font-weight: 600;
+  line-height: 24px;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
+}
+
+.pg-brand-count {
+  flex: none;
   color: var(--dsw-alias-label-tertiary);
-  padding: 12px 8px 6px;
+  font-size: 12px;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Official Input: .wrap / .icon / .input. */
+.pg-filter {
+  flex: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  margin: 0 3px 10px;
+  padding: 0 8px;
+  border: 0.5px solid var(--dsw-alias-border-l4);
+  border-radius: var(--dsw-radius-md);
+  background: var(--dsw-alias-bg-layer-1);
+}
+
+.pg-filter:focus-within {
+  border-color: var(--dsw-alias-state-business-primary);
+}
+
+.pg-filter-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.pg-filter-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--dsw-alias-label-primary);
+}
+
+.pg-filter-input::placeholder {
+  color: var(--dsw-alias-label-dimmed);
+}
+
+.pg-filter-clear {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  border-radius: var(--dsw-radius-sm);
+  background: none;
+  color: var(--dsw-alias-label-tertiary);
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .pg-filter-clear:hover {
+    background-color: var(--dsw-alias-interactive-bg-hover);
+    color: var(--dsw-alias-label-secondary);
+  }
+}
+
+/* Official .regionArea: the scroll region reaches the sidebar edge. */
+.pg-nav-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  margin-right: calc(-1 * var(--dsh-sidebar-inline-padding));
+  padding-right: var(--dsh-sidebar-inline-padding);
+  overscroll-behavior: contain;
 }
 
 .pg-nav-group {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 0 8px;
-  color: var(--dsw-alias-label-secondary);
+  margin-bottom: 8px;
 }
 
-.pg-nav-button {
-  display: block;
+.pg-nav-group-title {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--dsh-sidebar-label-gap);
   width: 100%;
-  padding: 5px 8px;
+  min-height: 28px;
+  padding: 4px calc(var(--dsh-sidebar-row-padding) - var(--dsh-sidebar-paint-inset) + 1px);
   border: none;
-  border-radius: 6px;
-  background: transparent;
-  color: var(--dsw-alias-label-primary);
+  border-radius: var(--dsw-radius-sm);
+  background: none;
+  color: var(--dsw-alias-label-tertiary);
   font: inherit;
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.02em;
   text-align: left;
   cursor: pointer;
 }
 
-.pg-nav-button:hover {
-  background: var(--dsw-alias-bg-layer-1);
-  background: color-mix(in oklab, currentColor 8%, transparent);
+@media (hover: hover) {
+  .pg-nav-group-title:hover {
+    color: var(--dsw-alias-label-secondary);
+  }
 }
 
-.pg-nav-button[aria-current='true'] {
-  background: color-mix(in oklab, currentColor 14%, transparent);
-  font-weight: 600;
+.pg-nav-group-title:focus-visible {
+  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));
+  outline-offset: -2px;
+}
+
+.pg-nav-group-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pg-nav-group-count {
+  flex: none;
+  color: var(--dsw-alias-label-dimmed);
+  font-variant-numeric: tabular-nums;
+}
+
+.pg-nav-chevron {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s;
+}
+
+.pg-nav-group-title[aria-expanded='false'] .pg-nav-chevron {
+  transform: rotate(-90deg);
+}
+
+/* Official .panelRow: 36px row, 3px transparent side paint, radius md. */
+.pg-nav-row {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--dsh-sidebar-label-gap);
+  width: 100%;
+  min-height: 36px;
+  margin: 0;
+  padding: 7px calc(var(--dsh-sidebar-row-padding) - var(--dsh-sidebar-paint-inset));
+  border: none;
+  border-inline: var(--dsh-sidebar-paint-inset) solid transparent;
+  border-radius: var(--dsw-radius-md);
+  background: padding-box padding-box;
+  color: var(--dsw-alias-label-primary);
+  font: inherit;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: left;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .pg-nav-row:hover {
+    background-color: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.pg-nav-row[aria-current='true'] {
+  background-color: var(--dsw-alias-interactive-bg-hover);
+  font-weight: 500;
+}
+
+.pg-nav-row:focus-visible {
+  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));
+  outline-offset: -2px;
+}
+
+.pg-nav-empty {
+  margin: 0;
+  padding: 12px calc(var(--dsh-sidebar-row-padding) - var(--dsh-sidebar-paint-inset));
+  color: var(--dsw-alias-label-dimmed);
+  font-size: 13px;
+  line-height: 20px;
 }
 
 .pg-main {
@@ -103,26 +301,31 @@ body {
   gap: 12px;
   padding: 14px 0;
   background: var(--dsw-alias-bg-base);
-  border-bottom: 1px solid var(--dsw-alias-border-l2);
+  border-bottom: 0.5px solid var(--dsw-alias-border-l1);
 }
 
 .pg-toolbar-spacer {
   flex: 1;
 }
 
-.pg-toggle {
+/* Official .buildVersion-ish chip for the group name. */
+.pg-chip {
+  flex: none;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  height: 28px;
-  padding: 0 12px;
-  border: 1px solid var(--dsw-alias-border-l3);
-  border-radius: 8px;
-  background: transparent;
-  color: inherit;
-  font: inherit;
+  height: 20px;
+  padding: 0 7px;
+  border-radius: var(--dsw-radius-sm);
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-secondary);
   font-size: 12px;
-  cursor: pointer;
+  line-height: 20px;
+}
+
+.pg-toolbar-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
 }
 
 .pg-heading {
@@ -139,19 +342,20 @@ body {
 
 .pg-state {
   margin-bottom: 20px;
-  border: 1px solid var(--dsw-alias-border-l2);
-  border-radius: 12px;
+  border: 0.5px solid var(--dsw-alias-border-l1);
+  border-radius: var(--dsw-radius-lg);
+  background: var(--dsw-alias-bg-layer-1);
   overflow: hidden;
 }
 
 .pg-state-title {
   margin: 0;
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--dsw-alias-border-l2);
-  background: color-mix(in oklab, currentColor 4%, transparent);
+  padding: 9px 14px;
+  border-bottom: 0.5px solid var(--dsw-alias-border-l1);
   color: var(--dsw-alias-label-secondary);
   font-size: 12px;
   font-weight: 500;
+  line-height: 20px;
 }
 
 .pg-state-body {
