@@ -1,6 +1,6 @@
 {
   "name": "dsh-components",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "packageManager": "pnpm@12.15.0",
   "description": "Source-level React components for the DeepSeek Harness Web UI, recovered from the official stylesheets",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
